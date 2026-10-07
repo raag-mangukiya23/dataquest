@@ -12,8 +12,10 @@ from app.schemas.common import (
     CareerRef,
     ConflictBand,
     Contract,
+    Freshness,
     Score100,
     Unit,
+    VerificationStatus,
 )
 
 
@@ -45,6 +47,8 @@ class Reproducibility(Contract):
     input_hash: str = Field(description="sha256 of the canonical input snapshot")
     data_as_of: str = Field(description="Most recent as_of across market/salary/scholarship data used")
     dataset_version: str = Field(description="Catalog snapshot the run read; replays use the same snapshot")
+    latest_dataset_version: str = Field(description="Snapshot currently active")
+    is_outdated: bool = Field(description="true = newer data exists; offer 'Re-run with latest data'")
     family_finance_version: int | None = Field(description="Exact family_finance version used")
     ml_model_version: str | None
 
@@ -143,6 +147,24 @@ class FinancialAssessment(Contract):
     roi: RoiDetail
 
 
+class TrustInput(Contract):
+    name: str = Field(examples=["Exam dates: JEE Main", "Pathway fees", "Salary band"])
+    verification: VerificationStatus
+    is_estimate: bool
+    as_of: str
+    source_name: str
+
+
+class DataTrust(Contract):
+    """How much of the data behind one recommendation has actually been checked, and how fresh it is."""
+
+    verified_share: Unit = Field(description="Share of inputs that are verified or secondary-checked")
+    freshness: Freshness
+    oldest_as_of: str
+    inputs: list[TrustInput]
+    note: str
+
+
 class FamilyFitDetail(Contract):
     student_fit: Unit
     parent_acceptance: Unit
@@ -162,6 +184,7 @@ class Recommendation(Contract):
     financial: FinancialAssessment
     alternative_pathways: list[FinancialAssessment] = Field(default_factory=list, max_length=3)
     family: FamilyFitDetail
+    data_trust: DataTrust
     buckets: list[Bucket]
     explanation: list[str] = Field(description="Plain-language reasons, most important first")
 

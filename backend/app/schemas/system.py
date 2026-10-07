@@ -46,3 +46,51 @@ class Methodology(Contract):
     fairness_safeguards: list[str]
     privacy_rules: list[str]
     limitations: list[str]
+
+
+class DatasetStatus(Contract):
+    dataset: str
+    label: str
+    rows: int
+    cadence_days: int = Field(description="How often the publisher updates this data")
+    oldest_as_of: str | None
+    newest_as_of: str | None
+    freshness: str = Field(examples=["fresh", "aging", "stale"])
+    next_refresh_due: str | None
+    verified: int
+    secondary: int
+    unverified: int
+    disputed: int
+    checked_share: float = Field(ge=0, le=1)
+    errors: int
+    warnings: int
+    sources: list[str]
+    live_feed: bool = Field(description="true only when an API adapter for this dataset is configured")
+
+
+class FeedStatus(Contract):
+    key: str
+    name: str
+    access: str = Field(examples=["api", "download", "manual"])
+    enabled: bool
+    detail: str
+
+
+class DataIssue(Contract):
+    dataset: str
+    key: str
+    rule: str
+    severity: str
+    message: str
+
+
+class DataStatus(Contract):
+    generated_at: datetime
+    today: str
+    dataset_version: str
+    computed_live: bool = Field(description="Recommendations are recomputed on every request")
+    overall_checked_share: float = Field(ge=0, le=1)
+    statement: str = Field(description="Plain-language summary safe to show judges and users")
+    datasets: list[DatasetStatus]
+    feeds: list[FeedStatus]
+    issues: list[DataIssue]

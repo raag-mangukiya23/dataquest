@@ -111,19 +111,19 @@
         "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
         "career_name": "Data Scientist",
         "score": 0.771,
-        "reason": "Strong match on investigative (analysing, researching), logical reasoning, analytical thinking style."
+        "reason": "Strong match on investigative (analysing, researching), analytical thinking style, logical reasoning."
       },
       {
         "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
         "career_name": "Biomedical Engineer",
         "score": 0.7505,
-        "reason": "Strong match on investigative (analysing, researching), grit / perseverance, logical reasoning."
+        "reason": "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style."
       },
       {
         "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
         "career_name": "Computational Biologist",
         "score": 0.728,
-        "reason": "Strong match on investigative (analysing, researching), grit / perseverance, logical reasoning."
+        "reason": "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style."
       }
     ]
   },

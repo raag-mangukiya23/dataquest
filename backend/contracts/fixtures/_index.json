@@ -113,11 +113,135 @@
     "request": {
       "answers": [
         {
-          "question_id": "q1",
-          "value": "4"
+          "question_id": "q_4818e1278f95",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_8cebee2fd655",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_c49d3b48fd1f",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_9a2bc9191bd7",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_960e6e345a9a",
+          "value": "5",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_165e274ef22e",
+          "value": "5",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_def816d0ba7b",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_8fc4b00fa548",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_f7a7015c5cdf",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_72d9603bc6b3",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_03f4104f1d5f",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_583df859116a",
+          "value": "4",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_a7dfb87a5f4a",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_0625e81c4f34",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_0daffb15bed2",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_8eec34f77d44",
+          "value": "2",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_4c199cdf5093",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_ec7ee6f159b7",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_ed6a7cdeb3ea",
+          "value": "2",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_570e360edc89",
+          "value": "2",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_2645efe99469",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_25e6d705c803",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_4f3ba40b43da",
+          "value": "3",
+          "response_ms": 4200
+        },
+        {
+          "question_id": "q_6a210295fad7",
+          "value": "3",
+          "response_ms": 4200
         }
       ]
     }
+  },
+  {
+    "name": "system_data_status",
+    "method": "GET",
+    "path": "/api/v1/system/data-status",
+    "status": 200,
+    "headers": {},
+    "request": null
   },
   {
     "name": "analysis_run_parent_view",

@@ -32,7 +32,7 @@
           {
             "title": "Sit JEE Main",
             "type": "exam",
-            "due": "2027-01-21",
+            "due": "2027-01-22",
             "date_is_estimate": true,
             "ref_id": "JEE_MAIN",
             "detail": "Dates are estimates; confirm on the official site."
@@ -177,30 +177,30 @@
     ],
     "skill_actions": [
       {
+        "dimension_or_skill": "Values financial reward",
+        "gap": 0.2,
+        "action": "Weekly practice targeting values financial reward",
+        "resource_type": "practice",
+        "weeks": 8
+      },
+      {
         "dimension_or_skill": "Conventional (organising, data, procedures)",
-        "gap": 0.18,
+        "gap": 0.15,
         "action": "Weekly practice targeting conventional (organising, data, procedures)",
         "resource_type": "practice",
         "weeks": 8
       },
       {
         "dimension_or_skill": "Enterprising (leading, persuading, starting)",
-        "gap": 0.12,
+        "gap": 0.125,
         "action": "Weekly practice targeting enterprising (leading, persuading, starting)",
         "resource_type": "practice",
         "weeks": 8
       },
       {
-        "dimension_or_skill": "Values financial reward",
-        "gap": 0.12,
-        "action": "Weekly practice targeting values financial reward",
-        "resource_type": "practice",
-        "weeks": 8
-      },
-      {
-        "dimension_or_skill": "Analytical thinking style",
-        "gap": 0.1,
-        "action": "Weekly practice targeting analytical thinking style",
+        "dimension_or_skill": "Logical reasoning",
+        "gap": 0.122,
+        "action": "Weekly practice targeting logical reasoning",
         "resource_type": "practice",
         "weeks": 8
       }

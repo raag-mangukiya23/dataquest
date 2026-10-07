@@ -29,6 +29,15 @@ curl -s -X POST localhost:8000/api/predict -H 'Content-Type: application/json' -
   Output: `{"scores": {domain: 0..1}, "confidence": 0..1}` (the flat or `domain_scores` shapes also work).
   If the model is missing or fails, the API falls back to a deterministic cosine model.
 
+## Data and questionnaire tools
+
+```bash
+python scripts/data_audit.py --demo --strict     # quality gates + figures the demo still shows unchecked
+python scripts/pilot_analysis.py responses.csv   # item analysis after a questionnaire pilot
+```
+
+Optional live job-postings feed: set `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` (free at developer.adzuna.com).
+
 ## Tests & lint
 
 ```bash

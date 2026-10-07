@@ -6,68 +6,68 @@
     "strengths": [
       {
         "title": "Investigative (analysing, researching)",
-        "detail": "Scored 86%, above most careers' requirement.",
+        "detail": "Scored 88%, above most careers' requirement.",
         "evidence": {
-          "score": 0.86,
+          "score": 0.875,
           "group": "riasec"
         },
-        "weight": 0.86
+        "weight": 0.88
       },
       {
-        "title": "Logical reasoning",
-        "detail": "Scored 84%, above most careers' requirement.",
-        "evidence": {
-          "score": 0.84,
-          "group": "aptitude"
-        },
-        "weight": 0.84
-      },
-      {
-        "title": "Numerical aptitude",
+        "title": "Analytical thinking style",
         "detail": "Scored 81%, above most careers' requirement.",
         "evidence": {
-          "score": 0.81,
-          "group": "aptitude"
+          "score": 0.8125,
+          "group": "cognitive"
         },
         "weight": 0.81
       },
       {
-        "title": "Analytical thinking style",
-        "detail": "Scored 80%, above most careers' requirement.",
+        "title": "Numerical aptitude",
+        "detail": "Scored 78%, above most careers' requirement.",
         "evidence": {
-          "score": 0.8,
-          "group": "cognitive"
+          "score": 0.7778,
+          "group": "aptitude"
         },
-        "weight": 0.8
+        "weight": 0.78
+      },
+      {
+        "title": "Logical reasoning",
+        "detail": "Scored 78%, above most careers' requirement.",
+        "evidence": {
+          "score": 0.7778,
+          "group": "aptitude"
+        },
+        "weight": 0.78
       }
     ],
     "weaknesses": [
       {
-        "title": "Conventional (organising, data, procedures)",
-        "detail": "Below the requirement by 18%; closable with practice.",
+        "title": "Values financial reward",
+        "detail": "Below the requirement by 20%; closable with practice.",
         "evidence": {
-          "student": 0.47,
+          "student": 0.5,
+          "required": 0.7
+        },
+        "weight": 0.4
+      },
+      {
+        "title": "Conventional (organising, data, procedures)",
+        "detail": "Below the requirement by 15%; closable with practice.",
+        "evidence": {
+          "student": 0.5,
           "required": 0.65
         },
-        "weight": 0.36
+        "weight": 0.3
       },
       {
         "title": "Enterprising (leading, persuading, starting)",
         "detail": "Below the requirement by 12%; closable with practice.",
         "evidence": {
-          "student": 0.38,
+          "student": 0.375,
           "required": 0.5
         },
-        "weight": 0.24
-      },
-      {
-        "title": "Values financial reward",
-        "detail": "Below the requirement by 12%; closable with practice.",
-        "evidence": {
-          "student": 0.58,
-          "required": 0.7
-        },
-        "weight": 0.24
+        "weight": 0.25
       }
     ],
     "opportunities": [

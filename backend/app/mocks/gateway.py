@@ -1,13 +1,20 @@
 """MOCK_MODE implementation of the PrismGateway protocol. Every method returns the exact
 schema the live implementation returns, built from the fixture world."""
 
-from datetime import date, timedelta
+from datetime import UTC, date, datetime, timedelta
 
-from app.core.config import ENGINE_VERSION
-from app.core.dimensions import DIMENSION_GROUP, DIMENSION_LABELS, DIMENSIONS, RIASEC, VECTOR_SPEC_VERSION
+from app.assessment import service as assessment
+from app.assessment.bank import get_bank
+from app.core.clock import today as clock_today
+from app.core.config import ENGINE_VERSION, get_settings
+from app.core.dimensions import DIMENSION_GROUP, DIMENSION_LABELS, DIMENSIONS, VECTOR_SPEC_VERSION
 from app.core.errors import AppError, ErrorCode
+from app.etl import quality
+from app.etl.adapters.adzuna import AdzunaAdapter, plan_queries
+from app.etl.sources import DATASETS, SOURCES
 from app.ml.predictor import predict_domain_fit
 from app.mocks import builders as b
+from app.mocks import persona
 from app.mocks import world as w
 from app.schemas.admin import AdminAnalytics, CountRow, DataRefreshRequest, RefreshResult
 from app.schemas.analysis import (
@@ -24,12 +31,9 @@ from app.schemas.analysis import (
 from app.schemas.assessment import (
     Instrument,
     Question,
-    QuestionOption,
-    QuestionType,
     SubmitAnswersRequest,
     SubmitResult,
     TraitProfile,
-    TraitScore,
 )
 from app.schemas.auth import AuthResult, LoginRequest, RefreshRequest, RegisterRequest, TokenPair, UserOut
 from app.schemas.catalog import (
@@ -79,7 +83,15 @@ from app.schemas.reports import (
     SwotItem,
     SwotReport,
 )
-from app.schemas.system import DataSourceInfo, Formula, Methodology
+from app.schemas.system import (
+    DataIssue,
+    DatasetStatus,
+    DataSourceInfo,
+    DataStatus,
+    FeedStatus,
+    Formula,
+    Methodology,
+)
 from app.services.principal import Principal
 
 MOCK_ACCESS = "mock.access.token"
@@ -93,131 +105,6 @@ def _tokens() -> TokenPair:
 def _paginate(items: list, page: int, page_size: int) -> Page:
     start = (page - 1) * page_size
     return Page(items=items[start : start + page_size], page=page, page_size=page_size, total=len(items))
-
-
-INSTRUMENTS = {
-    "riasec_v1": ("Interest Explorer", "What kinds of activities energise you?", RIASEC, 4),
-    "aptitude_v1": (
-        "Reasoning Sprint",
-        "Short numerical, verbal, logical and spatial puzzles.",
-        ("apt_numerical", "apt_verbal", "apt_logical", "apt_spatial"),
-        3,
-    ),
-    "cognitive_v1": (
-        "Thinking Style",
-        "How you prefer to approach problems.",
-        ("cog_analytical", "cog_creative", "cog_practical"),
-        3,
-    ),
-    "values_v1": (
-        "What Matters To You",
-        "Work values and priorities.",
-        ("val_security", "val_autonomy", "val_impact", "val_financial"),
-        3,
-    ),
-    "disposition_v1": (
-        "Grit & Risk",
-        "Perseverance and comfort with uncertainty.",
-        ("grit", "risk_tolerance"),
-        4,
-    ),
-}
-
-_SAMPLE_PROMPTS = {
-    "riasec_r": "I enjoy fixing or assembling things with my hands.",
-    "riasec_i": "I like figuring out why something works the way it does.",
-    "riasec_a": "I often come up with original ways to express an idea.",
-    "riasec_s": "Explaining something to a friend until they get it feels rewarding.",
-    "riasec_e": "I like convincing a group to try my plan.",
-    "riasec_c": "I feel calm when information is neatly organised.",
-    "cog_analytical": "Before deciding, I break a problem into smaller parts.",
-    "cog_creative": "I enjoy questions that have many possible answers.",
-    "cog_practical": "I prefer solutions I can try out today.",
-    "val_security": "A predictable salary matters more to me than an exciting role.",
-    "val_autonomy": "I want to decide how I do my work.",
-    "val_impact": "I want my work to visibly help people or the planet.",
-    "val_financial": "High earning potential is a top factor in my career choice.",
-    "grit": "I keep working on a hard problem even after several failures.",
-    "risk_tolerance": "I would take a less certain path if the upside were large.",
-}
-_LIKERT = [
-    QuestionOption(key=str(i), label=lbl)
-    for i, lbl in enumerate(["Strongly disagree", "Disagree", "Neutral", "Agree", "Strongly agree"], 1)
-]
-_APT_ITEMS = {
-    "apt_numerical": (
-        "A notebook costs Rs 40 after a 20 % discount. What was the original price?",
-        [("a", "Rs 48"), ("b", "Rs 50"), ("c", "Rs 52"), ("d", "Rs 60")],
-    ),
-    "apt_verbal": (
-        "Choose the word closest in meaning to 'frugal'.",
-        [("a", "Generous"), ("b", "Thrifty"), ("c", "Careless"), ("d", "Quick")],
-    ),
-    "apt_logical": (
-        "All drones in the lab are charged. Some charged devices are tablets. Which must be true?",
-        [
-            ("a", "Some drones are tablets"),
-            ("b", "All tablets are charged"),
-            ("c", "Every drone in the lab is charged"),
-            ("d", "No tablet is a drone"),
-        ],
-    ),
-    "apt_spatial": (
-        "A cube is painted on all faces and cut into 27 equal cubes. How many have exactly 2 faces painted?",
-        [("a", "8"), ("b", "12"), ("c", "6"), ("d", "1")],
-    ),
-}
-
-
-def _questions(code: str) -> list[Question]:
-    name, _, dims, per_dim = INSTRUMENTS[code]
-    out: list[Question] = []
-    order = 1
-    for d in dims:
-        for i in range(per_dim):
-            if d.startswith("apt_"):
-                prompt, opts = _APT_ITEMS[d]
-                q = Question(
-                    id=b.w.sid("q", f"{code}:{d}:{i}"),
-                    instrument_code=code,
-                    dimension=d,
-                    type=QuestionType.MCQ,
-                    prompt=f"[{i + 1}] {prompt}",
-                    options=[QuestionOption(key=k, label=v) for k, v in opts],
-                    order=order,
-                )
-            else:
-                reverse = i % 2 == 1
-                base = _SAMPLE_PROMPTS[d]
-                prompt = (
-                    base if not reverse else f"(Reverse) It would bother me if: {base[0].lower()}{base[1:]}"
-                )
-                q = Question(
-                    id=b.w.sid("q", f"{code}:{d}:{i}"),
-                    instrument_code=code,
-                    dimension=d,
-                    type=QuestionType.LIKERT5,
-                    prompt=prompt,
-                    options=_LIKERT,
-                    reverse_scored=reverse,
-                    order=order,
-                )
-            out.append(q)
-            order += 1
-    return out
-
-
-def _trait(d: str) -> TraitScore:
-    v = w.STUDENT_VECTOR[d]
-    return TraitScore(
-        dimension=d,
-        raw=round(1 + 4 * v, 2),
-        normalized=v,
-        percentile=round(100 * v, 1),
-        reliability=0.78,
-        answered=4,
-        imputed=d == "val_financial",
-    )
 
 
 class MockGateway:
@@ -402,46 +289,24 @@ class MockGateway:
 
     # ------------------------------------------------------------ assessment
     def list_instruments(self) -> list[Instrument]:
-        return [
-            Instrument(
-                code=c,
-                name=n,
-                description=d,
-                version="1.0",
-                question_count=len(dims) * k,
-                est_minutes=max(2, len(dims) * k // 3),
-            )
-            for c, (n, d, dims, k) in INSTRUMENTS.items()
-        ]
+        return assessment.instruments(get_bank())
 
     def get_questions(self, code: str) -> list[Question]:
-        if code not in INSTRUMENTS:
-            raise AppError(ErrorCode.NOT_FOUND, f"Unknown instrument '{code}'")
-        return _questions(code)
+        return assessment.public_questions(get_bank(), code)
 
     def submit(self, p: Principal, code: str, body: SubmitAnswersRequest) -> SubmitResult:
-        if code not in INSTRUMENTS:
-            raise AppError(ErrorCode.NOT_FOUND, f"Unknown instrument '{code}'")
-        values = {a.value for a in body.answers}
-        flags = ["straight_lining_detected"] if len(body.answers) >= 8 and len(values) == 1 else []
-        return SubmitResult(
-            instrument_code=code,
-            submission_id=w.sid("submission", code),
-            scored=[_trait(d) for d in INSTRUMENTS[code][2]],
-            flags=flags,
-            submitted_at=w.NOW,
-        )
+        # Real validation and scoring, even in MOCK_MODE; only persistence is missing.
+        return assessment.score_submission(get_bank(), code, body.answers)
 
     def get_traits(self, p: Principal, student_id: str) -> TraitProfile:
-        top = sorted(RIASEC, key=lambda d: -w.STUDENT_VECTOR[d])[:3]
         return TraitProfile(
             student_id=student_id,
             vector_spec_version=VECTOR_SPEC_VERSION,
-            vector=w.STUDENT_VECTOR,
-            traits=[_trait(d) for d in DIMENSIONS],
-            completeness=0.94,
-            instruments_completed=list(INSTRUMENTS),
-            top_riasec_code="".join(d[-1].upper() for d in top),
+            vector=persona.VECTOR,
+            traits=[persona.TRAITS[d] for d in DIMENSIONS],
+            completeness=persona.COMPLETENESS,
+            instruments_completed=list(persona.SUBMISSIONS),
+            top_riasec_code=persona.HOLLAND_CODE,
         )
 
     # ------------------------------------------------------------ analysis
@@ -576,7 +441,7 @@ class MockGateway:
     def get_swot(self, p: Principal, run_id: str, career_id: str | None) -> SwotReport:
         run = self.get_run(p, run_id)
         rec = next((r for r in run.recommendations if r.career.id == career_id), None) if career_id else None
-        v = w.STUDENT_VECTOR
+        v = persona.VECTOR
         strengths = [
             SwotItem(
                 title=DIMENSION_LABELS[d],
@@ -829,7 +694,7 @@ class MockGateway:
         region = next((r for r in b.regions() if r.code == region_code), None)
         if region is None:
             raise AppError(ErrorCode.NOT_FOUND, "Region not found", {"region_code": region_code})
-        k = {"metro": 1.0, "tier2": 0.85, "international": 0.9}.get(region.type.value, 0.8)
+        k = b.REGION_DEMAND_FACTOR.get(region.type.value, 0.8)
         signals = [b.market_signal(c[0], region_code, k) for c in w.CAREERS if not sector or c[2] == sector]
         sectors: dict[str, list[float]] = {}
         for s in signals:
@@ -920,15 +785,39 @@ class MockGateway:
         )
 
     def data_refresh(self, req: DataRefreshRequest) -> RefreshResult:
+        started = datetime.now(UTC)
+        counts = {d: {"inserted": 0, "updated": 0, "skipped": 0} for d in req.datasets}
+        warnings = ["MOCK_MODE: nothing is written; the database arrives in Phase 1."]
+        if req.source == "adapter":
+            feed = adzuna_adapter()
+            if not feed.enabled:
+                warnings.append(
+                    "Adzuna feed disabled: set ADZUNA_APP_ID and ADZUNA_APP_KEY to fetch live postings."
+                )
+            elif not req.dry_run:
+                careers = list(w.CAREER_KEYWORDS.items())
+                queries = plan_queries(careers, list(w.CITY_NAMES.items()), budget=len(careers), day_index=0)
+                result = feed.fetch(queries, clock_today(), max_calls=len(queries))
+                counts["market_signals"] = {
+                    "fetched": len(result.counts),
+                    "errors": len(result.errors),
+                    "calls": result.calls,
+                }
+                warnings += result.errors
+        report = quality.audit(b.catalog(), clock_today())
+        warnings += [f"{i.severity}: {i.dataset}/{i.key}: {i.message}" for i in report.issues]
         return RefreshResult(
-            job_id=w.sid("refresh", ",".join(req.datasets)),
-            status="dry_run" if req.dry_run else "completed",
+            job_id=w.sid("refresh", ",".join(req.datasets) + req.source),
+            status="dry_run" if req.dry_run else ("failed" if report.errors else "completed"),
             source=req.source,
-            counts={d: {"inserted": 0, "updated": 12, "skipped": 0} for d in req.datasets},
-            warnings=["MOCK_MODE: no data was written."],
-            started_at=w.NOW,
-            finished_at=w.NOW + timedelta(seconds=2),
+            counts=counts,
+            warnings=warnings,
+            started_at=started,
+            finished_at=datetime.now(UTC),
         )
+
+    def data_status(self) -> DataStatus:
+        return build_data_status(quality.audit(b.catalog(), clock_today()), w.DATASET_VERSION)
 
     def methodology(self) -> Methodology:
         return build_methodology(
@@ -956,7 +845,7 @@ class MockGateway:
         return CompatUser(id=user_id, name=w.STUDENT["full_name"], email=w.STUDENT["email"], role="student")
 
     def compat_predict(self, req: CompatPredictRequest) -> CompatPredictResponse:
-        pred = predict_domain_fit(req.vector or w.STUDENT_VECTOR)
+        pred = predict_domain_fit(req.vector or persona.VECTOR)
         run = b.analysis_run()
         top = run.recommendations[0]
         return CompatPredictResponse(
@@ -981,8 +870,8 @@ class MockGateway:
         )
 
 
-def build_methodology(sources_rows: dict[str, int]) -> Methodology:
-    """Methodology content is static documentation shared by mock and live modes."""
+def build_methodology(report: quality.AuditReport) -> Methodology:
+    """Formulas, weights, data provenance and limitations; shared by mock and live modes."""
     return Methodology(
         engine_version=ENGINE_VERSION,
         vector_spec_version=VECTOR_SPEC_VERSION,
@@ -999,7 +888,10 @@ def build_methodology(sources_rows: dict[str, int]) -> Methodology:
             "discount_rate": 0.08,
             "roi_horizon_years": 10,
             "ml_alpha": 0.5,
-            "signal_half_life_months": 12,
+            "signal_half_life": "one update cycle of the source",
+            "psychometric_min_coverage": 0.5,
+            "norm_group_min_n": 200,
+            "base_model_confidence": b.BASE_MODEL_CONFIDENCE,
             "sensitivity_perturbation": 0.2,
             "conflict_bands": "aligned<20<=mild<40<=moderate<60<=high",
         },
@@ -1049,17 +941,43 @@ def build_methodology(sources_rows: dict[str, int]) -> Methodology:
                 expression="mean Kendall tau(top-k base, top-k perturbed) over +/-20% weights",
                 explanation="How stable the ranking is to reasonable changes in priorities.",
             ),
+            Formula(
+                name="likert_trait",
+                expression="keyed = 6 - v if reverse else v;  trait = (mean(keyed) - 1) / 4",
+                explanation="Agreement items, half of them reverse-worded where it matters, scored to 0-1.",
+            ),
+            Formula(
+                name="aptitude_trait",
+                expression="p = sum(w*correct)/sum(w), w = 1/1.5/2 by difficulty;  trait = max(0, (p - 1/4) / (3/4))",
+                explanation="Difficulty-weighted accuracy corrected for guessing on four-option questions.",
+            ),
+            Formula(
+                name="trait_reliability",
+                expression="coverage * (0.5 + 0.5 * (1 - sd(keyed)/2)), then x0.5 straight-lining, x0.7 speeding, "
+                "x0.6 contradiction",
+                explanation="How much to trust one student's score on one trait; feeds recommendation confidence.",
+            ),
+            Formula(
+                name="freshness",
+                expression="fresh if age <= cadence, aging if <= 2*cadence, else stale; weight = 0.5^(age/half_life)",
+                explanation="Data is judged against how often its publisher updates it, and older data counts less.",
+            ),
+            Formula(
+                name="recommendation_confidence",
+                expression="0.85 * (0.7 + 0.3*checked_share) * freshness_factor * (1 - imputation_penalty)",
+                explanation="Confidence falls when the inputs behind a recommendation are unverified, stale or imputed.",
+            ),
         ],
         data_sources=[
             DataSourceInfo(
-                dataset=k,
-                source_name="PRISM curated estimate",
+                dataset=key,
+                source_name=", ".join(SOURCES[x].name for x in DATASETS[key].sources),
                 source_url=None,
-                as_of=w.DATA_AS_OF.isoformat(),
-                rows=v,
-                share_estimated=1.0,
+                as_of=st.newest.isoformat() if st.newest else "",
+                rows=st.rows,
+                share_estimated=round(st.estimates / st.rows, 4) if st.rows else 1.0,
             )
-            for k, v in sources_rows.items()
+            for key, st in report.stats.items()
         ],
         fairness_safeguards=[
             "Gender, caste, religion and community are never used as scoring or model features.",
@@ -1073,8 +991,97 @@ def build_methodology(sources_rows: dict[str, int]) -> Methodology:
             "Minors need recorded parental consent before data processing.",
         ],
         limitations=[
-            "Market, salary, cost and scholarship figures are illustrative estimates until verified.",
-            "Signals are periodic snapshots, not real-time feeds.",
-            "Psychometric items are original and not yet norm-referenced on a large Indian sample.",
+            "Figures not yet checked against a published source are labelled as estimates wherever they appear; "
+            "each recommendation reports its checked share in data_trust.",
+            "Recommendations are computed live, but market data is only as current as its source: daily with the "
+            "Adzuna feed enabled, otherwise the dated snapshot shown in /system/data-status.",
+            "Psychometric items are original and have not yet been validated on a large Indian sample; "
+            "percentiles stay empty until 200 students in a grade band have taken them.",
+            "Career requirement profiles are expert priors until mapped to O*NET occupational data.",
+        ],
+    )
+
+
+def adzuna_adapter() -> AdzunaAdapter:
+    s = get_settings()
+    return AdzunaAdapter(s.adzuna_app_id, s.adzuna_app_key)
+
+
+def build_data_status(report: quality.AuditReport, dataset_version: str) -> DataStatus:
+    """Shared by mock and live modes: the honest state of every dataset, feed and quality check."""
+    today = clock_today()
+    feed = adzuna_adapter()
+    rows = []
+    for key, st in report.stats.items():
+        spec = DATASETS[key]
+        live = feed.enabled and "adzuna" in spec.sources
+        rows.append(
+            DatasetStatus(
+                dataset=key,
+                label=spec.label,
+                rows=st.rows,
+                cadence_days=spec.cadence_days,
+                oldest_as_of=st.oldest.isoformat() if st.oldest else None,
+                newest_as_of=st.newest.isoformat() if st.newest else None,
+                freshness=st.freshness.value,
+                next_refresh_due=(st.newest + timedelta(days=1 if live else spec.cadence_days)).isoformat()
+                if st.newest
+                else None,
+                verified=st.verified,
+                secondary=st.secondary,
+                unverified=st.unverified,
+                disputed=st.disputed,
+                checked_share=st.checked_share,
+                errors=sum(1 for i in report.errors if i.dataset == key),
+                warnings=sum(1 for i in report.warnings if i.dataset == key),
+                sources=[SOURCES[s].name for s in spec.sources],
+                live_feed=live,
+            )
+        )
+    total = sum(st.rows for st in report.stats.values())
+    checked = sum(st.verified + st.secondary for st in report.stats.values())
+    share = round(checked / total, 4) if total else 0.0
+    market = report.stats.get("market_signals")
+    market_line = (
+        "Job-posting demand refreshes daily from the Adzuna API."
+        if feed.enabled
+        else f"No live market feed is configured, so market data is the snapshot dated "
+        f"{market.newest.isoformat() if market and market.newest else 'unknown'}."
+    )
+    statement = (
+        f"Recommendations are recomputed on every request from dataset {dataset_version}. {market_line} "
+        f"{checked} of {total} figures ({share:.0%}) are checked against published sources; the rest are "
+        f"labelled as estimates wherever they appear."
+    )
+    feeds = [
+        FeedStatus(
+            key="adzuna",
+            name=SOURCES["adzuna"].name,
+            access="api",
+            enabled=feed.enabled,
+            detail="Daily posting counts per career and city"
+            if feed.enabled
+            else "Disabled: set ADZUNA_APP_ID and ADZUNA_APP_KEY",
+        ),
+        FeedStatus(
+            key="data_gov_in",
+            name=SOURCES["data_gov_in"].name,
+            access="api",
+            enabled=False,
+            detail="No adapter yet; district indicators are loaded from downloads by the ETL",
+        ),
+    ]
+    return DataStatus(
+        generated_at=datetime.now(UTC),
+        today=today.isoformat(),
+        dataset_version=dataset_version,
+        computed_live=True,
+        overall_checked_share=share,
+        statement=statement,
+        datasets=rows,
+        feeds=feeds,
+        issues=[
+            DataIssue(dataset=i.dataset, key=i.key, rule=i.rule, severity=i.severity, message=i.message)
+            for i in report.issues
         ],
     )

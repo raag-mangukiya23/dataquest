@@ -2,7 +2,7 @@
   "success": true,
   "data": {
     "persona_key": "creative_risk_averse",
-    "total_seconds": 370,
+    "total_seconds": 395,
     "steps": [
       {
         "step": 1,
@@ -179,9 +179,27 @@
         },
         "show": [
           "data.sensitivity.robustness_score",
-          "data.reproducibility"
+          "data.reproducibility",
+          "data.recommendations[0].data_trust"
         ],
         "seconds": 30
+      },
+      {
+        "step": 11,
+        "title": "How current, how checked",
+        "say": "Recommendations are computed live on every request. This page shows how fresh each dataset is, which live feeds are on, and what share of figures we have checked against official sources.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/system/data-status",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.statement",
+          "data.datasets",
+          "data.feeds"
+        ],
+        "seconds": 25
       }
     ]
   },

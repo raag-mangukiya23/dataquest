@@ -18,6 +18,7 @@ os.environ["LOG_LEVEL"] = "WARNING"
 from fastapi.testclient import TestClient  # noqa: E402
 
 from app.main import create_app  # noqa: E402
+from app.mocks import persona  # noqa: E402
 from app.mocks import world as w  # noqa: E402
 
 RUN = w.RUN_ID
@@ -47,9 +48,10 @@ CALLS = [
         "assessment_submit",
         "POST",
         "/api/v1/assessments/riasec_v1/submit",
-        {"answers": [{"question_id": "q1", "value": "4"}]},
+        {"answers": [a.model_dump() for a in persona.ANSWERS["riasec_v1"]]},
         {},
     ),
+    ("system_data_status", "GET", "/api/v1/system/data-status", None, {}),
     ("analysis_run_parent_view", "POST", "/api/v1/analysis/runs", {"student_id": w.STUDENT_ID}, PARENT),
     ("analysis_run_student_view", "GET", f"/api/v1/analysis/runs/{RUN}", None, {}),
     ("analysis_runs_list", "GET", "/api/v1/analysis/runs", None, {}),
@@ -111,8 +113,11 @@ def _stable(obj):
         out = {k: _stable(v) for k, v in obj.items()}
         if "request_id" in out:
             out["request_id"] = "00000000000000000000000000000000"
-        if "time" in out and isinstance(out["time"], str):
-            out["time"] = "2026-10-07T09:30:00Z"
+        if "took_ms" in out:
+            out["took_ms"] = 0.0
+        for key in ("time", "generated_at", "started_at", "finished_at", "submitted_at"):
+            if key in out and isinstance(out[key], str):
+                out[key] = "2026-10-07T09:30:00Z"
         return out
     if isinstance(obj, list):
         return [_stable(x) for x in obj]

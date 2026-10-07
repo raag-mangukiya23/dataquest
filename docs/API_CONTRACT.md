@@ -53,6 +53,7 @@
 | POST | `/api/v1/admin/data/refresh` | DataRefreshRequest | RefreshResult | admin | `admin_refresh` |
 | GET | `/api/v1/system/health` | — | Health | public | `system_health` |
 | GET | `/api/v1/system/methodology` | — | Methodology | public | `system_methodology` |
+| GET | `/api/v1/system/data-status` | — | DataStatus (freshness, checked share, live feeds, quality findings) | public | `system_data_status` |
 | GET | `/api/v1/demo/personas` | — | DemoPersona[] | public, DEMO_MODE only | `demo_personas` |
 | GET | `/api/v1/demo/walkthrough` | — | DemoWalkthrough (scripted steps + presenter lines) | public, DEMO_MODE only | `demo_walkthrough` |
 | POST | `/api/v1/demo/reset` | — | DemoResetResult | public, DEMO_MODE only | `demo_reset` |
@@ -66,6 +67,21 @@
 | GET | `/api/users/{id}` | — | `{id, name, email, role}` | `compat_get_user` |
 | POST | `/api/predict` | `{user_id?, student_id?, vector?}` | `{id, score (0-100), result, confidence (0-1), domain_scores}` | `compat_predict` |
 | GET | `/api/results/{id}` | — | predict payload + `top_careers` | `compat_result` |
+
+## Contract changes in this revision
+
+- `Question` no longer exposes `dimension` or `reverse_scored`; it has `section` instead. Ids are opaque
+  (`q_…`) and items arrive interleaved across traits, so answers can't be steered. Submit answers with
+  the ids exactly as received.
+- `SubmitResult` adds `answered` and `total_items`. `TraitScore.percentile` is `null` until a real norm
+  group exists.
+- `Provenance` adds `verification` (unverified | secondary | verified | disputed), `verified_on` and
+  `evidence`. A figure with `is_estimate: false` always has them.
+- `Recommendation.data_trust` lists the inputs behind each recommendation and which were checked;
+  `confidence` and `ci_low`/`ci_high` now depend on it.
+- `Exam.sessions[]` carry `registration_status` and `exam_date_status` (announced | tentative | estimated),
+  and `Exam` has `provenance`. `Scholarship` adds `year_amounts` and `deadline_status`.
+- `Reproducibility` adds `latest_dataset_version` and `is_outdated`.
 
 ## Key examples
 

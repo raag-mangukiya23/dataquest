@@ -2,19 +2,19 @@
   "id": "6e33720c-5922-516b-9d81-1e216882b8ed",
   "score": 77.1,
   "result": "Data Scientist",
-  "confidence": 0.78,
+  "confidence": 0.5794,
   "domain_scores": {
-    "engineering": 0.8355,
-    "computing_ai": 0.8631,
-    "health_life_sciences": 0.8238,
-    "design_arts": 0.7104,
-    "business_finance": 0.5308,
-    "law_policy": 0.6647,
-    "education_research": 0.7063,
-    "media_communication": 0.6272,
-    "agri_environment": 0.7301,
-    "energy_manufacturing": 0.6608,
-    "aerospace_mobility": 0.9071,
-    "hospitality_services": 0.4009
+    "engineering": 0.8314,
+    "computing_ai": 0.8435,
+    "health_life_sciences": 0.8347,
+    "design_arts": 0.7026,
+    "business_finance": 0.5069,
+    "law_policy": 0.6639,
+    "education_research": 0.7343,
+    "media_communication": 0.6227,
+    "agri_environment": 0.7551,
+    "energy_manufacturing": 0.663,
+    "aerospace_mobility": 0.9087,
+    "hospitality_services": 0.4083
   }
 }

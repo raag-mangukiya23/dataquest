@@ -1,21 +1,21 @@
 {
   "success": true,
   "data": {
-    "job_id": "a71c26b1-9662-5d2c-8371-1bec0616dcaa",
+    "job_id": "62995050-ffca-51a5-b3b7-7673309ab63b",
     "status": "dry_run",
     "source": "seed",
     "counts": {
       "market_signals": {
         "inserted": 0,
-        "updated": 12,
+        "updated": 0,
         "skipped": 0
       }
     },
     "warnings": [
-      "MOCK_MODE: no data was written."
+      "MOCK_MODE: nothing is written; the database arrives in Phase 1."
     ],
-    "started_at": "2026-10-07T09:30:00",
-    "finished_at": "2026-10-07T09:30:02"
+    "started_at": "2026-10-07T09:30:00Z",
+    "finished_at": "2026-10-07T09:30:00Z"
   },
   "error": null,
   "meta": {

@@ -7,4 +7,6 @@ Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform.
 - `docs/ER_DIAGRAM.md`: database design (Mermaid)
 - `docs/API_CONTRACT.md`: endpoint list, examples, privacy matrix
 - `docs/DEMO_PLAN.md`: demo script, fail-safes, persona switcher, judge Q&A
+- `docs/DATA_TRUTH.md`: what "real-time" means here, how every figure is checked, sources, pre-demo audit
+- `docs/QUESTIONNAIRE.md`: the 74-item questionnaire, scoring, quality checks, pilot plan
 - `backend/contracts/`: frozen OpenAPI spec and example JSON for every endpoint

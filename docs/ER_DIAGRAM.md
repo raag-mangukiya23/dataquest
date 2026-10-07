@@ -1,4 +1,4 @@
-# PRISM Engine — Entity-Relationship Diagram (rev 2, hardened)
+# PRISM Engine — Entity-Relationship Diagram (rev 3)
 
 Target: PostgreSQL 15+. SQLite is a local-dev fallback only: no JSONB, no triggers, no materialized
 view, no partial unique indexes on older versions. The Phase 1 tests run the integrity checks against
@@ -14,7 +14,11 @@ Postgres (docker) so the guarantees below are actually exercised.
   analysis run references them (FKs from outputs are `RESTRICT`).
 - Provenance on every market/salary/cost/scholarship/local-opportunity row: `source_name NOT NULL`,
   `source_url NULL` (only real URLs, `CHECK (source_url ~ '^https://')`), `as_of date NOT NULL`,
-  `confidence CHECK (0..1)`, `is_estimate bool NOT NULL DEFAULT true`, `dataset_version_id FK`.
+  `confidence CHECK (0..1)`, `is_estimate bool NOT NULL DEFAULT true`, `dataset_version_id FK`,
+  `verification text CHECK IN (unverified, secondary, verified, disputed)`, `verified_on date`, `evidence text`,
+  with `CHECK (is_estimate OR (verification IN ('verified','secondary') AND evidence IS NOT NULL AND verified_on IS NOT NULL))`,
+  `CHECK (verification <> 'verified' OR source_url IS NOT NULL)` and
+  `CHECK (verification <> 'disputed' OR is_estimate)`. See `DATA_TRUTH.md`.
 - Enumerations are `text` + `CHECK (col IN (...))` (portable to SQLite, easy to migrate).
 
 ## Loopholes found in rev 1 and how rev 2 closes them
@@ -43,6 +47,18 @@ Postgres (docker) so the guarantees below are actually exercised.
 | 20 | `parent_career_preferences.domain` unconstrained | Typos ("Engg") never match careers, so the conflict index is wrong | `CHECK (domain IN (12 domains))` plus `CHECK (num_nonnulls(career_id, domain) = 1)` |
 | 21 | Finance coherence checked only in the API | A seed or ETL insert can create a family whose EMI exceeds income | DB CHECK: `annual_income IS NULL OR max_affordable_emi + existing_debt_emi <= annual_income / 12`. `family_finance` is versioned (UK(family_id, version), one `is_current`) so every run points at the exact version it used |
 | 22 | Two parents can each hold preferences, but the engine contract didn't say how to combine them | The conflict index picks one parent at random | Documented rule: parents' ranked lists are merged with a Borda count. `conflict_reports.parent_inputs` stores which parents contributed |
+
+## Rev 3 additions (data truth, real-time feed, questionnaire)
+
+| Change | Why |
+|---|---|
+| Verification columns on every provenance-carrying table (above) | A figure can't be stored as fact without a check, evidence and a date |
+| `posting_snapshots` (career_id, region_id, fetched_on, posting_count, mean_salary, query) UK(career, region, fetched_on) | Raw daily counts from the Adzuna feed; demand and 30-day velocity are derived from them, so a signal can always be traced back to its counts |
+| `exam_sessions.registration_status`, `exam_date_status` ∈ {announced, tentative, estimated} | NTA's calendar dates are tentative; registration dates often aren't announced yet. One "is_estimate" flag hid that difference |
+| `scholarships.year_amounts int[]`, `deadline_status` | Some schemes pay different amounts by year (Central Sector: ₹12k years 1–3, ₹20k years 4–5); last year's deadline isn't this year's |
+| `careers.search_keywords` | Keywords the postings feed uses per career |
+| `trait_norms` (instrument_id, dimension, grade_band, n, quantiles jsonb) UK(instrument, dimension, grade_band) | Percentiles are computed only from a real norm group with n ≥ 200 |
+| `assessment_submissions.flags` values: straight_lining, speeding, contradictory_answers:<trait>, incomplete | Quality flags travel with the scores and reduce reliability |
 
 ## Diagram
 
@@ -224,6 +240,7 @@ erDiagram
         text slug UK
         text sector "CHECK in 12 domains"
         jsonb requirement_vector "19 dims, validated"
+        text search_keywords "postings feed"
         numeric automation_risk
         timestamptz deleted_at
     }
@@ -300,14 +317,34 @@ erDiagram
         int cycle_year
         int session_no
         date registration_close
+        text registration_status "announced,tentative,estimated"
         date exam_start
-        bool is_estimate
+        date exam_end
+        text exam_date_status "announced,tentative,estimated"
+    }
+    posting_snapshots {
+        uuid id PK
+        uuid career_id FK "UK(career, region, fetched_on)"
+        uuid region_id FK "NULL = all of India"
+        date fetched_on
+        int posting_count
+        numeric mean_salary
+        text query
+    }
+    trait_norms {
+        uuid id PK
+        uuid instrument_id FK "UK(instrument, dimension, grade_band)"
+        text dimension
+        text grade_band
+        int n "percentiles only when n >= 200"
+        jsonb quantiles
     }
     scholarships {
         uuid id PK
         text amount_type "fixed,percent_tuition,full_tuition"
         bigint amount_value
         bigint annual_cap
+        bigint_arr year_amounts "per year when it varies"
         int max_years
         text exclusive_group "at most one per group"
         bool stackable
@@ -315,6 +352,8 @@ erDiagram
         int rules_schema_version
         numeric probability
         date deadline
+        text deadline_status
+        text verification "unverified,secondary,verified,disputed"
         uuid dataset_version_id FK
     }
 
@@ -421,6 +460,9 @@ erDiagram
     pathways }o--o{ exams : "admits via (pathway_exams)"
     pathways }o--o{ scholarships : "funded by (pathway_scholarships)"
     exams ||--o{ exam_sessions : schedules
+    careers ||--o{ posting_snapshots : "counted in"
+    regions |o--o{ posting_snapshots : "in"
+    assessment_instruments ||--o{ trait_norms : "normed by"
     local_opportunities }o--o{ careers : "linked (local_opportunity_careers)"
 
     scoring_configs ||--o{ analysis_runs : parameterises

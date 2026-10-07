@@ -1,0 +1,72 @@
+{
+  "code": "disposition_v1",
+  "version": "1.0",
+  "name": "Grit & Risk",
+  "description": "How much do you agree with each statement?",
+  "framework": "Perseverance and risk-tolerance constructs from public research literature. Items are original and do not reproduce any copyrighted scale.",
+  "scale": "agree5",
+  "time_limit_sec": null,
+  "est_minutes": 2,
+  "items": [
+    {
+      "id": "disposition.grit.1",
+      "dimension": "grit",
+      "prompt": "When a goal takes months, I keep working on it.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.grit.2",
+      "dimension": "grit",
+      "prompt": "Setbacks do not make me give up.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.grit.3",
+      "dimension": "grit",
+      "prompt": "I finish what I start, even when it gets boring.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.grit.4",
+      "dimension": "grit",
+      "prompt": "I often lose interest in projects after a few weeks.",
+      "reverse": true
+    },
+    {
+      "id": "disposition.grit.5",
+      "dimension": "grit",
+      "prompt": "If something becomes difficult, I usually switch to something easier.",
+      "reverse": true
+    },
+    {
+      "id": "disposition.risk_tolerance.1",
+      "dimension": "risk_tolerance",
+      "prompt": "I am willing to try a path that few people from my school have taken.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.risk_tolerance.2",
+      "dimension": "risk_tolerance",
+      "prompt": "I would take a chance on a new field if the reward could be big.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.risk_tolerance.3",
+      "dimension": "risk_tolerance",
+      "prompt": "Uncertainty about the future excites me more than it worries me.",
+      "reverse": false
+    },
+    {
+      "id": "disposition.risk_tolerance.4",
+      "dimension": "risk_tolerance",
+      "prompt": "I prefer a guaranteed small reward to a chance at a much bigger one.",
+      "reverse": true
+    },
+    {
+      "id": "disposition.risk_tolerance.5",
+      "dimension": "risk_tolerance",
+      "prompt": "I avoid decisions when I can't predict the outcome.",
+      "reverse": true
+    }
+  ]
+}

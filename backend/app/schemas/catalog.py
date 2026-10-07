@@ -124,13 +124,20 @@ class Pathway(Contract):
     provenance: Provenance
 
 
+class DateStatus(StrEnum):
+    ANNOUNCED = "announced"  # in the official information bulletin
+    TENTATIVE = "tentative"  # in the official calendar, may still move
+    ESTIMATED = "estimated"  # not announced yet; projected from previous cycles
+
+
 class ExamSession(Contract):
     cycle_year: int
     session_no: int = Field(ge=1, le=4)
     registration_close: date | None
+    registration_status: DateStatus = DateStatus.ESTIMATED
     exam_start: date | None
     exam_end: date | None
-    is_estimate: bool = True
+    exam_date_status: DateStatus = DateStatus.ESTIMATED
 
 
 class Exam(Contract):
@@ -150,6 +157,7 @@ class Exam(Contract):
     syllabus_url: str | None = None
     official_url: str | None = None
     career_ids: list[str] = Field(default_factory=list)
+    provenance: Provenance
 
 
 class EligibilityCheck(Contract):
@@ -172,6 +180,9 @@ class Scholarship(Contract):
     )
     amount_type: AmountType = AmountType.FIXED
     amount_per_year: INR = Field(description="Fixed rupees, or the annual cap for percentage waivers")
+    year_amounts: list[INR] | None = Field(
+        default=None, description="Per-year amounts when they differ by year of study (index 0 = year 1)"
+    )
     percent_of_tuition: float | None = Field(default=None, gt=0, le=1)
     max_years: int = Field(ge=1, le=7)
     covers: list[str] = Field(examples=[["tuition"], ["tuition", "living"]])
@@ -183,6 +194,7 @@ class Scholarship(Contract):
         default=None, description="At most one scholarship per group in a plan"
     )
     deadline: date | None = None
+    deadline_status: DateStatus = DateStatus.ESTIMATED
     provenance: Provenance
 
 

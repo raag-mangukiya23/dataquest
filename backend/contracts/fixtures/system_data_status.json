@@ -1,0 +1,167 @@
+{
+  "success": true,
+  "data": {
+    "generated_at": "2026-10-07T09:30:00Z",
+    "today": "2026-10-07",
+    "dataset_version": "seed-2026-09-30",
+    "computed_live": true,
+    "overall_checked_share": 0.0375,
+    "statement": "Recommendations are recomputed on every request from dataset seed-2026-09-30. No live market feed is configured, so market data is the snapshot dated 2026-09-30. 3 of 80 figures (4%) are checked against published sources; the rest are labelled as estimates wherever they appear.",
+    "datasets": [
+      {
+        "dataset": "market_signals",
+        "label": "Market demand and job velocity",
+        "rows": 35,
+        "cadence_days": 30,
+        "oldest_as_of": "2026-09-30",
+        "newest_as_of": "2026-09-30",
+        "freshness": "fresh",
+        "next_refresh_due": "2026-10-30",
+        "verified": 0,
+        "secondary": 0,
+        "unverified": 35,
+        "disputed": 0,
+        "checked_share": 0.0,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "Adzuna job-search API (India)",
+          "Naukri JobSpeak monthly hiring index",
+          "EPFO monthly payroll data",
+          "Periodic Labour Force Survey (MoSPI)",
+          "National Career Service portal"
+        ],
+        "live_feed": false
+      },
+      {
+        "dataset": "salary_bands",
+        "label": "Salary bands",
+        "rows": 21,
+        "cadence_days": 180,
+        "oldest_as_of": "2026-09-30",
+        "newest_as_of": "2026-09-30",
+        "freshness": "fresh",
+        "next_refresh_due": "2027-03-29",
+        "verified": 0,
+        "secondary": 0,
+        "unverified": 21,
+        "disputed": 0,
+        "checked_share": 0.0,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "Adzuna job-search API (India)",
+          "Periodic Labour Force Survey (MoSPI)"
+        ],
+        "live_feed": false
+      },
+      {
+        "dataset": "pathways",
+        "label": "Courses and fees",
+        "rows": 8,
+        "cadence_days": 365,
+        "oldest_as_of": "2026-09-30",
+        "newest_as_of": "2026-09-30",
+        "freshness": "fresh",
+        "next_refresh_due": "2027-09-30",
+        "verified": 0,
+        "secondary": 0,
+        "unverified": 8,
+        "disputed": 0,
+        "checked_share": 0.0,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "Institution and fee-committee fee notices"
+        ],
+        "live_feed": false
+      },
+      {
+        "dataset": "exams",
+        "label": "Entrance exams and dates",
+        "rows": 8,
+        "cadence_days": 30,
+        "oldest_as_of": "2026-09-16",
+        "newest_as_of": "2026-09-30",
+        "freshness": "fresh",
+        "next_refresh_due": "2026-10-30",
+        "verified": 0,
+        "secondary": 1,
+        "unverified": 7,
+        "disputed": 0,
+        "checked_share": 0.125,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "National Testing Agency"
+        ],
+        "live_feed": false
+      },
+      {
+        "dataset": "scholarships",
+        "label": "Scholarships",
+        "rows": 5,
+        "cadence_days": 365,
+        "oldest_as_of": "2026-09-30",
+        "newest_as_of": "2026-10-07",
+        "freshness": "fresh",
+        "next_refresh_due": "2027-10-07",
+        "verified": 0,
+        "secondary": 2,
+        "unverified": 3,
+        "disputed": 0,
+        "checked_share": 0.4,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "National Scholarship Portal"
+        ],
+        "live_feed": false
+      },
+      {
+        "dataset": "local_opportunities",
+        "label": "Hyper-local STEAM problems",
+        "rows": 3,
+        "cadence_days": 365,
+        "oldest_as_of": "2026-09-30",
+        "newest_as_of": "2026-09-30",
+        "freshness": "fresh",
+        "next_refresh_due": "2027-09-30",
+        "verified": 0,
+        "secondary": 0,
+        "unverified": 3,
+        "disputed": 0,
+        "checked_share": 0.0,
+        "errors": 0,
+        "warnings": 0,
+        "sources": [
+          "PRISM curated estimate"
+        ],
+        "live_feed": false
+      }
+    ],
+    "feeds": [
+      {
+        "key": "adzuna",
+        "name": "Adzuna job-search API (India)",
+        "access": "api",
+        "enabled": false,
+        "detail": "Disabled: set ADZUNA_APP_ID and ADZUNA_APP_KEY"
+      },
+      {
+        "key": "data_gov_in",
+        "name": "Open Government Data Platform India",
+        "access": "api",
+        "enabled": false,
+        "detail": "No adapter yet; district indicators are loaded from downloads by the ETL"
+      }
+    ],
+    "issues": []
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -8,9 +8,14 @@ import json
 import math
 from datetime import date, timedelta
 
+from app.core.clock import today as clock_today
 from app.core.config import ENGINE_VERSION
 from app.core.dimensions import DIMENSION_LABELS, DIMENSIONS, RIASEC, VECTOR_SPEC_VERSION
+from app.engine.freshness import FRESHNESS_CONFIDENCE, freshness_status, worst
+from app.etl.quality import Catalog
+from app.etl.sources import DATASETS
 from app.ml.prototypes import DOMAIN_PROTOTYPES
+from app.mocks import persona
 from app.mocks import world as w
 from app.schemas.analysis import (
     AnalysisRun,
@@ -22,6 +27,7 @@ from app.schemas.analysis import (
     ConflictReport,
     Contribution,
     DataQuality,
+    DataTrust,
     FamilyFitDetail,
     FinancialAssessment,
     FitDetail,
@@ -34,6 +40,7 @@ from app.schemas.analysis import (
     ScoreComponent,
     SensitivityReport,
     TraitGap,
+    TrustInput,
 )
 from app.schemas.catalog import (
     AmountType,
@@ -41,6 +48,7 @@ from app.schemas.catalog import (
     CareerDetail,
     CareerSkill,
     CareerSummary,
+    DateStatus,
     EligibilityCheck,
     Exam,
     ExamSession,
@@ -53,7 +61,14 @@ from app.schemas.catalog import (
     Scholarship,
     ScholarshipMatch,
 )
-from app.schemas.common import AffordabilityClass, Bucket, CareerRef, ConflictBand, Provenance
+from app.schemas.common import (
+    AffordabilityClass,
+    Bucket,
+    CareerRef,
+    ConflictBand,
+    Provenance,
+    VerificationStatus,
+)
 
 EDU_INFLATION = 0.08
 LOAN_RATE = 0.10
@@ -267,23 +282,58 @@ def pathway(key: str) -> Pathway:
     )
 
 
+def _exam_provenance(code: str, url: str | None) -> Provenance:
+    check = w.EXAM_CHECKS.get(code)
+    if check:
+        return Provenance(
+            source_name="National Testing Agency exam calendar (via news reports)",
+            source_url=None,
+            as_of=date(2026, 9, 16),
+            confidence=0.8,
+            is_estimate=False,
+            verification=VerificationStatus(check["verification"]),
+            verified_on=w.CHECKED_ON,
+            evidence=check["evidence"],
+        )
+    return Provenance(
+        source_name="PRISM estimate from previous exam cycles",
+        source_url=None,
+        as_of=w.DATA_AS_OF,
+        confidence=0.4,
+        is_estimate=True,
+        evidence=w.EXAM_NOTES.get(code),
+    )
+
+
 def _sessions(code: str, start, end, reg) -> list[ExamSession]:
-    first = ExamSession(cycle_year=2027, session_no=1, registration_close=reg, exam_start=start, exam_end=end)
+    check = w.EXAM_CHECKS.get(code, {})
+    first = ExamSession(
+        cycle_year=2027,
+        session_no=1,
+        registration_close=reg,
+        registration_status=DateStatus.ESTIMATED,
+        exam_start=start,
+        exam_end=end,
+        exam_date_status=DateStatus(check.get("session1_status", "estimated")),
+    )
     if code != "JEE_MAIN":
         return [first]
-    # JEE Main runs two sessions; the second is an illustrative estimate.
+    # JEE Main has a second session in April; NTA has not announced its 2027 dates yet.
     second = ExamSession(
         cycle_year=2027,
         session_no=2,
         registration_close=date(2027, 2, 25),
+        registration_status=DateStatus.ESTIMATED,
         exam_start=date(2027, 4, 1),
         exam_end=date(2027, 4, 9),
+        exam_date_status=DateStatus.ESTIMATED,
     )
     return [first, second]
 
 
 def exam(code: str) -> Exam:
     c, name, body, level, freq, start, end, reg, elig, url, careers = next(e for e in w.EXAMS if e[0] == code)
+    sessions = _sessions(c, start, end, reg)
     return Exam(
         code=c,
         name=name,
@@ -293,17 +343,38 @@ def exam(code: str) -> Exam:
         next_window_start=start,
         next_window_end=end,
         registration_deadline=reg,
-        dates_are_estimates=True,
-        sessions=_sessions(c, start, end, reg),
+        dates_are_estimates=any(
+            DateStatus.ESTIMATED in (x.exam_date_status, x.registration_status) for x in sessions
+        ),
+        sessions=sessions,
         eligibility_summary=elig,
         syllabus_url=None,
         official_url=url,
         career_ids=[w.sid("career", x) for x in careers],
+        provenance=_exam_provenance(c, url),
     )
 
 
 _PERCENT = {"inst-merit": 0.25}  # 25 % tuition waiver, capped at amount_per_year
 _EXCLUSIVE = {"css-nsp": "central_merit", "inspire-she": "central_merit"}
+
+
+def _scholarship_provenance(key: str, provider: str, url: str | None) -> Provenance:
+    check = w.SCHOLARSHIP_CHECKS.get(key)
+    if check:
+        return Provenance(
+            source_name=provider,
+            source_url=url,
+            as_of=w.CHECKED_ON,
+            confidence=0.8,
+            is_estimate=False,
+            verification=VerificationStatus(check["verification"]),
+            verified_on=w.CHECKED_ON,
+            evidence=check["evidence"],
+        )
+    return Provenance(
+        source_name=provider, source_url=url, as_of=w.DATA_AS_OF, confidence=0.5, is_estimate=True
+    )
 
 
 def scholarship(key: str) -> Scholarship:
@@ -317,6 +388,7 @@ def scholarship(key: str) -> Scholarship:
         provider_type=ptype,
         amount_type=AmountType.PERCENT_TUITION if k in _PERCENT else AmountType.FIXED,
         amount_per_year=amt,
+        year_amounts=w.SCHOLARSHIP_YEAR_AMOUNTS.get(k),
         percent_of_tuition=_PERCENT.get(k),
         max_years=yrs,
         covers=covers,
@@ -326,9 +398,8 @@ def scholarship(key: str) -> Scholarship:
         stackable=stack,
         exclusive_group=_EXCLUSIVE.get(k),
         deadline=deadline,
-        provenance=Provenance(
-            source_name=prov, source_url=url, as_of=w.DATA_AS_OF, confidence=0.6, is_estimate=True
-        ),
+        deadline_status=DateStatus.ESTIMATED,
+        provenance=_scholarship_provenance(k, prov, url),
     )
 
 
@@ -419,12 +490,15 @@ def assess(
     for k in scholarship_keys:
         s = scholarship(k)
         yrs = min(s.max_years, p.duration_years)
-        per_year = s.amount_per_year
-        if s.amount_type is AmountType.PERCENT_TUITION and s.percent_of_tuition:
-            per_year = min(per_year, int(p.tuition_per_year * s.percent_of_tuition))
-        elif s.amount_type is AmountType.FULL_TUITION:
-            per_year = min(per_year, p.tuition_per_year)
-        total = per_year * yrs
+        if s.year_amounts:
+            total = sum(s.year_amounts[:yrs])
+        else:
+            award = s.amount_per_year
+            if s.amount_type is AmountType.PERCENT_TUITION and s.percent_of_tuition:
+                award = min(award, int(p.tuition_per_year * s.percent_of_tuition))
+            elif s.amount_type is AmountType.FULL_TUITION:
+                award = min(award, p.tuition_per_year)
+            total = award * yrs
         picks.append(
             ScholarshipPick(
                 scholarship_id=s.id,
@@ -495,9 +569,9 @@ def _gaps(slug: str) -> list[TraitGap]:
         TraitGap(
             dimension=d,
             label=DIMENSION_LABELS[d],
-            student=w.STUDENT_VECTOR[d],
+            student=persona.VECTOR[d],
             required=req[d],
-            gap=round(req[d] - w.STUDENT_VECTOR[d], 3),
+            gap=round(req[d] - persona.VECTOR[d], 3),
         )
         for d in DIMENSIONS
     ]
@@ -506,12 +580,62 @@ def _gaps(slug: str) -> list[TraitGap]:
 
 def _matching(slug: str) -> list[str]:
     req = requirement_vector(slug)
-    strong = [d for d in DIMENSIONS if req[d] >= 0.7 and w.STUDENT_VECTOR[d] >= 0.7]
-    return sorted(strong, key=lambda d: -(req[d] + w.STUDENT_VECTOR[d]))[:3]
+    strong = [d for d in DIMENSIONS if req[d] >= 0.7 and persona.VECTOR[d] >= 0.7]
+    return sorted(strong, key=lambda d: -(req[d] + persona.VECTOR[d]))[:3]
 
 
 def _hm(a: float, b: float) -> float:
     return 0.0 if a + b == 0 else 2 * a * b / (a + b)
+
+
+BASE_MODEL_CONFIDENCE = 0.85
+# Imputed trait dimensions lower confidence: half of the imputed share.
+DQ_PENALTY = round(0.5 * (1 - persona.COMPLETENESS), 4)
+
+
+def data_trust(slug: str, pathway_key: str, scholarship_keys: list[str]) -> DataTrust:
+    """Which inputs behind this recommendation were checked against a source, and how fresh they are."""
+    today = clock_today()
+    p = pathway(pathway_key)
+    rows: list[tuple[str, str, Provenance]] = [
+        ("market demand", "market_signals", market_signal(slug, "IN-TN-CBE").provenance),
+        ("salary band", "salary_bands", salary_bands(slug)[0].provenance),
+        (f"fees: {p.course}", "pathways", p.provenance),
+    ]
+    rows += [
+        (f"scholarship: {scholarship(k).name}", "scholarships", scholarship(k).provenance)
+        for k in scholarship_keys
+    ]
+    rows += [(f"exam dates: {exam(c).name}", "exams", exam(c).provenance) for c in p.entrance_exam_codes]
+    checked = [
+        r for r in rows if r[2].verification in (VerificationStatus.VERIFIED, VerificationStatus.SECONDARY)
+    ]
+    share = round(len(checked) / len(rows), 4)
+    fresh = worst([freshness_status(prov.as_of, today, DATASETS[ds].cadence_days) for _, ds, prov in rows])
+    unchecked = [
+        name
+        for name, _, prov in rows
+        if prov.verification not in (VerificationStatus.VERIFIED, VerificationStatus.SECONDARY)
+    ]
+    note = f"{len(checked)} of {len(rows)} inputs checked against published sources."
+    if unchecked:
+        note += " Still estimates: " + "; ".join(unchecked) + "."
+    return DataTrust(
+        verified_share=share,
+        freshness=fresh,
+        oldest_as_of=min(prov.as_of for _, _, prov in rows).isoformat(),
+        inputs=[
+            TrustInput(
+                name=name,
+                verification=prov.verification,
+                is_estimate=prov.is_estimate,
+                as_of=prov.as_of.isoformat(),
+                source_name=prov.source_name,
+            )
+            for name, _, prov in rows
+        ],
+        note=note,
+    )
 
 
 def recommendations(
@@ -548,7 +672,15 @@ def recommendations(
             for c, v in raw.items()
         ]
         final = round(min(1.0, max(0.0, sum(x.contribution for x in contribs))), 4)
-        conf = 0.78
+        trust = data_trust(slug, pkey, schs)
+        conf = round(
+            BASE_MODEL_CONFIDENCE
+            * (0.7 + 0.3 * trust.verified_share)
+            * FRESHNESS_CONFIDENCE[trust.freshness]
+            * (1 - DQ_PENALTY),
+            4,
+        )
+        half_ci = 0.04 + 0.08 * (1 - trust.verified_share)
         explanation = [
             f"Strong match on {', '.join(DIMENSION_LABELS[d].lower() for d in _matching(slug)) or 'your overall profile'}.",
             f"{fa.pathway_name} at {fa.institution_name} is {fa.affordability_class.value.replace('_', '-')} "
@@ -561,8 +693,8 @@ def recommendations(
                 career=career_ref(slug),
                 final_score=final,
                 confidence=conf,
-                ci_low=round(max(0, final - 0.06), 4),
-                ci_high=round(min(1, final + 0.06), 4),
+                ci_low=round(max(0, final - half_ci), 4),
+                ci_high=round(min(1, final + half_ci), 4),
                 contributions=contribs,
                 fit=FitDetail(
                     fit=fit,
@@ -589,6 +721,7 @@ def recommendations(
                 family=FamilyFitDetail(
                     student_fit=fit, parent_acceptance=accept, bridge_score=round(_hm(fit, accept), 4)
                 ),
+                data_trust=trust,
                 buckets=[],
                 explanation=explanation,
             )
@@ -759,7 +892,7 @@ def input_hash(payload: dict) -> str:
 
 
 def composite(recs: list[Recommendation], conflict_index: float) -> CompositeScores:
-    v = w.STUDENT_VECTOR
+    v = persona.VECTOR
     apt = sum(v[d] for d in DIMENSIONS if d.startswith("apt_")) / 4
     riasec = sorted((v[d] for d in RIASEC), reverse=True)
     clarity = (sum(riasec[:3]) / 3 - sum(riasec[3:]) / 3) / 0.5
@@ -811,7 +944,7 @@ def analysis_run(
     wt = weights or w.WEIGHTS
     recs = recommendations(wt, funds=funds, loan_tolerance=loan_tolerance)
     c = conflict(full_conflict)
-    snapshot = {"student_vector": w.STUDENT_VECTOR, "finance": w.FINANCE, "weights": wt, "funds": funds}
+    snapshot = {"student_vector": persona.VECTOR, "finance": w.FINANCE, "weights": wt, "funds": funds}
     return AnalysisRun(
         run_id=run_id,
         student_id=w.STUDENT_ID,
@@ -827,16 +960,22 @@ def analysis_run(
             input_hash=input_hash(snapshot),
             data_as_of=w.DATA_AS_OF.isoformat(),
             dataset_version=w.DATASET_VERSION,
+            latest_dataset_version=w.DATASET_VERSION,
+            is_outdated=False,
             family_finance_version=w.FAMILY_FINANCE_VERSION,
             ml_model_version=None,
         ),
         data_quality=DataQuality(
-            completeness=0.94,
-            imputed_fields=["val_financial"],
-            confidence_penalty=0.03,
-            warnings=["Work-values instrument partially answered; 1 dimension imputed."],
+            completeness=persona.COMPLETENESS,
+            imputed_fields=persona.IMPUTED,
+            confidence_penalty=DQ_PENALTY,
+            warnings=[
+                f"{DIMENSION_LABELS[d]}: too few items answered, so it was set to the neutral 0.5."
+                for d in persona.IMPUTED
+            ]
+            + [f"{code}: {flag}" for code, sub in persona.SUBMISSIONS.items() for flag in sub.flags],
         ),
-        student_vector=w.STUDENT_VECTOR,
+        student_vector=persona.VECTOR,
         composite_scores=composite(recs, c.index),
         weights=wt,
         recommendations=recs,
@@ -866,3 +1005,22 @@ def kendall_tau(a: list[str], b: list[str]) -> float:
             concordant += s < 0
             discordant += s > 0
     return round((concordant - discordant) / math.comb(n, 2), 4)
+
+
+REGION_DEMAND_FACTOR = {"metro": 1.0, "tier2": 0.85, "international": 0.9}
+
+
+def catalog() -> Catalog:
+    """The fixture world as a Catalog, so the quality gates and data-status run on it like on real data."""
+    return Catalog(
+        market_signals=[
+            market_signal(c[0], r["code"], REGION_DEMAND_FACTOR.get(r["type"], 0.8))
+            for c in w.CAREERS
+            for r in w.REGIONS
+        ],
+        salary_bands=[(c[0], band) for c in w.CAREERS for band in salary_bands(c[0])],
+        pathways=[pathway(p[0]) for p in w.PATHWAYS],
+        exams=[exam(e[0]) for e in w.EXAMS],
+        scholarships=[scholarship(s[0]) for s in w.SCHOLARSHIPS],
+        local_opportunities=[local_opportunity(r) for r in w.LOCAL_OPPORTUNITIES],
+    )

@@ -2,6 +2,7 @@
 
 import pytest
 
+from app.assessment.bank import get_bank, public_id
 from app.mocks import world as w
 from app.schemas.analysis import AnalysisRun, ScoreComponent
 from app.schemas.common import AffordabilityClass
@@ -9,6 +10,7 @@ from tests.conftest import ADMIN, PARENT
 
 RUN = w.RUN_ID
 CAREER = w.sid("career", "data-scientist")
+FIRST_RIASEC_ITEM = public_id(get_bank().instrument("riasec_v1").items[0].id)
 
 GETS = [
     ("/api/v1/auth/me", {}),
@@ -83,7 +85,12 @@ POSTS = [
         PARENT,
         201,
     ),
-    ("/api/v1/assessments/riasec_v1/submit", {"answers": [{"question_id": "q1", "value": "4"}]}, {}, 200),
+    (
+        "/api/v1/assessments/riasec_v1/submit",
+        {"answers": [{"question_id": FIRST_RIASEC_ITEM, "value": "4"}]},
+        {},
+        200,
+    ),
     ("/api/v1/analysis/runs", {"student_id": w.STUDENT_ID}, {}, 201),
     (
         f"/api/v1/analysis/runs/{RUN}/what-if",

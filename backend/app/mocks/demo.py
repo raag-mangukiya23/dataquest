@@ -167,8 +167,20 @@ def walkthrough() -> DemoWalkthrough:
             "Weights perturbed by 20 % in 64 scenarios: the top career holds in 89 % of them. "
             "The input hash makes the run reproducible.",
             DemoCall(method="GET", path=run),
-            ["data.sensitivity.robustness_score", "data.reproducibility"],
+            [
+                "data.sensitivity.robustness_score",
+                "data.reproducibility",
+                "data.recommendations[0].data_trust",
+            ],
             30,
+        ),
+        (
+            "How current, how checked",
+            "Recommendations are computed live on every request. This page shows how fresh each dataset is, "
+            "which live feeds are on, and what share of figures we have checked against official sources.",
+            DemoCall(method="GET", path="/api/v1/system/data-status"),
+            ["data.statement", "data.datasets", "data.feeds"],
+            25,
         ),
     ]
     out = [

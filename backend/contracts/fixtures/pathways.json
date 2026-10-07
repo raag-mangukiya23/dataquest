@@ -36,7 +36,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -73,7 +76,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -110,7 +116,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -147,7 +156,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -184,7 +196,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -222,7 +237,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -259,7 +277,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       },
       {
@@ -296,7 +317,10 @@
           "source_url": null,
           "as_of": "2026-09-30",
           "confidence": 0.5,
-          "is_estimate": true
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
         }
       }
     ],

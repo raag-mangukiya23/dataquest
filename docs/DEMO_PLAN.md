@@ -20,9 +20,10 @@ medicine and stability; family income is ₹9 L a year. The scripted steps are s
 | 7 | What-if | `POST /runs/{id}/what-if` | +₹8 L savings: Robotics goes loan-dependent → stretch, ranks shift | 0:45 |
 | 8 | 5-year roadmap | `GET /runs/{id}/roadmap` | Exam sessions, scholarship deadlines, skill actions, local project | 0:40 |
 | 9 | Hyper-local | `GET /local-opportunities?pincode=642001` | Coconut-pest drone problem in Pollachi, linked careers | 0:30 |
-| 10 | Trust | `GET /runs/{id}` | Robustness 0.82, top-1 stable in 89 % of 64 scenarios, input hash | 0:30 |
+| 10 | Trust | `GET /runs/{id}` | Robustness 0.82, top-1 stable in 89 % of 64 scenarios, input hash, `data_trust` per recommendation | 0:30 |
+| 11 | How current, how checked | `GET /system/data-status` | Computed live; each dataset's date, freshness and checked share; which live feeds are on | 0:25 |
 
-Total: 6:10, leaving about 50 seconds for questions inside a 7-minute slot.
+Total: 6:35, leaving about 25 seconds for questions inside a 7-minute slot.
 
 Close on: "Every number you saw is explainable, reproducible from the stored inputs, and marked as an
 estimate until it has been verified."
@@ -61,8 +62,10 @@ Phase 4 turns all five into golden-file tests.
 - [ ] `docker compose up` from a clean clone works on the presenting laptop
 - [ ] `POST /api/v1/demo/reset` returns `status: reset`
 - [ ] `/system/health` shows database ok; ML model ok or "fallback active" (both fine; say which)
-- [ ] Every number shown in steps 3–8 checked against the data verification list (exam dates, fee figures,
-      scholarship amounts); anything unverified stays labelled as an estimate
+- [ ] `python scripts/data_audit.py --demo --strict` exits 0, meaning every figure on screen is checked
+      (see `DATA_TRUTH.md` §5); until then, anything unchecked is shown labelled as an estimate
+- [ ] Live feed refreshed that morning (`POST /admin/data/refresh {"source": "adapter"}` with the Adzuna key),
+      so "refreshed today" is true
 - [ ] Browser zoom at 125 %, dark mode off, notifications off
 - [ ] Backup: screen recording of a clean run, kept on the desktop
 
@@ -72,6 +75,8 @@ Phase 4 turns all five into golden-file tests.
 |---|---|
 | How do you avoid bias? | No gender, caste, religion or community in any feature; quota affects fees only; analytics are k-anonymised. |
 | Why should we trust the ranking? | Per-component contributions, sensitivity analysis (±20 %), and reproducible runs (input hash + dataset version). |
-| Is the market data live? | No. It's a versioned snapshot with an admin refresh endpoint; we never call it real-time. |
+| Is the market data live? | Recommendations are computed live on every request. Job-posting demand refreshes daily from the Adzuna API when the key is set; other data follows its publisher's cycle and is dated. `/system/data-status` shows exactly which is which. |
+| How do you know the numbers are right? | Every figure carries its source, date and check status; the schema refuses to show an unchecked figure as fact; quality gates block bad refreshes. Our first check corrected three demo figures. |
+| Is the questionnaire valid? | Original items on public frameworks, reverse-worded items, guessing correction, answer-pattern checks. Reliability (Cronbach's alpha) comes from our pilot; no percentiles until 200 students per grade. |
 | What if the ML model is wrong or missing? | Its weight `alpha` is in the versioned config, and a deterministic cosine fallback keeps the system working. |
 | How do parents and students stay private from each other? | Role-based views; raw answers or finances are shared only with explicit, revocable consent. |

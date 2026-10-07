@@ -1,0 +1,156 @@
+{
+  "code": "riasec_v1",
+  "version": "1.0",
+  "name": "Interest Explorer",
+  "description": "How much would you enjoy each activity? There are no right or wrong answers.",
+  "framework": "Holland RIASEC interest theory (public). All items are original to PRISM.",
+  "scale": "interest5",
+  "time_limit_sec": null,
+  "est_minutes": 4,
+  "items": [
+    {
+      "id": "riasec.riasec_r.1",
+      "dimension": "riasec_r",
+      "prompt": "Repairing a bicycle or a ceiling fan that has stopped working",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_r.2",
+      "dimension": "riasec_r",
+      "prompt": "Building a working model, like a solar car, for a science fair",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_r.3",
+      "dimension": "riasec_r",
+      "prompt": "Working outdoors on a farm, a construction site or in a workshop",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_r.4",
+      "dimension": "riasec_r",
+      "prompt": "Using tools or machines such as a drill, a soldering iron or a 3D printer",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_i.1",
+      "dimension": "riasec_i",
+      "prompt": "Finding out why a plant grows faster under one kind of light than another",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_i.2",
+      "dimension": "riasec_i",
+      "prompt": "Spending an hour on a tricky maths or logic puzzle",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_i.3",
+      "dimension": "riasec_i",
+      "prompt": "Reading about how vaccines or rockets actually work",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_i.4",
+      "dimension": "riasec_i",
+      "prompt": "Running an experiment and analysing the results in a table or graph",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_a.1",
+      "dimension": "riasec_a",
+      "prompt": "Designing a poster, logo or comic strip",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_a.2",
+      "dimension": "riasec_a",
+      "prompt": "Writing a story, poem or script",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_a.3",
+      "dimension": "riasec_a",
+      "prompt": "Composing music, dancing or acting in a play",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_a.4",
+      "dimension": "riasec_a",
+      "prompt": "Photographing or filming something in an original way",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_s.1",
+      "dimension": "riasec_s",
+      "prompt": "Teaching a younger student a topic they find difficult",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_s.2",
+      "dimension": "riasec_s",
+      "prompt": "Volunteering at a health camp or community event",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_s.3",
+      "dimension": "riasec_s",
+      "prompt": "Listening to a friend's problem and helping them think it through",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_s.4",
+      "dimension": "riasec_s",
+      "prompt": "Organising activities for children or elderly people",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_e.1",
+      "dimension": "riasec_e",
+      "prompt": "Starting a small business, such as selling snacks or crafts at a school fair",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_e.2",
+      "dimension": "riasec_e",
+      "prompt": "Persuading a group to support your idea",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_e.3",
+      "dimension": "riasec_e",
+      "prompt": "Leading a team for a competition or school event",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_e.4",
+      "dimension": "riasec_e",
+      "prompt": "Negotiating a better price or deal",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_c.1",
+      "dimension": "riasec_c",
+      "prompt": "Keeping accounts for a club or a family shop",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_c.2",
+      "dimension": "riasec_c",
+      "prompt": "Organising files, data or a timetable so everything is easy to find",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_c.3",
+      "dimension": "riasec_c",
+      "prompt": "Checking a report carefully for errors",
+      "reverse": false
+    },
+    {
+      "id": "riasec.riasec_c.4",
+      "dimension": "riasec_c",
+      "prompt": "Following a clear step-by-step procedure to finish a task accurately",
+      "reverse": false
+    }
+  ]
+}

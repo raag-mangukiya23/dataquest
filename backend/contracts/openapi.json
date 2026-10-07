@@ -2791,6 +2791,28 @@
         }
       }
     },
+    "/api/v1/system/data-status": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Data Status",
+        "description": "How fresh each dataset is, how much of it has been checked, which live feeds are on, and every\nquality-gate finding. Read this before claiming anything is 'real-time'.",
+        "operationId": "data_status_api_v1_system_data_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DataStatus_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/demo/personas": {
       "get": {
         "tags": [
@@ -4566,6 +4588,40 @@
         ],
         "title": "CountRow"
       },
+      "DataIssue": {
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "title": "Dataset"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "rule": {
+            "type": "string",
+            "title": "Rule"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "dataset",
+          "key",
+          "rule",
+          "severity",
+          "message"
+        ],
+        "title": "DataIssue"
+      },
       "DataQuality": {
         "properties": {
           "completeness": {
@@ -4684,6 +4740,250 @@
           "share_estimated"
         ],
         "title": "DataSourceInfo"
+      },
+      "DataStatus": {
+        "properties": {
+          "generated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Generated At"
+          },
+          "today": {
+            "type": "string",
+            "title": "Today"
+          },
+          "dataset_version": {
+            "type": "string",
+            "title": "Dataset Version"
+          },
+          "computed_live": {
+            "type": "boolean",
+            "title": "Computed Live",
+            "description": "Recommendations are recomputed on every request"
+          },
+          "overall_checked_share": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Overall Checked Share"
+          },
+          "statement": {
+            "type": "string",
+            "title": "Statement",
+            "description": "Plain-language summary safe to show judges and users"
+          },
+          "datasets": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetStatus"
+            },
+            "type": "array",
+            "title": "Datasets"
+          },
+          "feeds": {
+            "items": {
+              "$ref": "#/components/schemas/FeedStatus"
+            },
+            "type": "array",
+            "title": "Feeds"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/DataIssue"
+            },
+            "type": "array",
+            "title": "Issues"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "generated_at",
+          "today",
+          "dataset_version",
+          "computed_live",
+          "overall_checked_share",
+          "statement",
+          "datasets",
+          "feeds",
+          "issues"
+        ],
+        "title": "DataStatus"
+      },
+      "DataTrust": {
+        "properties": {
+          "verified_share": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Verified Share",
+            "description": "Share of inputs that are verified or secondary-checked"
+          },
+          "freshness": {
+            "$ref": "#/components/schemas/Freshness"
+          },
+          "oldest_as_of": {
+            "type": "string",
+            "title": "Oldest As Of"
+          },
+          "inputs": {
+            "items": {
+              "$ref": "#/components/schemas/TrustInput"
+            },
+            "type": "array",
+            "title": "Inputs"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "verified_share",
+          "freshness",
+          "oldest_as_of",
+          "inputs",
+          "note"
+        ],
+        "title": "DataTrust",
+        "description": "How much of the data behind one recommendation has actually been checked, and how fresh it is."
+      },
+      "DatasetStatus": {
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "title": "Dataset"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "rows": {
+            "type": "integer",
+            "title": "Rows"
+          },
+          "cadence_days": {
+            "type": "integer",
+            "title": "Cadence Days",
+            "description": "How often the publisher updates this data"
+          },
+          "oldest_as_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oldest As Of"
+          },
+          "newest_as_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Newest As Of"
+          },
+          "freshness": {
+            "type": "string",
+            "title": "Freshness",
+            "examples": [
+              "fresh",
+              "aging",
+              "stale"
+            ]
+          },
+          "next_refresh_due": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Refresh Due"
+          },
+          "verified": {
+            "type": "integer",
+            "title": "Verified"
+          },
+          "secondary": {
+            "type": "integer",
+            "title": "Secondary"
+          },
+          "unverified": {
+            "type": "integer",
+            "title": "Unverified"
+          },
+          "disputed": {
+            "type": "integer",
+            "title": "Disputed"
+          },
+          "checked_share": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Checked Share"
+          },
+          "errors": {
+            "type": "integer",
+            "title": "Errors"
+          },
+          "warnings": {
+            "type": "integer",
+            "title": "Warnings"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "live_feed": {
+            "type": "boolean",
+            "title": "Live Feed",
+            "description": "true only when an API adapter for this dataset is configured"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "dataset",
+          "label",
+          "rows",
+          "cadence_days",
+          "oldest_as_of",
+          "newest_as_of",
+          "freshness",
+          "next_refresh_due",
+          "verified",
+          "secondary",
+          "unverified",
+          "disputed",
+          "checked_share",
+          "errors",
+          "warnings",
+          "sources",
+          "live_feed"
+        ],
+        "title": "DatasetStatus"
+      },
+      "DateStatus": {
+        "type": "string",
+        "enum": [
+          "announced",
+          "tentative",
+          "estimated"
+        ],
+        "title": "DateStatus"
       },
       "DemoCall": {
         "properties": {
@@ -5175,6 +5475,43 @@
           "meta"
         ],
         "title": "Envelope[ConsentOut]"
+      },
+      "Envelope_DataStatus_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DataStatus"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[DataStatus]"
       },
       "Envelope_DemoResetResult_": {
         "properties": {
@@ -6541,6 +6878,9 @@
             },
             "type": "array",
             "title": "Career Ids"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
           }
         },
         "additionalProperties": false,
@@ -6551,7 +6891,8 @@
           "conducting_body",
           "level",
           "frequency",
-          "eligibility_summary"
+          "eligibility_summary",
+          "provenance"
         ],
         "title": "Exam"
       },
@@ -6579,6 +6920,10 @@
             ],
             "title": "Registration Close"
           },
+          "registration_status": {
+            "$ref": "#/components/schemas/DateStatus",
+            "default": "estimated"
+          },
           "exam_start": {
             "anyOf": [
               {
@@ -6603,10 +6948,9 @@
             ],
             "title": "Exam End"
           },
-          "is_estimate": {
-            "type": "boolean",
-            "title": "Is Estimate",
-            "default": true
+          "exam_date_status": {
+            "$ref": "#/components/schemas/DateStatus",
+            "default": "estimated"
           }
         },
         "additionalProperties": false,
@@ -7013,6 +7357,45 @@
         ],
         "title": "FamilyOut"
       },
+      "FeedStatus": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "access": {
+            "type": "string",
+            "title": "Access",
+            "examples": [
+              "api",
+              "download",
+              "manual"
+            ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "name",
+          "access",
+          "enabled",
+          "detail"
+        ],
+        "title": "FeedStatus"
+      },
       "FinancialAssessment": {
         "properties": {
           "pathway_id": {
@@ -7237,6 +7620,15 @@
         ],
         "title": "Formula"
       },
+      "Freshness": {
+        "type": "string",
+        "enum": [
+          "fresh",
+          "aging",
+          "stale"
+        ],
+        "title": "Freshness"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -7409,6 +7801,11 @@
             "type": "string",
             "title": "Description"
           },
+          "framework": {
+            "type": "string",
+            "title": "Framework",
+            "description": "Public framework the original items are built on"
+          },
           "version": {
             "type": "string",
             "title": "Version"
@@ -7420,6 +7817,18 @@
           "est_minutes": {
             "type": "integer",
             "title": "Est Minutes"
+          },
+          "time_limit_sec": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Limit Sec",
+            "description": "Only the aptitude section is timed"
           }
         },
         "additionalProperties": false,
@@ -7428,6 +7837,7 @@
           "code",
           "name",
           "description",
+          "framework",
           "version",
           "question_count",
           "est_minutes"
@@ -8302,7 +8712,36 @@
           "is_estimate": {
             "type": "boolean",
             "title": "Is Estimate",
-            "description": "true = illustrative number that must be verified before use"
+            "description": "true = illustrative or modelled number, not a checked fact"
+          },
+          "verification": {
+            "$ref": "#/components/schemas/VerificationStatus",
+            "default": "unverified"
+          },
+          "verified_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified On"
+          },
+          "evidence": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 600
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence",
+            "description": "Where exactly the figure was checked (document, section, date)"
           }
         },
         "additionalProperties": false,
@@ -8314,7 +8753,7 @@
           "is_estimate"
         ],
         "title": "Provenance",
-        "description": "Attached to every market, salary, scholarship and cost figure."
+        "description": "Attached to every market, salary, fee, exam and scholarship figure.\n\nRules (enforced here and by DB CHECKs): a figure shown as fact (is_estimate=false) must be verified\nor secondary and carry evidence; 'verified' also needs the official URL; disputed figures are always\nestimates; URLs are https and only ever real."
       },
       "Question": {
         "properties": {
@@ -8326,10 +8765,10 @@
             "type": "string",
             "title": "Instrument Code"
           },
-          "dimension": {
+          "section": {
             "type": "string",
-            "title": "Dimension",
-            "description": "One of the canonical dimensions (see /system/methodology)"
+            "title": "Section",
+            "description": "Instrument name, for progress display"
           },
           "type": {
             "$ref": "#/components/schemas/QuestionType"
@@ -8345,11 +8784,6 @@
             "type": "array",
             "title": "Options"
           },
-          "reverse_scored": {
-            "type": "boolean",
-            "title": "Reverse Scored",
-            "default": false
-          },
           "order": {
             "type": "integer",
             "title": "Order"
@@ -8360,13 +8794,14 @@
         "required": [
           "id",
           "instrument_code",
-          "dimension",
+          "section",
           "type",
           "prompt",
           "options",
           "order"
         ],
-        "title": "Question"
+        "title": "Question",
+        "description": "What the student sees. Which trait an item measures, its reverse keying and the answer key are\ndeliberately withheld so answers cannot be steered; items are interleaved across traits."
       },
       "QuestionOption": {
         "properties": {
@@ -8603,6 +9038,9 @@
           "family": {
             "$ref": "#/components/schemas/FamilyFitDetail"
           },
+          "data_trust": {
+            "$ref": "#/components/schemas/DataTrust"
+          },
           "buckets": {
             "items": {
               "$ref": "#/components/schemas/Bucket"
@@ -8633,6 +9071,7 @@
           "market",
           "financial",
           "family",
+          "data_trust",
           "buckets",
           "explanation"
         ],
@@ -8855,6 +9294,16 @@
             "title": "Dataset Version",
             "description": "Catalog snapshot the run read; replays use the same snapshot"
           },
+          "latest_dataset_version": {
+            "type": "string",
+            "title": "Latest Dataset Version",
+            "description": "Snapshot currently active"
+          },
+          "is_outdated": {
+            "type": "boolean",
+            "title": "Is Outdated",
+            "description": "true = newer data exists; offer 'Re-run with latest data'"
+          },
           "family_finance_version": {
             "anyOf": [
               {
@@ -8888,6 +9337,8 @@
           "input_hash",
           "data_as_of",
           "dataset_version",
+          "latest_dataset_version",
+          "is_outdated",
           "family_finance_version",
           "ml_model_version"
         ],
@@ -9292,6 +9743,23 @@
             "title": "Amount Per Year",
             "description": "Fixed rupees, or the annual cap for percentage waivers"
           },
+          "year_amounts": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer",
+                  "minimum": 0.0,
+                  "description": "Amount in Indian Rupees (whole rupees)"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Year Amounts",
+            "description": "Per-year amounts when they differ by year of study (index 0 = year 1)"
+          },
           "percent_of_tuition": {
             "anyOf": [
               {
@@ -9371,6 +9839,10 @@
               }
             ],
             "title": "Deadline"
+          },
+          "deadline_status": {
+            "$ref": "#/components/schemas/DateStatus",
+            "default": "estimated"
           },
           "provenance": {
             "$ref": "#/components/schemas/Provenance"
@@ -9896,6 +10368,14 @@
             "type": "string",
             "title": "Submission Id"
           },
+          "answered": {
+            "type": "integer",
+            "title": "Answered"
+          },
+          "total_items": {
+            "type": "integer",
+            "title": "Total Items"
+          },
           "scored": {
             "items": {
               "$ref": "#/components/schemas/TraitScore"
@@ -9911,7 +10391,10 @@
             "title": "Flags",
             "examples": [
               [
-                "straight_lining_detected"
+                "straight_lining",
+                "speeding",
+                "contradictory_answers:grit",
+                "incomplete"
               ]
             ]
           },
@@ -9926,6 +10409,8 @@
         "required": [
           "instrument_code",
           "submission_id",
+          "answered",
+          "total_items",
           "scored",
           "submitted_at"
         ],
@@ -10198,14 +10683,15 @@
                 "type": "null"
               }
             ],
-            "title": "Percentile"
+            "title": "Percentile",
+            "description": "null until a real norm group of 200+ students exists"
           },
           "reliability": {
             "type": "number",
             "maximum": 1.0,
             "minimum": 0.0,
             "title": "Reliability",
-            "description": "Item consistency / coverage for this dimension"
+            "description": "Response consistency x coverage, after quality-flag penalties"
           },
           "answered": {
             "type": "integer",
@@ -10227,6 +10713,44 @@
           "answered"
         ],
         "title": "TraitScore"
+      },
+      "TrustInput": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "examples": [
+              "Exam dates: JEE Main",
+              "Pathway fees",
+              "Salary band"
+            ]
+          },
+          "verification": {
+            "$ref": "#/components/schemas/VerificationStatus"
+          },
+          "is_estimate": {
+            "type": "boolean",
+            "title": "Is Estimate"
+          },
+          "as_of": {
+            "type": "string",
+            "title": "As Of"
+          },
+          "source_name": {
+            "type": "string",
+            "title": "Source Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "verification",
+          "is_estimate",
+          "as_of",
+          "source_name"
+        ],
+        "title": "TrustInput"
       },
       "UserOut": {
         "properties": {
@@ -10324,6 +10848,16 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VerificationStatus": {
+        "type": "string",
+        "enum": [
+          "unverified",
+          "secondary",
+          "verified",
+          "disputed"
+        ],
+        "title": "VerificationStatus"
       },
       "WhatIfOverrides": {
         "properties": {

@@ -1,0 +1,84 @@
+{
+  "code": "values_v1",
+  "version": "1.0",
+  "name": "What Matters To You",
+  "description": "How much do you agree with each statement about your future work?",
+  "framework": "Work-values dimensions common to public career-guidance frameworks. All items are original.",
+  "scale": "agree5",
+  "time_limit_sec": null,
+  "est_minutes": 2,
+  "items": [
+    {
+      "id": "values.val_security.1",
+      "dimension": "val_security",
+      "prompt": "A steady, predictable income matters a lot to me.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_security.2",
+      "dimension": "val_security",
+      "prompt": "I would choose a secure job over an exciting but uncertain one.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_security.3",
+      "dimension": "val_security",
+      "prompt": "I don't mind if my income goes up and down from year to year.",
+      "reverse": true
+    },
+    {
+      "id": "values.val_autonomy.1",
+      "dimension": "val_autonomy",
+      "prompt": "I want to decide for myself how to do my work.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_autonomy.2",
+      "dimension": "val_autonomy",
+      "prompt": "I would like to work on my own schedule.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_autonomy.3",
+      "dimension": "val_autonomy",
+      "prompt": "I prefer being told exactly what to do at work.",
+      "reverse": true
+    },
+    {
+      "id": "values.val_impact.1",
+      "dimension": "val_impact",
+      "prompt": "I want my work to improve people's lives or protect the environment.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_impact.2",
+      "dimension": "val_impact",
+      "prompt": "Helping my community is an important reason to choose a career.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_impact.3",
+      "dimension": "val_impact",
+      "prompt": "Whether my work helps others does not matter much to me.",
+      "reverse": true
+    },
+    {
+      "id": "values.val_financial.1",
+      "dimension": "val_financial",
+      "prompt": "Earning a high salary is one of my top goals.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_financial.2",
+      "dimension": "val_financial",
+      "prompt": "I would choose a well-paid job even if it were less interesting.",
+      "reverse": false
+    },
+    {
+      "id": "values.val_financial.3",
+      "dimension": "val_financial",
+      "prompt": "I would accept a lower salary to do work I love.",
+      "reverse": true
+    }
+  ]
+}

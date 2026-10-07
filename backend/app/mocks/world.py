@@ -48,7 +48,9 @@ STUDENT = {
 }
 PARENT = {"full_name": "R. Raman", "email": "parent.demo@prism.example"}
 
-STUDENT_VECTOR: dict[str, float] = dict(
+# Intended profile; persona.py turns it into concrete questionnaire answers, and the trait scores the
+# rest of the fixtures use come from scoring those answers with the real engine.
+STUDENT_TARGET_VECTOR: dict[str, float] = dict(
     zip(
         DIMENSIONS,
         (
@@ -414,8 +416,8 @@ EXAMS = [
         "National Testing Agency",
         "national",
         "twice a year",
-        date(2027, 1, 21),
-        date(2027, 1, 31),
+        date(2027, 1, 22),
+        date(2027, 1, 30),
         date(2026, 11, 22),
         "Class 12 with Physics, Chemistry, Mathematics",
         "https://jeemain.nta.nic.in",
@@ -522,17 +524,18 @@ SCHOLARSHIPS = [
         "Ministry of Education",
         "central_govt",
         12_000,
-        3,
+        5,
         ["tuition", "living"],
         {
             "all": [
-                {"field": "board_percentile", "op": ">=", "value": 80},
-                {"field": "annual_income", "op": "<=", "value": 450_000},
+                {"field": "board_percentile", "op": ">", "value": 80},
+                {"field": "annual_income", "op": "<", "value": 450_000},
             ]
         },
-        "Top 20th percentile in Class 12 board; family income cap applies",
+        "Above the 80th percentile of successful Class 12 candidates in your board; family income below "
+        "Rs 4.5 lakh; cannot be combined with any other scholarship",
         0.35,
-        True,
+        False,
         date(2026, 10, 31),
         "https://scholarships.gov.in",
     ),
@@ -652,3 +655,58 @@ LOCAL_OPPORTUNITIES = [
         "Prototype a pH/TDS sensor buoy and publish a weekly open data dashboard.",
     ),
 ]
+
+
+# ---------------------------------------------------------------- data audit of 2026-10-07
+# Figures checked against sources. Everything not listed here is an unverified estimate.
+# 'secondary' = matches reputable reporting of the official notice; it becomes 'verified' once someone
+# checks the official page itself (this build environment could not reach the official sites).
+CHECKED_ON = date(2026, 10, 7)
+
+EXAM_CHECKS: dict[str, dict[str, str]] = {
+    "JEE_MAIN": {
+        "verification": "secondary",
+        "session1_status": "tentative",
+        "evidence": "NTA examination calendar released 16 Sep 2026: Session 1 on 22-24 and 28-30 Jan 2027 with "
+        "31 Jan as buffer; dates are tentative (reported by Careers360, ThePrint and CareerIndia). Registration "
+        "dates and Session 2 are not announced yet. Confirm on nta.ac.in.",
+    },
+}
+EXAM_NOTES: dict[str, str] = {
+    "NEET_UG": "Not in NTA's 16 Sep 2026 calendar; date projected from earlier cycles.",
+    "CUET_UG": "Not in NTA's 16 Sep 2026 calendar; dates projected from earlier cycles.",
+}
+
+SCHOLARSHIP_CHECKS: dict[str, dict[str, str]] = {
+    "css-nsp": {
+        "verification": "secondary",
+        "evidence": "Ministry of Education scheme rules: Rs 12,000 a year for years 1-3 and Rs 20,000 for years 4-5; "
+        "family income below Rs 4.5 lakh; above the 80th percentile of successful Class 12 candidates in the "
+        "board; not available with any other scholarship. Applications via scholarships.gov.in. The award "
+        "probability is a PRISM heuristic and the 2026-27 deadline is not yet confirmed.",
+    },
+    "inspire-she": {
+        "verification": "secondary",
+        "evidence": "DST INSPIRE-SHE: Rs 80,000 a year (Rs 60,000 scholarship + Rs 20,000 summer research "
+        "attachment) for up to 5 years; top 1 % in the Class 12 board; natural and basic sciences only. Confirm "
+        "the 2026-27 call on DST's INSPIRE portal. The award probability is a PRISM heuristic.",
+    },
+}
+SCHOLARSHIP_YEAR_AMOUNTS: dict[str, list[int]] = {"css-nsp": [12_000, 12_000, 12_000, 20_000, 20_000]}
+
+# Search keywords for the live postings feed (becomes careers.search_keywords in the database).
+CAREER_KEYWORDS: dict[str, str] = {
+    "data-scientist": "data scientist",
+    "biomedical-engineer": "biomedical engineer",
+    "computational-biologist": "bioinformatics",
+    "robotics-engineer": "robotics engineer",
+    "agri-drone-engineer": "agriculture drone",
+    "ux-designer": "ux designer",
+    "doctor-mbbs": "mbbs doctor",
+}
+CITY_NAMES: dict[str, str] = {
+    "IN-TN-CBE": "Coimbatore",
+    "IN-TN-CHN": "Chennai",
+    "IN-KA-BLR": "Bangalore",
+    "IN-TG-HYD": "Hyderabad",
+}

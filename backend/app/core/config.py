@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = 120
     ml_model_path: str | None = None
     ml_alpha: float = Field(default=0.5, ge=0.0, le=1.0)
+    # Optional live job-postings feed (free key from developer.adzuna.com). Absent = feed disabled.
+    adzuna_app_id: str | None = None
+    adzuna_app_key: str | None = None
+    adzuna_daily_budget: int = Field(default=200, ge=1, le=250)
     log_level: str = "INFO"
     # Demo support: /api/v1/demo/* endpoints and a frozen "today" so deadlines never slip into the past on stage.
     demo_mode: bool = True
@@ -38,7 +42,7 @@ class Settings(BaseSettings):
             return [o.strip() for o in v.split(",") if o.strip()]
         return v
 
-    @field_validator("ml_model_path", mode="before")
+    @field_validator("ml_model_path", "adzuna_app_id", "adzuna_app_key", mode="before")
     @classmethod
     def _empty_to_none(cls, v: object) -> object:
         return v or None

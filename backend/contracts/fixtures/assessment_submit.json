@@ -2,65 +2,67 @@
   "success": true,
   "data": {
     "instrument_code": "riasec_v1",
-    "submission_id": "298bfda2-cb73-54ba-a799-187156e08c15",
+    "submission_id": "sub_f83df82f9ffbb2576a1a84e1",
+    "answered": 24,
+    "total_items": 24,
     "scored": [
       {
         "dimension": "riasec_r",
-        "raw": 3.48,
-        "normalized": 0.62,
-        "percentile": 62.0,
-        "reliability": 0.78,
+        "raw": 3.5,
+        "normalized": 0.625,
+        "percentile": null,
+        "reliability": 0.875,
         "answered": 4,
         "imputed": false
       },
       {
         "dimension": "riasec_i",
-        "raw": 4.44,
-        "normalized": 0.86,
-        "percentile": 86.0,
-        "reliability": 0.78,
+        "raw": 4.5,
+        "normalized": 0.875,
+        "percentile": null,
+        "reliability": 0.875,
         "answered": 4,
         "imputed": false
       },
       {
         "dimension": "riasec_a",
-        "raw": 3.96,
-        "normalized": 0.74,
-        "percentile": 74.0,
-        "reliability": 0.78,
+        "raw": 4.0,
+        "normalized": 0.75,
+        "percentile": null,
+        "reliability": 1.0,
         "answered": 4,
         "imputed": false
       },
       {
         "dimension": "riasec_s",
-        "raw": 2.64,
-        "normalized": 0.41,
-        "percentile": 41.0,
-        "reliability": 0.78,
+        "raw": 2.75,
+        "normalized": 0.4375,
+        "percentile": null,
+        "reliability": 0.8917,
         "answered": 4,
         "imputed": false
       },
       {
         "dimension": "riasec_e",
-        "raw": 2.52,
-        "normalized": 0.38,
-        "percentile": 38.0,
-        "reliability": 0.78,
+        "raw": 2.5,
+        "normalized": 0.375,
+        "percentile": null,
+        "reliability": 0.875,
         "answered": 4,
         "imputed": false
       },
       {
         "dimension": "riasec_c",
-        "raw": 2.88,
-        "normalized": 0.47,
-        "percentile": 47.0,
-        "reliability": 0.78,
+        "raw": 3.0,
+        "normalized": 0.5,
+        "percentile": null,
+        "reliability": 1.0,
         "answered": 4,
         "imputed": false
       }
     ],
     "flags": [],
-    "submitted_at": "2026-10-07T09:30:00"
+    "submitted_at": "2026-10-07T09:30:00Z"
   },
   "error": null,
   "meta": {

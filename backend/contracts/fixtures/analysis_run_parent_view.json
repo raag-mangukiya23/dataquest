@@ -12,47 +12,49 @@
       "engine_version": "prism-engine/1.0.0",
       "scoring_config_version": "weights-2026.10-v1",
       "vector_spec_version": "vec-1",
-      "input_hash": "sha256:1a06213144f6b248eb21811a58c9df50050eb29b1897896748ac15f0d16c7fcf",
+      "input_hash": "sha256:ac2964b7732c8f50b987b42005ecd68dee81100071df4f9cc44312b20ffe8b66",
       "data_as_of": "2026-09-30",
       "dataset_version": "seed-2026-09-30",
+      "latest_dataset_version": "seed-2026-09-30",
+      "is_outdated": false,
       "family_finance_version": 3,
       "ml_model_version": null
     },
     "data_quality": {
-      "completeness": 0.94,
+      "completeness": 0.9474,
       "imputed_fields": [
         "val_financial"
       ],
-      "confidence_penalty": 0.03,
+      "confidence_penalty": 0.0263,
       "warnings": [
-        "Work-values instrument partially answered; 1 dimension imputed."
+        "Values financial reward: too few items answered, so it was set to the neutral 0.5."
       ]
     },
     "student_vector": {
-      "riasec_r": 0.62,
-      "riasec_i": 0.86,
-      "riasec_a": 0.74,
-      "riasec_s": 0.41,
-      "riasec_e": 0.38,
-      "riasec_c": 0.47,
-      "apt_numerical": 0.81,
-      "apt_verbal": 0.66,
-      "apt_logical": 0.84,
-      "apt_spatial": 0.77,
-      "cog_analytical": 0.8,
-      "cog_creative": 0.71,
-      "cog_practical": 0.55,
-      "val_security": 0.52,
-      "val_autonomy": 0.7,
-      "val_impact": 0.68,
-      "val_financial": 0.58,
-      "grit": 0.73,
-      "risk_tolerance": 0.57
+      "riasec_r": 0.625,
+      "riasec_i": 0.875,
+      "riasec_a": 0.75,
+      "riasec_s": 0.4375,
+      "riasec_e": 0.375,
+      "riasec_c": 0.5,
+      "apt_numerical": 0.7778,
+      "apt_verbal": 0.6667,
+      "apt_logical": 0.7778,
+      "apt_spatial": 0.7778,
+      "cog_analytical": 0.8125,
+      "cog_creative": 0.6875,
+      "cog_practical": 0.5625,
+      "val_security": 0.5,
+      "val_autonomy": 0.6667,
+      "val_impact": 0.6667,
+      "val_financial": 0.5,
+      "grit": 0.75,
+      "risk_tolerance": 0.55
     },
     "composite_scores": {
-      "overall_readiness": 69.7,
-      "aptitude_index": 77.0,
-      "interest_clarity": 64.0,
+      "overall_readiness": 68.7,
+      "aptitude_index": 75.0,
+      "interest_clarity": 62.5,
       "financial_capacity": 76.1,
       "family_alignment": 54.5,
       "market_outlook": 72.0
@@ -80,9 +82,9 @@
           ]
         },
         "final_score": 0.771,
-        "confidence": 0.78,
-        "ci_low": 0.711,
-        "ci_high": 0.831,
+        "confidence": 0.5794,
+        "ci_low": 0.651,
+        "ci_high": 0.891,
         "contributions": [
           {
             "component": "fit",
@@ -130,37 +132,37 @@
           "alpha": 0.5,
           "top_matching_dimensions": [
             "riasec_i",
-            "apt_logical",
-            "cog_analytical"
+            "cog_analytical",
+            "apt_logical"
           ],
           "gaps": [
             {
+              "dimension": "val_financial",
+              "label": "Values financial reward",
+              "student": 0.5,
+              "required": 0.7,
+              "gap": 0.2
+            },
+            {
               "dimension": "riasec_c",
               "label": "Conventional (organising, data, procedures)",
-              "student": 0.47,
+              "student": 0.5,
               "required": 0.65,
-              "gap": 0.18
+              "gap": 0.15
             },
             {
               "dimension": "riasec_e",
               "label": "Enterprising (leading, persuading, starting)",
-              "student": 0.38,
+              "student": 0.375,
               "required": 0.5,
-              "gap": 0.12
+              "gap": 0.125
             },
             {
-              "dimension": "val_financial",
-              "label": "Values financial reward",
-              "student": 0.58,
-              "required": 0.7,
-              "gap": 0.12
-            },
-            {
-              "dimension": "cog_analytical",
-              "label": "Analytical thinking style",
-              "student": 0.8,
+              "dimension": "apt_logical",
+              "label": "Logical reasoning",
+              "student": 0.7778,
               "required": 0.9,
-              "gap": 0.1
+              "gap": 0.122
             }
           ]
         },
@@ -220,12 +222,55 @@
           "parent_acceptance": 0.55,
           "bridge_score": 0.6709
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.Tech Computer Science (Data Science)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNEA Counselling (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Tech Computer Science (Data Science); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+        },
         "buckets": [
           "best_overall",
           "best_for_student"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), logical reasoning, analytical thinking style.",
+          "Strong match on investigative (analysing, researching), analytical thinking style, logical reasoning.",
           "B.Tech Computer Science (Data Science) at Government College of Technology, Coimbatore is comfortable for your family (total about Rs 608,325).",
           "Demand outlook 84% with automation risk 25%."
         ]
@@ -244,9 +289,9 @@
           ]
         },
         "final_score": 0.7505,
-        "confidence": 0.78,
-        "ci_low": 0.6905,
-        "ci_high": 0.8105,
+        "confidence": 0.5794,
+        "ci_low": 0.6305,
+        "ci_high": 0.8705,
         "contributions": [
           {
             "component": "fit",
@@ -295,36 +340,36 @@
           "top_matching_dimensions": [
             "riasec_i",
             "grit",
-            "apt_logical"
+            "cog_analytical"
           ],
           "gaps": [
             {
               "dimension": "riasec_s",
               "label": "Social (helping, teaching, caring)",
-              "student": 0.41,
+              "student": 0.4375,
               "required": 0.8,
-              "gap": 0.39
+              "gap": 0.363
             },
             {
               "dimension": "val_security",
               "label": "Values job security",
-              "student": 0.52,
+              "student": 0.5,
               "required": 0.7,
-              "gap": 0.18
+              "gap": 0.2
             },
             {
               "dimension": "val_impact",
               "label": "Values social impact",
-              "student": 0.68,
+              "student": 0.6667,
               "required": 0.85,
-              "gap": 0.17
+              "gap": 0.183
             },
             {
               "dimension": "grit",
               "label": "Grit / perseverance",
-              "student": 0.73,
+              "student": 0.75,
               "required": 0.85,
-              "gap": 0.12
+              "gap": 0.1
             }
           ]
         },
@@ -392,13 +437,63 @@
           "parent_acceptance": 0.85,
           "bridge_score": 0.8135
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.E. Biomedical Engineering",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Institutional merit fee waiver (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Partner institutions"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNEA Counselling (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 6 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Biomedical Engineering; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+        },
         "buckets": [
           "best_overall",
           "best_for_family",
           "bridge"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, logical reasoning.",
+          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
           "B.E. Biomedical Engineering at PSG College of Technology is loan-dependent for your family (total about Rs 1,194,119).",
           "Demand outlook 70% with automation risk 18%."
         ]
@@ -417,9 +512,9 @@
           ]
         },
         "final_score": 0.728,
-        "confidence": 0.78,
-        "ci_low": 0.668,
-        "ci_high": 0.788,
+        "confidence": 0.629,
+        "ci_low": 0.624,
+        "ci_high": 0.832,
         "contributions": [
           {
             "component": "fit",
@@ -468,36 +563,36 @@
           "top_matching_dimensions": [
             "riasec_i",
             "grit",
-            "apt_logical"
+            "cog_analytical"
           ],
           "gaps": [
             {
               "dimension": "riasec_s",
               "label": "Social (helping, teaching, caring)",
-              "student": 0.41,
+              "student": 0.4375,
               "required": 0.8,
-              "gap": 0.39
+              "gap": 0.363
             },
             {
               "dimension": "val_security",
               "label": "Values job security",
-              "student": 0.52,
+              "student": 0.5,
               "required": 0.7,
-              "gap": 0.18
+              "gap": 0.2
             },
             {
               "dimension": "val_impact",
               "label": "Values social impact",
-              "student": 0.68,
+              "student": 0.6667,
               "required": 0.85,
-              "gap": 0.17
+              "gap": 0.183
             },
             {
               "dimension": "grit",
               "label": "Grit / perseverance",
-              "student": 0.73,
+              "student": 0.75,
               "required": 0.85,
-              "gap": 0.12
+              "gap": 0.1
             }
           ]
         },
@@ -557,6 +652,49 @@
           "parent_acceptance": 0.72,
           "bridge_score": 0.7668
         },
+        "data_trust": {
+          "verified_share": 0.2,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: BS-MS Biological Sciences",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: INSPIRE Scholarship for Higher Education (natural & basic sciences)",
+              "verification": "secondary",
+              "is_estimate": false,
+              "as_of": "2026-10-07",
+              "source_name": "Department of Science & Technology"
+            },
+            {
+              "name": "exam dates: IISER Aptitude Test",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "1 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: BS-MS Biological Sciences; exam dates: IISER Aptitude Test."
+        },
         "buckets": [
           "best_overall",
           "best_for_student",
@@ -565,7 +703,7 @@
           "hidden_gems"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, logical reasoning.",
+          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
           "BS-MS Biological Sciences at IISER Thiruvananthapuram is comfortable for your family (total about Rs 797,857).",
           "Demand outlook 66% with automation risk 15%."
         ]
@@ -584,9 +722,9 @@
           ]
         },
         "final_score": 0.695,
-        "confidence": 0.78,
-        "ci_low": 0.635,
-        "ci_high": 0.755,
+        "confidence": 0.5794,
+        "ci_low": 0.575,
+        "ci_high": 0.815,
         "contributions": [
           {
             "component": "fit",
@@ -640,30 +778,30 @@
             {
               "dimension": "cog_practical",
               "label": "Practical thinking style",
-              "student": 0.55,
+              "student": 0.5625,
               "required": 0.85,
-              "gap": 0.3
-            },
-            {
-              "dimension": "riasec_r",
-              "label": "Realistic (hands-on, building, tools)",
-              "student": 0.62,
-              "required": 0.8,
-              "gap": 0.18
+              "gap": 0.287
             },
             {
               "dimension": "val_impact",
               "label": "Values social impact",
-              "student": 0.68,
+              "student": 0.6667,
               "required": 0.85,
-              "gap": 0.17
+              "gap": 0.183
+            },
+            {
+              "dimension": "riasec_r",
+              "label": "Realistic (hands-on, building, tools)",
+              "student": 0.625,
+              "required": 0.8,
+              "gap": 0.175
             },
             {
               "dimension": "riasec_s",
               "label": "Social (helping, teaching, caring)",
-              "student": 0.41,
+              "student": 0.4375,
               "required": 0.55,
-              "gap": 0.14
+              "gap": 0.113
             }
           ]
         },
@@ -723,6 +861,49 @@
           "parent_acceptance": 0.6,
           "bridge_score": 0.6627
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.Tech Agricultural Engineering",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNAU UG Admission (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Tech Agricultural Engineering; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNAU UG Admission (marks-based)."
+        },
         "buckets": [
           "best_for_family",
           "hidden_gems"
@@ -748,9 +929,9 @@
           ]
         },
         "final_score": 0.6854,
-        "confidence": 0.78,
-        "ci_low": 0.6254,
-        "ci_high": 0.7454,
+        "confidence": 0.5794,
+        "ci_low": 0.5654,
+        "ci_high": 0.8054,
         "contributions": [
           {
             "component": "fit",
@@ -799,36 +980,36 @@
           "top_matching_dimensions": [
             "riasec_i",
             "apt_numerical",
-            "apt_logical"
+            "cog_analytical"
           ],
           "gaps": [
             {
               "dimension": "riasec_r",
               "label": "Realistic (hands-on, building, tools)",
-              "student": 0.62,
+              "student": 0.625,
               "required": 0.85,
-              "gap": 0.23
+              "gap": 0.225
             },
             {
               "dimension": "cog_practical",
               "label": "Practical thinking style",
-              "student": 0.55,
+              "student": 0.5625,
               "required": 0.75,
-              "gap": 0.2
+              "gap": 0.188
             },
             {
               "dimension": "riasec_e",
               "label": "Enterprising (leading, persuading, starting)",
-              "student": 0.38,
+              "student": 0.375,
               "required": 0.5,
-              "gap": 0.12
+              "gap": 0.125
             },
             {
               "dimension": "val_security",
               "label": "Values job security",
-              "student": 0.52,
+              "student": 0.5,
               "required": 0.6,
-              "gap": 0.08
+              "gap": 0.1
             }
           ]
         },
@@ -896,9 +1077,59 @@
           "parent_acceptance": 0.62,
           "bridge_score": 0.6948
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.E. Robotics & Automation",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Institutional merit fee waiver (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Partner institutions"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNEA Counselling (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 6 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Robotics & Automation; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+        },
         "buckets": [],
         "explanation": [
-          "Strong match on investigative (analysing, researching), numerical aptitude, logical reasoning.",
+          "Strong match on investigative (analysing, researching), numerical aptitude, analytical thinking style.",
           "B.E. Robotics & Automation at PSG College of Technology is loan-dependent for your family (total about Rs 1,784,420).",
           "Demand outlook 72% with automation risk 14%."
         ]
@@ -916,9 +1147,9 @@
           ]
         },
         "final_score": 0.5769,
-        "confidence": 0.78,
-        "ci_low": 0.5169,
-        "ci_high": 0.6369,
+        "confidence": 0.5794,
+        "ci_low": 0.4569,
+        "ci_high": 0.6969,
         "contributions": [
           {
             "component": "fit",
@@ -966,37 +1197,36 @@
           "alpha": 0.5,
           "top_matching_dimensions": [
             "riasec_a",
-            "cog_creative",
             "apt_spatial"
           ],
           "gaps": [
             {
               "dimension": "cog_creative",
               "label": "Creative thinking style",
-              "student": 0.71,
+              "student": 0.6875,
               "required": 0.95,
-              "gap": 0.24
+              "gap": 0.262
             },
             {
               "dimension": "riasec_a",
               "label": "Artistic (creating, designing, expressing)",
-              "student": 0.74,
+              "student": 0.75,
               "required": 0.95,
-              "gap": 0.21
+              "gap": 0.2
             },
             {
               "dimension": "riasec_e",
               "label": "Enterprising (leading, persuading, starting)",
-              "student": 0.38,
+              "student": 0.375,
               "required": 0.55,
-              "gap": 0.17
+              "gap": 0.175
             },
             {
               "dimension": "val_autonomy",
               "label": "Values autonomy",
-              "student": 0.7,
+              "student": 0.6667,
               "required": 0.8,
-              "gap": 0.1
+              "gap": 0.133
             }
           ]
         },
@@ -1064,12 +1294,69 @@
           "parent_acceptance": 0.35,
           "bridge_score": 0.487
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.Des Interaction Design",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Institutional merit fee waiver (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Partner institutions"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: UCEED",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            },
+            {
+              "name": "exam dates: NID Design Aptitude Test",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 7 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Des Interaction Design; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: UCEED; exam dates: NID Design Aptitude Test."
+        },
         "buckets": [
           "best_for_student",
           "stretch_goals"
         ],
         "explanation": [
-          "Strong match on artistic (creating, designing, expressing), creative thinking style, spatial reasoning.",
+          "Strong match on artistic (creating, designing, expressing), spatial reasoning.",
           "B.Des Interaction Design at Private Design School, Bengaluru (illustrative) is infeasible for your family (total about Rs 3,163,290).",
           "Demand outlook 74% with automation risk 30%."
         ]
@@ -1086,9 +1373,9 @@
           ]
         },
         "final_score": 0.5552,
-        "confidence": 0.78,
-        "ci_low": 0.4952,
-        "ci_high": 0.6152,
+        "confidence": 0.5794,
+        "ci_low": 0.4352,
+        "ci_high": 0.6752,
         "contributions": [
           {
             "component": "fit",
@@ -1137,36 +1424,36 @@
           "top_matching_dimensions": [
             "riasec_i",
             "grit",
-            "apt_logical"
+            "cog_analytical"
           ],
           "gaps": [
             {
               "dimension": "riasec_s",
               "label": "Social (helping, teaching, caring)",
-              "student": 0.41,
+              "student": 0.4375,
               "required": 0.8,
-              "gap": 0.39
+              "gap": 0.363
             },
             {
               "dimension": "val_security",
               "label": "Values job security",
-              "student": 0.52,
+              "student": 0.5,
               "required": 0.7,
-              "gap": 0.18
+              "gap": 0.2
             },
             {
               "dimension": "val_impact",
               "label": "Values social impact",
-              "student": 0.68,
+              "student": 0.6667,
               "required": 0.85,
-              "gap": 0.17
+              "gap": 0.183
             },
             {
               "dimension": "grit",
               "label": "Grit / perseverance",
-              "student": 0.73,
+              "student": 0.75,
               "required": 0.85,
-              "gap": 0.12
+              "gap": 0.1
             }
           ]
         },
@@ -1263,11 +1550,54 @@
           "parent_acceptance": 0.95,
           "bridge_score": 0.7203
         },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: MBBS",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: NEET-UG",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: MBBS; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: NEET-UG."
+        },
         "buckets": [
           "stretch_goals"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, logical reasoning.",
+          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
           "MBBS at Private Medical College, Tamil Nadu (illustrative) is infeasible for your family (total about Rs 15,038,654).",
           "Demand outlook 80% with automation risk 8%."
         ]

@@ -14,6 +14,10 @@
       "ml_model": {
         "status": "degraded",
         "detail": "No model configured; cosine fallback active"
+      },
+      "market_feed": {
+        "status": "disabled",
+        "detail": "No live postings feed; market data is the dated snapshot"
       }
     }
   },

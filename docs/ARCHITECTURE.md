@@ -16,7 +16,7 @@ The "MY INPUTS" block was blank, so these defaults are in force until you change
 | Compat routes | `/api/login`, `/api/users`, `/api/users/{id}`, `/api/predict`, `/api/results/{id}` return **bare JSON** (no envelope) on success; errors keep the envelope | Flip in `app/api/compat.py` |
 | Region codes | `IN-<state>-<city>` (e.g. `IN-TN-CBE`) and ISO country for abroad (`DE`, `AE`, `SG`, `US`, `CA`) | Seed data only |
 | Category/caste | **Not collected.** Scholarship rules that depend on category are shown with `passed: null` ("could not evaluate") rather than asking for protected attributes | Optional opt-in field could be added later, eligibility-only |
-| Data | All seeded market/salary/fee/scholarship numbers are `is_estimate=true` until a human verifies them; `source_url` only for URLs we are sure exist | Verify before demo |
+| Data | Every figure carries a verification status; the schema refuses to present an unchecked figure as fact (see `DATA_TRUTH.md`). `source_url` only for URLs confirmed to exist | Run `scripts/data_audit.py --demo --strict` before the demo |
 
 ## 2. Layering
 
@@ -79,7 +79,9 @@ dataquest/
 │   ├── ARCHITECTURE.md            ✅ this file
 │   ├── ER_DIAGRAM.md              ✅ Mermaid ER + indexes
 │   ├── API_CONTRACT.md            ✅ endpoint list + examples
-│   └── DEMO_PLAN.md               ✅ 7-minute script, fail-safes, judge Q&A
+│   ├── DEMO_PLAN.md               ✅ 7-minute script, fail-safes, judge Q&A
+│   ├── DATA_TRUTH.md              ✅ real-time policy, verification, sources, pre-demo audit
+│   └── QUESTIONNAIRE.md           ✅ instruments, scoring, quality flags, pilot plan
 └── backend/
     ├── pyproject.toml             ✅
     ├── .env.example               ✅
@@ -94,15 +96,17 @@ dataquest/
     │   ├── ml/                    ✅ predictor.py (plug-in + fallback), prototypes.py
     │   ├── mocks/                 ✅ world.py (fixture data), builders.py, gateway.py
     │   ├── services/              ✅ gateway.py, principal.py   · Phase 2+: auth, family, assessment, analysis …
-    │   ├── engine/                   Phase 3–6: normalize, vectorize, fit, finance, conflict, market, score, sensitivity, swot, roadmap
+    │   ├── assessment/            ✅ item bank loader/validator, submission scoring service
+    │   ├── engine/                ✅ psychometrics.py, freshness.py · Phase 4–6: fit, finance, conflict, market, score, sensitivity, swot, roadmap
     │   ├── repositories/             Phase 1+
     │   ├── models/                   Phase 1: SQLAlchemy 2.0 models
-    │   └── etl/                      Phase 1/7: CSV/JSON loaders, public-data adapter stub
+    │   └── etl/                   ✅ sources.py (registry), quality.py (gates), adapters/adzuna.py · Phase 1: CSV loaders
     ├── alembic/                      Phase 1
     ├── data/seed/                    Phase 1: careers.csv, regions.csv, pathways.csv, exams.csv, scholarships.csv …
     ├── contracts/                 ✅ openapi.json + fixtures/*.json
-    ├── scripts/                   ✅ export_contracts.py · Phase 1: seed.py · Phase 8: demo.py
-    ├── tests/                     ✅ contract + predictor tests · Phase 4+: engine, hypothesis, golden personas
+    ├── data/instruments/          ✅ the 74-item questionnaire (JSON, reviewable without code)
+    ├── scripts/                   ✅ export_contracts.py, data_audit.py, pilot_analysis.py · Phase 1: seed.py · Phase 8: demo.py
+    ├── tests/                     ✅ contracts, demo, psychometrics (hypothesis), item bank, data truth, feed · Phase 4+: golden personas
     ├── Dockerfile                    Phase 8
     └── docker-compose.yml            Phase 8
 ```

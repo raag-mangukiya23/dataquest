@@ -5,12 +5,12 @@ import pytest
 from app.core.config import get_settings
 from app.core.dimensions import DIMENSIONS, DOMAINS
 from app.ml import predictor
-from app.mocks import world as w
+from app.mocks import persona
 
 
 def test_fallback_is_deterministic_and_complete():
-    a = predictor.predict_domain_fit(w.STUDENT_VECTOR)
-    b = predictor.predict_domain_fit(w.STUDENT_VECTOR)
+    a = predictor.predict_domain_fit(persona.VECTOR)
+    b = predictor.predict_domain_fit(persona.VECTOR)
     assert a == b
     assert a["source"] == "fallback"
     assert set(a["scores"]) == set(DOMAINS)
@@ -59,7 +59,7 @@ def test_external_model_shapes(tmp_path: Path, monkeypatch, shape):
     get_settings.cache_clear()
     predictor._load_model.cache_clear()
     try:
-        out = predictor.predict_domain_fit(w.STUDENT_VECTOR)
+        out = predictor.predict_domain_fit(persona.VECTOR)
         assert out["source"] == "ml" and out["model_version"] == "p3-v1"
         assert out["scores"]["computing_ai"] == 0.9
         assert out["scores"]["engineering"] == 1.0  # clipped
@@ -78,7 +78,7 @@ def test_broken_model_degrades_to_fallback(tmp_path: Path, monkeypatch):
     get_settings.cache_clear()
     predictor._load_model.cache_clear()
     try:
-        assert predictor.predict_domain_fit(w.STUDENT_VECTOR)["source"] == "fallback"
+        assert predictor.predict_domain_fit(persona.VECTOR)["source"] == "fallback"
     finally:
         monkeypatch.delenv("ML_MODEL_PATH")
         get_settings.cache_clear()

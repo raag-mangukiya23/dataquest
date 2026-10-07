@@ -1,0 +1,412 @@
+{
+  "code": "aptitude_v1",
+  "version": "1.0",
+  "name": "Reasoning Sprint",
+  "description": "Sixteen short puzzles. Pick the best answer. Each section gets harder as you go.",
+  "framework": "Original items covering numerical, verbal, logical and spatial reasoning.",
+  "scale": "mcq",
+  "time_limit_sec": 1200,
+  "est_minutes": 15,
+  "items": [
+    {
+      "id": "aptitude.apt_numerical.1",
+      "dimension": "apt_numerical",
+      "prompt": "A school bus travels 36 km in 45 minutes. At the same speed, how far does it travel in 1 hour?",
+      "options": [
+        {
+          "key": "a",
+          "label": "42 km"
+        },
+        {
+          "key": "b",
+          "label": "45 km"
+        },
+        {
+          "key": "c",
+          "label": "54 km"
+        },
+        {
+          "key": "d",
+          "label": "48 km"
+        }
+      ],
+      "answer": "d",
+      "difficulty": "easy"
+    },
+    {
+      "id": "aptitude.apt_numerical.2",
+      "dimension": "apt_numerical",
+      "prompt": "The price of a notebook rises from Rs 40 to Rs 50. By what percentage did the price increase?",
+      "options": [
+        {
+          "key": "a",
+          "label": "10 %"
+        },
+        {
+          "key": "b",
+          "label": "20 %"
+        },
+        {
+          "key": "c",
+          "label": "25 %"
+        },
+        {
+          "key": "d",
+          "label": "50 %"
+        }
+      ],
+      "answer": "c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_numerical.3",
+      "dimension": "apt_numerical",
+      "prompt": "The average of five numbers is 18. Four of them are 12, 15, 20 and 25. What is the fifth number?",
+      "options": [
+        {
+          "key": "a",
+          "label": "16"
+        },
+        {
+          "key": "b",
+          "label": "20"
+        },
+        {
+          "key": "c",
+          "label": "22"
+        },
+        {
+          "key": "d",
+          "label": "18"
+        }
+      ],
+      "answer": "d",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_numerical.4",
+      "dimension": "apt_numerical",
+      "prompt": "A shopkeeper buys a phone cover for Rs 200 and marks it up by 50 %. In a sale he gives 20 % off the marked price. What is his profit?",
+      "options": [
+        {
+          "key": "a",
+          "label": "Rs 30"
+        },
+        {
+          "key": "b",
+          "label": "Rs 40"
+        },
+        {
+          "key": "c",
+          "label": "Rs 60"
+        },
+        {
+          "key": "d",
+          "label": "Rs 100"
+        }
+      ],
+      "answer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "id": "aptitude.apt_verbal.1",
+      "dimension": "apt_verbal",
+      "prompt": "Choose the word closest in meaning to 'abundant'.",
+      "options": [
+        {
+          "key": "a",
+          "label": "plentiful"
+        },
+        {
+          "key": "b",
+          "label": "scarce"
+        },
+        {
+          "key": "c",
+          "label": "ancient"
+        },
+        {
+          "key": "d",
+          "label": "hidden"
+        }
+      ],
+      "answer": "a",
+      "difficulty": "easy"
+    },
+    {
+      "id": "aptitude.apt_verbal.2",
+      "dimension": "apt_verbal",
+      "prompt": "Choose the word most nearly OPPOSITE in meaning to 'transparent'.",
+      "options": [
+        {
+          "key": "a",
+          "label": "opaque"
+        },
+        {
+          "key": "b",
+          "label": "clear"
+        },
+        {
+          "key": "c",
+          "label": "fragile"
+        },
+        {
+          "key": "d",
+          "label": "visible"
+        }
+      ],
+      "answer": "a",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_verbal.3",
+      "dimension": "apt_verbal",
+      "prompt": "Complete the analogy. Doctor is to hospital as teacher is to ...",
+      "options": [
+        {
+          "key": "a",
+          "label": "student"
+        },
+        {
+          "key": "b",
+          "label": "book"
+        },
+        {
+          "key": "c",
+          "label": "school"
+        },
+        {
+          "key": "d",
+          "label": "lesson"
+        }
+      ],
+      "answer": "c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_verbal.4",
+      "dimension": "apt_verbal",
+      "prompt": "'Although the new irrigation system cost more to install, farmers who adopted it used 30 % less water and their yields rose.' Which statement is best supported by this sentence?",
+      "options": [
+        {
+          "key": "a",
+          "label": "The system is cheaper to install than older systems."
+        },
+        {
+          "key": "b",
+          "label": "The system saves water without hurting yields."
+        },
+        {
+          "key": "c",
+          "label": "All farmers have adopted the system."
+        },
+        {
+          "key": "d",
+          "label": "Yields rose because farmers used more fertiliser."
+        }
+      ],
+      "answer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "id": "aptitude.apt_logical.1",
+      "dimension": "apt_logical",
+      "prompt": "What comes next in the series 3, 6, 12, 24, ...?",
+      "options": [
+        {
+          "key": "a",
+          "label": "30"
+        },
+        {
+          "key": "b",
+          "label": "36"
+        },
+        {
+          "key": "c",
+          "label": "42"
+        },
+        {
+          "key": "d",
+          "label": "48"
+        }
+      ],
+      "answer": "d",
+      "difficulty": "easy"
+    },
+    {
+      "id": "aptitude.apt_logical.2",
+      "dimension": "apt_logical",
+      "prompt": "All roses in Meena's garden are red. Some red flowers in her garden are wilting. Which statement must be true?",
+      "options": [
+        {
+          "key": "a",
+          "label": "Some roses are wilting."
+        },
+        {
+          "key": "b",
+          "label": "All wilting flowers are roses."
+        },
+        {
+          "key": "c",
+          "label": "Every rose in her garden is red."
+        },
+        {
+          "key": "d",
+          "label": "No rose is wilting."
+        }
+      ],
+      "answer": "c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_logical.3",
+      "dimension": "apt_logical",
+      "prompt": "In a code, CAT is written as DBU. How is DOG written in the same code?",
+      "options": [
+        {
+          "key": "a",
+          "label": "EPH"
+        },
+        {
+          "key": "b",
+          "label": "DPH"
+        },
+        {
+          "key": "c",
+          "label": "EPG"
+        },
+        {
+          "key": "d",
+          "label": "FQI"
+        }
+      ],
+      "answer": "a",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_logical.4",
+      "dimension": "apt_logical",
+      "prompt": "Asha, Bala, Chitra, Dev and Esha sit in a row facing north. Chitra is at the right end. Dev sits immediately between Bala and Chitra. Asha sits immediately to the left of Bala. Who is at the left end?",
+      "options": [
+        {
+          "key": "a",
+          "label": "Asha"
+        },
+        {
+          "key": "b",
+          "label": "Esha"
+        },
+        {
+          "key": "c",
+          "label": "Bala"
+        },
+        {
+          "key": "d",
+          "label": "Dev"
+        }
+      ],
+      "answer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "id": "aptitude.apt_spatial.1",
+      "dimension": "apt_spatial",
+      "prompt": "You face north, turn 90 degrees clockwise, then turn 180 degrees. Which direction do you face now?",
+      "options": [
+        {
+          "key": "a",
+          "label": "North"
+        },
+        {
+          "key": "b",
+          "label": "South"
+        },
+        {
+          "key": "c",
+          "label": "East"
+        },
+        {
+          "key": "d",
+          "label": "West"
+        }
+      ],
+      "answer": "d",
+      "difficulty": "easy"
+    },
+    {
+      "id": "aptitude.apt_spatial.2",
+      "dimension": "apt_spatial",
+      "prompt": "A cube painted red on every face is cut into 27 equal smaller cubes. How many small cubes have exactly two red faces?",
+      "options": [
+        {
+          "key": "a",
+          "label": "8"
+        },
+        {
+          "key": "b",
+          "label": "12"
+        },
+        {
+          "key": "c",
+          "label": "6"
+        },
+        {
+          "key": "d",
+          "label": "1"
+        }
+      ],
+      "answer": "b",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_spatial.3",
+      "dimension": "apt_spatial",
+      "prompt": "A square sheet of paper is folded in half, then in half again to make a smaller square. One hole is punched through all the layers. How many holes are there when the sheet is unfolded?",
+      "options": [
+        {
+          "key": "a",
+          "label": "2"
+        },
+        {
+          "key": "b",
+          "label": "3"
+        },
+        {
+          "key": "c",
+          "label": "4"
+        },
+        {
+          "key": "d",
+          "label": "8"
+        }
+      ],
+      "answer": "c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "aptitude.apt_spatial.4",
+      "dimension": "apt_spatial",
+      "prompt": "In a mirror, a wall clock appears to show 3:15. What is the actual time?",
+      "options": [
+        {
+          "key": "a",
+          "label": "8:45"
+        },
+        {
+          "key": "b",
+          "label": "9:45"
+        },
+        {
+          "key": "c",
+          "label": "3:45"
+        },
+        {
+          "key": "d",
+          "label": "8:15"
+        }
+      ],
+      "answer": "a",
+      "difficulty": "hard"
+    }
+  ]
+}

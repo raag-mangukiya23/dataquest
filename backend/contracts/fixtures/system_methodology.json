@@ -117,7 +117,10 @@
       "discount_rate": 0.08,
       "roi_horizon_years": 10,
       "ml_alpha": 0.5,
-      "signal_half_life_months": 12,
+      "signal_half_life": "one update cycle of the source",
+      "psychometric_min_coverage": 0.5,
+      "norm_group_min_n": 200,
+      "base_model_confidence": 0.85,
       "sensitivity_perturbation": 0.2,
       "conflict_bands": "aligned<20<=mild<40<=moderate<60<=high"
     },
@@ -166,23 +169,80 @@
         "name": "robustness",
         "expression": "mean Kendall tau(top-k base, top-k perturbed) over +/-20% weights",
         "explanation": "How stable the ranking is to reasonable changes in priorities."
+      },
+      {
+        "name": "likert_trait",
+        "expression": "keyed = 6 - v if reverse else v;  trait = (mean(keyed) - 1) / 4",
+        "explanation": "Agreement items, half of them reverse-worded where it matters, scored to 0-1."
+      },
+      {
+        "name": "aptitude_trait",
+        "expression": "p = sum(w*correct)/sum(w), w = 1/1.5/2 by difficulty;  trait = max(0, (p - 1/4) / (3/4))",
+        "explanation": "Difficulty-weighted accuracy corrected for guessing on four-option questions."
+      },
+      {
+        "name": "trait_reliability",
+        "expression": "coverage * (0.5 + 0.5 * (1 - sd(keyed)/2)), then x0.5 straight-lining, x0.7 speeding, x0.6 contradiction",
+        "explanation": "How much to trust one student's score on one trait; feeds recommendation confidence."
+      },
+      {
+        "name": "freshness",
+        "expression": "fresh if age <= cadence, aging if <= 2*cadence, else stale; weight = 0.5^(age/half_life)",
+        "explanation": "Data is judged against how often its publisher updates it, and older data counts less."
+      },
+      {
+        "name": "recommendation_confidence",
+        "expression": "0.85 * (0.7 + 0.3*checked_share) * freshness_factor * (1 - imputation_penalty)",
+        "explanation": "Confidence falls when the inputs behind a recommendation are unverified, stale or imputed."
       }
     ],
     "data_sources": [
       {
-        "dataset": "careers",
-        "source_name": "PRISM curated estimate",
+        "dataset": "market_signals",
+        "source_name": "Adzuna job-search API (India), Naukri JobSpeak monthly hiring index, EPFO monthly payroll data, Periodic Labour Force Survey (MoSPI), National Career Service portal",
         "source_url": null,
         "as_of": "2026-09-30",
-        "rows": 7,
+        "rows": 35,
         "share_estimated": 1.0
       },
       {
+        "dataset": "salary_bands",
+        "source_name": "Adzuna job-search API (India), Periodic Labour Force Survey (MoSPI)",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "rows": 21,
+        "share_estimated": 1.0
+      },
+      {
+        "dataset": "pathways",
+        "source_name": "Institution and fee-committee fee notices",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "rows": 8,
+        "share_estimated": 1.0
+      },
+      {
+        "dataset": "exams",
+        "source_name": "National Testing Agency",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "rows": 8,
+        "share_estimated": 0.875
+      },
+      {
         "dataset": "scholarships",
+        "source_name": "National Scholarship Portal",
+        "source_url": null,
+        "as_of": "2026-10-07",
+        "rows": 5,
+        "share_estimated": 0.6
+      },
+      {
+        "dataset": "local_opportunities",
         "source_name": "PRISM curated estimate",
         "source_url": null,
         "as_of": "2026-09-30",
-        "rows": 5,
+        "rows": 3,
         "share_estimated": 1.0
       }
     ],
@@ -198,9 +258,10 @@
       "Minors need recorded parental consent before data processing."
     ],
     "limitations": [
-      "Market, salary, cost and scholarship figures are illustrative estimates until verified.",
-      "Signals are periodic snapshots, not real-time feeds.",
-      "Psychometric items are original and not yet norm-referenced on a large Indian sample."
+      "Figures not yet checked against a published source are labelled as estimates wherever they appear; each recommendation reports its checked share in data_trust.",
+      "Recommendations are computed live, but market data is only as current as its source: daily with the Adzuna feed enabled, otherwise the dated snapshot shown in /system/data-status.",
+      "Psychometric items are original and have not yet been validated on a large Indian sample; percentiles stay empty until 200 students in a grade band have taken them.",
+      "Career requirement profiles are expert priors until mapped to O*NET occupational data."
     ]
   },
   "error": null,

@@ -2,747 +2,723 @@
   "success": true,
   "data": [
     {
-      "id": "43621de5-f8d3-5fee-808f-be8271516d7f",
+      "id": "q_4818e1278f95",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_r",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I enjoy fixing or assembling things with my hands.",
+      "prompt": "Repairing a bicycle or a ceiling fan that has stopped working",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 1
     },
     {
-      "id": "a08d7f85-449b-5478-92da-5d0060078c9b",
+      "id": "q_960e6e345a9a",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_r",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i enjoy fixing or assembling things with my hands.",
+      "prompt": "Finding out why a plant grows faster under one kind of light than another",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 2
     },
     {
-      "id": "12593a0a-8f85-55a0-8248-b33ef9ff00dc",
+      "id": "q_f7a7015c5cdf",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_r",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I enjoy fixing or assembling things with my hands.",
+      "prompt": "Designing a poster, logo or comic strip",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 3
     },
     {
-      "id": "72189f24-b89b-5195-9dfd-ee8749bb0b59",
+      "id": "q_a7dfb87a5f4a",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_r",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i enjoy fixing or assembling things with my hands.",
+      "prompt": "Teaching a younger student a topic they find difficult",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 4
     },
     {
-      "id": "45c30fca-4ef3-58d9-84f4-277ee550556f",
+      "id": "q_4c199cdf5093",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_i",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I like figuring out why something works the way it does.",
+      "prompt": "Starting a small business, such as selling snacks or crafts at a school fair",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 5
     },
     {
-      "id": "41d7e97e-4750-558f-b093-5e31523dd379",
+      "id": "q_2645efe99469",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_i",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i like figuring out why something works the way it does.",
+      "prompt": "Keeping accounts for a club or a family shop",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 6
     },
     {
-      "id": "15ffd9aa-cc71-5670-9292-f2f232e6c5cc",
+      "id": "q_8cebee2fd655",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_i",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I like figuring out why something works the way it does.",
+      "prompt": "Building a working model, like a solar car, for a science fair",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 7
     },
     {
-      "id": "b3bd4fdb-bcbe-577e-9eb3-330105eefc3a",
+      "id": "q_165e274ef22e",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_i",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i like figuring out why something works the way it does.",
+      "prompt": "Spending an hour on a tricky maths or logic puzzle",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 8
     },
     {
-      "id": "29692585-6164-5bf3-8b16-432a0b21aa2a",
+      "id": "q_72d9603bc6b3",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_a",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I often come up with original ways to express an idea.",
+      "prompt": "Writing a story, poem or script",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 9
     },
     {
-      "id": "04d7306c-2c39-554a-8423-10598219a18f",
+      "id": "q_0625e81c4f34",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_a",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i often come up with original ways to express an idea.",
+      "prompt": "Volunteering at a health camp or community event",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 10
     },
     {
-      "id": "08d54458-c2d1-5fe4-9323-447ee1d2c40b",
+      "id": "q_ec7ee6f159b7",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_a",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I often come up with original ways to express an idea.",
+      "prompt": "Persuading a group to support your idea",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 11
     },
     {
-      "id": "a08ffdbd-72b6-5736-8553-a21a2a263699",
+      "id": "q_25e6d705c803",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_a",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i often come up with original ways to express an idea.",
+      "prompt": "Organising files, data or a timetable so everything is easy to find",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 12
     },
     {
-      "id": "79833b63-ae90-5ed3-9971-c2fd6b514e7b",
+      "id": "q_c49d3b48fd1f",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_s",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "Explaining something to a friend until they get it feels rewarding.",
+      "prompt": "Working outdoors on a farm, a construction site or in a workshop",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 13
     },
     {
-      "id": "014f853a-f87c-5491-bcce-390305e37fca",
+      "id": "q_def816d0ba7b",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_s",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: explaining something to a friend until they get it feels rewarding.",
+      "prompt": "Reading about how vaccines or rockets actually work",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 14
     },
     {
-      "id": "58ffcdb5-b759-5969-ae13-5b83dea8d3b8",
+      "id": "q_03f4104f1d5f",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_s",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "Explaining something to a friend until they get it feels rewarding.",
+      "prompt": "Composing music, dancing or acting in a play",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 15
     },
     {
-      "id": "ef02fab8-0153-5afe-848c-3f14502b08dd",
+      "id": "q_0daffb15bed2",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_s",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: explaining something to a friend until they get it feels rewarding.",
+      "prompt": "Listening to a friend's problem and helping them think it through",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 16
     },
     {
-      "id": "9fea17e1-7473-535d-9bc7-894c52f6642e",
+      "id": "q_ed6a7cdeb3ea",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_e",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I like convincing a group to try my plan.",
+      "prompt": "Leading a team for a competition or school event",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 17
     },
     {
-      "id": "0053fa36-05e9-54ea-8933-710a91f65069",
+      "id": "q_4f3ba40b43da",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_e",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i like convincing a group to try my plan.",
+      "prompt": "Checking a report carefully for errors",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 18
     },
     {
-      "id": "5d776139-8691-532e-a8bd-dcecfb9860c6",
+      "id": "q_9a2bc9191bd7",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_e",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I like convincing a group to try my plan.",
+      "prompt": "Using tools or machines such as a drill, a soldering iron or a 3D printer",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 19
     },
     {
-      "id": "7dc4f94b-5f29-506c-8075-eba50e951547",
+      "id": "q_8fc4b00fa548",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_e",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i like convincing a group to try my plan.",
+      "prompt": "Running an experiment and analysing the results in a table or graph",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 20
     },
     {
-      "id": "f850f809-c7c8-5767-970c-6c3f95d068e3",
+      "id": "q_583df859116a",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_c",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I feel calm when information is neatly organised.",
+      "prompt": "Photographing or filming something in an original way",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 21
     },
     {
-      "id": "fe4561a1-9ce6-5d77-bd4b-c7fbc01789c3",
+      "id": "q_8eec34f77d44",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_c",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i feel calm when information is neatly organised.",
+      "prompt": "Organising activities for children or elderly people",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 22
     },
     {
-      "id": "0e7b9fce-4b44-5256-a519-a10edcdf1eca",
+      "id": "q_570e360edc89",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_c",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "I feel calm when information is neatly organised.",
+      "prompt": "Negotiating a better price or deal",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": false,
       "order": 23
     },
     {
-      "id": "ed12180f-7d69-57f8-bb08-82e8e24a541b",
+      "id": "q_6a210295fad7",
       "instrument_code": "riasec_v1",
-      "dimension": "riasec_c",
+      "section": "Interest Explorer",
       "type": "likert5",
-      "prompt": "(Reverse) It would bother me if: i feel calm when information is neatly organised.",
+      "prompt": "Following a clear step-by-step procedure to finish a task accurately",
       "options": [
         {
           "key": "1",
-          "label": "Strongly disagree"
+          "label": "Not at all"
         },
         {
           "key": "2",
-          "label": "Disagree"
+          "label": "A little"
         },
         {
           "key": "3",
-          "label": "Neutral"
+          "label": "Somewhat"
         },
         {
           "key": "4",
-          "label": "Agree"
+          "label": "Quite a lot"
         },
         {
           "key": "5",
-          "label": "Strongly agree"
+          "label": "Very much"
         }
       ],
-      "reverse_scored": true,
       "order": 24
     }
   ],

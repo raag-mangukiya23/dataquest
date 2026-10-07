@@ -1,0 +1,84 @@
+{
+  "code": "cognitive_v1",
+  "version": "1.0",
+  "name": "Thinking Style",
+  "description": "How much do you agree with each statement about how you approach problems?",
+  "framework": "Analytical, creative and practical thinking styles (after Sternberg's triarchic view). All items are original.",
+  "scale": "agree5",
+  "time_limit_sec": null,
+  "est_minutes": 2,
+  "items": [
+    {
+      "id": "cognitive.cog_analytical.1",
+      "dimension": "cog_analytical",
+      "prompt": "Before I decide, I list the pros and cons.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_analytical.2",
+      "dimension": "cog_analytical",
+      "prompt": "I like to break a big problem into smaller steps.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_analytical.3",
+      "dimension": "cog_analytical",
+      "prompt": "I check the facts before I believe something I read online.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_analytical.4",
+      "dimension": "cog_analytical",
+      "prompt": "I usually go with my first instinct instead of thinking it through.",
+      "reverse": true
+    },
+    {
+      "id": "cognitive.cog_creative.1",
+      "dimension": "cog_creative",
+      "prompt": "I enjoy finding a new way to do an everyday task.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_creative.2",
+      "dimension": "cog_creative",
+      "prompt": "I often imagine how things could be designed differently.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_creative.3",
+      "dimension": "cog_creative",
+      "prompt": "I like questions that have more than one right answer.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_creative.4",
+      "dimension": "cog_creative",
+      "prompt": "I prefer to stick to methods that have always worked.",
+      "reverse": true
+    },
+    {
+      "id": "cognitive.cog_practical.1",
+      "dimension": "cog_practical",
+      "prompt": "I learn best by trying something with my hands.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_practical.2",
+      "dimension": "cog_practical",
+      "prompt": "I like solutions I can use straight away.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_practical.3",
+      "dimension": "cog_practical",
+      "prompt": "I enjoy fixing real problems at home or at school.",
+      "reverse": false
+    },
+    {
+      "id": "cognitive.cog_practical.4",
+      "dimension": "cog_practical",
+      "prompt": "I prefer discussing ideas to actually putting them into practice.",
+      "reverse": true
+    }
+  ]
+}
