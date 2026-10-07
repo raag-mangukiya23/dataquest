@@ -10,4 +10,5 @@ Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform.
 - `docs/DATA_TRUTH.md`: what "real-time" means here, how every figure is checked, sources, pre-demo audit
 - `docs/QUESTIONNAIRE.md`: the 74-item questionnaire, scoring, quality checks, pilot plan
 - `docs/FRONTEND_STITCH_PROMPTS.md`: Google Stitch prompts for every screen, wired to the API
+- `docs/FRONTEND_SHOWPIECE_PROMPT.md`: Claude Code prompt for the animated frontend (builds on `docs/FRONTEND_CLAUDE_CODE_PROMPT.md`)
 - `backend/contracts/`: frozen OpenAPI spec and example JSON for every endpoint
