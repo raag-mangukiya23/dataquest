@@ -1,7 +1,7 @@
 # PRISM Engine — Backend
 
 FastAPI backend for **PRISM Engine: Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform**
-(DataQuest 3.0). Current status: **Phase 0**: contracts, MOCK_MODE and the ML plug-in point.
+(DataQuest 3.0). Current status: real scoring engine, database, seed catalog and login are done (Phases 0-5).
 
 ## Quick start (MOCK_MODE, no database)
 
@@ -19,6 +19,20 @@ curl -s -X POST localhost:8000/api/v1/analysis/runs -H 'Content-Type: applicatio
      -H 'X-Mock-Role: parent' -d '{"student_id":"132394f2-e097-5d31-8e5b-bfa2fade9b38"}' | jq '.data.recommendations[0]'
 curl -s -X POST localhost:8000/api/predict -H 'Content-Type: application/json' -d '{}' | jq
 ```
+
+## Live mode (database + real engine)
+
+```bash
+python scripts/seed.py --reset   # migrate, load data/seed/*.json, create 5 demo families (~4 s)
+MOCK_MODE=false uvicorn app.main:app --reload
+curl -s -X POST localhost:8000/api/v1/auth/login -H 'Content-Type: application/json' \
+     -d '{"email":"creative_risk_averse.parent@prism.example","password":"Prism@Demo2026"}' | jq .data.access_token
+```
+
+SQLite is the default (`DATABASE_URL=sqlite:///./prism.db`). For PostgreSQL set
+`DATABASE_URL=postgresql+psycopg://...`; Postgres also gets immutability triggers on runs and the
+admin analytics materialized view. Demo logins are listed by `GET /api/v1/demo/personas`.
+Fees are stored on each pathway row per quota (government / management), not on the institution.
 
 ## For teammates
 
@@ -41,7 +55,7 @@ Optional live job-postings feed: set `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` (free 
 ## Tests & lint
 
 ```bash
-pytest                 # contract + predictor tests
+pytest                 # contracts, engine properties, fairness, golden personas, live mode
 ruff check . && ruff format --check .
 python scripts/export_contracts.py   # regenerate contracts/openapi.json + fixtures
 ```

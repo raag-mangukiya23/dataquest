@@ -36,6 +36,7 @@ from app.schemas.catalog import AmountType, Pathway, SalaryBand, Scholarship
 from app.schemas.common import AffordabilityClass
 
 TIER_SALARY_FACTOR = {1: 1.25, 2: 1.0, 3: 0.85, 4: 0.75}
+LEVEL_SALARY_FACTOR = {"Diploma": 0.65, "UG": 1.0, "Professional": 1.0, "Integrated": 1.1, "PG": 1.15}
 MAX_PLAN_CANDIDATES = 14
 
 
@@ -175,11 +176,12 @@ def _classify(own: int, capacity: int, cost: int) -> AffordabilityClass:
     return AffordabilityClass.INFEASIBLE
 
 
-def entry_salary(bands: Sequence[SalaryBand], regions: Sequence[str], tier: int) -> int:
-    """Best entry salary among the regions the student would work in (people move for jobs)."""
+def entry_salary(bands: Sequence[SalaryBand], regions: Sequence[str], tier: int, level: str = "UG") -> int:
+    """Best entry salary among the regions the student would work in (people move for jobs), adjusted for
+    institution tier and qualification level (a diploma starts lower than a degree)."""
     usable = [b for b in bands if b.region_code in regions] or list(bands)
     base = max((b.entry_p50 for b in usable), default=300_000)
-    return int(base * TIER_SALARY_FACTOR.get(tier, 1.0))
+    return int(base * TIER_SALARY_FACTOR.get(tier, 1.0) * LEVEL_SALARY_FACTOR.get(level, 1.0))
 
 
 def readiness(student: StudentInput) -> float:

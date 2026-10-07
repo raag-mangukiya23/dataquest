@@ -1,0 +1,194 @@
+{
+ "_note": "Cost-of-living and salary multipliers are estimates relative to Bengaluru = 1.0 (international salaries converted to rupee terms).",
+ "regions": [
+  {
+   "code": "IN-TN-CHN",
+   "name": "Chennai",
+   "state": "Tamil Nadu",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 0.88,
+   "salary_multiplier": 0.92
+  },
+  {
+   "code": "IN-TN-CBE",
+   "name": "Coimbatore",
+   "state": "Tamil Nadu",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.72,
+   "salary_multiplier": 0.75
+  },
+  {
+   "code": "IN-TN-MDU",
+   "name": "Madurai",
+   "state": "Tamil Nadu",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.65,
+   "salary_multiplier": 0.7
+  },
+  {
+   "code": "IN-TN-DPI",
+   "name": "Dharmapuri",
+   "state": "Tamil Nadu",
+   "country": "India",
+   "type": "rural",
+   "cost_of_living_index": 0.55,
+   "salary_multiplier": 0.6
+  },
+  {
+   "code": "IN-KA-BLR",
+   "name": "Bengaluru",
+   "state": "Karnataka",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 1.0,
+   "salary_multiplier": 1.0
+  },
+  {
+   "code": "IN-TG-HYD",
+   "name": "Hyderabad",
+   "state": "Telangana",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 0.9,
+   "salary_multiplier": 0.95
+  },
+  {
+   "code": "IN-MH-PUN",
+   "name": "Pune",
+   "state": "Maharashtra",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 0.92,
+   "salary_multiplier": 0.92
+  },
+  {
+   "code": "IN-MH-MUM",
+   "name": "Mumbai",
+   "state": "Maharashtra",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 1.15,
+   "salary_multiplier": 1.05
+  },
+  {
+   "code": "IN-DL-NCR",
+   "name": "Delhi NCR",
+   "state": "Delhi",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 1.05,
+   "salary_multiplier": 1.0
+  },
+  {
+   "code": "IN-GJ-AMD",
+   "name": "Ahmedabad",
+   "state": "Gujarat",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.78,
+   "salary_multiplier": 0.8
+  },
+  {
+   "code": "IN-GJ-SRT",
+   "name": "Surat",
+   "state": "Gujarat",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.72,
+   "salary_multiplier": 0.78
+  },
+  {
+   "code": "IN-KL-TVM",
+   "name": "Thiruvananthapuram",
+   "state": "Kerala",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.75,
+   "salary_multiplier": 0.75
+  },
+  {
+   "code": "IN-WB-KOL",
+   "name": "Kolkata",
+   "state": "West Bengal",
+   "country": "India",
+   "type": "metro",
+   "cost_of_living_index": 0.85,
+   "salary_multiplier": 0.85
+  },
+  {
+   "code": "IN-RJ-JAI",
+   "name": "Jaipur",
+   "state": "Rajasthan",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.72,
+   "salary_multiplier": 0.75
+  },
+  {
+   "code": "IN-UP-LKO",
+   "name": "Lucknow",
+   "state": "Uttar Pradesh",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.7,
+   "salary_multiplier": 0.72
+  },
+  {
+   "code": "IN-AP-VSK",
+   "name": "Visakhapatnam",
+   "state": "Andhra Pradesh",
+   "country": "India",
+   "type": "tier2",
+   "cost_of_living_index": 0.7,
+   "salary_multiplier": 0.75
+  },
+  {
+   "code": "DE",
+   "name": "Germany",
+   "state": null,
+   "country": "Germany",
+   "type": "international",
+   "cost_of_living_index": 2.6,
+   "salary_multiplier": 4.0
+  },
+  {
+   "code": "AE",
+   "name": "United Arab Emirates",
+   "state": null,
+   "country": "UAE",
+   "type": "international",
+   "cost_of_living_index": 2.2,
+   "salary_multiplier": 3.0
+  },
+  {
+   "code": "SG",
+   "name": "Singapore",
+   "state": null,
+   "country": "Singapore",
+   "type": "international",
+   "cost_of_living_index": 3.0,
+   "salary_multiplier": 4.0
+  },
+  {
+   "code": "US",
+   "name": "United States",
+   "state": null,
+   "country": "USA",
+   "type": "international",
+   "cost_of_living_index": 3.2,
+   "salary_multiplier": 6.0
+  },
+  {
+   "code": "CA",
+   "name": "Canada",
+   "state": null,
+   "country": "Canada",
+   "type": "international",
+   "cost_of_living_index": 2.8,
+   "salary_multiplier": 4.5
+  }
+ ]
+}

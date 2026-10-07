@@ -2,6 +2,7 @@ import time
 
 from fastapi import APIRouter
 
+from app.api.deps import Gateway
 from app.core.config import get_settings
 from app.core.envelope import Envelope, ok
 from app.core.errors import AppError, ErrorCode
@@ -17,33 +18,36 @@ def _enabled() -> None:
 
 
 @router.get("/personas", response_model=Envelope[list[DemoPersona]])
-def personas():
+def personas(gw=Gateway):
     _enabled()
-    return ok(demo.personas())
+    return ok(demo.personas(None if gw.mock else gw.demo_ids()), mock=gw.mock)
 
 
 @router.get("/walkthrough", response_model=Envelope[DemoWalkthrough])
-def walkthrough():
+def walkthrough(gw=Gateway):
     _enabled()
-    return ok(demo.walkthrough())
+    return ok(demo.walkthrough(None if gw.mock else gw.demo_context()), mock=gw.mock)
 
 
 @router.post("/reset", response_model=Envelope[DemoResetResult])
-def reset():
-    """Restore every demo persona to its seeded state. In MOCK_MODE there is no state, so this is a no-op."""
+def reset(gw=Gateway):
+    """Restore every demo family to its seeded state (live mode); a no-op in MOCK_MODE."""
     _enabled()
     s = get_settings()
     start = time.perf_counter()
-    if not s.mock_mode:
-        raise AppError(ErrorCode.LIVE_MODE_UNAVAILABLE, "Demo reset needs the database (Phase 1)")
-    people = demo.personas()
+    if gw.mock:
+        people = demo.personas()
+        status, n, runs = "noop_mock_mode", len(people), sum(1 for p in people if p.baseline_run_id)
+    else:
+        n = gw.demo_reset()
+        status, runs = "reset", n
     return ok(
         DemoResetResult(
-            status="noop_mock_mode",
-            personas=len(people),
-            runs_precomputed=sum(1 for p in people if p.baseline_run_id),
+            status=status,
+            personas=n,
+            runs_precomputed=runs,
             demo_today=s.demo_today.isoformat() if s.demo_today else None,
             took_ms=round((time.perf_counter() - start) * 1000, 2),
         ),
-        mock=True,
+        mock=gw.mock,
     )

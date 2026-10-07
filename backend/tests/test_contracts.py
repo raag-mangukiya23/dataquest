@@ -203,25 +203,6 @@ def test_compat_aliases(client):
     assert client.get("/api/results/nope").json()["error"]["code"] == "NOT_FOUND"
 
 
-def test_live_mode_degrades_explicitly(monkeypatch):
-    from fastapi.testclient import TestClient
-
-    from app.core.config import get_settings
-    from app.main import create_app
-
-    monkeypatch.setenv("MOCK_MODE", "false")
-    get_settings.cache_clear()
-    try:
-        c = TestClient(create_app())
-        r = c.get("/api/v1/careers")
-        assert r.status_code == 501
-        assert r.json()["error"]["code"] == "LIVE_MODE_UNAVAILABLE"
-        assert c.get("/api/v1/system/health").json()["data"]["mock_mode"] is False
-    finally:
-        monkeypatch.setenv("MOCK_MODE", "true")
-        get_settings.cache_clear()
-
-
 def test_scholarship_plans_respect_eligibility_and_stacking():
     from app.mocks import builders as b
 

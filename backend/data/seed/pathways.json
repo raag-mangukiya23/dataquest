@@ -1,0 +1,2302 @@
+{
+ "_note": "Fees are typical estimates per year for the 2026-27 academic year; selectivity (0 = open, 1 = extremely competitive) is an estimate. Verify against official fee notices before relying on them.",
+ "pathways": [
+  {
+   "key": "iit-cse",
+   "course": "B.Tech Computer Science",
+   "degree_level": "UG",
+   "institution": "iit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 220000,
+   "hostel_per_year": 30000,
+   "living_per_year": 40000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_ADV",
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "software-engineer",
+    "data-scientist",
+    "ai-ml-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.98
+  },
+  {
+   "key": "nit-cse",
+   "course": "B.Tech Computer Science",
+   "degree_level": "UG",
+   "institution": "nit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 35000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "software-engineer",
+    "data-scientist",
+    "cybersecurity-analyst",
+    "cloud-devops-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.92
+  },
+  {
+   "key": "gct-cse-ds",
+   "course": "B.Tech Computer Science (Data Science)",
+   "degree_level": "UG",
+   "institution": "govt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 55000,
+   "hostel_per_year": 40000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "data-scientist",
+    "software-engineer",
+    "ai-ml-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.75
+  },
+  {
+   "key": "govt-cse",
+   "course": "B.E. Computer Science",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "software-engineer",
+    "cybersecurity-analyst",
+    "cloud-devops-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.7
+  },
+  {
+   "key": "pvt-cse-cbe",
+   "course": "B.E. Computer Science",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "software-engineer",
+    "data-scientist",
+    "cloud-devops-engineer",
+    "cybersecurity-analyst"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "pvt-aids-cbe",
+   "course": "B.Tech AI & Data Science",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "management",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 80000,
+   "living_per_year": 36000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "ai-ml-engineer",
+    "data-scientist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "management_quota",
+   "selectivity": 0.3
+  },
+  {
+   "key": "pvt-cse-tier3",
+   "course": "B.E. Computer Science",
+   "degree_level": "UG",
+   "institution": "pvt-engg-tier3",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 60000,
+   "hostel_per_year": 45000,
+   "living_per_year": 24000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "software-engineer",
+    "cloud-devops-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.3
+  },
+  {
+   "key": "pvtuniv-cse-blr",
+   "course": "B.Tech Computer Science",
+   "degree_level": "UG",
+   "institution": "pvt-univ-blr",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 350000,
+   "hostel_per_year": 120000,
+   "living_per_year": 72000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "COMEDK"
+   ],
+   "careers": [
+    "software-engineer",
+    "ai-ml-engineer",
+    "cybersecurity-analyst"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.45
+  },
+  {
+   "key": "deemed-cse",
+   "course": "B.Tech Computer Science",
+   "degree_level": "UG",
+   "institution": "deemed-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 300000,
+   "hostel_per_year": 110000,
+   "living_per_year": 60000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "VITEEE",
+    "SRMJEEE"
+   ],
+   "careers": [
+    "software-engineer",
+    "data-scientist",
+    "cybersecurity-analyst",
+    "ai-ml-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.5
+  },
+  {
+   "key": "bca-govt",
+   "course": "BCA",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "software-engineer",
+    "cloud-devops-engineer",
+    "cybersecurity-analyst"
+   ],
+   "course_area": "computing",
+   "admission_route": "merit",
+   "selectivity": 0.4
+  },
+  {
+   "key": "bsc-stats",
+   "course": "B.Sc Statistics",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 12000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "data-scientist",
+    "actuary",
+    "climate-data-analyst"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "merit",
+   "selectivity": 0.45
+  },
+  {
+   "key": "poly-cse",
+   "course": "Diploma in Computer Engineering",
+   "degree_level": "Diploma",
+   "institution": "polytechnic",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 5000,
+   "hostel_per_year": 20000,
+   "living_per_year": 24000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "software-engineer",
+    "cloud-devops-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "merit",
+   "selectivity": 0.3
+  },
+  {
+   "key": "iit-ee",
+   "course": "B.Tech Electrical Engineering",
+   "degree_level": "UG",
+   "institution": "iit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 220000,
+   "hostel_per_year": 30000,
+   "living_per_year": 40000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_ADV",
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "electrical-engineer",
+    "vlsi-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.96
+  },
+  {
+   "key": "nit-ece",
+   "course": "B.Tech Electronics & Communication",
+   "degree_level": "UG",
+   "institution": "nit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 35000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "vlsi-engineer",
+    "robotics-engineer",
+    "electrical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.9
+  },
+  {
+   "key": "govt-ece",
+   "course": "B.E. Electronics & Communication",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "vlsi-engineer",
+    "electrical-engineer",
+    "robotics-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.68
+  },
+  {
+   "key": "govt-eee",
+   "course": "B.E. Electrical & Electronics",
+   "degree_level": "UG",
+   "institution": "govt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 55000,
+   "hostel_per_year": 40000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "electrical-engineer",
+    "ev-engineer",
+    "solar-energy-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.66
+  },
+  {
+   "key": "pvt-eee-cbe",
+   "course": "B.E. Electrical & Electronics",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "electrical-engineer",
+    "solar-energy-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.45
+  },
+  {
+   "key": "pvt-robotics-cbe",
+   "course": "B.E. Robotics & Automation",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "robotics-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "pvt-robotics-mgmt",
+   "course": "B.E. Robotics & Automation",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "management",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 90000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "robotics-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "management_quota",
+   "selectivity": 0.3
+  },
+  {
+   "key": "deemed-mechatronics",
+   "course": "B.Tech Mechatronics",
+   "degree_level": "UG",
+   "institution": "deemed-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 280000,
+   "hostel_per_year": 110000,
+   "living_per_year": 60000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "VITEEE",
+    "SRMJEEE"
+   ],
+   "careers": [
+    "robotics-engineer",
+    "automobile-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.45
+  },
+  {
+   "key": "govt-mech",
+   "course": "B.E. Mechanical Engineering",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "mechanical-engineer",
+    "automobile-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "pvt-mech-cbe",
+   "course": "B.E. Mechanical Engineering",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "mechanical-engineer",
+    "automobile-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.35
+  },
+  {
+   "key": "poly-mech",
+   "course": "Diploma in Mechanical Engineering",
+   "degree_level": "Diploma",
+   "institution": "polytechnic",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 5000,
+   "hostel_per_year": 20000,
+   "living_per_year": 24000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "mechanical-engineer",
+    "automobile-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "merit",
+   "selectivity": 0.25
+  },
+  {
+   "key": "govt-civil",
+   "course": "B.E. Civil Engineering",
+   "degree_level": "UG",
+   "institution": "govt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 55000,
+   "hostel_per_year": 40000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "civil-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "pvt-civil",
+   "course": "B.E. Civil Engineering",
+   "degree_level": "UG",
+   "institution": "pvt-engg-tier3",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 60000,
+   "hostel_per_year": 45000,
+   "living_per_year": 24000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "civil-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.25
+  },
+  {
+   "key": "nit-civil",
+   "course": "B.Tech Civil Engineering",
+   "degree_level": "UG",
+   "institution": "nit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 35000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "civil-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.85
+  },
+  {
+   "key": "poly-civil",
+   "course": "Diploma in Civil Engineering",
+   "degree_level": "Diploma",
+   "institution": "polytechnic",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 5000,
+   "hostel_per_year": 20000,
+   "living_per_year": 24000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "civil-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "merit",
+   "selectivity": 0.25
+  },
+  {
+   "key": "govt-chem",
+   "course": "B.Tech Chemical Engineering",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "chemical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "nit-chem",
+   "course": "B.Tech Chemical Engineering",
+   "degree_level": "UG",
+   "institution": "nit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 35000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "chemical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.82
+  },
+  {
+   "key": "govt-textile",
+   "course": "B.Tech Textile Technology",
+   "degree_level": "UG",
+   "institution": "textile-govt",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "textile-technologist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.45
+  },
+  {
+   "key": "pvt-textile",
+   "course": "B.Tech Textile Technology",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "textile-technologist",
+    "fashion-designer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.3
+  },
+  {
+   "key": "pvt-auto",
+   "course": "B.E. Automobile Engineering",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "automobile-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.35
+  },
+  {
+   "key": "deemed-ev",
+   "course": "B.Tech EV Technology",
+   "degree_level": "UG",
+   "institution": "deemed-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 280000,
+   "hostel_per_year": 110000,
+   "living_per_year": 60000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "VITEEE",
+    "SRMJEEE"
+   ],
+   "careers": [
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.4
+  },
+  {
+   "key": "poly-eee-solar",
+   "course": "Diploma in Electrical Engineering + solar certification",
+   "degree_level": "Diploma",
+   "institution": "polytechnic",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 5000,
+   "hostel_per_year": 20000,
+   "living_per_year": 24000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "solar-energy-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "merit",
+   "selectivity": 0.25
+  },
+  {
+   "key": "iit-aero",
+   "course": "B.Tech Aerospace Engineering",
+   "degree_level": "UG",
+   "institution": "iit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 220000,
+   "hostel_per_year": 30000,
+   "living_per_year": 40000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_ADV",
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "aerospace-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.97
+  },
+  {
+   "key": "deemed-aero",
+   "course": "B.Tech Aeronautical Engineering",
+   "degree_level": "UG",
+   "institution": "deemed-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 300000,
+   "hostel_per_year": 110000,
+   "living_per_year": 60000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "VITEEE",
+    "SRMJEEE"
+   ],
+   "careers": [
+    "aerospace-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.45
+  },
+  {
+   "key": "govt-aero",
+   "course": "B.E. Aeronautical Engineering",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "aerospace-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.8
+  },
+  {
+   "key": "germany-mech",
+   "course": "B.Sc Mechanical Engineering (Germany, tuition-free public university)",
+   "degree_level": "UG",
+   "institution": "tu-munich-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 30000,
+   "hostel_per_year": 0,
+   "living_per_year": 900000,
+   "misc_per_year": 60000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "mechanical-engineer",
+    "automobile-engineer",
+    "ev-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.8
+  },
+  {
+   "key": "pvt-cse-mgmt",
+   "course": "B.E. Computer Science (management quota)",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "management",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 80000,
+   "living_per_year": 36000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "software-engineer",
+    "data-scientist",
+    "cybersecurity-analyst"
+   ],
+   "course_area": "engineering",
+   "admission_route": "management_quota",
+   "selectivity": 0.25
+  },
+  {
+   "key": "mbbs-abroad",
+   "course": "MBBS abroad (NMC-recognised university; FMGE / NExT licensing exam on return)",
+   "degree_level": "UG",
+   "institution": "abroad-medical",
+   "duration_years": 6,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 400000,
+   "hostel_per_year": 0,
+   "living_per_year": 300000,
+   "misc_per_year": 50000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "doctor-mbbs"
+   ],
+   "course_area": "medicine",
+   "admission_route": "institutional",
+   "selectivity": 0.45
+  },
+  {
+   "key": "govt-mbbs",
+   "course": "MBBS (government quota)",
+   "degree_level": "UG",
+   "institution": "govt-med",
+   "duration_years": 6,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 20000,
+   "hostel_per_year": 30000,
+   "living_per_year": 40000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "doctor-mbbs"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.97
+  },
+  {
+   "key": "pvt-mbbs-govtquota",
+   "course": "MBBS (private college, government quota)",
+   "degree_level": "UG",
+   "institution": "pvt-med",
+   "duration_years": 6,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 450000,
+   "hostel_per_year": 150000,
+   "living_per_year": 60000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "doctor-mbbs"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.85
+  },
+  {
+   "key": "pvt-mbbs",
+   "course": "MBBS (management quota)",
+   "degree_level": "UG",
+   "institution": "pvt-med",
+   "duration_years": 6,
+   "quota": "management",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 1800000,
+   "hostel_per_year": 150000,
+   "living_per_year": 60000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "doctor-mbbs"
+   ],
+   "course_area": "medicine",
+   "admission_route": "management_quota",
+   "selectivity": 0.4
+  },
+  {
+   "key": "psg-bme",
+   "course": "B.E. Biomedical Engineering",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 70000,
+   "living_per_year": 30000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "biomedical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.65
+  },
+  {
+   "key": "govt-bme",
+   "course": "B.E. Biomedical Engineering",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "biomedical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.8
+  },
+  {
+   "key": "deemed-bme",
+   "course": "B.Tech Biomedical Engineering",
+   "degree_level": "UG",
+   "institution": "deemed-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 110000,
+   "living_per_year": 60000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "VITEEE",
+    "SRMJEEE"
+   ],
+   "careers": [
+    "biomedical-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "institutional",
+   "selectivity": 0.4
+  },
+  {
+   "key": "iiser-bsms",
+   "course": "BS-MS Biological Sciences",
+   "degree_level": "Integrated",
+   "institution": "iiser-tvm",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 60000,
+   "hostel_per_year": 30000,
+   "living_per_year": 36000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "IISER_IAT"
+   ],
+   "careers": [
+    "computational-biologist",
+    "research-scientist",
+    "biotechnologist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "national_exam",
+   "selectivity": 0.85
+  },
+  {
+   "key": "central-msc-int",
+   "course": "Integrated M.Sc Life Sciences",
+   "degree_level": "Integrated",
+   "institution": "central-univ",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 30000,
+   "hostel_per_year": 25000,
+   "living_per_year": 36000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "computational-biologist",
+    "research-scientist",
+    "biotechnologist",
+    "environmental-scientist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "national_exam",
+   "selectivity": 0.75
+  },
+  {
+   "key": "govt-biotech",
+   "course": "B.Tech Biotechnology",
+   "degree_level": "UG",
+   "institution": "govt-engg-typical",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "biotechnologist",
+    "computational-biologist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.7
+  },
+  {
+   "key": "pvt-biotech",
+   "course": "B.Tech Biotechnology",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "biotechnologist",
+    "computational-biologist",
+    "food-technologist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.35
+  },
+  {
+   "key": "bsc-biotech-govt",
+   "course": "B.Sc Biotechnology",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "biotechnologist",
+    "research-scientist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "merit",
+   "selectivity": 0.4
+  },
+  {
+   "key": "govt-pharm",
+   "course": "B.Pharm",
+   "degree_level": "UG",
+   "institution": "nursing-govt",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 20000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "pharmacist"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.7
+  },
+  {
+   "key": "pvt-pharm",
+   "course": "B.Pharm",
+   "degree_level": "UG",
+   "institution": "pharmacy-pvt",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 80000,
+   "hostel_per_year": 50000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "pharmacist"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.3
+  },
+  {
+   "key": "govt-nursing",
+   "course": "B.Sc Nursing",
+   "degree_level": "UG",
+   "institution": "nursing-govt",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "nurse"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.75
+  },
+  {
+   "key": "pvt-nursing",
+   "course": "B.Sc Nursing",
+   "degree_level": "UG",
+   "institution": "nursing-pvt",
+   "duration_years": 4,
+   "quota": "management",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 90000,
+   "hostel_per_year": 50000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "nurse"
+   ],
+   "course_area": "medicine",
+   "admission_route": "management_quota",
+   "selectivity": 0.25
+  },
+  {
+   "key": "pvt-bpt",
+   "course": "Bachelor of Physiotherapy",
+   "degree_level": "UG",
+   "institution": "physio-pvt",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 100000,
+   "hostel_per_year": 60000,
+   "living_per_year": 36000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "physiotherapist"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.35
+  },
+  {
+   "key": "govt-bpt",
+   "course": "Bachelor of Physiotherapy",
+   "degree_level": "UG",
+   "institution": "govt-med",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 25000,
+   "hostel_per_year": 30000,
+   "living_per_year": 36000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "NEET_UG"
+   ],
+   "careers": [
+    "physiotherapist"
+   ],
+   "course_area": "medicine",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.8
+  },
+  {
+   "key": "pvt-bdes",
+   "course": "B.Des Interaction Design",
+   "degree_level": "UG",
+   "institution": "pvt-design",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 450000,
+   "hostel_per_year": 150000,
+   "living_per_year": 72000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "UCEED",
+    "NID_DAT"
+   ],
+   "careers": [
+    "ux-designer",
+    "industrial-designer"
+   ],
+   "course_area": "design",
+   "admission_route": "institutional",
+   "selectivity": 0.4
+  },
+  {
+   "key": "nid-bdes",
+   "course": "B.Des (Communication / Industrial)",
+   "degree_level": "UG",
+   "institution": "nid-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 350000,
+   "hostel_per_year": 100000,
+   "living_per_year": 60000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [
+    "NID_DAT"
+   ],
+   "careers": [
+    "ux-designer",
+    "industrial-designer",
+    "animator-vfx-artist"
+   ],
+   "course_area": "design",
+   "admission_route": "national_exam",
+   "selectivity": 0.92
+  },
+  {
+   "key": "iit-bdes",
+   "course": "B.Des (UCEED)",
+   "degree_level": "UG",
+   "institution": "iit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 220000,
+   "hostel_per_year": 30000,
+   "living_per_year": 40000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "UCEED"
+   ],
+   "careers": [
+    "ux-designer",
+    "industrial-designer"
+   ],
+   "course_area": "design",
+   "admission_route": "national_exam",
+   "selectivity": 0.95
+  },
+  {
+   "key": "nift-fashion",
+   "course": "B.Des Fashion Design",
+   "degree_level": "UG",
+   "institution": "nift-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 350000,
+   "hostel_per_year": 100000,
+   "living_per_year": 60000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [
+    "NIFT"
+   ],
+   "careers": [
+    "fashion-designer"
+   ],
+   "course_area": "design",
+   "admission_route": "national_exam",
+   "selectivity": 0.85
+  },
+  {
+   "key": "pvt-fashion",
+   "course": "B.Sc Fashion Design",
+   "degree_level": "UG",
+   "institution": "pvt-design",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 120000,
+   "living_per_year": 72000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "fashion-designer"
+   ],
+   "course_area": "design",
+   "admission_route": "institutional",
+   "selectivity": 0.3
+  },
+  {
+   "key": "govt-barch",
+   "course": "B.Arch",
+   "degree_level": "UG",
+   "institution": "arch-govt",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "NATA",
+    "JEE_MAIN_P2"
+   ],
+   "careers": [
+    "architect"
+   ],
+   "course_area": "design",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.8
+  },
+  {
+   "key": "pvt-barch",
+   "course": "B.Arch",
+   "degree_level": "UG",
+   "institution": "arch-pvt",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "NATA"
+   ],
+   "careers": [
+    "architect",
+    "industrial-designer"
+   ],
+   "course_area": "design",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.4
+  },
+  {
+   "key": "pvt-animation",
+   "course": "B.Sc Animation & VFX",
+   "degree_level": "UG",
+   "institution": "animation-pvt",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 200000,
+   "hostel_per_year": 90000,
+   "living_per_year": 60000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "animator-vfx-artist"
+   ],
+   "course_area": "design",
+   "admission_route": "institutional",
+   "selectivity": 0.25
+  },
+  {
+   "key": "bsc-viscom-govt",
+   "course": "B.Sc Visual Communication",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "animator-vfx-artist",
+    "ux-designer",
+    "digital-marketer"
+   ],
+   "course_area": "design",
+   "admission_route": "merit",
+   "selectivity": 0.45
+  },
+  {
+   "key": "ca-route",
+   "course": "CA (Foundation, Intermediate, Final) with B.Com",
+   "degree_level": "Professional",
+   "institution": "ca-icai",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 60000,
+   "hostel_per_year": 0,
+   "living_per_year": 30000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "CA_FOUNDATION"
+   ],
+   "careers": [
+    "chartered-accountant"
+   ],
+   "course_area": "commerce",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "bcom-govt",
+   "course": "B.Com",
+   "degree_level": "UG",
+   "institution": "commerce-govt",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 10000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "chartered-accountant",
+    "financial-analyst",
+    "marketing-manager"
+   ],
+   "course_area": "commerce",
+   "admission_route": "merit",
+   "selectivity": 0.4
+  },
+  {
+   "key": "bba-pvt",
+   "course": "BBA",
+   "degree_level": "UG",
+   "institution": "pvt-univ-pune",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 100000,
+   "living_per_year": 72000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "marketing-manager",
+    "entrepreneur",
+    "financial-analyst",
+    "travel-tourism-manager"
+   ],
+   "course_area": "commerce",
+   "admission_route": "institutional",
+   "selectivity": 0.3
+  },
+  {
+   "key": "ipm-mgmt",
+   "course": "Integrated Programme in Management (BBA+MBA)",
+   "degree_level": "Integrated",
+   "institution": "iim-ipm-type",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 400000,
+   "hostel_per_year": 100000,
+   "living_per_year": 60000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "IPMAT"
+   ],
+   "careers": [
+    "marketing-manager",
+    "financial-analyst",
+    "entrepreneur"
+   ],
+   "course_area": "commerce",
+   "admission_route": "national_exam",
+   "selectivity": 0.9
+  },
+  {
+   "key": "bsc-maths-actuary",
+   "course": "B.Sc Mathematics + actuarial exams",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 12000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 25000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "actuary",
+    "financial-analyst",
+    "data-scientist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "merit",
+   "selectivity": 0.45
+  },
+  {
+   "key": "ba-econ-central",
+   "course": "B.A Economics (Hons)",
+   "degree_level": "UG",
+   "institution": "central-univ",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 25000,
+   "living_per_year": 36000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "policy-analyst",
+    "financial-analyst",
+    "civil-servant"
+   ],
+   "course_area": "humanities",
+   "admission_route": "national_exam",
+   "selectivity": 0.8
+  },
+  {
+   "key": "nlu-ballb",
+   "course": "B.A. LL.B (Hons)",
+   "degree_level": "Integrated",
+   "institution": "nlu-type",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 250000,
+   "hostel_per_year": 80000,
+   "living_per_year": 60000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "CLAT"
+   ],
+   "careers": [
+    "lawyer",
+    "policy-analyst",
+    "civil-servant"
+   ],
+   "course_area": "law",
+   "admission_route": "national_exam",
+   "selectivity": 0.92
+  },
+  {
+   "key": "pvt-ballb",
+   "course": "B.A. LL.B",
+   "degree_level": "Integrated",
+   "institution": "pvt-law",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 200000,
+   "hostel_per_year": 90000,
+   "living_per_year": 60000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "CLAT"
+   ],
+   "careers": [
+    "lawyer"
+   ],
+   "course_area": "law",
+   "admission_route": "institutional",
+   "selectivity": 0.4
+  },
+  {
+   "key": "ba-polsci-govt",
+   "course": "B.A Political Science / History",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 8000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "civil-servant",
+    "policy-analyst",
+    "journalist",
+    "school-teacher"
+   ],
+   "course_area": "humanities",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "bsc-entrepreneur-incubator",
+   "course": "B.Sc / B.Tech + campus incubator (any discipline)",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "entrepreneur"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.4
+  },
+  {
+   "key": "bsc-bed-integrated",
+   "course": "Integrated B.Sc B.Ed",
+   "degree_level": "Integrated",
+   "institution": "teacher-ed",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 20000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "school-teacher"
+   ],
+   "course_area": "education",
+   "admission_route": "merit",
+   "selectivity": 0.45
+  },
+  {
+   "key": "ba-bed",
+   "course": "B.A + B.Ed",
+   "degree_level": "UG",
+   "institution": "teacher-ed",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 15000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "school-teacher",
+    "special-educator"
+   ],
+   "course_area": "education",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "bed-special",
+   "course": "B.Ed Special Education (after any degree)",
+   "degree_level": "UG",
+   "institution": "teacher-ed",
+   "duration_years": 5,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 20000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "special-educator"
+   ],
+   "course_area": "education",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "bs-research-nest",
+   "course": "Integrated M.Sc (NISER / CEBS)",
+   "degree_level": "Integrated",
+   "institution": "central-univ",
+   "duration_years": 5,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 30000,
+   "hostel_per_year": 25000,
+   "living_per_year": 36000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "NEST"
+   ],
+   "careers": [
+    "research-scientist",
+    "computational-biologist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "national_exam",
+   "selectivity": 0.9
+  },
+  {
+   "key": "bsc-physics-govt",
+   "course": "B.Sc Physics / Chemistry",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 12000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "research-scientist",
+    "school-teacher",
+    "environmental-scientist"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "merit",
+   "selectivity": 0.4
+  },
+  {
+   "key": "bjmc-pvt",
+   "course": "B.A Journalism & Mass Communication",
+   "degree_level": "UG",
+   "institution": "media-pvt",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 200000,
+   "hostel_per_year": 90000,
+   "living_per_year": 60000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "journalist",
+    "digital-marketer"
+   ],
+   "course_area": "humanities",
+   "admission_route": "institutional",
+   "selectivity": 0.35
+  },
+  {
+   "key": "ba-english-govt",
+   "course": "B.A English + digital media certificate",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 8000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "journalist",
+    "digital-marketer",
+    "school-teacher"
+   ],
+   "course_area": "humanities",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "tnau-agri",
+   "course": "B.Tech Agricultural Engineering",
+   "degree_level": "UG",
+   "institution": "agri-univ",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNAU_COUNSELLING"
+   ],
+   "careers": [
+    "agri-drone-engineer",
+    "agronomist"
+   ],
+   "course_area": "agriculture",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.55
+  },
+  {
+   "key": "tnau-bsc-agri",
+   "course": "B.Sc (Hons) Agriculture",
+   "degree_level": "UG",
+   "institution": "agri-univ",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 50000,
+   "hostel_per_year": 35000,
+   "living_per_year": 30000,
+   "misc_per_year": 10000,
+   "entrance_exam_codes": [
+    "TNAU_COUNSELLING"
+   ],
+   "careers": [
+    "agronomist",
+    "agri-drone-engineer",
+    "food-technologist"
+   ],
+   "course_area": "agriculture",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.65
+  },
+  {
+   "key": "icar-bsc-agri",
+   "course": "B.Sc Agriculture (ICAR seat via CUET)",
+   "degree_level": "UG",
+   "institution": "central-univ",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 40000,
+   "hostel_per_year": 30000,
+   "living_per_year": 36000,
+   "misc_per_year": 8000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "agronomist",
+    "environmental-scientist"
+   ],
+   "course_area": "agriculture",
+   "admission_route": "national_exam",
+   "selectivity": 0.75
+  },
+  {
+   "key": "pvt-bsc-agri",
+   "course": "B.Sc Agriculture",
+   "degree_level": "UG",
+   "institution": "pvt-univ-blr",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 80000,
+   "living_per_year": 60000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "agronomist",
+    "agri-drone-engineer"
+   ],
+   "course_area": "agriculture",
+   "admission_route": "institutional",
+   "selectivity": 0.25
+  },
+  {
+   "key": "bsc-env-govt",
+   "course": "B.Sc Environmental Science",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 3,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 12000,
+   "hostel_per_year": 30000,
+   "living_per_year": 30000,
+   "misc_per_year": 5000,
+   "entrance_exam_codes": [
+    "CUET_UG"
+   ],
+   "careers": [
+    "environmental-scientist",
+    "climate-data-analyst"
+   ],
+   "course_area": "basic_sciences",
+   "admission_route": "merit",
+   "selectivity": 0.35
+  },
+  {
+   "key": "btech-env-pvt",
+   "course": "B.Tech Environmental Engineering",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "environmental-scientist",
+    "climate-data-analyst",
+    "civil-engineer"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.3
+  },
+  {
+   "key": "food-tech-govt",
+   "course": "B.Tech Food Technology",
+   "degree_level": "UG",
+   "institution": "food-tech-govt",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 100000,
+   "hostel_per_year": 50000,
+   "living_per_year": 36000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [
+    "JEE_MAIN"
+   ],
+   "careers": [
+    "food-technologist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "national_exam",
+   "selectivity": 0.8
+  },
+  {
+   "key": "pvt-food-tech",
+   "course": "B.Tech Food Technology",
+   "degree_level": "UG",
+   "institution": "pvt-engg-cbe",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 87000,
+   "hostel_per_year": 70000,
+   "living_per_year": 36000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "TNEA"
+   ],
+   "careers": [
+    "food-technologist"
+   ],
+   "course_area": "engineering",
+   "admission_route": "single_window_counselling",
+   "selectivity": 0.3
+  },
+  {
+   "key": "cpl-route",
+   "course": "Commercial Pilot Licence (CPL) training",
+   "degree_level": "Professional",
+   "institution": "flying-school",
+   "duration_years": 2,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 3500000,
+   "hostel_per_year": 200000,
+   "living_per_year": 120000,
+   "misc_per_year": 200000,
+   "entrance_exam_codes": [
+    "DGCA_CPL"
+   ],
+   "careers": [
+    "commercial-pilot"
+   ],
+   "course_area": "aviation",
+   "admission_route": "institutional",
+   "selectivity": 0.55
+  },
+  {
+   "key": "bsc-aviation-cpl",
+   "course": "B.Sc Aviation + CPL",
+   "degree_level": "UG",
+   "institution": "flying-school",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 2500000,
+   "hostel_per_year": 200000,
+   "living_per_year": 120000,
+   "misc_per_year": 150000,
+   "entrance_exam_codes": [
+    "DGCA_CPL"
+   ],
+   "careers": [
+    "commercial-pilot"
+   ],
+   "course_area": "aviation",
+   "admission_route": "institutional",
+   "selectivity": 0.5
+  },
+  {
+   "key": "nautical-imu",
+   "course": "B.Sc Nautical Science",
+   "degree_level": "UG",
+   "institution": "maritime",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 350000,
+   "hostel_per_year": 150000,
+   "living_per_year": 60000,
+   "misc_per_year": 50000,
+   "entrance_exam_codes": [
+    "IMU_CET"
+   ],
+   "careers": [
+    "merchant-navy-officer"
+   ],
+   "course_area": "maritime",
+   "admission_route": "national_exam",
+   "selectivity": 0.6
+  },
+  {
+   "key": "marine-engg",
+   "course": "B.Tech Marine Engineering",
+   "degree_level": "UG",
+   "institution": "maritime",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 300000,
+   "hostel_per_year": 150000,
+   "living_per_year": 60000,
+   "misc_per_year": 50000,
+   "entrance_exam_codes": [
+    "IMU_CET"
+   ],
+   "careers": [
+    "merchant-navy-officer"
+   ],
+   "course_area": "maritime",
+   "admission_route": "national_exam",
+   "selectivity": 0.6
+  },
+  {
+   "key": "ihm-bsc",
+   "course": "B.Sc Hospitality & Hotel Administration",
+   "degree_level": "UG",
+   "institution": "ihm-type",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 150000,
+   "hostel_per_year": 90000,
+   "living_per_year": 60000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [
+    "NCHM_JEE"
+   ],
+   "careers": [
+    "hotel-manager",
+    "chef",
+    "travel-tourism-manager"
+   ],
+   "course_area": "hospitality",
+   "admission_route": "national_exam",
+   "selectivity": 0.55
+  },
+  {
+   "key": "pvt-hotel-mgmt",
+   "course": "Bachelor of Hotel Management",
+   "degree_level": "UG",
+   "institution": "pvt-univ-blr",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 220000,
+   "hostel_per_year": 100000,
+   "living_per_year": 72000,
+   "misc_per_year": 20000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "hotel-manager",
+    "travel-tourism-manager"
+   ],
+   "course_area": "hospitality",
+   "admission_route": "institutional",
+   "selectivity": 0.25
+  },
+  {
+   "key": "culinary-diploma",
+   "course": "Diploma in Culinary Arts",
+   "degree_level": "Diploma",
+   "institution": "culinary-pvt",
+   "duration_years": 2,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 300000,
+   "hostel_per_year": 90000,
+   "living_per_year": 72000,
+   "misc_per_year": 30000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "chef"
+   ],
+   "course_area": "hospitality",
+   "admission_route": "institutional",
+   "selectivity": 0.25
+  },
+  {
+   "key": "bba-tourism",
+   "course": "BBA Tourism & Travel",
+   "degree_level": "UG",
+   "institution": "pvt-univ-pune",
+   "duration_years": 3,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 200000,
+   "hostel_per_year": 100000,
+   "living_per_year": 72000,
+   "misc_per_year": 15000,
+   "entrance_exam_codes": [],
+   "careers": [
+    "travel-tourism-manager"
+   ],
+   "course_area": "hospitality",
+   "admission_route": "institutional",
+   "selectivity": 0.25
+  },
+  {
+   "key": "nda-route",
+   "course": "NDA then Indian Air Force / Navy (B.Tech/B.Sc while training)",
+   "degree_level": "UG",
+   "institution": "iit-type",
+   "duration_years": 4,
+   "quota": "open",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 0,
+   "hostel_per_year": 0,
+   "living_per_year": 0,
+   "misc_per_year": 0,
+   "entrance_exam_codes": [
+    "NDA"
+   ],
+   "careers": [
+    "aerospace-engineer",
+    "civil-servant"
+   ],
+   "course_area": "defence",
+   "admission_route": "national_exam",
+   "selectivity": 0.97
+  },
+  {
+   "key": "upsc-after-ba",
+   "course": "Any degree, then UPSC Civil Services preparation",
+   "degree_level": "UG",
+   "institution": "govt-arts-sci",
+   "duration_years": 4,
+   "quota": "government",
+   "fee_academic_year": 2026,
+   "tuition_per_year": 8000,
+   "hostel_per_year": 25000,
+   "living_per_year": 30000,
+   "misc_per_year": 40000,
+   "entrance_exam_codes": [
+    "CUET_UG",
+    "UPSC_CSE"
+   ],
+   "careers": [
+    "civil-servant"
+   ],
+   "course_area": "humanities",
+   "admission_route": "merit",
+   "selectivity": 0.98
+  }
+ ]
+}

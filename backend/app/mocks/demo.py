@@ -62,7 +62,8 @@ _PERSONAS = [
 ]
 
 
-def personas() -> list[DemoPersona]:
+def personas(live_ids: dict[str, tuple[str, str | None]] | None = None) -> list[DemoPersona]:
+    """live_ids maps persona key -> (student user id, latest run id) in live mode."""
     out = []
     for key, student, parent, loc, scenario, hl, full in _PERSONAS:
         out.append(
@@ -76,22 +77,30 @@ def personas() -> list[DemoPersona]:
                 student_email=f"{key}.student@prism.example",
                 parent_email=f"{key}.parent@prism.example",
                 demo_password=DEMO_PASSWORD,
-                student_id=w.STUDENT_ID if full else w.sid("student", key),
-                baseline_run_id=w.RUN_ID if full else None,
-                fixture_available=full,
+                student_id=live_ids[key][0]
+                if live_ids and key in live_ids
+                else (w.STUDENT_ID if full else w.sid("student", key)),
+                baseline_run_id=live_ids[key][1]
+                if live_ids and key in live_ids
+                else (w.RUN_ID if full else None),
+                fixture_available=bool(live_ids and key in live_ids) or full,
             )
         )
     return out
 
 
-def walkthrough() -> DemoWalkthrough:
+def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
+    """live_ctx (live mode) = {"run": AnalysisRun, "student_id", "family_id"}; otherwise uses the mock run."""
     from app.mocks.builders import analysis_run
 
-    live = analysis_run()
+    live = live_ctx["run"] if live_ctx else analysis_run()
+    run_id = live.run_id
+    student_id = live_ctx["student_id"] if live_ctx else w.STUDENT_ID
+    family_id = live_ctx["family_id"] if live_ctx else w.FAMILY_ID
     conflict, sens = live.conflict, live.sensitivity
     top = live.recommendations[0]
-    run = f"/api/v1/analysis/runs/{w.RUN_ID}"
-    parent = {"X-Mock-Role": "parent"}
+    run = f"/api/v1/analysis/runs/{run_id}"
+    parent = {"Authorization": "Bearer <parent access token>"} if live_ctx else {"X-Mock-Role": "parent"}
     steps = [
         (
             "Credibility first",
@@ -103,14 +112,14 @@ def walkthrough() -> DemoWalkthrough:
         (
             "The student's profile",
             "Five short instruments become one 19-dimension vector. No gender, caste or religion.",
-            DemoCall(method="GET", path=f"/api/v1/students/{w.STUDENT_ID}/traits"),
+            DemoCall(method="GET", path=f"/api/v1/students/{student_id}/traits"),
             ["data.top_riasec_code", "data.vector"],
             40,
         ),
         (
             "The parent's side, privately",
             "Parents enter money and hopes. The student never sees the raw figures.",
-            DemoCall(method="GET", path=f"/api/v1/families/{w.FAMILY_ID}/finance", headers=parent),
+            DemoCall(method="GET", path=f"/api/v1/families/{family_id}/finance", headers=parent),
             ["data.allocatable_savings", "data.max_affordable_emi"],
             30,
         ),
@@ -119,7 +128,7 @@ def walkthrough() -> DemoWalkthrough:
             "Each career's score splits into six weighted parts, with the pathway costed "
             "against the family's budget.",
             DemoCall(
-                method="POST", path="/api/v1/analysis/runs", headers=parent, body={"student_id": w.STUDENT_ID}
+                method="POST", path="/api/v1/analysis/runs", headers=parent, body={"student_id": student_id}
             ),
             ["data.recommendations[0].contributions", "data.recommendations[0].financial", "data.buckets"],
             60,

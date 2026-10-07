@@ -228,3 +228,16 @@ def compute(
         bridge_careers=bridge_rows,
         summary=summary,
     )
+
+
+def student_view(report: ConflictReport) -> ConflictReport:
+    """The gentle, student-facing version of a full report: no per-dimension gaps or parent positions."""
+    if report.visibility == "summary":
+        return report
+    top = [d.dimension for d in report.top_drivers]
+    text = "You and your family agree on a lot. "
+    if report.band is ConflictBand.ALIGNED or len(top) < 2:
+        text += "You are well aligned."
+    else:
+        text += f"A few conversations, mainly about {LABELS[top[0]]} and {LABELS[top[1]]}, will help you plan together."
+    return report.model_copy(update={"visibility": "summary", "dimensions": [], "summary": text})

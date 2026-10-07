@@ -7,7 +7,7 @@
     "kind": "baseline",
     "parent_run_id": null,
     "created_at": "2026-10-07T09:30:00",
-    "duration_ms": 4.3,
+    "duration_ms": 4.6,
     "reproducibility": {
       "engine_version": "prism-engine/1.0.0",
       "scoring_config_version": "weights-2026.10-v2",
@@ -171,9 +171,9 @@
           "disruption_risk": 0.08,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.606,
@@ -426,9 +426,9 @@
           "disruption_risk": 0.18,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.5163,
@@ -627,9 +627,9 @@
           "disruption_risk": 0.15,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.4804,
@@ -841,9 +841,9 @@
           "disruption_risk": 0.25,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.6418,
@@ -1053,9 +1053,9 @@
           "disruption_risk": 0.12,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.4983,
@@ -1266,9 +1266,9 @@
           "disruption_risk": 0.14,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.5342,
@@ -1478,9 +1478,9 @@
           "disruption_risk": 0.3,
           "regions_considered": [
             "IN-TN-CBE",
-            "IN-KA-BLR",
             "IN-TN-CHN",
             "IN-TG-HYD",
+            "IN-KA-BLR",
             "DE"
           ],
           "ci_low": 0.5521,

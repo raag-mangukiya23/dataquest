@@ -1,0 +1,43 @@
+{
+ "_note": "Government education-loan relief schemes used by the loan explainer and the financial solver.",
+ "loan_schemes": [
+  {
+   "key": "csis",
+   "name": "Central Sector Interest Subsidy (CSIS)",
+   "who": "Families earning up to Rs 4.5 lakh a year",
+   "benefit": "The government pays all interest during the course and one year after (the moratorium), on loans up to Rs 7.5 lakh",
+   "how": "Ask the lending bank for CSIS when taking the education loan; there is no separate application",
+   "income_limit": 450000,
+   "loan_cap": 750000,
+   "subvention": "full interest during moratorium",
+   "provenance": {
+    "source_name": "Ministry of Education scheme rules (via bank and news summaries)",
+    "as_of": "2026-10-07",
+    "confidence": 0.7,
+    "is_estimate": false,
+    "verification": "secondary",
+    "verified_on": "2026-10-07",
+    "evidence": "CSIS: 100 % interest subsidy during the moratorium (course + 1 year) for family income up to Rs 4.5 lakh, on loans up to Rs 7.5 lakh; full-time technical/professional courses; applied through the lending bank (Tata Capital and other lender summaries). Confirm current rules with the bank."
+   }
+  },
+  {
+   "key": "pm-vidyalaxmi",
+   "name": "PM-Vidyalaxmi",
+   "who": "Students admitted to Quality Higher Education Institutions (top-ranked institutions)",
+   "benefit": "Collateral-free, guarantor-free education loans; 75 % government credit guarantee on loans up to Rs 7.5 lakh; 3 % interest subvention during the moratorium on loans up to Rs 10 lakh for family income up to Rs 8 lakh",
+   "how": "Apply on the PM-Vidyalaxmi portal; banks process applications there",
+   "income_limit": 800000,
+   "loan_cap": 1000000,
+   "subvention": "3 % during moratorium",
+   "provenance": {
+    "source_name": "PM-Vidyalaxmi scheme (Cabinet approval Nov 2024; portal launched Feb 2025)",
+    "as_of": "2026-10-07",
+    "confidence": 0.7,
+    "is_estimate": false,
+    "verification": "secondary",
+    "verified_on": "2026-10-07",
+    "evidence": "Collateral- and guarantor-free loans for QHEI students; 75 % credit guarantee up to Rs 7.5 lakh; 3 % interest subvention on loans up to Rs 10 lakh for family income up to Rs 8 lakh; not combinable with other government scholarships or interest subvention (Business Standard, Business Today, Careers360 reports)."
+   }
+  }
+ ]
+}

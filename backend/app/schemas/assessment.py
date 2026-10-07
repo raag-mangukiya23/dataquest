@@ -50,6 +50,11 @@ class Answer(Contract):
 
 class SubmitAnswersRequest(Contract):
     answers: list[Answer] = Field(min_length=1, max_length=300)
+    client_submission_id: str | None = Field(
+        default=None,
+        max_length=64,
+        description="Set by offline-capable clients; resubmitting the same id is a no-op",
+    )
 
 
 class TraitScore(Contract):

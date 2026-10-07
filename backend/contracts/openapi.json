@@ -2861,7 +2861,7 @@
           "demo"
         ],
         "summary": "Reset",
-        "description": "Restore every demo persona to its seeded state. In MOCK_MODE there is no state, so this is a no-op.",
+        "description": "Restore every demo family to its seeded state (live mode); a no-op in MOCK_MODE.",
         "operationId": "reset_api_v1_demo_reset_post",
         "responses": {
           "200": {
@@ -10446,6 +10446,19 @@
             "maxItems": 300,
             "minItems": 1,
             "title": "Answers"
+          },
+          "client_submission_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Submission Id",
+            "description": "Set by offline-capable clients; resubmitting the same id is a no-op"
           }
         },
         "additionalProperties": false,

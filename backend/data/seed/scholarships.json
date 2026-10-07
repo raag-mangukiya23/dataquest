@@ -1,0 +1,1849 @@
+{
+ "_note": "Real scheme names; amounts, probabilities and deadlines are estimates unless the row is marked checked. Schemes that depend on criteria PRISM does not collect (category, gender, disability, domicile history) are listed for students to check themselves and are never added to plans automatically.",
+ "scholarships": [
+  {
+   "key": "css-nsp",
+   "name": "Central Sector Scheme of Scholarship (College & University Students)",
+   "provider": "Ministry of Education",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 12000,
+   "year_amounts": [
+    12000,
+    12000,
+    12000,
+    20000,
+    20000
+   ],
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "board_percentile",
+      "op": ">",
+      "value": 80
+     },
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 450000
+     }
+    ]
+   },
+   "eligibility_summary": "Above the 80th percentile of successful Class 12 candidates in your board; family income below Rs 4.5 lakh; cannot be combined with other scholarships",
+   "probability": 0.35,
+   "stackable": false,
+   "exclusive_group": "central_merit",
+   "deadline": "2026-10-31",
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Education",
+    "source_url": "https://scholarships.gov.in",
+    "as_of": "2026-10-07",
+    "confidence": 0.8,
+    "is_estimate": false,
+    "verification": "secondary",
+    "verified_on": "2026-10-07",
+    "evidence": "Ministry of Education scheme rules: Rs 12,000 a year for years 1-3 and Rs 20,000 for years 4-5; family income below Rs 4.5 lakh; above the 80th percentile in the Class 12 board; not available with any other scholarship. The award probability is a PRISM heuristic; the 2026-27 deadline is not confirmed."
+   }
+  },
+  {
+   "key": "inspire-she",
+   "name": "INSPIRE Scholarship for Higher Education (natural & basic sciences)",
+   "provider": "Department of Science & Technology",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 80000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "basic_sciences"
+      ]
+     },
+     {
+      "field": "board_percentile",
+      "op": ">=",
+      "value": 99
+     }
+    ]
+   },
+   "eligibility_summary": "Top 1 % in your Class 12 board and studying natural or basic sciences (B.Sc / BS / Int. M.Sc)",
+   "probability": 0.3,
+   "stackable": false,
+   "exclusive_group": "central_merit",
+   "deadline": "2026-11-30",
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Department of Science & Technology",
+    "source_url": null,
+    "as_of": "2026-10-07",
+    "confidence": 0.8,
+    "is_estimate": false,
+    "verification": "secondary",
+    "verified_on": "2026-10-07",
+    "evidence": "DST INSPIRE-SHE: Rs 80,000 a year (Rs 60,000 scholarship + Rs 20,000 summer research attachment) for up to 5 years; top 1 % in the Class 12 board; natural and basic sciences. Confirm the 2026-27 call on DST's INSPIRE portal. Award probability is a PRISM heuristic."
+   }
+  },
+  {
+   "key": "aicte-pragati",
+   "name": "AICTE Pragati Scholarship (technical degree / diploma)",
+   "provider": "AICTE",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "engineering",
+       "design"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 8 lakh; first-year admission to an AICTE-approved course",
+   "probability": 0.3,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For girl students only",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "AICTE",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "aicte-saksham",
+   "name": "AICTE Saksham Scholarship",
+   "provider": "AICTE",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "engineering",
+       "design"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 8 lakh; AICTE-approved technical course",
+   "probability": 0.4,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students with a disability of 40 % or more",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "AICTE",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "aicte-swanath",
+   "name": "AICTE Swanath Scholarship",
+   "provider": "AICTE",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "engineering",
+       "design"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "AICTE-approved technical course",
+   "probability": 0.4,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For orphans, children of parents who died of COVID-19, or wards of armed forces / CAPF martyrs",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "AICTE",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "postmatric-sc",
+   "name": "Post-Matric Scholarship for SC Students",
+   "provider": "Ministry of Social Justice & Empowerment (via states)",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 30000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 2.5 lakh; fees and maintenance allowance as notified by the state",
+   "probability": 0.8,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students from Scheduled Castes",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Social Justice & Empowerment (via states)",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "postmatric-st",
+   "name": "Post-Matric Scholarship for ST Students",
+   "provider": "Ministry of Tribal Affairs (via states)",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 30000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 2.5 lakh; fees and maintenance allowance as notified by the state",
+   "probability": 0.8,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students from Scheduled Tribes",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Tribal Affairs (via states)",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "pm-yasasvi",
+   "name": "PM YASASVI Post-Matric Scholarship (OBC, EBC, DNT)",
+   "provider": "Ministry of Social Justice & Empowerment (via states)",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 20000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 2.5 lakh",
+   "probability": 0.7,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For OBC, EBC and DNT students",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Social Justice & Empowerment (via states)",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "topclass-sc",
+   "name": "Top Class Education Scheme for SC Students",
+   "provider": "Ministry of Social Justice & Empowerment",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 200000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     }
+    ]
+   },
+   "eligibility_summary": "Admission to a notified top institution; family income up to Rs 8 lakh",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students from Scheduled Castes at notified institutions",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Social Justice & Empowerment",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "postmatric-minority",
+   "name": "Post-Matric Scholarship for Minorities",
+   "provider": "Ministry of Minority Affairs",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 15000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 200000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 50
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 2 lakh; 50 % in the previous exam",
+   "probability": 0.5,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students from notified minority communities",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Ministry of Minority Affairs",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "pmss-esm",
+   "name": "PM Scholarship Scheme for wards of ex-servicemen / CAPF",
+   "provider": "Kendriya Sainik Board / MHA",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 36000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     }
+    ]
+   },
+   "eligibility_summary": "60 % in Class 12; professional degree course",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For children of ex-servicemen, CAPF or Assam Rifles personnel",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Kendriya Sainik Board / MHA",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ishan-uday",
+   "name": "Ishan Uday Special Scholarship (North East)",
+   "provider": "University Grants Commission",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 65000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 450000
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 4.5 lakh; general degree, technical or professional course",
+   "probability": 0.5,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students domiciled in the North Eastern Region",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "University Grants Commission",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "pmsss-jk",
+   "name": "PM Special Scholarship Scheme (J&K and Ladakh)",
+   "provider": "AICTE",
+   "provider_type": "central_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 125000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     }
+    ]
+   },
+   "eligibility_summary": "Family income up to Rs 8 lakh; admission outside J&K / Ladakh",
+   "probability": 0.5,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students domiciled in Jammu & Kashmir or Ladakh",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "AICTE",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ongc-foundation",
+   "name": "ONGC Foundation Scholarship",
+   "provider": "ONGC Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 48000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 450000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "engineering",
+       "medicine",
+       "commerce"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "Engineering, MBBS or MBA first year; 60 % in Class 12; income cap applies",
+   "probability": 0.15,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "ONGC Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "lic-golden-jubilee",
+   "name": "LIC Golden Jubilee Scholarship",
+   "provider": "LIC Golden Jubilee Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 20000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     }
+    ]
+   },
+   "eligibility_summary": "60 % in Class 12; family income up to Rs 2.5 lakh",
+   "probability": 0.2,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "LIC Golden Jubilee Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "reliance-ug",
+   "name": "Reliance Foundation Undergraduate Scholarship",
+   "provider": "Reliance Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 100000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 2,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 1500000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     }
+    ]
+   },
+   "eligibility_summary": "Merit-cum-means; aptitude test; family income below Rs 15 lakh",
+   "probability": 0.1,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": "2026-12-15",
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Reliance Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "hdfc-parivartan",
+   "name": "HDFC Bank Parivartan ECSS Scholarship",
+   "provider": "HDFC Bank",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 30000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 55
+     }
+    ]
+   },
+   "eligibility_summary": "55 % in the previous exam; family income up to Rs 2.5 lakh",
+   "probability": 0.15,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "HDFC Bank",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "sbi-asha",
+   "name": "SBI Foundation Asha Scholarship (undergraduate)",
+   "provider": "SBI Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 1,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 600000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 75
+     }
+    ]
+   },
+   "eligibility_summary": "75 % in the previous exam; family income up to Rs 6 lakh",
+   "probability": 0.1,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "SBI Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "tata-pankh",
+   "name": "Tata Capital Pankh Scholarship",
+   "provider": "Tata Capital",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 12000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 1,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     }
+    ]
+   },
+   "eligibility_summary": "60 % in Class 12; family income up to Rs 2.5 lakh",
+   "probability": 0.15,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Tata Capital",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "kotak-kanya",
+   "name": "Kotak Kanya Scholarship",
+   "provider": "Kotak Education Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 150000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 600000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 85
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "engineering",
+       "medicine",
+       "law",
+       "design",
+       "architecture"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "85 % in Class 12; professional course at a reputed institution; income up to Rs 6 lakh",
+   "probability": 0.1,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For girl students only",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Kotak Education Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "loreal-wis",
+   "name": "L'Oreal India For Young Women in Science",
+   "provider": "L'Oreal India",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 62500,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 600000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 85
+     },
+     {
+      "field": "course_area",
+      "op": "in",
+      "value": [
+       "basic_sciences",
+       "engineering",
+       "medicine"
+      ]
+     }
+    ]
+   },
+   "eligibility_summary": "85 % in Class 12 PCB/PCM; science course",
+   "probability": 0.08,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For girl students only",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "L'Oreal India",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "sitaram-jindal",
+   "name": "Sitaram Jindal Foundation Scholarship",
+   "provider": "Sitaram Jindal Foundation",
+   "provider_type": "private",
+   "amount_type": "fixed",
+   "amount_per_year": 24000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 400000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 65
+     }
+    ]
+   },
+   "eligibility_summary": "Merit-cum-means; income cap by category",
+   "probability": 0.2,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Sitaram Jindal Foundation",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "tn-first-grad",
+   "name": "Tamil Nadu First Graduate Tuition Fee Concession",
+   "provider": "Government of Tamil Nadu",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 25000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "first_graduate",
+      "op": "==",
+      "value": true
+     },
+     {
+      "field": "admission_route",
+      "op": "==",
+      "value": "single_window_counselling"
+     },
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Tamil Nadu"
+     }
+    ]
+   },
+   "eligibility_summary": "First graduate in the family, admitted via state single-window counselling",
+   "probability": 0.8,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Tamil Nadu",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "tn-pudhumai-penn",
+   "name": "Pudhumai Penn Scheme (Rs 1,000 a month)",
+   "provider": "Government of Tamil Nadu",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 12000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Tamil Nadu"
+     }
+    ]
+   },
+   "eligibility_summary": "Studied Classes 6-12 in a Tamil Nadu government school; any higher-education course",
+   "probability": 0.9,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For girl students from Tamil Nadu government schools",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Tamil Nadu",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "tn-tamizh-pudhalvan",
+   "name": "Tamizh Pudhalvan Scheme (Rs 1,000 a month)",
+   "provider": "Government of Tamil Nadu",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 12000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Tamil Nadu"
+     }
+    ]
+   },
+   "eligibility_summary": "Studied Classes 6-12 in a Tamil Nadu government school; any higher-education course",
+   "probability": 0.9,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For boys who studied in Tamil Nadu government schools",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Tamil Nadu",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "tn-govt-school-quota",
+   "name": "7.5 % government-school quota fee support (Tamil Nadu)",
+   "provider": "Government of Tamil Nadu",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 100000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Tamil Nadu"
+     },
+     {
+      "field": "admission_route",
+      "op": "==",
+      "value": "single_window_counselling"
+     }
+    ]
+   },
+   "eligibility_summary": "Students admitted under the 7.5 % government-school reservation in professional courses; fees borne by the state",
+   "probability": 0.9,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For students who studied Classes 6-12 in Tamil Nadu government schools",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Tamil Nadu",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ka-vidyasiri",
+   "name": "Vidyasiri Scholarship (Karnataka)",
+   "provider": "Government of Karnataka",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 15000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Karnataka"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Karnataka post-matric students; income limits apply",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For backward-class students in Karnataka",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Karnataka",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "mh-rajarshi-shahu",
+   "name": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti (EBC fee reimbursement)",
+   "provider": "Government of Maharashtra",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Maharashtra"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 800000
+     }
+    ]
+   },
+   "eligibility_summary": "Maharashtra domicile; family income up to Rs 8 lakh; professional courses via CAP",
+   "probability": 0.7,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Maharashtra",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ts-epass",
+   "name": "Telangana ePASS fee reimbursement",
+   "provider": "Government of Telangana",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 35000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Telangana"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 200000
+     }
+    ]
+   },
+   "eligibility_summary": "Telangana post-matric students; income limits apply",
+   "probability": 0.7,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": "For SC, ST, BC, EBC, minority and disabled students in Telangana",
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Telangana",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "up-postmatric",
+   "name": "UP Post-Matric Scholarship",
+   "provider": "Government of Uttar Pradesh",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 20000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition",
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Uttar Pradesh"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Uttar Pradesh domicile; income limits by category",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Uttar Pradesh",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "wb-svmcm",
+   "name": "Swami Vivekananda Merit-cum-Means Scholarship (West Bengal)",
+   "provider": "Government of West Bengal",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 60000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "West Bengal"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 60
+     }
+    ]
+   },
+   "eligibility_summary": "West Bengal domicile; 60 % in the previous exam; income up to Rs 2.5 lakh",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of West Bengal",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "gj-mysy",
+   "name": "Mukhyamantri Yuva Swavalamban Yojana (Gujarat)",
+   "provider": "Government of Gujarat",
+   "provider_type": "state_govt",
+   "amount_type": "percent_tuition",
+   "amount_per_year": 50000,
+   "year_amounts": null,
+   "percent_of_tuition": 0.5,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Gujarat"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 600000
+     },
+     {
+      "field": "board_percentile",
+      "op": ">=",
+      "value": 80
+     }
+    ]
+   },
+   "eligibility_summary": "Gujarat Class 12 above the 80th percentile; income up to Rs 6 lakh; 50 % of tuition",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Gujarat",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "kl-cm-merit",
+   "name": "Kerala Chief Minister's Student Scholarship (higher education)",
+   "provider": "Government of Kerala",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 12000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 3,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Kerala"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 500000
+     },
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 75
+     }
+    ]
+   },
+   "eligibility_summary": "Kerala students in government / aided colleges; merit and income criteria",
+   "probability": 0.4,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Kerala",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ap-vidya",
+   "name": "Andhra Pradesh higher-education fee reimbursement",
+   "provider": "Government of Andhra Pradesh",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 35000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Andhra Pradesh"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     }
+    ]
+   },
+   "eligibility_summary": "Andhra Pradesh students; income limits apply (scheme names change with governments)",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Andhra Pradesh",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "rj-cm-higher-ed",
+   "name": "Rajasthan Mukhyamantri Uchch Shiksha Chhatravriti",
+   "provider": "Government of Rajasthan",
+   "provider_type": "state_govt",
+   "amount_type": "fixed",
+   "amount_per_year": 5000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "living"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "state",
+      "op": "==",
+      "value": "Rajasthan"
+     },
+     {
+      "field": "annual_income",
+      "op": "<=",
+      "value": 250000
+     },
+     {
+      "field": "board_percentile",
+      "op": ">=",
+      "value": 80
+     }
+    ]
+   },
+   "eligibility_summary": "Rajasthan board merit list; family income up to Rs 2.5 lakh",
+   "probability": 0.5,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [],
+   "provenance": {
+    "source_name": "Government of Rajasthan",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "iit-mcm",
+   "name": "IIT tuition remission and merit-cum-means scholarship",
+   "provider": "IITs",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 200000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 500000
+     }
+    ]
+   },
+   "eligibility_summary": "Full or partial tuition remission for family income below Rs 5 lakh (as notified each year)",
+   "probability": 0.9,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "iit-cse",
+    "iit-ee",
+    "iit-aero",
+    "iit-bdes"
+   ],
+   "provenance": {
+    "source_name": "IITs",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "nit-mcm",
+   "name": "NIT tuition fee waiver (income-based)",
+   "provider": "NITs",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 125000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 500000
+     }
+    ]
+   },
+   "eligibility_summary": "Full or two-thirds tuition waiver depending on family income (as notified)",
+   "probability": 0.85,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "nit-cse",
+    "nit-ece",
+    "nit-civil",
+    "nit-chem"
+   ],
+   "provenance": {
+    "source_name": "NITs",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "deemed-merit",
+   "name": "Entrance-rank fee waiver at deemed universities",
+   "provider": "Deemed universities",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 75000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "entrance_percentile",
+      "op": ">=",
+      "value": 95
+     }
+    ]
+   },
+   "eligibility_summary": "Top entrance ranks get partial tuition waivers (rank bands vary)",
+   "probability": 0.3,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "deemed-cse",
+    "deemed-mechatronics",
+    "deemed-bme",
+    "deemed-ev",
+    "deemed-aero"
+   ],
+   "provenance": {
+    "source_name": "Deemed universities",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "nift-fee-waiver",
+   "name": "NIFT fee waiver for low-income families",
+   "provider": "NIFT",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 150000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 500000
+     }
+    ]
+   },
+   "eligibility_summary": "Tuition waiver for family income below the notified limit",
+   "probability": 0.6,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "nift-fashion"
+   ],
+   "provenance": {
+    "source_name": "NIFT",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "nid-fee-waiver",
+   "name": "NID financial assistance",
+   "provider": "NID",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 100000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 4,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 600000
+     }
+    ]
+   },
+   "eligibility_summary": "Need-based fee waiver as notified",
+   "probability": 0.5,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "nid-bdes"
+   ],
+   "provenance": {
+    "source_name": "NID",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "nlu-fee-waiver",
+   "name": "NLU need-based fee waiver",
+   "provider": "National Law Universities",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 100000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 5,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "annual_income",
+      "op": "<",
+      "value": 500000
+     }
+    ]
+   },
+   "eligibility_summary": "Need-based waivers vary by NLU",
+   "probability": 0.4,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "nlu-ballb"
+   ],
+   "provenance": {
+    "source_name": "National Law Universities",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  },
+  {
+   "key": "ihm-merit",
+   "name": "Hotel management merit scholarship (typical)",
+   "provider": "Hotel management institutes",
+   "provider_type": "institution",
+   "amount_type": "fixed",
+   "amount_per_year": 30000,
+   "year_amounts": null,
+   "percent_of_tuition": null,
+   "max_years": 3,
+   "covers": [
+    "tuition"
+   ],
+   "eligibility_rules": {
+    "all": [
+     {
+      "field": "recent_score_pct",
+      "op": ">=",
+      "value": 75
+     }
+    ]
+   },
+   "eligibility_summary": "Merit awards for top performers (varies by institute)",
+   "probability": 0.2,
+   "stackable": true,
+   "exclusive_group": null,
+   "deadline": null,
+   "deadline_status": "estimated",
+   "self_declared_criteria": null,
+   "linked_pathways": [
+    "ihm-bsc"
+   ],
+   "provenance": {
+    "source_name": "Hotel management institutes",
+    "source_url": null,
+    "as_of": "2026-09-30",
+    "confidence": 0.5,
+    "is_estimate": true
+   }
+  }
+ ]
+}

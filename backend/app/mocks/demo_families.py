@@ -1,0 +1,246 @@
+"""The five demo families from the brief, as seed data for live mode (and for the demo persona switcher)."""
+
+from datetime import date
+
+from app.core.dimensions import DIMENSIONS
+from app.mocks import world as w
+
+DEMO_PASSWORD = "Prism@Demo2026"
+DEMO_DOB = date(2009, 3, 15)  # 17 years old on demo day: a minor, so parental consent is required
+
+
+def _vec(**kw: float) -> dict[str, float]:
+    return {d: kw.get(d, 0.5) for d in DIMENSIONS}
+
+
+FAMILIES = [
+    {
+        "key": "creative_risk_averse",
+        "student": "Ananya R.",
+        "parent": "R. Raman",
+        "relation": "father",
+        "profile": {
+            "grade": 12,
+            "board": "CBSE",
+            "stream": "PCM",
+            "pincode": "641004",
+            "city": "Coimbatore",
+            "state": "Tamil Nadu",
+            "languages": ["Tamil", "English", "Hindi"],
+            "interests": ["robotics", "sketching", "biology documentaries", "data puzzles"],
+            "extracurriculars": ["state science fair finalist", "digital art club"],
+            "recent_score_pct": 88.4,
+            "preferred_regions": ["IN-TN-CBE", "IN-KA-BLR", "IN-TG-HYD"],
+            "willing_to_relocate": 0.7,
+            "willing_abroad": 0.3,
+        },
+        "vector": w.STUDENT_TARGET_VECTOR,
+        "skip_financial_items": True,
+        "finance": {k: v for k, v in w.FINANCE.items()},
+        "preferences": [
+            {"rank": 1, "career": "doctor-mbbs", "note": "Respected and stable"},
+            {"rank": 2, "career": "biomedical-engineer"},
+            {"rank": 3, "domain": "engineering"},
+        ],
+    },
+    {
+        "key": "high_aptitude_low_budget",
+        "student": "Karthik S.",
+        "parent": "S. Selvi",
+        "relation": "mother",
+        "profile": {
+            "grade": 12,
+            "board": "TN State Board",
+            "stream": "PCM",
+            "pincode": "625001",
+            "city": "Madurai",
+            "state": "Tamil Nadu",
+            "languages": ["Tamil", "English"],
+            "interests": ["maths olympiad", "coding"],
+            "extracurriculars": ["district maths topper"],
+            "recent_score_pct": 96.0,
+            "preferred_regions": ["IN-TN-MDU", "IN-TN-CHN"],
+            "willing_to_relocate": 0.5,
+            "willing_abroad": 0.1,
+        },
+        "vector": _vec(
+            riasec_i=0.9,
+            riasec_r=0.7,
+            apt_numerical=0.95,
+            apt_logical=0.95,
+            apt_spatial=0.9,
+            apt_verbal=0.8,
+            cog_analytical=0.9,
+            grit=0.85,
+        ),
+        "finance": {
+            "income_band": "below_3l",
+            "annual_income": 240_000,
+            "income_growth_rate": 0.04,
+            "allocatable_savings": 50_000,
+            "existing_debt_emi": 0,
+            "dependents": 3,
+            "max_affordable_emi": 3_000,
+            "loan_tolerance": 0.3,
+            "risk_appetite": 0.3,
+            "relocation_willingness": 0.4,
+            "abroad_willingness": 0.0,
+            "time_to_earn_years": 4,
+            "prestige_vs_stability": "stability",
+            "preferred_regions": ["IN-TN-MDU"],
+        },
+        "preferences": [{"rank": 1, "career": "software-engineer"}, {"rank": 2, "domain": "engineering"}],
+    },
+    {
+        "key": "rural_steam_innovator",
+        "student": "Meena K.",
+        "parent": "K. Murugan",
+        "relation": "father",
+        "profile": {
+            "grade": 12,
+            "board": "TN State Board",
+            "stream": "PCB",
+            "pincode": "636701",
+            "city": "Dharmapuri",
+            "state": "Tamil Nadu",
+            "languages": ["Tamil"],
+            "interests": ["farming", "tinkering", "solar"],
+            "extracurriculars": ["Atal Tinkering Lab project"],
+            "recent_score_pct": 72.0,
+            "preferred_regions": ["IN-TN-DPI"],
+            "willing_to_relocate": 0.2,
+            "willing_abroad": 0.0,
+        },
+        "vector": _vec(
+            riasec_r=0.9,
+            riasec_i=0.75,
+            cog_practical=0.9,
+            apt_spatial=0.8,
+            val_impact=0.85,
+            risk_tolerance=0.6,
+        ),
+        "finance": {
+            "income_band": "3l_6l",
+            "annual_income": 360_000,
+            "income_growth_rate": 0.04,
+            "allocatable_savings": 80_000,
+            "existing_debt_emi": 0,
+            "dependents": 2,
+            "max_affordable_emi": 4_000,
+            "loan_tolerance": 0.3,
+            "risk_appetite": 0.4,
+            "relocation_willingness": 0.2,
+            "abroad_willingness": 0.0,
+            "time_to_earn_years": 4,
+            "prestige_vs_stability": "stability",
+            "preferred_regions": ["IN-TN-DPI"],
+        },
+        "preferences": [{"rank": 1, "domain": "agri_environment"}, {"rank": 2, "career": "school-teacher"}],
+    },
+    {
+        "key": "loan_dependent_family",
+        "student": "Rahul P.",
+        "parent": "P. Patil",
+        "relation": "father",
+        "profile": {
+            "grade": 12,
+            "board": "Maharashtra State Board",
+            "stream": "PCM",
+            "pincode": "411001",
+            "city": "Pune",
+            "state": "Maharashtra",
+            "languages": ["Marathi", "Hindi", "English"],
+            "interests": ["robotics", "cars"],
+            "extracurriculars": ["robotics club"],
+            "recent_score_pct": 81.0,
+            "preferred_regions": ["IN-MH-PUN", "IN-KA-BLR"],
+            "willing_to_relocate": 0.6,
+            "willing_abroad": 0.3,
+        },
+        "vector": _vec(
+            riasec_r=0.85,
+            riasec_i=0.8,
+            apt_spatial=0.85,
+            apt_numerical=0.8,
+            apt_logical=0.8,
+            cog_practical=0.85,
+            cog_creative=0.65,
+        ),
+        "finance": {
+            "income_band": "6l_10l",
+            "annual_income": 700_000,
+            "income_growth_rate": 0.05,
+            "allocatable_savings": 100_000,
+            "existing_debt_emi": 0,
+            "dependents": 2,
+            "max_affordable_emi": 15_000,
+            "loan_tolerance": 0.8,
+            "risk_appetite": 0.5,
+            "relocation_willingness": 0.6,
+            "abroad_willingness": 0.2,
+            "time_to_earn_years": 5,
+            "prestige_vs_stability": "balanced",
+            "preferred_regions": ["IN-MH-PUN"],
+        },
+        "preferences": [{"rank": 1, "career": "robotics-engineer"}],
+    },
+    {
+        "key": "aligned_family",
+        "student": "Sara M.",
+        "parent": "M. Joseph",
+        "relation": "mother",
+        "profile": {
+            "grade": 12,
+            "board": "ICSE",
+            "stream": "Humanities",
+            "pincode": "560001",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "languages": ["English", "Kannada", "Malayalam"],
+            "interests": ["illustration", "app design"],
+            "extracurriculars": ["school magazine design lead"],
+            "recent_score_pct": 90.0,
+            "preferred_regions": ["IN-KA-BLR", "IN-MH-MUM"],
+            "willing_to_relocate": 0.8,
+            "willing_abroad": 0.4,
+        },
+        "vector": _vec(
+            riasec_a=0.92,
+            riasec_s=0.65,
+            cog_creative=0.92,
+            apt_verbal=0.75,
+            val_autonomy=0.8,
+            riasec_c=0.3,
+            risk_tolerance=0.65,
+        ),
+        "finance": {
+            "income_band": "20l_50l",
+            "annual_income": 2_500_000,
+            "income_growth_rate": 0.06,
+            "allocatable_savings": 3_000_000,
+            "existing_debt_emi": 0,
+            "dependents": 1,
+            "max_affordable_emi": 40_000,
+            "loan_tolerance": 0.6,
+            "risk_appetite": 0.65,
+            "relocation_willingness": 0.8,
+            "abroad_willingness": 0.4,
+            "time_to_earn_years": 5,
+            "prestige_vs_stability": "balanced",
+            "preferred_regions": ["IN-KA-BLR"],
+        },
+        "preferences": [{"rank": 1, "career": "ux-designer"}, {"rank": 2, "domain": "design_arts"}],
+    },
+]
+
+
+def student_email(key: str) -> str:
+    return f"{key}.student@prism.example"
+
+
+def parent_email(key: str) -> str:
+    return f"{key}.parent@prism.example"
+
+
+ADMIN_EMAIL = "admin@prism.example"
+COUNSELLOR_EMAIL = "counsellor@prism.example"

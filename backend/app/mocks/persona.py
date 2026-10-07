@@ -21,13 +21,15 @@ LIKERT_MS = 4_200
 MCQ_MS = 48_000
 
 
-def _likert(items: list[ItemSpec], target: float) -> list[Answer]:
+def _likert(
+    items: list[ItemSpec], target: float, skipped: frozenset[str] = frozenset(SKIPPED_ITEMS)
+) -> list[Answer]:
     n = len(items)
     total = min(max(round((1 + 4 * target) * n), n), 5 * n)
     base, extra = divmod(total, n)
     out = []
     for i, item in enumerate(items):
-        if item.id in SKIPPED_ITEMS:
+        if item.id in skipped:
             continue
         k = base + (1 if i < extra else 0)
         raw = 6 - k if item.reverse else k
@@ -59,13 +61,20 @@ def _mcq(items: list[ItemSpec], target: float) -> list[Answer]:
     return out
 
 
-def _answers(inst: InstrumentSpec) -> list[Answer]:
+def answers_for(
+    inst: InstrumentSpec, vector: dict[str, float], skipped: frozenset[str] = frozenset(SKIPPED_ITEMS)
+) -> list[Answer]:
+    """Questionnaire answers that approximate a target profile (used for demo personas)."""
     out: list[Answer] = []
     for dim in inst.dimensions:
         items = [i for i in inst.items if i.dimension == dim]
-        target = w.STUDENT_TARGET_VECTOR[dim]
-        out += _mcq(items, target) if items[0].is_mcq else _likert(items, target)
+        target = vector[dim]
+        out += _mcq(items, target) if items[0].is_mcq else _likert(items, target, skipped)
     return out
+
+
+def _answers(inst: InstrumentSpec) -> list[Answer]:
+    return answers_for(inst, w.STUDENT_TARGET_VECTOR)
 
 
 _bank = get_bank()

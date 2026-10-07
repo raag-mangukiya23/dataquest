@@ -1,0 +1,374 @@
+{
+ "_note": "Mostly archetypes labelled '(typical)': fees describe a typical college of that kind, not a named one. Named rows are illustrative until fees are checked against the institution's notice.",
+ "institutions": [
+  {
+   "key": "iit-type",
+   "name": "National institute of technology/IIT-type (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "nit-type",
+   "name": "National Institute of Technology-type, Tiruchirappalli area (typical)",
+   "city": "Tiruchirappalli",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-MDU",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "govt-engg-cbe",
+   "name": "Government College of Technology, Coimbatore",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "govt-engg-typical",
+   "name": "Government engineering college (typical)",
+   "city": "Madurai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-MDU",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "pvt-engg-cbe",
+   "name": "Private engineering college, Coimbatore (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "pvt-engg-tier3",
+   "name": "Private engineering college, tier 3 (typical)",
+   "city": "Dharmapuri",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-DPI",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "pvt-univ-blr",
+   "name": "Private university, Bengaluru (typical)",
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "region_code": "IN-KA-BLR",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "pvt-univ-pune",
+   "name": "Private university, Pune (typical)",
+   "city": "Pune",
+   "state": "Maharashtra",
+   "region_code": "IN-MH-PUN",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "deemed-univ",
+   "name": "Deemed university (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "deemed"
+  },
+  {
+   "key": "govt-med",
+   "name": "Government medical college, Tamil Nadu (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "pvt-med",
+   "name": "Private medical college (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "nursing-govt",
+   "name": "Government nursing college (typical)",
+   "city": "Madurai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-MDU",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "nursing-pvt",
+   "name": "Private nursing college (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "pharmacy-pvt",
+   "name": "Private pharmacy college (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "physio-pvt",
+   "name": "Private physiotherapy college (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "iiser-tvm",
+   "name": "IISER Thiruvananthapuram",
+   "city": "Thiruvananthapuram",
+   "state": "Kerala",
+   "region_code": "IN-KL-TVM",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "govt-arts-sci",
+   "name": "Government arts and science college (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "public"
+  },
+  {
+   "key": "central-univ",
+   "name": "Central university (typical)",
+   "city": "Hyderabad",
+   "state": "Telangana",
+   "region_code": "IN-TG-HYD",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "agri-univ",
+   "name": "Tamil Nadu Agricultural University",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "nid-type",
+   "name": "National design institute (typical)",
+   "city": "Ahmedabad",
+   "state": "Gujarat",
+   "region_code": "IN-GJ-AMD",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "pvt-design",
+   "name": "Private design school, Bengaluru (typical)",
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "region_code": "IN-KA-BLR",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "nift-type",
+   "name": "National fashion technology institute (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "arch-govt",
+   "name": "Government school of architecture (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "arch-pvt",
+   "name": "Private school of architecture (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "animation-pvt",
+   "name": "Private animation and VFX institute (typical)",
+   "city": "Hyderabad",
+   "state": "Telangana",
+   "region_code": "IN-TG-HYD",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "nlu-type",
+   "name": "National law university (typical)",
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "region_code": "IN-KA-BLR",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "pvt-law",
+   "name": "Private law school (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "commerce-govt",
+   "name": "Government commerce college (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "public"
+  },
+  {
+   "key": "iim-ipm-type",
+   "name": "Integrated management programme institute (typical)",
+   "city": "Indore",
+   "state": "Madhya Pradesh",
+   "region_code": null,
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "teacher-ed",
+   "name": "Teacher education college (typical)",
+   "city": "Madurai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-MDU",
+   "tier": 3,
+   "ownership": "public"
+  },
+  {
+   "key": "media-pvt",
+   "name": "Private media and journalism school (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "ihm-type",
+   "name": "Institute of hotel management (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "culinary-pvt",
+   "name": "Private culinary academy (typical)",
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "region_code": "IN-KA-BLR",
+   "tier": 3,
+   "ownership": "private"
+  },
+  {
+   "key": "flying-school",
+   "name": "DGCA-approved flying training organisation (typical)",
+   "city": "Hyderabad",
+   "state": "Telangana",
+   "region_code": "IN-TG-HYD",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "maritime",
+   "name": "Maritime training institute (typical)",
+   "city": "Chennai",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CHN",
+   "tier": 2,
+   "ownership": "private"
+  },
+  {
+   "key": "food-tech-govt",
+   "name": "Food technology institute (typical)",
+   "city": "Thanjavur",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-MDU",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "textile-govt",
+   "name": "Government textile technology college (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 2,
+   "ownership": "public"
+  },
+  {
+   "key": "polytechnic",
+   "name": "Government polytechnic (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "public"
+  },
+  {
+   "key": "ca-icai",
+   "name": "Self-study with ICAI coaching (typical)",
+   "city": "Coimbatore",
+   "state": "Tamil Nadu",
+   "region_code": "IN-TN-CBE",
+   "tier": 3,
+   "ownership": "open"
+  },
+  {
+   "key": "tu-munich-type",
+   "name": "Public technical university, Germany (typical)",
+   "city": "Munich",
+   "state": null,
+   "region_code": "DE",
+   "tier": 1,
+   "ownership": "public"
+  },
+  {
+   "key": "abroad-medical",
+   "name": "Medical university abroad, NMC-listed (typical)",
+   "city": "Abroad",
+   "state": null,
+   "region_code": null,
+   "tier": 3,
+   "ownership": "public"
+  }
+ ]
+}

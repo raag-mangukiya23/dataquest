@@ -1,0 +1,170 @@
+{
+ "_note": "Pincode to district/region lookup used for local opportunities and home region.",
+ "pincodes": [
+  {
+   "pincode": "600001",
+   "region_code": "IN-TN-CHN",
+   "district": "Chennai"
+  },
+  {
+   "pincode": "641004",
+   "region_code": "IN-TN-CBE",
+   "district": "Coimbatore"
+  },
+  {
+   "pincode": "641018",
+   "region_code": "IN-TN-CBE",
+   "district": "Coimbatore"
+  },
+  {
+   "pincode": "642001",
+   "region_code": "IN-TN-CBE",
+   "district": "Pollachi (Coimbatore district)"
+  },
+  {
+   "pincode": "641601",
+   "region_code": "IN-TN-CBE",
+   "district": "Tiruppur"
+  },
+  {
+   "pincode": "625001",
+   "region_code": "IN-TN-MDU",
+   "district": "Madurai"
+  },
+  {
+   "pincode": "625020",
+   "region_code": "IN-TN-MDU",
+   "district": "Madurai"
+  },
+  {
+   "pincode": "636701",
+   "region_code": "IN-TN-DPI",
+   "district": "Dharmapuri"
+  },
+  {
+   "pincode": "636705",
+   "region_code": "IN-TN-DPI",
+   "district": "Dharmapuri"
+  },
+  {
+   "pincode": "560001",
+   "region_code": "IN-KA-BLR",
+   "district": "Bengaluru Urban"
+  },
+  {
+   "pincode": "560034",
+   "region_code": "IN-KA-BLR",
+   "district": "Bengaluru Urban"
+  },
+  {
+   "pincode": "500001",
+   "region_code": "IN-TG-HYD",
+   "district": "Hyderabad"
+  },
+  {
+   "pincode": "500081",
+   "region_code": "IN-TG-HYD",
+   "district": "Hyderabad"
+  },
+  {
+   "pincode": "411001",
+   "region_code": "IN-MH-PUN",
+   "district": "Pune"
+  },
+  {
+   "pincode": "411057",
+   "region_code": "IN-MH-PUN",
+   "district": "Pune"
+  },
+  {
+   "pincode": "400001",
+   "region_code": "IN-MH-MUM",
+   "district": "Mumbai"
+  },
+  {
+   "pincode": "400076",
+   "region_code": "IN-MH-MUM",
+   "district": "Mumbai"
+  },
+  {
+   "pincode": "110001",
+   "region_code": "IN-DL-NCR",
+   "district": "New Delhi"
+  },
+  {
+   "pincode": "122001",
+   "region_code": "IN-DL-NCR",
+   "district": "New Delhi"
+  },
+  {
+   "pincode": "380001",
+   "region_code": "IN-GJ-AMD",
+   "district": "Ahmedabad"
+  },
+  {
+   "pincode": "380015",
+   "region_code": "IN-GJ-AMD",
+   "district": "Ahmedabad"
+  },
+  {
+   "pincode": "395003",
+   "region_code": "IN-GJ-SRT",
+   "district": "Surat"
+  },
+  {
+   "pincode": "394221",
+   "region_code": "IN-GJ-SRT",
+   "district": "Surat"
+  },
+  {
+   "pincode": "695001",
+   "region_code": "IN-KL-TVM",
+   "district": "Thiruvananthapuram"
+  },
+  {
+   "pincode": "695581",
+   "region_code": "IN-KL-TVM",
+   "district": "Thiruvananthapuram"
+  },
+  {
+   "pincode": "700001",
+   "region_code": "IN-WB-KOL",
+   "district": "Kolkata"
+  },
+  {
+   "pincode": "700091",
+   "region_code": "IN-WB-KOL",
+   "district": "Kolkata"
+  },
+  {
+   "pincode": "302001",
+   "region_code": "IN-RJ-JAI",
+   "district": "Jaipur"
+  },
+  {
+   "pincode": "302017",
+   "region_code": "IN-RJ-JAI",
+   "district": "Jaipur"
+  },
+  {
+   "pincode": "226001",
+   "region_code": "IN-UP-LKO",
+   "district": "Lucknow"
+  },
+  {
+   "pincode": "226010",
+   "region_code": "IN-UP-LKO",
+   "district": "Lucknow"
+  },
+  {
+   "pincode": "530001",
+   "region_code": "IN-AP-VSK",
+   "district": "Visakhapatnam"
+  },
+  {
+   "pincode": "530045",
+   "region_code": "IN-AP-VSK",
+   "district": "Visakhapatnam"
+  }
+ ]
+}

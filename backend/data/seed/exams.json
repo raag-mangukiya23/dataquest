@@ -1,0 +1,925 @@
+{
+ "_note": "2027-cycle dates. Only JEE Main Session 1 comes from an official (tentative) calendar; every other date is projected from earlier cycles and must be confirmed.",
+ "exams": [
+  {
+   "code": "JEE_MAIN",
+   "name": "JEE Main",
+   "conducting_body": "National Testing Agency",
+   "level": "national",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 with Physics, Chemistry, Mathematics",
+   "official_url": "https://jeemain.nta.nic.in",
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-22",
+     "registration_status": "estimated",
+     "exam_start": "2027-01-22",
+     "exam_end": "2027-01-30",
+     "exam_date_status": "tentative"
+    },
+    {
+     "cycle_year": 2027,
+     "session_no": 2,
+     "registration_close": "2027-02-25",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-01",
+     "exam_end": "2027-04-09",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "National Testing Agency exam calendar (via news reports)",
+    "as_of": "2026-09-16",
+    "confidence": 0.8,
+    "is_estimate": false,
+    "verification": "secondary",
+    "verified_on": "2026-10-07",
+    "evidence": "NTA examination calendar released 16 Sep 2026: Session 1 on 22-24 and 28-30 Jan 2027 with 31 Jan as buffer; dates tentative (reported by Careers360, ThePrint, CareerIndia). Registration dates and Session 2 not announced yet. Confirm on nta.ac.in."
+   }
+  },
+  {
+   "code": "JEE_MAIN_P2",
+   "name": "JEE Main Paper 2 (B.Arch / B.Planning)",
+   "conducting_body": "National Testing Agency",
+   "level": "national",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 with Mathematics",
+   "official_url": "https://jeemain.nta.nic.in",
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-22",
+     "registration_status": "estimated",
+     "exam_start": "2027-01-30",
+     "exam_end": "2027-01-30",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "JEE_ADV",
+   "name": "JEE Advanced",
+   "conducting_body": "IITs (organising IIT)",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Top JEE Main qualifiers",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-05-05",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-23",
+     "exam_end": "2027-05-23",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NEET_UG",
+   "name": "NEET-UG",
+   "conducting_body": "National Testing Agency",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 with Physics, Chemistry, Biology and English",
+   "official_url": "https://neet.nta.nic.in",
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-07",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-02",
+     "exam_end": "2027-05-02",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "CUET_UG",
+   "name": "CUET-UG",
+   "conducting_body": "National Testing Agency",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 in the relevant subjects",
+   "official_url": "https://cuet.nta.nic.in",
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-22",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-13",
+     "exam_end": "2027-06-03",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "BITSAT",
+   "name": "BITSAT",
+   "conducting_body": "BITS Pilani",
+   "level": "institutional",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 PCM with high aggregate",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-10",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-20",
+     "exam_end": "2027-05-26",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "VITEEE",
+   "name": "VITEEE",
+   "conducting_body": "VIT",
+   "level": "institutional",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-31",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-20",
+     "exam_end": "2027-04-27",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "SRMJEEE",
+   "name": "SRMJEEE",
+   "conducting_body": "SRM Institute of Science and Technology",
+   "level": "institutional",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 PCM / PCB",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-10",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-22",
+     "exam_end": "2027-04-27",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "COMEDK",
+   "name": "COMEDK UGET",
+   "conducting_body": "COMEDK",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-01",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-09",
+     "exam_end": "2027-05-09",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "KCET",
+   "name": "KCET",
+   "conducting_body": "Karnataka Examinations Authority",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB; Karnataka rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-02-28",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-17",
+     "exam_end": "2027-04-18",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "MHT_CET",
+   "name": "MHT CET",
+   "conducting_body": "Maharashtra State CET Cell",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB; Maharashtra rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-20",
+     "exam_end": "2027-05-05",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "TS_EAPCET",
+   "name": "TS EAPCET",
+   "conducting_body": "JNTU Hyderabad for TSCHE",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB; Telangana rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-06",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-02",
+     "exam_end": "2027-05-07",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "AP_EAPCET",
+   "name": "AP EAPCET",
+   "conducting_body": "JNTU Kakinada for APSCHE",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB; Andhra Pradesh rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-15",
+     "exam_end": "2027-05-23",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "WBJEE",
+   "name": "WBJEE",
+   "conducting_body": "WB Joint Entrance Examinations Board",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM; West Bengal rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-02-28",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-25",
+     "exam_end": "2027-04-25",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "KEAM",
+   "name": "KEAM",
+   "conducting_body": "Commissioner for Entrance Examinations, Kerala",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM / PCB; Kerala rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-10",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-23",
+     "exam_end": "2027-04-29",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "TNEA",
+   "name": "TNEA Counselling (marks-based)",
+   "conducting_body": "Directorate of Technical Education, Tamil Nadu",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM marks; Tamil Nadu nativity rules",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-06-06",
+     "registration_status": "estimated",
+     "exam_start": "2027-07-01",
+     "exam_end": "2027-08-15",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "TNAU_COUNSELLING",
+   "name": "TNAU UG Admission (marks-based)",
+   "conducting_body": "Tamil Nadu Agricultural University",
+   "level": "state",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 science marks",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-06-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-07-15",
+     "exam_end": "2027-08-30",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "CLAT",
+   "name": "CLAT (for 2027-28 admission)",
+   "conducting_body": "Consortium of NLUs",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream (45 % or as notified)",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-15",
+     "registration_status": "estimated",
+     "exam_start": "2026-12-06",
+     "exam_end": "2026-12-06",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "AILET",
+   "name": "AILET",
+   "conducting_body": "National Law University Delhi",
+   "level": "institutional",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-20",
+     "registration_status": "estimated",
+     "exam_start": "2026-12-13",
+     "exam_end": "2026-12-13",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NID_DAT",
+   "name": "NID Design Aptitude Test",
+   "conducting_body": "National Institute of Design",
+   "level": "institutional",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-15",
+     "registration_status": "estimated",
+     "exam_start": "2026-12-21",
+     "exam_end": "2026-12-21",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "UCEED",
+   "name": "UCEED",
+   "conducting_body": "IIT Bombay",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-11-01",
+     "registration_status": "estimated",
+     "exam_start": "2027-01-17",
+     "exam_end": "2027-01-17",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NIFT",
+   "name": "NIFT Entrance",
+   "conducting_body": "National Institute of Fashion Technology",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-01-05",
+     "registration_status": "estimated",
+     "exam_start": "2027-02-07",
+     "exam_end": "2027-02-07",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NATA",
+   "name": "NATA",
+   "conducting_body": "Council of Architecture",
+   "level": "national",
+   "frequency": "several times a year",
+   "eligibility_summary": "Class 12 with Mathematics",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-10",
+     "exam_end": "2027-06-30",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "IISER_IAT",
+   "name": "IISER Aptitude Test",
+   "conducting_body": "IISER Joint Admission Committee",
+   "level": "institutional",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 science stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-25",
+     "registration_status": "estimated",
+     "exam_start": "2027-06-06",
+     "exam_end": "2027-06-06",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NEST",
+   "name": "NEST (NISER / UM-DAE CEBS)",
+   "conducting_body": "NISER Bhubaneswar",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 science stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-05-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-06-20",
+     "exam_end": "2027-06-20",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "IPMAT",
+   "name": "IPMAT",
+   "conducting_body": "IIM Indore",
+   "level": "institutional",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream (60 %)",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-04-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-20",
+     "exam_end": "2027-05-20",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NCHM_JEE",
+   "name": "NCHM JEE",
+   "conducting_body": "National Testing Agency for NCHMCT",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 any stream with English",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-26",
+     "exam_end": "2027-04-26",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "NDA",
+   "name": "NDA & NA Examination (I)",
+   "conducting_body": "Union Public Service Commission",
+   "level": "national",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 (PCM for Air Force / Navy); age limits",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-01-06",
+     "registration_status": "estimated",
+     "exam_start": "2027-04-18",
+     "exam_end": "2027-04-18",
+     "exam_date_status": "estimated"
+    },
+    {
+     "cycle_year": 2027,
+     "session_no": 2,
+     "registration_close": "2027-06-17",
+     "registration_status": "estimated",
+     "exam_start": "2027-09-05",
+     "exam_end": "2027-09-05",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "CA_FOUNDATION",
+   "name": "CA Foundation",
+   "conducting_body": "Institute of Chartered Accountants of India",
+   "level": "national",
+   "frequency": "twice a year",
+   "eligibility_summary": "Class 12 any stream",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-03-01",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-15",
+     "exam_end": "2027-05-21",
+     "exam_date_status": "estimated"
+    },
+    {
+     "cycle_year": 2027,
+     "session_no": 2,
+     "registration_close": "2027-08-31",
+     "registration_status": "estimated",
+     "exam_start": "2027-09-15",
+     "exam_end": "2027-09-21",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "IMU_CET",
+   "name": "IMU-CET",
+   "conducting_body": "Indian Maritime University",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Class 12 PCM (60 %), English 50 %; medical fitness",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-05-05",
+     "registration_status": "estimated",
+     "exam_start": "2027-06-05",
+     "exam_end": "2027-06-05",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "DGCA_CPL",
+   "name": "DGCA CPL ground exams",
+   "conducting_body": "Directorate General of Civil Aviation",
+   "level": "national",
+   "frequency": "several times a year",
+   "eligibility_summary": "Class 12 with Physics and Mathematics; Class 1 medical",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": null,
+     "registration_status": "estimated",
+     "exam_start": "2027-07-15",
+     "exam_end": "2027-07-15",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "UPSC_CSE",
+   "name": "UPSC Civil Services (Prelims)",
+   "conducting_body": "Union Public Service Commission",
+   "level": "national",
+   "frequency": "once a year",
+   "eligibility_summary": "Any graduate degree; age 21-32 (general)",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2027-02-15",
+     "registration_status": "estimated",
+     "exam_start": "2027-05-30",
+     "exam_end": "2027-05-30",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  },
+  {
+   "code": "CTET",
+   "name": "CTET",
+   "conducting_body": "Central Board of Secondary Education",
+   "level": "national",
+   "frequency": "twice a year",
+   "eligibility_summary": "B.Ed / D.El.Ed (or in final year)",
+   "official_url": null,
+   "sessions": [
+    {
+     "cycle_year": 2027,
+     "session_no": 1,
+     "registration_close": "2026-12-01",
+     "registration_status": "estimated",
+     "exam_start": "2027-01-10",
+     "exam_end": "2027-01-10",
+     "exam_date_status": "estimated"
+    }
+   ],
+   "provenance": {
+    "source_name": "PRISM estimate from previous exam cycles",
+    "as_of": "2026-09-30",
+    "confidence": 0.4,
+    "is_estimate": true,
+    "evidence": "Not yet announced for the 2027 cycle as of 7 Oct 2026; projected from earlier cycles."
+   }
+  }
+ ]
+}

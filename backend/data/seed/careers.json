@@ -1,0 +1,2517 @@
+{
+ "_note": "Career catalog. Trait overrides adjust the sector prototype (expert estimates until mapped to O*NET). Salaries (lakh/yr, metro, median), demand and velocity are illustrative estimates; see docs/DATA_TRUTH.md.",
+ "careers": [
+  {
+   "slug": "data-scientist",
+   "name": "Data Scientist",
+   "sector": "computing_ai",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Tech / B.Sc in CS, Data Science or Statistics",
+   "short_description": "Turns messy data into decisions with statistics, machine learning and clear storytelling.",
+   "salary_lakh": {
+    "entry": 8,
+    "mid": 20,
+    "senior": 40
+   },
+   "demand": 0.84,
+   "velocity": 0.12,
+   "search_keywords": "data scientist",
+   "trait_overrides": {
+    "riasec_i": 0.85,
+    "riasec_c": 0.65,
+    "apt_numerical": 0.85,
+    "apt_logical": 0.85,
+    "cog_analytical": 0.85
+   },
+   "skills": [
+    {
+     "skill": "Python",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "SQL",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Machine learning",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Data storytelling",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "software-engineer",
+   "name": "Software Engineer",
+   "sector": "computing_ai",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "B.Tech / BCA / B.Sc Computer Science",
+   "short_description": "Designs, builds and maintains the software people use every day.",
+   "salary_lakh": {
+    "entry": 6,
+    "mid": 16,
+    "senior": 35
+   },
+   "demand": 0.8,
+   "velocity": 0.05,
+   "search_keywords": "software engineer",
+   "trait_overrides": {
+    "riasec_i": 0.8,
+    "riasec_r": 0.5,
+    "apt_logical": 0.85,
+    "cog_analytical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Python",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Data structures",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Git",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Problem solving",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Web development",
+     "importance": 0.6,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "ai-ml-engineer",
+   "name": "AI / ML Engineer",
+   "sector": "computing_ai",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.Tech CS / AI & DS",
+   "short_description": "Builds and deploys machine-learning systems, from recommendation engines to vision models.",
+   "salary_lakh": {
+    "entry": 10,
+    "mid": 25,
+    "senior": 50
+   },
+   "demand": 0.86,
+   "velocity": 0.25,
+   "search_keywords": "machine learning engineer",
+   "trait_overrides": {
+    "riasec_i": 0.9,
+    "apt_numerical": 0.85,
+    "apt_logical": 0.9,
+    "cog_analytical": 0.9,
+    "grit": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Python",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Machine learning",
+     "importance": 0.95,
+     "category": "technical"
+    },
+    {
+     "skill": "Linear algebra",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Deep learning",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "cybersecurity-analyst",
+   "name": "Cybersecurity Analyst",
+   "sector": "computing_ai",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.Tech / B.Sc CS + security certifications",
+   "short_description": "Protects organisations from hackers by finding weaknesses and responding to attacks.",
+   "salary_lakh": {
+    "entry": 6,
+    "mid": 15,
+    "senior": 32
+   },
+   "demand": 0.78,
+   "velocity": 0.15,
+   "search_keywords": "cyber security analyst",
+   "trait_overrides": {
+    "riasec_i": 0.8,
+    "riasec_c": 0.65,
+    "apt_logical": 0.85,
+    "grit": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Networking",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Linux",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Security tools",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Python",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Attention to detail",
+     "importance": 0.8,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "cloud-devops-engineer",
+   "name": "Cloud & DevOps Engineer",
+   "sector": "computing_ai",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Tech / BCA + cloud certifications",
+   "short_description": "Keeps apps running reliably on cloud platforms and automates how software ships.",
+   "salary_lakh": {
+    "entry": 7,
+    "mid": 18,
+    "senior": 36
+   },
+   "demand": 0.79,
+   "velocity": 0.1,
+   "search_keywords": "devops engineer",
+   "trait_overrides": {
+    "riasec_r": 0.6,
+    "riasec_i": 0.75,
+    "riasec_c": 0.65,
+    "apt_logical": 0.8,
+    "cog_practical": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Linux",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Networking",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Git",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Cloud platforms",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Scripting",
+     "importance": 0.8,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "civil-engineer",
+   "name": "Civil Engineer",
+   "sector": "engineering",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.E. / B.Tech Civil Engineering",
+   "short_description": "Plans and builds roads, bridges, buildings and water systems.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 8,
+    "senior": 18
+   },
+   "demand": 0.62,
+   "velocity": 0.03,
+   "search_keywords": "civil engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "apt_spatial": 0.85,
+    "cog_practical": 0.8,
+    "val_security": 0.65
+   },
+   "skills": [
+    {
+     "skill": "CAD",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Structural analysis",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Surveying",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Project management",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "mechanical-engineer",
+   "name": "Mechanical Engineer",
+   "sector": "engineering",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.E. / B.Tech Mechanical Engineering",
+   "short_description": "Designs and improves machines, engines and manufacturing systems.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 9,
+    "senior": 20
+   },
+   "demand": 0.6,
+   "velocity": 0.02,
+   "search_keywords": "mechanical engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "apt_spatial": 0.85,
+    "apt_numerical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "CAD",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Thermodynamics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Manufacturing processes",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Problem solving",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "electrical-engineer",
+   "name": "Electrical Engineer",
+   "sector": "engineering",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.E. / B.Tech Electrical & Electronics",
+   "short_description": "Works on power generation, grids, motors and electrical systems.",
+   "salary_lakh": {
+    "entry": 4,
+    "mid": 10,
+    "senior": 22
+   },
+   "demand": 0.64,
+   "velocity": 0.05,
+   "search_keywords": "electrical engineer",
+   "trait_overrides": {
+    "riasec_r": 0.8,
+    "apt_numerical": 0.85,
+    "apt_logical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Circuit design",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Power systems",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Safety standards",
+     "importance": 0.6,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "robotics-engineer",
+   "name": "Robotics & Automation Engineer",
+   "sector": "engineering",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.14,
+   "typical_entry_education": "B.Tech Mechatronics / Robotics / ECE",
+   "short_description": "Builds machines that sense, decide and act, from factory arms to farm robots.",
+   "salary_lakh": {
+    "entry": 5.5,
+    "mid": 13,
+    "senior": 26
+   },
+   "demand": 0.72,
+   "velocity": 0.14,
+   "search_keywords": "robotics engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "riasec_i": 0.75,
+    "apt_spatial": 0.8,
+    "apt_logical": 0.8,
+    "cog_creative": 0.6,
+    "cog_practical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Embedded C",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Control systems",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "CAD",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Python",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "vlsi-engineer",
+   "name": "Electronics & VLSI Chip Engineer",
+   "sector": "engineering",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "B.Tech ECE / M.Tech VLSI",
+   "short_description": "Designs and verifies the microchips inside phones, cars and satellites.",
+   "salary_lakh": {
+    "entry": 7,
+    "mid": 18,
+    "senior": 38
+   },
+   "demand": 0.74,
+   "velocity": 0.2,
+   "search_keywords": "vlsi engineer",
+   "trait_overrides": {
+    "riasec_i": 0.85,
+    "riasec_r": 0.65,
+    "apt_numerical": 0.85,
+    "apt_logical": 0.9,
+    "grit": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Digital electronics",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Verilog",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Circuit design",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.8,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "doctor-mbbs",
+   "name": "Doctor (MBBS)",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.08,
+   "typical_entry_education": "MBBS (5.5 years incl. internship) via NEET-UG",
+   "short_description": "Diagnoses and treats patients; a long training path with high social trust.",
+   "salary_lakh": {
+    "entry": 9,
+    "mid": 18,
+    "senior": 36
+   },
+   "demand": 0.8,
+   "velocity": 0.06,
+   "search_keywords": "mbbs doctor",
+   "trait_overrides": {
+    "riasec_s": 0.85,
+    "riasec_i": 0.8,
+    "apt_verbal": 0.7,
+    "grit": 0.9,
+    "val_impact": 0.85,
+    "val_security": 0.7,
+    "risk_tolerance": 0.4
+   },
+   "skills": [
+    {
+     "skill": "Clinical reasoning",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Biology",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Empathy",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "biomedical-engineer",
+   "name": "Biomedical Engineer",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.18,
+   "typical_entry_education": "B.Tech Biomedical / Medical Electronics",
+   "short_description": "Designs medical devices, diagnostics and hospital technology.",
+   "salary_lakh": {
+    "entry": 4.5,
+    "mid": 11,
+    "senior": 22
+   },
+   "demand": 0.7,
+   "velocity": 0.1,
+   "search_keywords": "biomedical engineer",
+   "trait_overrides": {
+    "riasec_r": 0.75,
+    "riasec_i": 0.8,
+    "riasec_s": 0.55,
+    "apt_spatial": 0.7,
+    "apt_numerical": 0.7,
+    "cog_practical": 0.7,
+    "val_impact": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Electronics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Human physiology",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "CAD",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Regulatory standards",
+     "importance": 0.5,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "computational-biologist",
+   "name": "Computational Biologist",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "BS-MS / B.Tech Biotechnology + coding",
+   "short_description": "Uses code and models to decode genomes, proteins and disease.",
+   "salary_lakh": {
+    "entry": 6,
+    "mid": 14,
+    "senior": 28
+   },
+   "demand": 0.66,
+   "velocity": 0.12,
+   "search_keywords": "bioinformatics",
+   "trait_overrides": {
+    "riasec_i": 0.9,
+    "riasec_s": 0.4,
+    "riasec_r": 0.4,
+    "apt_numerical": 0.8,
+    "apt_logical": 0.8,
+    "cog_analytical": 0.85,
+    "val_impact": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Python",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Molecular biology",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Machine learning",
+     "importance": 0.6,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "pharmacist",
+   "name": "Pharmacist",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "B.Pharm (4 years)",
+   "short_description": "Prepares and dispenses medicines and advises patients on safe use.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 6,
+    "senior": 12
+   },
+   "demand": 0.58,
+   "velocity": 0.03,
+   "search_keywords": "pharmacist",
+   "trait_overrides": {
+    "riasec_i": 0.7,
+    "riasec_c": 0.7,
+    "riasec_s": 0.6,
+    "apt_verbal": 0.6,
+    "val_security": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Pharmacology",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Chemistry",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Attention to detail",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "nurse",
+   "name": "Registered Nurse",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.1,
+   "typical_entry_education": "B.Sc Nursing (4 years)",
+   "short_description": "Cares for patients, gives treatment and supports doctors; strong demand in India and abroad.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 6,
+    "senior": 12
+   },
+   "demand": 0.82,
+   "velocity": 0.1,
+   "search_keywords": "staff nurse",
+   "trait_overrides": {
+    "riasec_s": 0.9,
+    "riasec_r": 0.6,
+    "grit": 0.85,
+    "val_impact": 0.9,
+    "val_security": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Patient care",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Biology",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Empathy",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "physiotherapist",
+   "name": "Physiotherapist",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.12,
+   "typical_entry_education": "BPT (4.5 years)",
+   "short_description": "Helps people recover movement after injury, surgery or illness.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 7,
+    "senior": 14
+   },
+   "demand": 0.66,
+   "velocity": 0.08,
+   "search_keywords": "physiotherapist",
+   "trait_overrides": {
+    "riasec_s": 0.85,
+    "riasec_r": 0.7,
+    "cog_practical": 0.75,
+    "val_impact": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Anatomy",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Exercise therapy",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Empathy",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "biotechnologist",
+   "name": "Biotechnologist",
+   "sector": "health_life_sciences",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.Tech / B.Sc Biotechnology",
+   "short_description": "Uses living cells and molecules to develop medicines, vaccines and better crops.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 9,
+    "senior": 20
+   },
+   "demand": 0.6,
+   "velocity": 0.06,
+   "search_keywords": "biotechnologist",
+   "trait_overrides": {
+    "riasec_i": 0.9,
+    "riasec_r": 0.6,
+    "apt_numerical": 0.7,
+    "cog_analytical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Molecular biology",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Lab techniques",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Chemistry",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.5,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "ux-designer",
+   "name": "UX / Product Designer",
+   "sector": "design_arts",
+   "steam_tags": [
+    "T",
+    "A"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "B.Des Interaction / Communication Design",
+   "short_description": "Researches users and designs digital products that are useful and delightful.",
+   "salary_lakh": {
+    "entry": 7,
+    "mid": 18,
+    "senior": 35
+   },
+   "demand": 0.74,
+   "velocity": 0.08,
+   "search_keywords": "ux designer",
+   "trait_overrides": {
+    "riasec_a": 0.9,
+    "riasec_s": 0.6,
+    "riasec_i": 0.55,
+    "apt_verbal": 0.65,
+    "cog_creative": 0.9,
+    "cog_analytical": 0.55
+   },
+   "skills": [
+    {
+     "skill": "User research",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Prototyping",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Visual design",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "architect",
+   "name": "Architect",
+   "sector": "design_arts",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "A",
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.Arch (5 years) via NATA / JEE Main Paper 2",
+   "short_description": "Designs buildings and spaces that are safe, beautiful and sustainable.",
+   "salary_lakh": {
+    "entry": 4,
+    "mid": 10,
+    "senior": 24
+   },
+   "demand": 0.6,
+   "velocity": 0.03,
+   "search_keywords": "architect",
+   "trait_overrides": {
+    "riasec_a": 0.85,
+    "riasec_r": 0.7,
+    "apt_spatial": 0.9,
+    "cog_creative": 0.85
+   },
+   "skills": [
+    {
+     "skill": "CAD",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Sketching",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Building codes",
+     "importance": 0.6,
+     "category": "domain"
+    },
+    {
+     "skill": "Visual design",
+     "importance": 0.8,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "animator-vfx-artist",
+   "name": "Animator / VFX Artist",
+   "sector": "design_arts",
+   "steam_tags": [
+    "T",
+    "A"
+   ],
+   "automation_risk": 0.35,
+   "typical_entry_education": "B.Des / B.Sc Animation or diploma + portfolio",
+   "short_description": "Brings films, games and ads to life with animation and visual effects.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 8,
+    "senior": 18
+   },
+   "demand": 0.68,
+   "velocity": 0.08,
+   "search_keywords": "animator",
+   "trait_overrides": {
+    "riasec_a": 0.95,
+    "apt_spatial": 0.8,
+    "cog_creative": 0.95,
+    "val_autonomy": 0.75,
+    "val_security": 0.35
+   },
+   "skills": [
+    {
+     "skill": "3D modelling",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Sketching",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Storytelling",
+     "importance": 0.7,
+     "category": "soft"
+    },
+    {
+     "skill": "Visual design",
+     "importance": 0.8,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "fashion-designer",
+   "name": "Fashion Designer",
+   "sector": "design_arts",
+   "steam_tags": [
+    "A"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Des Fashion (NIFT and others)",
+   "short_description": "Designs clothing and accessories, from concept sketches to production.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 8,
+    "senior": 20
+   },
+   "demand": 0.58,
+   "velocity": 0.04,
+   "search_keywords": "fashion designer",
+   "trait_overrides": {
+    "riasec_a": 0.95,
+    "riasec_e": 0.6,
+    "cog_creative": 0.95,
+    "apt_spatial": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Sketching",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Textiles",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Visual design",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Trend research",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "industrial-designer",
+   "name": "Industrial / Product Designer",
+   "sector": "design_arts",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "A",
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "B.Des Industrial / Product Design",
+   "short_description": "Designs physical products, from kitchen tools to medical devices.",
+   "salary_lakh": {
+    "entry": 4.5,
+    "mid": 11,
+    "senior": 24
+   },
+   "demand": 0.62,
+   "velocity": 0.06,
+   "search_keywords": "industrial designer",
+   "trait_overrides": {
+    "riasec_a": 0.85,
+    "riasec_r": 0.7,
+    "apt_spatial": 0.85,
+    "cog_creative": 0.85,
+    "cog_practical": 0.7
+   },
+   "skills": [
+    {
+     "skill": "CAD",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Prototyping",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Sketching",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "User research",
+     "importance": 0.6,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "chartered-accountant",
+   "name": "Chartered Accountant",
+   "sector": "business_finance",
+   "steam_tags": [
+    "M"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "CA Foundation, Intermediate and Final (ICAI)",
+   "short_description": "Audits accounts, advises on tax and keeps businesses financially healthy.",
+   "salary_lakh": {
+    "entry": 8,
+    "mid": 18,
+    "senior": 40
+   },
+   "demand": 0.7,
+   "velocity": 0.04,
+   "search_keywords": "chartered accountant",
+   "trait_overrides": {
+    "riasec_c": 0.9,
+    "riasec_e": 0.6,
+    "apt_numerical": 0.85,
+    "grit": 0.85,
+    "val_security": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Accounting",
+     "importance": 0.95,
+     "category": "domain"
+    },
+    {
+     "skill": "Taxation",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Excel",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Attention to detail",
+     "importance": 0.8,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "financial-analyst",
+   "name": "Financial Analyst",
+   "sector": "business_finance",
+   "steam_tags": [
+    "M"
+   ],
+   "automation_risk": 0.35,
+   "typical_entry_education": "B.Com / BBA / Economics + CFA or MBA",
+   "short_description": "Analyses companies and markets to guide investment decisions.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 13,
+    "senior": 30
+   },
+   "demand": 0.66,
+   "velocity": 0.05,
+   "search_keywords": "financial analyst",
+   "trait_overrides": {
+    "riasec_c": 0.8,
+    "riasec_e": 0.7,
+    "riasec_i": 0.7,
+    "apt_numerical": 0.85
+   },
+   "skills": [
+    {
+     "skill": "Financial modelling",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Excel",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Accounting",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.6,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "entrepreneur",
+   "name": "Startup Founder / Entrepreneur",
+   "sector": "business_finance",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "A",
+    "M"
+   ],
+   "automation_risk": 0.1,
+   "typical_entry_education": "Any degree; incubators and practical experience",
+   "short_description": "Builds a business around a problem worth solving; high risk, high autonomy.",
+   "salary_lakh": {
+    "entry": 2,
+    "mid": 10,
+    "senior": 40
+   },
+   "demand": 0.55,
+   "velocity": 0.06,
+   "search_keywords": "startup",
+   "trait_overrides": {
+    "riasec_e": 0.95,
+    "riasec_a": 0.6,
+    "risk_tolerance": 0.85,
+    "val_autonomy": 0.9,
+    "grit": 0.85,
+    "val_security": 0.25
+   },
+   "skills": [
+    {
+     "skill": "Sales",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Problem solving",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Finance basics",
+     "importance": 0.6,
+     "category": "domain"
+    },
+    {
+     "skill": "Leadership",
+     "importance": 0.8,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "marketing-manager",
+   "name": "Marketing Manager",
+   "sector": "business_finance",
+   "steam_tags": [
+    "A"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "BBA / B.Com + MBA",
+   "short_description": "Plans campaigns that help products reach and win customers.",
+   "salary_lakh": {
+    "entry": 4,
+    "mid": 12,
+    "senior": 30
+   },
+   "demand": 0.62,
+   "velocity": 0.03,
+   "search_keywords": "marketing manager",
+   "trait_overrides": {
+    "riasec_e": 0.85,
+    "riasec_a": 0.65,
+    "riasec_s": 0.6,
+    "apt_verbal": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Communication",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Market research",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Digital marketing",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Data storytelling",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "actuary",
+   "name": "Actuary",
+   "sector": "business_finance",
+   "steam_tags": [
+    "M"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Sc Maths / Statistics + IAI exams",
+   "short_description": "Uses mathematics and statistics to measure risk for insurers and pension funds.",
+   "salary_lakh": {
+    "entry": 7,
+    "mid": 18,
+    "senior": 40
+   },
+   "demand": 0.6,
+   "velocity": 0.06,
+   "search_keywords": "actuary",
+   "trait_overrides": {
+    "riasec_c": 0.85,
+    "riasec_i": 0.8,
+    "apt_numerical": 0.95,
+    "apt_logical": 0.85,
+    "grit": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Statistics",
+     "importance": 0.95,
+     "category": "technical"
+    },
+    {
+     "skill": "Probability",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Excel",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Finance basics",
+     "importance": 0.6,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "lawyer",
+   "name": "Lawyer",
+   "sector": "law_policy",
+   "steam_tags": [],
+   "automation_risk": 0.2,
+   "typical_entry_education": "5-year integrated LLB via CLAT / AILET",
+   "short_description": "Advises clients, drafts agreements and argues cases in court.",
+   "salary_lakh": {
+    "entry": 4,
+    "mid": 12,
+    "senior": 35
+   },
+   "demand": 0.64,
+   "velocity": 0.04,
+   "search_keywords": "lawyer",
+   "trait_overrides": {
+    "riasec_e": 0.8,
+    "riasec_s": 0.65,
+    "riasec_i": 0.65,
+    "apt_verbal": 0.9,
+    "apt_logical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Legal research",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Writing",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Public speaking",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Negotiation",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "civil-servant",
+   "name": "Civil Servant (IAS / IPS / IFS)",
+   "sector": "law_policy",
+   "steam_tags": [],
+   "automation_risk": 0.05,
+   "typical_entry_education": "Any graduate degree + UPSC Civil Services",
+   "short_description": "Runs districts, policies and public services; very competitive selection.",
+   "salary_lakh": {
+    "entry": 10,
+    "mid": 18,
+    "senior": 30
+   },
+   "demand": 0.5,
+   "velocity": 0.0,
+   "search_keywords": "upsc",
+   "trait_overrides": {
+    "riasec_s": 0.8,
+    "riasec_e": 0.8,
+    "apt_verbal": 0.85,
+    "grit": 0.95,
+    "val_impact": 0.9,
+    "val_security": 0.75
+   },
+   "skills": [
+    {
+     "skill": "General studies",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Writing",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Leadership",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Public policy",
+     "importance": 0.7,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "policy-analyst",
+   "name": "Public Policy Analyst",
+   "sector": "law_policy",
+   "steam_tags": [
+    "M"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "Economics / Political Science + MPP",
+   "short_description": "Researches problems and evaluates government programmes with data.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 12,
+    "senior": 25
+   },
+   "demand": 0.52,
+   "velocity": 0.04,
+   "search_keywords": "policy analyst",
+   "trait_overrides": {
+    "riasec_i": 0.8,
+    "riasec_s": 0.7,
+    "apt_verbal": 0.8,
+    "cog_analytical": 0.8,
+    "val_impact": 0.85
+   },
+   "skills": [
+    {
+     "skill": "Research methods",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Writing",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Public policy",
+     "importance": 0.8,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "school-teacher",
+   "name": "School Teacher",
+   "sector": "education_research",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.1,
+   "typical_entry_education": "B.Sc / B.A + B.Ed; CTET or state TET",
+   "short_description": "Teaches and mentors students; stable government and private-school roles.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 6,
+    "senior": 10
+   },
+   "demand": 0.6,
+   "velocity": 0.02,
+   "search_keywords": "teacher",
+   "trait_overrides": {
+    "riasec_s": 0.9,
+    "apt_verbal": 0.75,
+    "val_impact": 0.85,
+    "val_security": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Subject knowledge",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Classroom management",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Empathy",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "research-scientist",
+   "name": "Research Scientist",
+   "sector": "education_research",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.1,
+   "typical_entry_education": "BS-MS / M.Sc + PhD",
+   "short_description": "Discovers new knowledge in labs and research institutes.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 12,
+    "senior": 25
+   },
+   "demand": 0.52,
+   "velocity": 0.04,
+   "search_keywords": "research scientist",
+   "trait_overrides": {
+    "riasec_i": 0.95,
+    "apt_logical": 0.85,
+    "cog_analytical": 0.9,
+    "grit": 0.9,
+    "val_autonomy": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Research methods",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Writing",
+     "importance": 0.7,
+     "category": "soft"
+    },
+    {
+     "skill": "Lab techniques",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "special-educator",
+   "name": "Special Educator",
+   "sector": "education_research",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.08,
+   "typical_entry_education": "B.Ed Special Education (RCI recognised)",
+   "short_description": "Teaches and supports children with disabilities and learning differences.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 5.5,
+    "senior": 9
+   },
+   "demand": 0.62,
+   "velocity": 0.08,
+   "search_keywords": "special educator",
+   "trait_overrides": {
+    "riasec_s": 0.95,
+    "val_impact": 0.95,
+    "grit": 0.8,
+    "apt_verbal": 0.7
+   },
+   "skills": [
+    {
+     "skill": "Inclusive teaching",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Empathy",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Child psychology",
+     "importance": 0.7,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "journalist",
+   "name": "Journalist",
+   "sector": "media_communication",
+   "steam_tags": [
+    "A"
+   ],
+   "automation_risk": 0.35,
+   "typical_entry_education": "B.A Journalism / Mass Communication",
+   "short_description": "Finds, checks and tells stories that inform the public.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 7,
+    "senior": 18
+   },
+   "demand": 0.48,
+   "velocity": -0.02,
+   "search_keywords": "journalist",
+   "trait_overrides": {
+    "riasec_a": 0.75,
+    "riasec_e": 0.7,
+    "riasec_s": 0.7,
+    "apt_verbal": 0.9,
+    "risk_tolerance": 0.65
+   },
+   "skills": [
+    {
+     "skill": "Writing",
+     "importance": 0.95,
+     "category": "soft"
+    },
+    {
+     "skill": "Research methods",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Interviewing",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Digital media",
+     "importance": 0.6,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "digital-marketer",
+   "name": "Digital Marketing & Content Specialist",
+   "sector": "media_communication",
+   "steam_tags": [
+    "T",
+    "A"
+   ],
+   "automation_risk": 0.4,
+   "typical_entry_education": "Any degree + digital marketing certifications",
+   "short_description": "Grows audiences online with content, ads and analytics.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 8,
+    "senior": 18
+   },
+   "demand": 0.7,
+   "velocity": 0.08,
+   "search_keywords": "digital marketing",
+   "trait_overrides": {
+    "riasec_e": 0.75,
+    "riasec_a": 0.75,
+    "apt_verbal": 0.75,
+    "cog_creative": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Digital marketing",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Writing",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Data storytelling",
+     "importance": 0.6,
+     "category": "soft"
+    },
+    {
+     "skill": "Visual design",
+     "importance": 0.5,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "agri-drone-engineer",
+   "name": "Agri-Drone & Precision Farming Engineer",
+   "sector": "agri_environment",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.12,
+   "typical_entry_education": "B.Tech Agricultural Engineering + drone certification",
+   "short_description": "Applies drones, sensors and analytics to raise farm yields and cut input waste.",
+   "salary_lakh": {
+    "entry": 4,
+    "mid": 9,
+    "senior": 18
+   },
+   "demand": 0.68,
+   "velocity": 0.18,
+   "search_keywords": "agriculture drone",
+   "trait_overrides": {
+    "riasec_r": 0.8,
+    "riasec_i": 0.7,
+    "apt_spatial": 0.7,
+    "cog_practical": 0.85,
+    "risk_tolerance": 0.6,
+    "val_impact": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Drone operation",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "GIS",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Agronomy",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Python",
+     "importance": 0.5,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "agronomist",
+   "name": "Agronomist / Agricultural Officer",
+   "sector": "agri_environment",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "B.Sc (Hons) Agriculture",
+   "short_description": "Advises farmers on crops, soil and pests; government and agri-business roles.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 7,
+    "senior": 14
+   },
+   "demand": 0.6,
+   "velocity": 0.04,
+   "search_keywords": "agronomist",
+   "trait_overrides": {
+    "riasec_r": 0.8,
+    "riasec_i": 0.75,
+    "riasec_s": 0.6,
+    "cog_practical": 0.8,
+    "val_impact": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Agronomy",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Soil science",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Field surveys",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "environmental-scientist",
+   "name": "Environmental Scientist",
+   "sector": "agri_environment",
+   "steam_tags": [
+    "S"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "B.Sc / M.Sc Environmental Science",
+   "short_description": "Measures pollution and protects air, water and ecosystems.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 8,
+    "senior": 16
+   },
+   "demand": 0.58,
+   "velocity": 0.06,
+   "search_keywords": "environmental scientist",
+   "trait_overrides": {
+    "riasec_i": 0.85,
+    "riasec_r": 0.7,
+    "val_impact": 0.9,
+    "cog_analytical": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Field surveys",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Chemistry",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "GIS",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.6,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "climate-data-analyst",
+   "name": "Climate & Sustainability Analyst",
+   "sector": "agri_environment",
+   "steam_tags": [
+    "S",
+    "T",
+    "M"
+   ],
+   "automation_risk": 0.18,
+   "typical_entry_education": "B.Sc / B.Tech + climate or data courses",
+   "short_description": "Uses data to track emissions and plan climate action for companies and cities.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 12,
+    "senior": 25
+   },
+   "demand": 0.7,
+   "velocity": 0.2,
+   "search_keywords": "sustainability analyst",
+   "trait_overrides": {
+    "riasec_i": 0.85,
+    "apt_numerical": 0.8,
+    "cog_analytical": 0.85,
+    "val_impact": 0.9
+   },
+   "skills": [
+    {
+     "skill": "Python",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Statistics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "GIS",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Sustainability reporting",
+     "importance": 0.7,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "food-technologist",
+   "name": "Food Technologist",
+   "sector": "agri_environment",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Tech Food Technology",
+   "short_description": "Develops, preserves and safety-tests the food we buy.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 8,
+    "senior": 16
+   },
+   "demand": 0.62,
+   "velocity": 0.06,
+   "search_keywords": "food technologist",
+   "trait_overrides": {
+    "riasec_i": 0.75,
+    "riasec_r": 0.7,
+    "riasec_c": 0.6,
+    "cog_practical": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Food chemistry",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Quality control",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Microbiology",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Lab techniques",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "ev-engineer",
+   "name": "Electric Vehicle Engineer",
+   "sector": "energy_manufacturing",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.12,
+   "typical_entry_education": "B.Tech EEE / Mechanical / Automobile",
+   "short_description": "Designs batteries, motors and charging systems for electric vehicles.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 13,
+    "senior": 28
+   },
+   "demand": 0.76,
+   "velocity": 0.22,
+   "search_keywords": "electric vehicle engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "riasec_i": 0.8,
+    "apt_numerical": 0.8,
+    "apt_spatial": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Battery systems",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Power electronics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "CAD",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "solar-energy-engineer",
+   "name": "Solar & Renewable Energy Engineer",
+   "sector": "energy_manufacturing",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.12,
+   "typical_entry_education": "B.Tech EEE / Diploma + solar certification",
+   "short_description": "Plans and installs solar and wind systems for homes, farms and industry.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 8,
+    "senior": 16
+   },
+   "demand": 0.72,
+   "velocity": 0.18,
+   "search_keywords": "solar engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "cog_practical": 0.85,
+    "val_impact": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Power systems",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Site surveys",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.6,
+     "category": "technical"
+    },
+    {
+     "skill": "Safety standards",
+     "importance": 0.7,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "chemical-engineer",
+   "name": "Chemical Engineer",
+   "sector": "energy_manufacturing",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.22,
+   "typical_entry_education": "B.Tech Chemical Engineering",
+   "short_description": "Designs processes that turn raw materials into fuels, medicines and materials.",
+   "salary_lakh": {
+    "entry": 4.5,
+    "mid": 11,
+    "senior": 24
+   },
+   "demand": 0.58,
+   "velocity": 0.03,
+   "search_keywords": "chemical engineer",
+   "trait_overrides": {
+    "riasec_i": 0.8,
+    "riasec_r": 0.75,
+    "apt_numerical": 0.85
+   },
+   "skills": [
+    {
+     "skill": "Chemistry",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Thermodynamics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Process design",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Safety standards",
+     "importance": 0.7,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "textile-technologist",
+   "name": "Textile Technologist",
+   "sector": "energy_manufacturing",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.3,
+   "typical_entry_education": "B.Tech Textile Technology",
+   "short_description": "Improves how fabrics are made, dyed and finished; big employers in Tiruppur, Surat and Coimbatore.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 7,
+    "senior": 15
+   },
+   "demand": 0.6,
+   "velocity": 0.04,
+   "search_keywords": "textile technologist",
+   "trait_overrides": {
+    "riasec_r": 0.8,
+    "riasec_c": 0.65,
+    "cog_practical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Textiles",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Quality control",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Chemistry",
+     "importance": 0.6,
+     "category": "domain"
+    },
+    {
+     "skill": "Manufacturing processes",
+     "importance": 0.7,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "aerospace-engineer",
+   "name": "Aerospace Engineer",
+   "sector": "aerospace_mobility",
+   "steam_tags": [
+    "S",
+    "T",
+    "E",
+    "M"
+   ],
+   "automation_risk": 0.12,
+   "typical_entry_education": "B.Tech Aerospace / Aeronautical",
+   "short_description": "Designs aircraft, drones, rockets and satellites.",
+   "salary_lakh": {
+    "entry": 5,
+    "mid": 13,
+    "senior": 30
+   },
+   "demand": 0.62,
+   "velocity": 0.1,
+   "search_keywords": "aerospace engineer",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "riasec_i": 0.9,
+    "apt_numerical": 0.9,
+    "apt_spatial": 0.9,
+    "grit": 0.85
+   },
+   "skills": [
+    {
+     "skill": "Aerodynamics",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "CAD",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Mathematics",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Materials",
+     "importance": 0.6,
+     "category": "domain"
+    }
+   ]
+  },
+  {
+   "slug": "commercial-pilot",
+   "name": "Commercial Pilot",
+   "sector": "aerospace_mobility",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "CPL from a DGCA-approved flying school",
+   "short_description": "Flies passenger and cargo aircraft; expensive training, strong pay.",
+   "salary_lakh": {
+    "entry": 12,
+    "mid": 30,
+    "senior": 60
+   },
+   "demand": 0.66,
+   "velocity": 0.08,
+   "search_keywords": "commercial pilot",
+   "trait_overrides": {
+    "riasec_r": 0.85,
+    "apt_spatial": 0.9,
+    "grit": 0.85,
+    "risk_tolerance": 0.6
+   },
+   "skills": [
+    {
+     "skill": "Flight operations",
+     "importance": 0.9,
+     "category": "domain"
+    },
+    {
+     "skill": "Navigation",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Decision making",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "merchant-navy-officer",
+   "name": "Merchant Navy Officer",
+   "sector": "aerospace_mobility",
+   "steam_tags": [
+    "S",
+    "T"
+   ],
+   "automation_risk": 0.15,
+   "typical_entry_education": "B.Sc Nautical Science / Marine Engineering via IMU-CET",
+   "short_description": "Navigates or maintains cargo ships on international routes.",
+   "salary_lakh": {
+    "entry": 6,
+    "mid": 18,
+    "senior": 40
+   },
+   "demand": 0.6,
+   "velocity": 0.04,
+   "search_keywords": "merchant navy",
+   "trait_overrides": {
+    "riasec_r": 0.9,
+    "grit": 0.85,
+    "risk_tolerance": 0.65,
+    "val_financial": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Navigation",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Marine engineering",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Safety standards",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Leadership",
+     "importance": 0.6,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "automobile-engineer",
+   "name": "Automobile Engineer",
+   "sector": "aerospace_mobility",
+   "steam_tags": [
+    "S",
+    "T",
+    "E"
+   ],
+   "automation_risk": 0.22,
+   "typical_entry_education": "B.Tech Automobile / Mechanical",
+   "short_description": "Designs, tests and services cars, two-wheelers and commercial vehicles.",
+   "salary_lakh": {
+    "entry": 3.5,
+    "mid": 9,
+    "senior": 20
+   },
+   "demand": 0.62,
+   "velocity": 0.05,
+   "search_keywords": "automobile engineer",
+   "trait_overrides": {
+    "riasec_r": 0.9,
+    "apt_spatial": 0.8,
+    "cog_practical": 0.85
+   },
+   "skills": [
+    {
+     "skill": "CAD",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Vehicle dynamics",
+     "importance": 0.8,
+     "category": "technical"
+    },
+    {
+     "skill": "Manufacturing processes",
+     "importance": 0.7,
+     "category": "technical"
+    },
+    {
+     "skill": "Electronics",
+     "importance": 0.5,
+     "category": "technical"
+    }
+   ]
+  },
+  {
+   "slug": "hotel-manager",
+   "name": "Hotel & Hospitality Manager",
+   "sector": "hospitality_services",
+   "steam_tags": [],
+   "automation_risk": 0.25,
+   "typical_entry_education": "B.Sc Hospitality & Hotel Administration (NCHM)",
+   "short_description": "Runs hotels, resorts and restaurants and leads service teams.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 8,
+    "senior": 20
+   },
+   "demand": 0.66,
+   "velocity": 0.08,
+   "search_keywords": "hotel manager",
+   "trait_overrides": {
+    "riasec_s": 0.85,
+    "riasec_e": 0.8,
+    "cog_practical": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Customer service",
+     "importance": 0.9,
+     "category": "soft"
+    },
+    {
+     "skill": "Operations",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Leadership",
+     "importance": 0.7,
+     "category": "soft"
+    },
+    {
+     "skill": "Communication",
+     "importance": 0.8,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "chef",
+   "name": "Chef / Culinary Professional",
+   "sector": "hospitality_services",
+   "steam_tags": [
+    "A"
+   ],
+   "automation_risk": 0.2,
+   "typical_entry_education": "Culinary arts degree or diploma",
+   "short_description": "Creates and runs kitchens in hotels, restaurants and food businesses.",
+   "salary_lakh": {
+    "entry": 2.5,
+    "mid": 7,
+    "senior": 18
+   },
+   "demand": 0.64,
+   "velocity": 0.06,
+   "search_keywords": "chef",
+   "trait_overrides": {
+    "riasec_a": 0.75,
+    "riasec_r": 0.8,
+    "cog_creative": 0.8,
+    "grit": 0.8
+   },
+   "skills": [
+    {
+     "skill": "Cooking techniques",
+     "importance": 0.9,
+     "category": "technical"
+    },
+    {
+     "skill": "Food safety",
+     "importance": 0.8,
+     "category": "domain"
+    },
+    {
+     "skill": "Creativity",
+     "importance": 0.7,
+     "category": "soft"
+    },
+    {
+     "skill": "Teamwork",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  },
+  {
+   "slug": "travel-tourism-manager",
+   "name": "Travel & Tourism Manager",
+   "sector": "hospitality_services",
+   "steam_tags": [],
+   "automation_risk": 0.35,
+   "typical_entry_education": "BBA Tourism / B.Sc Hospitality",
+   "short_description": "Designs trips and runs travel operations for agencies and tourism boards.",
+   "salary_lakh": {
+    "entry": 3,
+    "mid": 7,
+    "senior": 15
+   },
+   "demand": 0.6,
+   "velocity": 0.07,
+   "search_keywords": "travel consultant",
+   "trait_overrides": {
+    "riasec_e": 0.8,
+    "riasec_s": 0.8,
+    "apt_verbal": 0.75
+   },
+   "skills": [
+    {
+     "skill": "Customer service",
+     "importance": 0.8,
+     "category": "soft"
+    },
+    {
+     "skill": "Operations",
+     "importance": 0.7,
+     "category": "domain"
+    },
+    {
+     "skill": "Languages",
+     "importance": 0.6,
+     "category": "soft"
+    },
+    {
+     "skill": "Sales",
+     "importance": 0.7,
+     "category": "soft"
+    }
+   ]
+  }
+ ]
+}
