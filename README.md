@@ -9,4 +9,5 @@ Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform.
 - `docs/DEMO_PLAN.md`: demo script, fail-safes, persona switcher, judge Q&A
 - `docs/DATA_TRUTH.md`: what "real-time" means here, how every figure is checked, sources, pre-demo audit
 - `docs/QUESTIONNAIRE.md`: the 74-item questionnaire, scoring, quality checks, pilot plan
+- `docs/FRONTEND_STITCH_PROMPTS.md`: Google Stitch prompts for every screen, wired to the API
 - `backend/contracts/`: frozen OpenAPI spec and example JSON for every endpoint
