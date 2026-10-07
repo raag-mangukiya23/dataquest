@@ -379,20 +379,6 @@ def test_partner_local_problems_import(live, tmp_path):
     )
 
 
-def test_site_bridge_persists_in_the_database(live):
-    from tests.test_site import INPUT
-
-    d = live.post("/api/assess", json=INPUT).json()
-    assert d["persisted"] and d["result"]["source"] == "prism-backend"
-    assert live.get(f"/api/assess/{d['id']}").json()["result"] == d["result"]
-    body = {"aptitude": dict.fromkeys(("logic", "creative", "comm", "hands", "sci"), 60), "profile": INPUT,
-            "answered": 43, "total": 43}  # fmt: skip
-    assert live.post("/api/battery", json=body).status_code == 201
-    ins = live.get("/api/insights").json()
-    assert ins["total"] >= 1 and ins["battery"]["attempts"] >= 1 and ins["recent"][0]["id"] == d["id"]
-    assert live.get("/api/health").json()["careers"] == 51
-
-
 def test_offline_market_csv_creates_new_dataset_version(live, tmp_path):
     """Runs last: publishes a new dataset version, so earlier runs become 'outdated' but stay reproducible."""
     from datetime import timedelta

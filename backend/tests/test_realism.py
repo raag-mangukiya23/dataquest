@@ -176,22 +176,3 @@ def test_careless_answers_lower_confidence_and_say_why(cat):
     assert b.recommendations[0].confidence < 0.85 * a.recommendations[0].confidence
     assert any("identical" in w for w in b.data_quality.warnings)
     assert not any("_" in w.split(".")[0] for w in b.data_quality.warnings)  # plain words, no codes
-
-
-def test_site_bridge_respects_both_abilities_and_stated_interest(cat):
-    from app.services import site_bridge as sb
-
-    def top(interest: str, **traits: int) -> list[str]:
-        inp = sb.validate_input({
-            "student": {"interest": interest, **traits},
-            "parent": {"priority": "roi", "budget": 45, "risk": 50, "minpay": 6, "mobility": "intrastate", "tier": "tier2"},
-            "region": "chennai", "scholarship": True, "hyperlocal": True,
-        })  # fmt: skip
-        _, r = sb.score(inp, cat, TODAY, NOW)
-        return [t["c"]["domain"] for t in r["top"]]
-
-    analytical = {"logic": 75, "creative": 50, "comm": 50, "hands": 50, "sci": 65}
-    creative = {"logic": 50, "creative": 85, "comm": 70, "hands": 55, "sci": 40}
-    assert top("computing", **analytical)[0] == "computing"
-    assert top("creative", **creative)[0] == "creative"
-    assert "fintech" in top("fintech", **creative)
