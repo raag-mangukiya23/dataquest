@@ -12,7 +12,8 @@ from app.schemas.analysis import (
     WhatIfResult,
 )
 from app.schemas.common import Page
-from app.schemas.reports import Roadmap, SwotReport
+from app.schemas.reports import Language, Narrative, Roadmap, SwotReport
+from app.services import narrator
 
 router = APIRouter(prefix="/analysis", tags=["analysis"])
 
@@ -58,3 +59,11 @@ def swot(run_id: str, career_id: str | None = None, p=CurrentUser, gw=Gateway):
 @router.get("/runs/{run_id}/roadmap", response_model=Envelope[Roadmap])
 def roadmap(run_id: str, career_id: str | None = None, p=CurrentUser, gw=Gateway):
     return ok(gw.get_roadmap(p, run_id, career_id), mock=gw.mock)
+
+
+@router.get("/runs/{run_id}/narrative", response_model=Envelope[Narrative])
+def narrative(run_id: str, lang: Language = Language.EN, p=CurrentUser, gw=Gateway):
+    """Plain-language summary in English, Tamil or Hindi. A language model (GROK_API_KEY) may rephrase it;
+    it only sees the anonymised `facts` shown in the response and cannot add numbers. Without a key, or if
+    the call fails, fixed templates are used (`source=template`)."""
+    return ok(narrator.narrate(gw.get_run(p, run_id), p.role, lang), mock=gw.mock)

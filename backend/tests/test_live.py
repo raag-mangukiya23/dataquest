@@ -83,6 +83,17 @@ def test_student_sees_gentle_view_and_no_raw_finances(live):
     run_id = live.get("/api/v1/analysis/runs", headers=h).json()["data"]["items"][0]["run_id"]
     conflict = live.get(f"/api/v1/analysis/runs/{run_id}/conflict", headers=h).json()["data"]
     assert conflict["visibility"] == "summary" and conflict["dimensions"] == []
+    run = live.get(f"/api/v1/analysis/runs/{run_id}", headers=h).json()["data"]
+    money = ("family_funds", "loan_capacity", "loan_required", "monthly_emi", "burden_ratio", "funding_gap")
+    for r in run["recommendations"]:
+        assert all(r["financial"][k] is None for k in money)
+        assert r["financial"]["total_cost"] > 0 and r["financial"]["affordability_class"]
+    assert "short even with a loan" not in str(run["buckets"])
+    roadmap = live.get(f"/api/v1/analysis/runs/{run_id}/roadmap", headers=h).json()["data"]
+    assert "a month" not in str(roadmap)
+    hp, _ = login(live, df.parent_email("creative_risk_averse"))
+    parent_run = live.get(f"/api/v1/analysis/runs/{run_id}", headers=hp).json()["data"]
+    assert parent_run["recommendations"][0]["financial"]["family_funds"] is not None
     traits = live.get(f"/api/v1/students/{d['user']['id']}/traits", headers=h).json()["data"]
     assert traits["completeness"] > 0.9 and all(t["percentile"] is None for t in traits["traits"])
 
@@ -255,3 +266,49 @@ def test_compat_aliases_live(live):
     pred = live.post("/api/predict", json={"user_id": r["user_id"]}).json()
     assert 0 <= pred["score"] <= 100 and pred["result"]
     assert live.get(f"/api/results/{pred['id']}").json()["top_careers"]
+
+
+def test_offline_market_csv_creates_new_dataset_version(live, tmp_path):
+    """Runs last: publishes a new dataset version, so earlier runs become 'outdated' but stay reproducible."""
+    from datetime import timedelta
+
+    from app.core.clock import today
+    from app.db import session as dbs
+    from app.etl.market_csv import import_market_csv
+    from app.services import catalog_db
+
+    h, _ = login(live, df.parent_email("creative_risk_averse"))
+    old_run = live.get("/api/v1/analysis/runs", headers=h).json()["data"]["items"][0]["run_id"]
+    d1, d0 = today() - timedelta(days=1), today() - timedelta(days=31)
+    slugs = ["software-engineer", "data-scientist", "agri-drone-engineer", "civil-engineer"]
+    lines = ["career_slug,region_code,fetched_on,posting_count,mean_salary,keywords,source_name"]
+    for i, s in enumerate(slugs):
+        lines.append(f"{s},IN-TN-CHN,{d0},{100 + 10 * i},,{s},")
+        lines.append(f"{s},IN-TN-CHN,{d1},{150 + 40 * i},650000,{s},")
+        lines.append(f"{s},IN,{d1},{4000 + i},,{s},")
+    lines += [
+        "astronaut-chef,IN-TN-CHN,2026-10-01,5,,x,",
+        f"software-engineer,IN-TN-CHN,{today() + timedelta(days=3)},5,,x,",
+    ]
+    path = tmp_path / "postings.csv"
+    path.write_text("\n".join(lines) + "\n")
+
+    with dbs.get_sessionmaker()() as db:
+        res = import_market_csv(db, today(), path)
+        db.commit()
+        again = import_market_csv(db, today(), path)
+        db.rollback()
+    catalog_db.invalidate()
+    assert res["status"] == "completed", res
+    assert res["counts"]["market_signals"]["inserted"] == 4
+    assert any("unknown career" in w for w in res["warnings"])
+    assert any("future date" in w for w in res["warnings"])
+    assert again["status"] == "skipped"
+
+    sid = live.get("/api/v1/demo/personas").json()["data"][0]["student_id"]
+    new = live.post("/api/v1/analysis/runs", headers=h, json={"student_id": sid}).json()["data"]
+    assert new["reproducibility"]["dataset_version"] == res["label"]
+    old = live.get(f"/api/v1/analysis/runs/{old_run}", headers=h).json()["data"]
+    assert old["reproducibility"]["is_outdated"] is True
+    status = live.get("/api/v1/system/data-status").json()["data"]
+    assert status is not None

@@ -38,7 +38,7 @@ from app.engine.compare import compare as compare_runs
 from app.engine.config import DEFAULT_CONFIG, ScoringConfig
 from app.engine.types import CatalogInput, FamilyInput, Preference, StudentInput
 from app.etl import loader, quality
-from app.etl.adapters.adzuna import plan_queries, to_signals
+from app.etl.adapters.adzuna import plan_queries
 from app.mocks.gateway import adzuna_adapter, build_data_status, build_methodology
 from app.models import assessment as am
 from app.models import catalog as cm
@@ -104,7 +104,7 @@ from app.schemas.family import (
 from app.schemas.profiles import StudentProfileIn, StudentProfileOut
 from app.schemas.reports import Roadmap, SwotReport
 from app.schemas.system import DataStatus, Methodology
-from app.services.analysis import apply_overrides, roadmap_for, run_analysis, swot_for
+from app.services.analysis import apply_overrides, hide_family_money, roadmap_for, run_analysis, swot_for
 from app.services.catalog_db import invalidate, load_catalog, region_for_pincode
 from app.services.principal import Principal
 
@@ -1047,6 +1047,8 @@ class LiveGateway:
         run = run.model_copy(update={"reproducibility": repro})
         if p.role is Role.STUDENT:
             run = run.model_copy(update={"conflict": conflict_engine.student_view(run.conflict)})
+            if not self._consent(p.user_id, ConsentType.SHARE_RAW_FINANCE_WITH_STUDENT):
+                run = hide_family_money(run)
         return run
 
     def _load_run(self, p: Principal, run_id: str) -> tuple[om.AnalysisRunRow, AnalysisRun]:
@@ -1147,10 +1149,12 @@ class LiveGateway:
 
     def get_swot(self, p: Principal, run_id: str, career_id: str | None) -> SwotReport:
         row, run = self._load_run(p, run_id)
+        run = self._view(run, p)
         return swot_for(run, self._inputs(row)[0], self._catalog(), career_id)
 
     def get_roadmap(self, p: Principal, run_id: str, career_id: str | None) -> Roadmap:
         row, run = self._load_run(p, run_id)
+        run = self._view(run, p)
         return roadmap_for(run, self._inputs(row)[0], self._catalog(), career_id, today())
 
     # ------------------------------------------------------------ catalog
@@ -1382,33 +1386,15 @@ class LiveGateway:
                     today().toordinal(),
                 )
                 result = feed.fetch(queries, today(), get_settings().adzuna_daily_budget)
-                by_slug = {c.slug: c for c in careers}
-                for pc in result.counts:
-                    self.db.merge(
-                        cm.PostingSnapshot(
-                            id=str(
-                                uuid.uuid5(
-                                    uuid.NAMESPACE_URL,
-                                    f"{pc.query.career_slug}{pc.query.region_code}{pc.fetched_on}",
-                                )
-                            ),
-                            career_id=by_slug[pc.query.career_slug].id,
-                            region_code=pc.query.region_code,
-                            fetched_on=pc.fetched_on,
-                            posting_count=pc.count,
-                            mean_salary=pc.mean_salary,
-                            query=pc.query.keywords,
-                        )
-                    )
-                drafts = to_signals(result.counts, {})
-                counts = {
-                    "posting_snapshots": {
-                        "inserted": len(result.counts),
-                        "updated": 0,
-                        "skipped": len(result.errors),
-                    },
-                    "market_signals": {"inserted": len(drafts), "updated": 0, "skipped": 0},
-                }
+                from app.etl.market_csv import API_SOURCE, store_counts
+
+                res = store_counts(
+                    self.db, [(pc, API_SOURCE, None) for pc in result.counts], today(), "adzuna"
+                )
+                status = res["status"] if result.counts else "failed"
+                counts = res["counts"]
+                warnings += res["warnings"]
+                invalidate()
                 warnings += result.errors
         self.db.add(
             om.DataRefreshJob(

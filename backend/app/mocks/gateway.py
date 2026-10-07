@@ -89,7 +89,7 @@ from app.schemas.system import (
     Formula,
     Methodology,
 )
-from app.services.analysis import apply_overrides, roadmap_for, swot_for
+from app.services.analysis import apply_overrides, hide_family_money, roadmap_for, swot_for
 from app.services.principal import Principal
 
 MOCK_ACCESS = "mock.access.token"
@@ -358,7 +358,7 @@ class MockGateway:
             run_id=run.run_id,
             full_conflict=False,
         ).conflict
-        return run.model_copy(update={"conflict": summary})
+        return hide_family_money(run.model_copy(update={"conflict": summary}))
 
     def create_run(self, p: Principal, req: AnalysisRunRequest) -> AnalysisRun:
         return self._view(self._baseline(), p)

@@ -82,3 +82,27 @@ class Roadmap(Contract):
     scholarship_deadlines: list[Milestone]
     skill_actions: list[SkillAction]
     plan_b: list[CareerRef] = Field(description="Adjacent careers if the primary route closes")
+
+
+class Language(StrEnum):
+    EN = "en"
+    TA = "ta"  # Tamil
+    HI = "hi"  # Hindi
+
+
+class Narrative(Contract):
+    run_id: str
+    language: Language
+    audience: str = Field(examples=["student", "parent"])
+    headline: str
+    bullets: list[str]
+    source: str = Field(description="model = rephrased by the language model; template = fixed wording")
+    model: str | None = None
+    facts: dict = Field(
+        description="Exactly what was sent to the language model (anonymised). Every number in the text "
+        "comes from here."
+    )
+    translation_reviewed: bool = Field(
+        description="false = Tamil/Hindi wording not yet checked by a native speaker"
+    )
+    notice: str

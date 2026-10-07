@@ -134,14 +134,26 @@ class FinancialAssessment(Contract):
     quota: str = Field(examples=["government", "management", "open"])
     duration_years: int
     total_cost: INR = Field(description="Inflation-adjusted sum over study years")
-    family_funds: INR
+    family_funds: INR | None = Field(
+        description="Family money for the course; null in the student view unless the family shares its finances"
+    )
     scholarship_plan: list[ScholarshipPick]
     scholarship_expected: INR
-    loan_capacity: INR
-    loan_required: INR
-    monthly_emi: INR
-    burden_ratio: float = Field(description="(monthly_emi + existing EMI) / monthly income")
-    funding_gap: INR = Field(description="Shortfall after funds + scholarships + full loan capacity")
+    loan_capacity: INR | None = Field(
+        description="Null in the student view unless the family shares its finances"
+    )
+    loan_required: INR | None = Field(
+        description="Null in the student view unless the family shares its finances"
+    )
+    monthly_emi: INR | None = Field(
+        description="Null in the student view unless the family shares its finances"
+    )
+    burden_ratio: float | None = Field(
+        description="(monthly_emi + existing EMI) / monthly income; null in the student view unless the family shares its finances"
+    )
+    funding_gap: INR | None = Field(
+        description="Shortfall after funds + scholarships + full loan capacity; null in the student view unless the family shares its finances"
+    )
     affordability: Unit
     affordability_class: AffordabilityClass
     admission_chance: Unit = Field(

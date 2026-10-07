@@ -7,7 +7,7 @@
     "kind": "baseline",
     "parent_run_id": null,
     "created_at": "2026-10-07T09:30:00",
-    "duration_ms": 4.6,
+    "duration_ms": 5.0,
     "reproducibility": {
       "engine_version": "prism-engine/1.0.0",
       "scoring_config_version": "weights-2026.10-v2",
@@ -172,8 +172,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.606,
@@ -188,7 +188,7 @@
           "quota": "government",
           "duration_years": 6,
           "total_cost": 792280,
-          "family_funds": 1144074,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -200,11 +200,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 534149,
-          "loan_required": 0,
-          "monthly_emi": 0,
-          "burden_ratio": 0.067,
-          "funding_gap": 0,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 1.0,
           "affordability_class": "comfortable",
           "admission_chance": 0.3881,
@@ -228,7 +228,7 @@
             "quota": "management",
             "duration_years": 6,
             "total_cost": 16241746,
-            "family_funds": 1144074,
+            "family_funds": null,
             "scholarship_plan": [
               {
                 "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -240,11 +240,11 @@
               }
             ],
             "scholarship_expected": 30000,
-            "loan_capacity": 534149,
-            "loan_required": 534149,
-            "monthly_emi": 12000,
-            "burden_ratio": 0.227,
-            "funding_gap": 14533523,
+            "loan_capacity": null,
+            "loan_required": null,
+            "monthly_emi": null,
+            "burden_ratio": null,
+            "funding_gap": null,
             "affordability": 0.0854,
             "affordability_class": "infeasible",
             "admission_chance": 1.0,
@@ -427,8 +427,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.5163,
@@ -443,7 +443,7 @@
           "quota": "open",
           "duration_years": 4,
           "total_cost": 1289649,
-          "family_funds": 941220,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -455,11 +455,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 605369,
-          "loan_required": 318429,
-          "monthly_emi": 6312,
-          "burden_ratio": 0.151,
-          "funding_gap": 0,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 0.9409,
           "affordability_class": "loan_dependent",
           "admission_chance": 1.0,
@@ -628,8 +628,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.4804,
@@ -644,7 +644,7 @@
           "quota": "open",
           "duration_years": 5,
           "total_cost": 861686,
-          "family_funds": 1039693,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -656,11 +656,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 567533,
-          "loan_required": 0,
-          "monthly_emi": 0,
-          "burden_ratio": 0.067,
-          "funding_gap": 0,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 1.0,
           "affordability_class": "comfortable",
           "admission_chance": 0.8681,
@@ -842,8 +842,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.6418,
@@ -858,7 +858,7 @@
           "quota": "open",
           "duration_years": 4,
           "total_cost": 656991,
-          "family_funds": 941220,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -870,11 +870,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 605369,
-          "loan_required": 0,
-          "monthly_emi": 0,
-          "burden_ratio": 0.067,
-          "funding_gap": 0,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 1.0,
           "affordability_class": "comfortable",
           "admission_chance": 1.0,
@@ -1054,8 +1054,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.4983,
@@ -1070,7 +1070,7 @@
           "quota": "open",
           "duration_years": 4,
           "total_cost": 608325,
-          "family_funds": 941220,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -1082,11 +1082,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 605369,
-          "loan_required": 0,
-          "monthly_emi": 0,
-          "burden_ratio": 0.067,
-          "funding_gap": 0,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 1.0,
           "affordability_class": "comfortable",
           "admission_chance": 1.0,
@@ -1267,8 +1267,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.5342,
@@ -1283,7 +1283,7 @@
           "quota": "open",
           "duration_years": 4,
           "total_cost": 1927173,
-          "family_funds": 941220,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -1295,11 +1295,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 605369,
-          "loan_required": 605369,
-          "monthly_emi": 12000,
-          "burden_ratio": 0.227,
-          "funding_gap": 350584,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 0.6296,
           "affordability_class": "infeasible",
           "admission_chance": 1.0,
@@ -1479,8 +1479,8 @@
           "regions_considered": [
             "IN-TN-CBE",
             "IN-TN-CHN",
-            "IN-TG-HYD",
             "IN-KA-BLR",
+            "IN-TG-HYD",
             "DE"
           ],
           "ci_low": 0.5521,
@@ -1495,7 +1495,7 @@
           "quota": "open",
           "duration_years": 4,
           "total_cost": 3416353,
-          "family_funds": 941220,
+          "family_funds": null,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -1507,11 +1507,11 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 605369,
-          "loan_required": 605369,
-          "monthly_emi": 12000,
-          "burden_ratio": 0.227,
-          "funding_gap": 1839764,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
           "affordability": 0.3552,
           "affordability_class": "infeasible",
           "admission_chance": 1.0,
@@ -1687,13 +1687,13 @@
           "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "career_name": "Robotics & Automation Engineer",
           "score": 0.7301,
-          "reason": "About Rs 190,584 short even with a loan; check Tamil Nadu First Graduate Tuition Fee Concession, Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
+          "reason": "Still short of funds even with a loan; check Tamil Nadu First Graduate Tuition Fee Concession, Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
         },
         {
           "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
           "career_name": "UX / Product Designer",
           "score": 0.6822,
-          "reason": "About Rs 1,759,764 short even with a loan; check Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
+          "reason": "Still short of funds even with a loan; check Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
         }
       ]
     },

@@ -51,6 +51,22 @@ python scripts/pilot_analysis.py responses.csv   # item analysis after a questio
 ```
 
 Optional live job-postings feed: set `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` (free at developer.adzuna.com).
+If the demo network blocks the API, fetch on any open connection and import offline:
+
+```bash
+python scripts/market.py fetch --out data/market/postings.csv   # on a hotspot / at home
+python scripts/market.py import data/market/postings.csv        # on the demo machine, no internet needed
+```
+
+Each import publishes a new dataset version; older runs stay reproducible and are flagged `is_outdated`.
+
+## Plain-language summaries (optional language model)
+
+`GET /api/v1/analysis/runs/{id}/narrative?lang=en|ta|hi` explains a run in English, Tamil or Hindi.
+With `GROK_API_KEY` set, xAI Grok (or any OpenAI-compatible endpoint via `GROK_BASE_URL`) rephrases it.
+The model only receives the anonymised `facts` shown in the response; an answer with any number not in
+those facts is rejected. Without a key, or when the network blocks the call, fixed templates are used.
+The language model never scores careers: ranking stays deterministic and reproducible.
 
 ## Tests & lint
 

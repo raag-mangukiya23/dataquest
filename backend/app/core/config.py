@@ -30,6 +30,12 @@ class Settings(BaseSettings):
     adzuna_app_id: str | None = None
     adzuna_app_key: str | None = None
     adzuna_daily_budget: int = Field(default=200, ge=1, le=250)
+    # Optional language model that rephrases run summaries and translates them (Tamil, Hindi). It never scores.
+    # Any OpenAI-compatible chat endpoint works; defaults point at xAI Grok. Absent key = fixed templates.
+    grok_api_key: str | None = None
+    grok_base_url: str = "https://api.x.ai/v1"
+    grok_model: str = "grok-4"
+    grok_timeout_sec: float = Field(default=12.0, gt=0, le=60)
     log_level: str = "INFO"
     # Demo support: /api/v1/demo/* endpoints and a frozen "today" so deadlines never slip into the past on stage.
     demo_mode: bool = True
@@ -42,7 +48,7 @@ class Settings(BaseSettings):
             return [o.strip() for o in v.split(",") if o.strip()]
         return v
 
-    @field_validator("ml_model_path", "adzuna_app_id", "adzuna_app_key", mode="before")
+    @field_validator("ml_model_path", "adzuna_app_id", "adzuna_app_key", "grok_api_key", mode="before")
     @classmethod
     def _empty_to_none(cls, v: object) -> object:
         return v or None

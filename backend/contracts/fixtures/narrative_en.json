@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "data": {
+    "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "language": "en",
+    "audience": "student",
+    "headline": "Best match: Doctor (MBBS) (71% overall)",
+    "bullets": [
+      "Doctor (MBBS) fits the student's profile at 70%.",
+      "Study route: MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative)), about Rs 792,280 in total. For this family it is comfortable.",
+      "Admission is competitive: about 39% chance with current scores (estimate).",
+      "Other strong options: Biomedical Engineer, Computational Biologist.",
+      "Student and parents mostly agree on career direction. Careers both sides accept: Biomedical Engineer, Doctor (MBBS).",
+      "The first place held in 48% of 64 tests where the weights were changed.",
+      "Scholarships to check: Private foundation UG merit-cum-means scholarship (illustrative)."
+    ],
+    "source": "template",
+    "model": null,
+    "facts": {
+      "audience": "student",
+      "top": {
+        "name": "Doctor (MBBS)",
+        "score": 71,
+        "fit": 70,
+        "pathway": "MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative))",
+        "cost": 792280,
+        "afford": "comfortable",
+        "chance": 39
+      },
+      "others": [
+        "Biomedical Engineer",
+        "Computational Biologist"
+      ],
+      "family_band": "mild",
+      "bridges": [
+        "Biomedical Engineer",
+        "Doctor (MBBS)"
+      ],
+      "scholarships": [
+        "Private foundation UG merit-cum-means scholarship (illustrative)"
+      ],
+      "version": "seed-2026-09-30",
+      "stability": {
+        "stab": 48,
+        "n": 64
+      }
+    },
+    "translation_reviewed": true,
+    "notice": "Estimates from dataset seed-2026-09-30. Confirm fees, dates and eligibility on official websites."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

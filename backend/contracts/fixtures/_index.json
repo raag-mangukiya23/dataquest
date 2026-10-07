@@ -332,6 +332,30 @@
     "request": null
   },
   {
+    "name": "narrative_en",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/narrative?lang=en",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "narrative_ta",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/narrative?lang=ta",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "narrative_hi",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/narrative?lang=hi",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
     "name": "careers_list",
     "method": "GET",
     "path": "/api/v1/careers",

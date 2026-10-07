@@ -2041,6 +2041,94 @@
         }
       }
     },
+    "/api/v1/analysis/runs/{run_id}/narrative": {
+      "get": {
+        "tags": [
+          "analysis"
+        ],
+        "summary": "Narrative",
+        "description": "Plain-language summary in English, Tamil or Hindi. A language model (GROK_API_KEY) may rephrase it;\nit only sees the anonymised `facts` shown in the response and cannot add numbers. Without a key, or if\nthe call fails, fixed templates are used (`source=template`).",
+        "operationId": "narrative_api_v1_analysis_runs__run_id__narrative_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Language",
+              "default": "en"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_Narrative_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/careers": {
       "get": {
         "tags": [
@@ -5809,6 +5897,43 @@
         ],
         "title": "Envelope[Methodology]"
       },
+      "Envelope_Narrative_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Narrative"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[Narrative]"
+      },
       "Envelope_Page_AnalysisRunSummary__": {
         "properties": {
           "success": {
@@ -7434,10 +7559,18 @@
             "description": "Inflation-adjusted sum over study years"
           },
           "family_funds": {
-            "type": "integer",
-            "minimum": 0.0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0,
+                "description": "Amount in Indian Rupees (whole rupees)"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Family Funds",
-            "description": "Amount in Indian Rupees (whole rupees)"
+            "description": "Family money for the course; null in the student view unless the family shares its finances"
           },
           "scholarship_plan": {
             "items": {
@@ -7453,33 +7586,72 @@
             "description": "Amount in Indian Rupees (whole rupees)"
           },
           "loan_capacity": {
-            "type": "integer",
-            "minimum": 0.0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0,
+                "description": "Amount in Indian Rupees (whole rupees)"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Loan Capacity",
-            "description": "Amount in Indian Rupees (whole rupees)"
+            "description": "Null in the student view unless the family shares its finances"
           },
           "loan_required": {
-            "type": "integer",
-            "minimum": 0.0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0,
+                "description": "Amount in Indian Rupees (whole rupees)"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Loan Required",
-            "description": "Amount in Indian Rupees (whole rupees)"
+            "description": "Null in the student view unless the family shares its finances"
           },
           "monthly_emi": {
-            "type": "integer",
-            "minimum": 0.0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0,
+                "description": "Amount in Indian Rupees (whole rupees)"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Monthly Emi",
-            "description": "Amount in Indian Rupees (whole rupees)"
+            "description": "Null in the student view unless the family shares its finances"
           },
           "burden_ratio": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Burden Ratio",
-            "description": "(monthly_emi + existing EMI) / monthly income"
+            "description": "(monthly_emi + existing EMI) / monthly income; null in the student view unless the family shares its finances"
           },
           "funding_gap": {
-            "type": "integer",
-            "minimum": 0.0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0,
+                "description": "Amount in Indian Rupees (whole rupees)"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Funding Gap",
-            "description": "Shortfall after funds + scholarships + full loan capacity"
+            "description": "Shortfall after funds + scholarships + full loan capacity; null in the student view unless the family shares its finances"
           },
           "affordability": {
             "type": "number",
@@ -7928,6 +8100,15 @@
           "relation"
         ],
         "title": "JoinFamilyRequest"
+      },
+      "Language": {
+        "type": "string",
+        "enum": [
+          "en",
+          "ta",
+          "hi"
+        ],
+        "title": "Language"
       },
       "LocalOpportunity": {
         "properties": {
@@ -8417,6 +8598,81 @@
           "career"
         ],
         "title": "MilestoneType"
+      },
+      "Narrative": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          },
+          "audience": {
+            "type": "string",
+            "title": "Audience",
+            "examples": [
+              "student",
+              "parent"
+            ]
+          },
+          "headline": {
+            "type": "string",
+            "title": "Headline"
+          },
+          "bullets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Bullets"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "model = rephrased by the language model; template = fixed wording"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "facts": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Facts",
+            "description": "Exactly what was sent to the language model (anonymised). Every number in the text comes from here."
+          },
+          "translation_reviewed": {
+            "type": "boolean",
+            "title": "Translation Reviewed",
+            "description": "false = Tamil/Hindi wording not yet checked by a native speaker"
+          },
+          "notice": {
+            "type": "string",
+            "title": "Notice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "language",
+          "audience",
+          "headline",
+          "bullets",
+          "source",
+          "facts",
+          "translation_reviewed",
+          "notice"
+        ],
+        "title": "Narrative"
       },
       "Page_AnalysisRunSummary_": {
         "properties": {

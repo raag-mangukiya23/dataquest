@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import uuid
 from dataclasses import asdict, replace
 from datetime import date, datetime
@@ -385,6 +386,44 @@ def _stretch_reason(
         f"About Rs {best_gap or 0:,} short even with a loan; {check}merit scholarships, government-quota "
         "seats and a larger education loan"
     )
+
+
+FAMILY_MONEY_FIELDS = (
+    "family_funds",
+    "loan_capacity",
+    "loan_required",
+    "monthly_emi",
+    "burden_ratio",
+    "funding_gap",
+)
+_SHORT_BY = re.compile(r"About Rs [\d,]+ short even with a loan")
+
+
+def hide_family_money(run: AnalysisRun) -> AnalysisRun:
+    """Student view without the family's consent: drop figures that reveal savings, income or loan size.
+
+    Costs, scholarships, affordability classes and ROI stay: they describe the course, not the family."""
+
+    def fa(x: FinancialAssessment) -> FinancialAssessment:
+        return x.model_copy(update=dict.fromkeys(FAMILY_MONEY_FIELDS))
+
+    recs = [
+        r.model_copy(
+            update={
+                "financial": fa(r.financial),
+                "alternative_pathways": [fa(a) for a in r.alternative_pathways],
+            }
+        )
+        for r in run.recommendations
+    ]
+    buckets = {
+        k: [
+            i.model_copy(update={"reason": _SHORT_BY.sub("Still short of funds even with a loan", i.reason)})
+            for i in v
+        ]
+        for k, v in run.buckets.items()
+    }
+    return run.model_copy(update={"recommendations": recs, "buckets": buckets})
 
 
 def fit_label(dim: str) -> str:

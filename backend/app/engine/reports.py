@@ -312,13 +312,16 @@ def roadmap(
                         "a year (estimate).",
                     )
                 )
-                if rec.financial.monthly_emi:
+                emi = rec.financial.monthly_emi
+                if emi or (emi is None and rec.financial.affordability_class.value == "loan_dependent"):
                     ms.append(
                         Milestone(
                             title="Loan repayment starts",
                             type=MilestoneType.FINANCE,
                             due=date(end.year + 1, 6, 30),
-                            detail=f"About Rs {rec.financial.monthly_emi:,} a month.",
+                            detail=f"About Rs {emi:,} a month."
+                            if emi
+                            else "The amount is in your parents' plan.",
                         )
                     )
         else:
