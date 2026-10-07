@@ -1,0 +1,361 @@
+{
+  "success": true,
+  "data": {
+    "items": [
+      {
+        "id": "90e32a15-8e31-5526-b617-8f6b489168ef",
+        "course": "B.Tech Computer Science (Data Science)",
+        "degree_level": "UG",
+        "institution": {
+          "id": "f2119319-134a-541a-ab8b-19b55e098b73",
+          "name": "Government College of Technology, Coimbatore",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "public"
+        },
+        "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 55000,
+        "hostel_per_year": 40000,
+        "living_per_year": 30000,
+        "misc_per_year": 10000,
+        "entrance_exam_codes": [
+          "TNEA"
+        ],
+        "career_ids": [
+          "2357988a-cdbf-55ae-95df-098ff464f2c3"
+        ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.75,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "330b2531-1e14-56aa-bc4c-03d527306633",
+        "course": "B.E. Biomedical Engineering",
+        "degree_level": "UG",
+        "institution": {
+          "id": "1805ae0e-718b-56c9-8ffa-20a82158c142",
+          "name": "PSG College of Technology",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "private"
+        },
+        "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 150000,
+        "hostel_per_year": 70000,
+        "living_per_year": 30000,
+        "misc_per_year": 15000,
+        "entrance_exam_codes": [
+          "TNEA"
+        ],
+        "career_ids": [
+          "732c38b8-2b7e-5846-9aef-6b68ef9a8c00"
+        ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.65,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "e8de9e45-aa02-5352-a209-2f8ac72a93c1",
+        "course": "BS-MS Biological Sciences",
+        "degree_level": "Integrated",
+        "institution": {
+          "id": "683982c9-a99b-53d4-ac37-74bae6b2c650",
+          "name": "IISER Thiruvananthapuram",
+          "city": "Thiruvananthapuram",
+          "state": "Kerala",
+          "country": "India",
+          "tier": 1,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "public"
+        },
+        "duration_years": 5,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 60000,
+        "hostel_per_year": 30000,
+        "living_per_year": 36000,
+        "misc_per_year": 10000,
+        "entrance_exam_codes": [
+          "IISER_IAT"
+        ],
+        "career_ids": [
+          "1aee4de5-f876-5cee-97a9-20e74fa58bc1"
+        ],
+        "course_area": "basic_sciences",
+        "admission_route": "national_exam",
+        "selectivity": 0.85,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "1876cb04-e697-5aed-93ae-9261e9e5e472",
+        "course": "B.E. Robotics & Automation",
+        "degree_level": "UG",
+        "institution": {
+          "id": "1805ae0e-718b-56c9-8ffa-20a82158c142",
+          "name": "PSG College of Technology",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "private"
+        },
+        "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 250000,
+        "hostel_per_year": 90000,
+        "living_per_year": 36000,
+        "misc_per_year": 20000,
+        "entrance_exam_codes": [
+          "TNEA"
+        ],
+        "career_ids": [
+          "4919f992-15b4-5c91-951f-b2f3290cd1a3"
+        ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.65,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "04218142-2391-536f-85eb-5db8e0c8e372",
+        "course": "B.Tech Agricultural Engineering",
+        "degree_level": "UG",
+        "institution": {
+          "id": "0aa36f97-591c-5aba-9bdc-c6716f04b841",
+          "name": "Tamil Nadu Agricultural University",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "public"
+        },
+        "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 50000,
+        "hostel_per_year": 35000,
+        "living_per_year": 30000,
+        "misc_per_year": 10000,
+        "entrance_exam_codes": [
+          "TNAU_COUNSELLING"
+        ],
+        "career_ids": [
+          "eff52b78-0c57-5b19-a685-9abe928a162f"
+        ],
+        "course_area": "agriculture",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.55,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "431e750a-b967-5eb8-865b-3ff62177052c",
+        "course": "B.Des Interaction Design",
+        "degree_level": "UG",
+        "institution": {
+          "id": "c1d2ce58-38ca-582c-97a9-67967240fbf0",
+          "name": "Private Design School, Bengaluru (illustrative)",
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "private"
+        },
+        "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 450000,
+        "hostel_per_year": 150000,
+        "living_per_year": 72000,
+        "misc_per_year": 30000,
+        "entrance_exam_codes": [
+          "UCEED",
+          "NID_DAT"
+        ],
+        "career_ids": [
+          "5ac22b5e-75c3-5b44-945d-c8e91c95807c"
+        ],
+        "course_area": "design",
+        "admission_route": "institutional",
+        "selectivity": 0.4,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "731a9d5a-a23c-5583-9bc3-4cf8fa634cb5",
+        "course": "MBBS",
+        "degree_level": "UG",
+        "institution": {
+          "id": "183d9283-b306-56a9-b54c-cc99f3931c8e",
+          "name": "Private Medical College, Tamil Nadu (illustrative)",
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "private"
+        },
+        "duration_years": 6,
+        "quota": "management",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 1800000,
+        "hostel_per_year": 150000,
+        "living_per_year": 60000,
+        "misc_per_year": 40000,
+        "entrance_exam_codes": [
+          "NEET_UG"
+        ],
+        "career_ids": [
+          "25e5be98-408e-5217-9336-fa983dc96be0"
+        ],
+        "course_area": "medicine",
+        "admission_route": "management_quota",
+        "selectivity": 0.35,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "id": "055476f4-a684-5319-b1bb-806bb573d917",
+        "course": "MBBS (government quota)",
+        "degree_level": "UG",
+        "institution": {
+          "id": "8bb6f501-1f13-5c55-8ff7-9565396925cf",
+          "name": "Government Medical College, Tamil Nadu (illustrative)",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "country": "India",
+          "tier": 2,
+          "ranking_source": null,
+          "rank": null,
+          "ownership": "public"
+        },
+        "duration_years": 6,
+        "quota": "government",
+        "fee_academic_year": 2026,
+        "tuition_per_year": 20000,
+        "hostel_per_year": 30000,
+        "living_per_year": 40000,
+        "misc_per_year": 10000,
+        "entrance_exam_codes": [
+          "NEET_UG"
+        ],
+        "career_ids": [
+          "25e5be98-408e-5217-9336-fa983dc96be0"
+        ],
+        "course_area": "medicine",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.97,
+        "seats": null,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      }
+    ],
+    "page": 1,
+    "page_size": 20,
+    "total": 8
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

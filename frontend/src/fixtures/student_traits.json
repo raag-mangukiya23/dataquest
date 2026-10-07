@@ -1,0 +1,216 @@
+{
+  "success": true,
+  "data": {
+    "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+    "vector_spec_version": "vec-1",
+    "vector": {
+      "riasec_r": 0.625,
+      "riasec_i": 0.875,
+      "riasec_a": 0.75,
+      "riasec_s": 0.4375,
+      "riasec_e": 0.375,
+      "riasec_c": 0.5,
+      "apt_numerical": 0.7778,
+      "apt_verbal": 0.6667,
+      "apt_logical": 0.7778,
+      "apt_spatial": 0.7778,
+      "cog_analytical": 0.8125,
+      "cog_creative": 0.6875,
+      "cog_practical": 0.5625,
+      "val_security": 0.5,
+      "val_autonomy": 0.6667,
+      "val_impact": 0.6667,
+      "val_financial": 0.5,
+      "grit": 0.75,
+      "risk_tolerance": 0.55
+    },
+    "traits": [
+      {
+        "dimension": "riasec_r",
+        "raw": 3.5,
+        "normalized": 0.625,
+        "percentile": null,
+        "reliability": 0.875,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_i",
+        "raw": 4.5,
+        "normalized": 0.875,
+        "percentile": null,
+        "reliability": 0.875,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_a",
+        "raw": 4.0,
+        "normalized": 0.75,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_s",
+        "raw": 2.75,
+        "normalized": 0.4375,
+        "percentile": null,
+        "reliability": 0.8917,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_e",
+        "raw": 2.5,
+        "normalized": 0.375,
+        "percentile": null,
+        "reliability": 0.875,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_c",
+        "raw": 3.0,
+        "normalized": 0.5,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "apt_numerical",
+        "raw": 3.0,
+        "normalized": 0.7778,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "apt_verbal",
+        "raw": 3.0,
+        "normalized": 0.6667,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "apt_logical",
+        "raw": 3.0,
+        "normalized": 0.7778,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "apt_spatial",
+        "raw": 3.0,
+        "normalized": 0.7778,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "cog_analytical",
+        "raw": 4.25,
+        "normalized": 0.8125,
+        "percentile": null,
+        "reliability": 0.8917,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "cog_creative",
+        "raw": 3.75,
+        "normalized": 0.6875,
+        "percentile": null,
+        "reliability": 0.8917,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "cog_practical",
+        "raw": 3.25,
+        "normalized": 0.5625,
+        "percentile": null,
+        "reliability": 0.8917,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "val_security",
+        "raw": 3.0,
+        "normalized": 0.5,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 3,
+        "imputed": false
+      },
+      {
+        "dimension": "val_autonomy",
+        "raw": 3.6667,
+        "normalized": 0.6667,
+        "percentile": null,
+        "reliability": 0.8821,
+        "answered": 3,
+        "imputed": false
+      },
+      {
+        "dimension": "val_impact",
+        "raw": 3.6667,
+        "normalized": 0.6667,
+        "percentile": null,
+        "reliability": 0.8821,
+        "answered": 3,
+        "imputed": false
+      },
+      {
+        "dimension": "val_financial",
+        "raw": 3.0,
+        "normalized": 0.5,
+        "percentile": null,
+        "reliability": 0.0,
+        "answered": 1,
+        "imputed": true
+      },
+      {
+        "dimension": "grit",
+        "raw": 4.0,
+        "normalized": 0.75,
+        "percentile": null,
+        "reliability": 1.0,
+        "answered": 5,
+        "imputed": false
+      },
+      {
+        "dimension": "risk_tolerance",
+        "raw": 3.2,
+        "normalized": 0.55,
+        "percentile": null,
+        "reliability": 0.9,
+        "answered": 5,
+        "imputed": false
+      }
+    ],
+    "completeness": 0.9474,
+    "instruments_completed": [
+      "aptitude_v1",
+      "cognitive_v1",
+      "disposition_v1",
+      "riasec_v1",
+      "values_v1"
+    ],
+    "top_riasec_code": "IAR"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

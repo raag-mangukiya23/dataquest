@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "educator_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+    "as_of": "2026-10-07",
+    "students": [
+      {
+        "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+        "display_name": "Ananya",
+        "grade": 11,
+        "latest_run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+        "latest_run_at": "2026-10-07T09:30:00",
+        "top_career": "Doctor (MBBS)",
+        "conflict_band": "mild",
+        "flags": []
+      }
+    ],
+    "flag_counts": {}
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

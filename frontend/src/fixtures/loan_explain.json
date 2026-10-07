@@ -1,0 +1,94 @@
+{
+  "success": true,
+  "data": {
+    "amount": 800000,
+    "course_years": 4,
+    "assumed_rate": 0.1,
+    "moratorium_months": 60,
+    "interest_while_studying": 25000,
+    "owed_when_repayment_starts": 825000,
+    "options": [
+      {
+        "tenor_years": 5,
+        "monthly_emi": 17529,
+        "total_repaid": 1051740,
+        "total_interest": 251740
+      },
+      {
+        "tenor_years": 7,
+        "monthly_emi": 13696,
+        "total_repaid": 1150464,
+        "total_interest": 350464
+      },
+      {
+        "tenor_years": 10,
+        "monthly_emi": 10902,
+        "total_repaid": 1308240,
+        "total_interest": 508240
+      },
+      {
+        "tenor_years": 15,
+        "monthly_emi": 8865,
+        "total_repaid": 1595700,
+        "total_interest": 795700
+      }
+    ],
+    "schemes": [
+      {
+        "key": "csis",
+        "name": "Central Sector Interest Subsidy (CSIS)",
+        "applies": true,
+        "why": "Family income is within Rs 450,000.",
+        "benefit": "The government pays all interest during the course and one year after (the moratorium), on loans up to Rs 7.5 lakh",
+        "how_to_apply": "Ask the lending bank for CSIS when taking the education loan; there is no separate application",
+        "provenance": {
+          "source_name": "Ministry of Education scheme rules (via bank and news summaries)",
+          "source_url": null,
+          "as_of": "2026-10-07",
+          "confidence": 0.7,
+          "is_estimate": false,
+          "verification": "secondary",
+          "verified_on": "2026-10-07",
+          "evidence": "CSIS: 100 % interest subsidy during the moratorium (course + 1 year) for family income up to Rs 4.5 lakh, on loans up to Rs 7.5 lakh; full-time technical/professional courses; applied through the lending bank (Tata Capital and other lender summaries). Confirm current rules with the bank."
+        }
+      },
+      {
+        "key": "pm-vidyalaxmi",
+        "name": "PM-Vidyalaxmi",
+        "applies": null,
+        "why": "Only for students admitted to top-ranked institutions (QHEIs); check your college.",
+        "benefit": "Collateral-free, guarantor-free education loans; 75 % government credit guarantee on loans up to Rs 7.5 lakh; 3 % interest subvention during the moratorium on loans up to Rs 10 lakh for family income up to Rs 8 lakh",
+        "how_to_apply": "Apply on the PM-Vidyalaxmi portal; banks process applications there",
+        "provenance": {
+          "source_name": "PM-Vidyalaxmi scheme (Cabinet approval Nov 2024; portal launched Feb 2025)",
+          "source_url": null,
+          "as_of": "2026-10-07",
+          "confidence": 0.7,
+          "is_estimate": false,
+          "verification": "secondary",
+          "verified_on": "2026-10-07",
+          "evidence": "Collateral- and guarantor-free loans for QHEI students; 75 % credit guarantee up to Rs 7.5 lakh; 3 % interest subvention on loans up to Rs 10 lakh for family income up to Rs 8 lakh; not combinable with other government scholarships or interest subvention (Business Standard, Business Today, Careers360 reports)."
+        }
+      }
+    ],
+    "plain_language": [
+      "You borrow Rs 800,000. Usually nothing is paid while studying and for one year after (60 months).",
+      "Interest still adds up in that time: about Rs 25,000, so you owe about Rs 825,000 when repayment starts.",
+      "Over 10 years that is about Rs 10,902 a month, Rs 1,308,240 in total.",
+      "A longer loan means a smaller EMI but more interest in total.",
+      "The 10-year EMI is about 33% of today's monthly family income."
+    ],
+    "cautions": [
+      "The 10.0% rate is an estimate. Banks quote different rates; compare at least two.",
+      "Ask whether interest during the course is simple or compound, and whether you can pay it as you go.",
+      "Loans above Rs 7.5 lakh may need collateral or a guarantor, except under PM-Vidyalaxmi.",
+      "Scheme rules change. Confirm with the bank or the official portal before applying."
+    ]
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

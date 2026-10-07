@@ -1,0 +1,78 @@
+{
+  "success": true,
+  "data": {
+    "dataset_version": "seed-2026-09-30",
+    "model_inputs": [
+      "student.student_id",
+      "student.vector",
+      "student.reliability",
+      "student.imputed",
+      "student.completeness",
+      "student.grade",
+      "student.region_code",
+      "student.state",
+      "student.willing_to_relocate",
+      "student.willing_abroad",
+      "student.preferred_regions",
+      "student.recent_score_pct",
+      "student.quality_flags",
+      "family.family_id",
+      "family.annual_income",
+      "family.income_growth",
+      "family.savings",
+      "family.existing_emi",
+      "family.dependents",
+      "family.max_emi",
+      "family.loan_tolerance",
+      "family.risk_appetite",
+      "family.relocation",
+      "family.abroad",
+      "family.time_to_earn_years",
+      "family.prestige_vs_stability",
+      "family.preferences",
+      "family.preferred_regions",
+      "family.finance_version"
+    ],
+    "protected_attributes_used": [],
+    "probes": [
+      {
+        "name": "no_protected_attributes",
+        "description": "The engine has no input for gender, caste, religion, community, disability or name.",
+        "passed": true,
+        "detail": "none found"
+      },
+      {
+        "name": "money_never_hides_best_fits",
+        "description": "Same student, family income Rs 2.4 lakh vs Rs 25 lakh: every career that fits the student well (fit at least 75 %) stays visible to the low-income family, in the ranked list or in stretch goals.",
+        "passed": true,
+        "detail": "3 high-fit careers checked; hidden: none"
+      },
+      {
+        "name": "best_for_student_ignores_money",
+        "description": "The 'best for the student' list is identical whatever the family earns.",
+        "passed": true,
+        "detail": "identical"
+      },
+      {
+        "name": "fit_ignores_home_region",
+        "description": "Where a student lives changes costs and local jobs, never how well a career fits them.",
+        "passed": true,
+        "detail": "compared IN-TN-CBE with IN-TN-CHN"
+      },
+      {
+        "name": "category_scholarships_never_assumed",
+        "description": "Scholarships that depend on category, gender or disability are listed for students to check themselves and are never added to a funding plan automatically.",
+        "passed": true,
+        "detail": "0 such scholarships in the catalogue; auto-applied: 0"
+      }
+    ],
+    "passed": true,
+    "generated_at": "2026-10-07T09:30:00Z"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

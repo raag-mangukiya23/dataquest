@@ -1,0 +1,158 @@
+{
+  "success": true,
+  "data": {
+    "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+    "slug": "data-scientist",
+    "name": "Data Scientist",
+    "sector": "computing_ai",
+    "steam_tags": [
+      "S",
+      "T",
+      "M"
+    ],
+    "short_description": "Turns messy data into decisions using statistics, machine learning and storytelling.",
+    "typical_entry_education": "B.Tech / B.Sc in CS, Data Science or Statistics",
+    "automation_risk": 0.25,
+    "national_demand_index": 0.84,
+    "long_description": "Turns messy data into decisions using statistics, machine learning and storytelling. Typical employers range from startups to public institutions.",
+    "riasec_profile": {
+      "riasec_r": 0.45,
+      "riasec_i": 0.85,
+      "riasec_a": 0.5,
+      "riasec_s": 0.25,
+      "riasec_e": 0.5,
+      "riasec_c": 0.65
+    },
+    "requirement_vector": {
+      "riasec_r": 0.45,
+      "riasec_i": 0.85,
+      "riasec_a": 0.5,
+      "riasec_s": 0.25,
+      "riasec_e": 0.5,
+      "riasec_c": 0.65,
+      "apt_numerical": 0.85,
+      "apt_verbal": 0.5,
+      "apt_logical": 0.85,
+      "apt_spatial": 0.5,
+      "cog_analytical": 0.85,
+      "cog_creative": 0.5,
+      "cog_practical": 0.5,
+      "val_security": 0.5,
+      "val_autonomy": 0.65,
+      "val_impact": 0.5,
+      "val_financial": 0.65,
+      "grit": 0.5,
+      "risk_tolerance": 0.5
+    },
+    "aptitude_requirements": {
+      "apt_numerical": 0.85,
+      "apt_verbal": 0.5,
+      "apt_logical": 0.85,
+      "apt_spatial": 0.5
+    },
+    "skills": [
+      {
+        "skill": "Python",
+        "importance": 0.9,
+        "category": "technical"
+      },
+      {
+        "skill": "Statistics",
+        "importance": 0.9,
+        "category": "technical"
+      },
+      {
+        "skill": "SQL",
+        "importance": 0.7,
+        "category": "technical"
+      },
+      {
+        "skill": "Machine learning",
+        "importance": 0.8,
+        "category": "technical"
+      },
+      {
+        "skill": "Data storytelling",
+        "importance": 0.6,
+        "category": "soft"
+      }
+    ],
+    "salary_bands": [
+      {
+        "region_code": "IN-KA-BLR",
+        "entry_p50": 800000,
+        "mid_p50": 2000000,
+        "senior_p50": 4000000,
+        "p25_entry": 600000,
+        "p75_entry": 1080000,
+        "growth_rate": 0.08,
+        "region_multiplier": 1.0,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "region_code": "IN-TN-CHN",
+        "entry_p50": 720000,
+        "mid_p50": 1800000,
+        "senior_p50": 3600000,
+        "p25_entry": 540000,
+        "p75_entry": 972000,
+        "growth_rate": 0.08,
+        "region_multiplier": 0.9,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      },
+      {
+        "region_code": "IN-TN-CBE",
+        "entry_p50": 600000,
+        "mid_p50": 1500000,
+        "senior_p50": 3000000,
+        "p25_entry": 450000,
+        "p75_entry": 810000,
+        "growth_rate": 0.08,
+        "region_multiplier": 0.75,
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true,
+          "verification": "unverified",
+          "verified_on": null,
+          "evidence": null
+        }
+      }
+    ],
+    "related_exam_codes": [
+      "JEE_MAIN",
+      "TNEA"
+    ],
+    "day_in_life": [
+      "Stand-up with the team",
+      "Deep work on the core problem",
+      "Review results with stakeholders"
+    ]
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

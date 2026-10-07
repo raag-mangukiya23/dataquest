@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens are RGB triplets so Tailwind can apply opacity (bg-primary/20). */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: 7 8 13;
+  --surface: 16 18 26;
+  --surface-2: 23 26 37;
+  --ink: 236 238 245;
+  --muted: 138 144 166;
+  --line: 255 255 255;
+  --line-alpha: 0.08;
+  --primary: 139 124 255;
+  --primary-ink: 255 255 255;
+  --neon: 0 229 255;
+  /* the six score parts: colour always means the same thing */
+  --fit: 124 108 255;
+  --market: 59 139 255;
+  --afford: 20 184 166;
+  --roi: 101 194 58;
+  --family: 242 176 30;
+  --disrupt: 240 84 79;
+  /* funding classes */
+  --ok: 34 197 94;
+  --warn: 245 158 11;
+  --loan: 251 146 60;
+  --bad: 239 68 68;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: 246 247 251;
+  --surface: 255 255 255;
+  --surface-2: 240 242 248;
+  --ink: 18 20 28;
+  --muted: 88 94 114;
+  --line: 18 20 28;
+  --line-alpha: 0.1;
+  --primary: 75 63 224;
+  --primary-ink: 255 255 255;
+  --neon: 0 150 199;
+  --fit: 98 80 230;
+  --market: 37 110 230;
+  --afford: 13 148 136;
+  --roi: 77 158 40;
+  --family: 196 135 0;
+  --disrupt: 220 60 56;
+  --ok: 22 163 74;
+  --warn: 202 125 4;
+  --loan: 217 108 26;
+  --bad: 220 38 38;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    min-height: 100dvh;
+    background-image:
+      radial-gradient(1200px 600px at 15% -10%, rgb(var(--primary) / 0.1), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgb(var(--neon) / 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+  [data-theme='light'] body {
+    background-image:
+      radial-gradient(1200px 600px at 15% -10%, rgb(var(--primary) / 0.07), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgb(var(--neon) / 0.05), transparent 60%);
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: rgb(var(--primary) / 0.35);
+  }
+}
+
+@layer components {
+  .hairline {
+    border: 1px solid rgb(var(--line) / var(--line-alpha));
+  }
+  .hairline-b {
+    border-bottom: 1px solid rgb(var(--line) / var(--line-alpha));
+  }
+  .hairline-t {
+    border-top: 1px solid rgb(var(--line) / var(--line-alpha));
+  }
+  .card {
+    @apply rounded-card bg-surface hairline;
+  }
+  .num {
+    @apply font-mono;
+    font-variant-numeric: tabular-nums;
+  }
+  .glass {
+    background: rgb(var(--surface) / 0.72);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+  .hatch {
+    background-image: repeating-linear-gradient(135deg, rgb(var(--disrupt)) 0 3px, transparent 3px 6px);
+  }
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    background: rgb(var(--surface-2));
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgb(var(--fit) / 0.12), rgb(var(--neon) / 0.12), rgb(var(--roi) / 0.1), transparent);
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+  .spectrum-text {
+    background: linear-gradient(90deg, rgb(var(--fit)), rgb(var(--market)), rgb(var(--afford)), rgb(var(--roi)), rgb(var(--family)), rgb(var(--disrupt)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Reduce motion: the OS setting or the in-app toggle (html[data-motion="reduce"]) stops all CSS motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-motion='reduce'] *,
+html[data-motion='reduce'] *::before,
+html[data-motion='reduce'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

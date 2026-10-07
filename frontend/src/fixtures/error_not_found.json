@@ -1,0 +1,16 @@
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Analysis run not found",
+    "details": {
+      "run_id": "unknown"
+    }
+  },
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": false
+  }
+}

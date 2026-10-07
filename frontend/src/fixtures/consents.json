@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "data": [
+    {
+      "consent_type": "minor_data_processing",
+      "subject_user_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+      "granted": true,
+      "id": "30867691-8b21-5c17-ad2c-916fd60c992c",
+      "granted_by": "e0e33cdf-08ec-5def-abe1-199e39df7ae9",
+      "granted_at": "2026-10-07T09:30:00",
+      "revoked_at": null
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

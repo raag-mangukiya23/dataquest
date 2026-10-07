@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "data": {
+    "responses": 1,
+    "by_status": {},
+    "followed_top3_share": null,
+    "followed_top10_share": null,
+    "mean_satisfaction": null,
+    "scholarship_received_share": null,
+    "suppressed": true,
+    "notice": "Outcomes are self-reported 6-12 months after the results. They are the honest test of whether the recommendations helped. Shares are hidden until at least 5 families respond."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "data": {
+    "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "language": "ta",
+    "audience": "student",
+    "headline": "சிறந்த பொருத்தம்: Doctor (MBBS) (மொத்தம் 71%)",
+    "bullets": [
+      "Doctor (MBBS) மாணவரின் சுயவிவரத்துடன் 70% பொருந்துகிறது.",
+      "படிப்பு வழி: MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative)), மொத்தம் சுமார் ₹792,280. இந்தக் குடும்பத்திற்கு இது எளிதில் சமாளிக்கக்கூடியது.",
+      "சேர்க்கை போட்டி அதிகம்: தற்போதைய மதிப்பெண்களுடன் வாய்ப்பு சுமார் 39% (மதிப்பீடு).",
+      "மற்ற நல்ல வாய்ப்புகள்: Computational Biologist, Data Scientist.",
+      "தொழில் தேர்வில் மாணவர்-பெற்றோர் நிலை: சிறிய வேறுபாடு. இருவரும் ஏற்கும் தொழில்கள்: Biomedical Engineer, Doctor (MBBS).",
+      "எடைகளை மாற்றிய 64 சோதனைகளில் 59% முறை முதல் இடம் மாறவில்லை.",
+      "பார்க்க வேண்டிய உதவித்தொகைகள்: Private foundation UG merit-cum-means scholarship (illustrative)."
+    ],
+    "source": "template",
+    "model": null,
+    "facts": {
+      "audience": "student",
+      "top": {
+        "name": "Doctor (MBBS)",
+        "score": 71,
+        "fit": 70,
+        "pathway": "MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative))",
+        "cost": 792280,
+        "afford": "comfortable",
+        "chance": 39
+      },
+      "others": [
+        "Computational Biologist",
+        "Data Scientist"
+      ],
+      "family_band": "mild",
+      "bridges": [
+        "Biomedical Engineer",
+        "Doctor (MBBS)"
+      ],
+      "scholarships": [
+        "Private foundation UG merit-cum-means scholarship (illustrative)"
+      ],
+      "version": "seed-2026-09-30",
+      "stability": {
+        "stab": 59,
+        "n": 64
+      }
+    },
+    "translation_reviewed": false,
+    "notice": "seed-2026-09-30 தரவின் மதிப்பீடுகள். கட்டணம், தேதிகள், தகுதியை அதிகாரப்பூர்வ இணையதளங்களில் உறுதிசெய்யவும்."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

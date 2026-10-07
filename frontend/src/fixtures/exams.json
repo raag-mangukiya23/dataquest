@@ -1,0 +1,328 @@
+{
+  "success": true,
+  "data": [
+    {
+      "code": "NID_DAT",
+      "name": "NID Design Aptitude Test",
+      "conducting_body": "National Institute of Design",
+      "level": "institutional",
+      "frequency": "once a year",
+      "next_window_start": "2026-12-21",
+      "next_window_end": "2026-12-21",
+      "registration_deadline": "2026-11-15",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2026-11-15",
+          "registration_status": "estimated",
+          "exam_start": "2026-12-21",
+          "exam_end": "2026-12-21",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 any stream",
+      "syllabus_url": null,
+      "official_url": null,
+      "career_ids": [
+        "5ac22b5e-75c3-5b44-945d-c8e91c95807c"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": null
+      }
+    },
+    {
+      "code": "UCEED",
+      "name": "UCEED",
+      "conducting_body": "IIT Bombay",
+      "level": "national",
+      "frequency": "once a year",
+      "next_window_start": "2027-01-17",
+      "next_window_end": "2027-01-17",
+      "registration_deadline": "2026-11-01",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2026-11-01",
+          "registration_status": "estimated",
+          "exam_start": "2027-01-17",
+          "exam_end": "2027-01-17",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 any stream",
+      "syllabus_url": null,
+      "official_url": null,
+      "career_ids": [
+        "5ac22b5e-75c3-5b44-945d-c8e91c95807c"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": null
+      }
+    },
+    {
+      "code": "JEE_MAIN",
+      "name": "JEE Main",
+      "conducting_body": "National Testing Agency",
+      "level": "national",
+      "frequency": "twice a year",
+      "next_window_start": "2027-01-22",
+      "next_window_end": "2027-01-30",
+      "registration_deadline": "2026-11-22",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2026-11-22",
+          "registration_status": "estimated",
+          "exam_start": "2027-01-22",
+          "exam_end": "2027-01-30",
+          "exam_date_status": "tentative"
+        },
+        {
+          "cycle_year": 2027,
+          "session_no": 2,
+          "registration_close": "2027-02-25",
+          "registration_status": "estimated",
+          "exam_start": "2027-04-01",
+          "exam_end": "2027-04-09",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 with Physics, Chemistry, Mathematics",
+      "syllabus_url": null,
+      "official_url": "https://jeemain.nta.nic.in",
+      "career_ids": [
+        "2357988a-cdbf-55ae-95df-098ff464f2c3",
+        "4919f992-15b4-5c91-951f-b2f3290cd1a3"
+      ],
+      "provenance": {
+        "source_name": "National Testing Agency exam calendar (via news reports)",
+        "source_url": null,
+        "as_of": "2026-09-16",
+        "confidence": 0.8,
+        "is_estimate": false,
+        "verification": "secondary",
+        "verified_on": "2026-10-07",
+        "evidence": "NTA examination calendar released 16 Sep 2026: Session 1 on 22-24 and 28-30 Jan 2027 with 31 Jan as buffer; dates are tentative (reported by Careers360, ThePrint and CareerIndia). Registration dates and Session 2 are not announced yet. Confirm on nta.ac.in."
+      }
+    },
+    {
+      "code": "NEET_UG",
+      "name": "NEET-UG",
+      "conducting_body": "National Testing Agency",
+      "level": "national",
+      "frequency": "once a year",
+      "next_window_start": "2027-05-02",
+      "next_window_end": "2027-05-02",
+      "registration_deadline": "2027-03-07",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2027-03-07",
+          "registration_status": "estimated",
+          "exam_start": "2027-05-02",
+          "exam_end": "2027-05-02",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 with Physics, Chemistry, Biology/Biotechnology and English",
+      "syllabus_url": null,
+      "official_url": "https://neet.nta.nic.in",
+      "career_ids": [
+        "25e5be98-408e-5217-9336-fa983dc96be0",
+        "732c38b8-2b7e-5846-9aef-6b68ef9a8c00"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": "Not in NTA's 16 Sep 2026 calendar; date projected from earlier cycles."
+      }
+    },
+    {
+      "code": "CUET_UG",
+      "name": "CUET-UG",
+      "conducting_body": "National Testing Agency",
+      "level": "national",
+      "frequency": "once a year",
+      "next_window_start": "2027-05-13",
+      "next_window_end": "2027-06-03",
+      "registration_deadline": "2027-03-22",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2027-03-22",
+          "registration_status": "estimated",
+          "exam_start": "2027-05-13",
+          "exam_end": "2027-06-03",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 in relevant subjects",
+      "syllabus_url": null,
+      "official_url": "https://cuet.nta.nic.in",
+      "career_ids": [
+        "1aee4de5-f876-5cee-97a9-20e74fa58bc1"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": "Not in NTA's 16 Sep 2026 calendar; dates projected from earlier cycles."
+      }
+    },
+    {
+      "code": "IISER_IAT",
+      "name": "IISER Aptitude Test",
+      "conducting_body": "IISER Joint Admission Committee",
+      "level": "institutional",
+      "frequency": "once a year",
+      "next_window_start": "2027-06-06",
+      "next_window_end": "2027-06-06",
+      "registration_deadline": "2027-04-25",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2027-04-25",
+          "registration_status": "estimated",
+          "exam_start": "2027-06-06",
+          "exam_end": "2027-06-06",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 science stream",
+      "syllabus_url": null,
+      "official_url": null,
+      "career_ids": [
+        "1aee4de5-f876-5cee-97a9-20e74fa58bc1"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": null
+      }
+    },
+    {
+      "code": "TNEA",
+      "name": "TNEA Counselling (marks-based)",
+      "conducting_body": "Directorate of Technical Education, Tamil Nadu",
+      "level": "state",
+      "frequency": "once a year",
+      "next_window_start": "2027-07-01",
+      "next_window_end": "2027-08-15",
+      "registration_deadline": "2027-06-06",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2027-06-06",
+          "registration_status": "estimated",
+          "exam_start": "2027-07-01",
+          "exam_end": "2027-08-15",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 PCM marks; Tamil Nadu nativity rules apply",
+      "syllabus_url": null,
+      "official_url": null,
+      "career_ids": [
+        "2357988a-cdbf-55ae-95df-098ff464f2c3",
+        "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+        "4919f992-15b4-5c91-951f-b2f3290cd1a3"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": null
+      }
+    },
+    {
+      "code": "TNAU_COUNSELLING",
+      "name": "TNAU UG Admission (marks-based)",
+      "conducting_body": "Tamil Nadu Agricultural University",
+      "level": "state",
+      "frequency": "once a year",
+      "next_window_start": "2027-07-15",
+      "next_window_end": "2027-08-30",
+      "registration_deadline": "2027-06-15",
+      "dates_are_estimates": true,
+      "sessions": [
+        {
+          "cycle_year": 2027,
+          "session_no": 1,
+          "registration_close": "2027-06-15",
+          "registration_status": "estimated",
+          "exam_start": "2027-07-15",
+          "exam_end": "2027-08-30",
+          "exam_date_status": "estimated"
+        }
+      ],
+      "eligibility_summary": "Class 12 science marks",
+      "syllabus_url": null,
+      "official_url": null,
+      "career_ids": [
+        "eff52b78-0c57-5b19-a685-9abe928a162f"
+      ],
+      "provenance": {
+        "source_name": "PRISM estimate from previous exam cycles",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.4,
+        "is_estimate": true,
+        "verification": "unverified",
+        "verified_on": null,
+        "evidence": null
+      }
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

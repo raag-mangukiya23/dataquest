@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "data": {
+    "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "language": "hi",
+    "audience": "student",
+    "headline": "सबसे अच्छा मेल: Doctor (MBBS) (कुल 71%)",
+    "bullets": [
+      "Doctor (MBBS) छात्र की प्रोफ़ाइल से 70% मेल खाता है।",
+      "पढ़ाई का रास्ता: MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative)), कुल लगभग ₹792,280। इस परिवार के लिए यह आसानी से संभव है।",
+      "दाख़िला कठिन है: मौजूदा अंकों से लगभग 39% संभावना (अनुमान)।",
+      "अन्य अच्छे विकल्प: Computational Biologist, Data Scientist।",
+      "करियर की दिशा पर छात्र और माता-पिता: हल्का मतभेद। दोनों को स्वीकार्य करियर: Biomedical Engineer, Doctor (MBBS)।",
+      "वज़न बदलकर किए गए 64 परीक्षणों में से 59% में पहला स्थान नहीं बदला।",
+      "देखने लायक छात्रवृत्तियाँ: Private foundation UG merit-cum-means scholarship (illustrative)।"
+    ],
+    "source": "template",
+    "model": null,
+    "facts": {
+      "audience": "student",
+      "top": {
+        "name": "Doctor (MBBS)",
+        "score": 71,
+        "fit": 70,
+        "pathway": "MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative))",
+        "cost": 792280,
+        "afford": "comfortable",
+        "chance": 39
+      },
+      "others": [
+        "Computational Biologist",
+        "Data Scientist"
+      ],
+      "family_band": "mild",
+      "bridges": [
+        "Biomedical Engineer",
+        "Doctor (MBBS)"
+      ],
+      "scholarships": [
+        "Private foundation UG merit-cum-means scholarship (illustrative)"
+      ],
+      "version": "seed-2026-09-30",
+      "stability": {
+        "stab": 59,
+        "n": 64
+      }
+    },
+    "translation_reviewed": false,
+    "notice": "डेटासेट seed-2026-09-30 पर आधारित अनुमान। फ़ीस, तारीखें और पात्रता आधिकारिक वेबसाइटों पर जाँचें।"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

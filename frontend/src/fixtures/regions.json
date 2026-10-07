@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "data": [
+    {
+      "code": "IN-TN-CBE",
+      "name": "Coimbatore",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": "tier2",
+      "cost_of_living_index": 0.72
+    },
+    {
+      "code": "IN-TN-CHN",
+      "name": "Chennai",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": "metro",
+      "cost_of_living_index": 0.88
+    },
+    {
+      "code": "IN-KA-BLR",
+      "name": "Bengaluru",
+      "state": "Karnataka",
+      "country": "India",
+      "type": "metro",
+      "cost_of_living_index": 1.0
+    },
+    {
+      "code": "IN-TG-HYD",
+      "name": "Hyderabad",
+      "state": "Telangana",
+      "country": "India",
+      "type": "metro",
+      "cost_of_living_index": 0.9
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "state": null,
+      "country": "Germany",
+      "type": "international",
+      "cost_of_living_index": 2.6
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

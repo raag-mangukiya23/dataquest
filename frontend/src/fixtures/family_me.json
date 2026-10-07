@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "data": {
+    "id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "name": "Raman family",
+    "members": [
+      {
+        "user_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+        "full_name": "Ananya R.",
+        "role": "student",
+        "relation": "self",
+        "joined_at": "2026-10-07T09:30:00"
+      },
+      {
+        "user_id": "e0e33cdf-08ec-5def-abe1-199e39df7ae9",
+        "full_name": "R. Raman",
+        "role": "parent",
+        "relation": "father",
+        "joined_at": "2026-10-07T09:30:00"
+      }
+    ],
+    "has_finance": true,
+    "has_parent_preferences": true
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -1,0 +1,731 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "q_4818e1278f95",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Repairing a bicycle or a ceiling fan that has stopped working",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "q_960e6e345a9a",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Finding out why a plant grows faster under one kind of light than another",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "q_f7a7015c5cdf",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Designing a poster, logo or comic strip",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 3
+    },
+    {
+      "id": "q_a7dfb87a5f4a",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Teaching a younger student a topic they find difficult",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 4
+    },
+    {
+      "id": "q_4c199cdf5093",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Starting a small business, such as selling snacks or crafts at a school fair",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 5
+    },
+    {
+      "id": "q_2645efe99469",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Keeping accounts for a club or a family shop",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 6
+    },
+    {
+      "id": "q_8cebee2fd655",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Building a working model, like a solar car, for a science fair",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 7
+    },
+    {
+      "id": "q_165e274ef22e",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Spending an hour on a tricky maths or logic puzzle",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 8
+    },
+    {
+      "id": "q_72d9603bc6b3",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Writing a story, poem or script",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 9
+    },
+    {
+      "id": "q_0625e81c4f34",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Volunteering at a health camp or community event",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 10
+    },
+    {
+      "id": "q_ec7ee6f159b7",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Persuading a group to support your idea",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 11
+    },
+    {
+      "id": "q_25e6d705c803",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Organising files, data or a timetable so everything is easy to find",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 12
+    },
+    {
+      "id": "q_c49d3b48fd1f",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Working outdoors on a farm, a construction site or in a workshop",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 13
+    },
+    {
+      "id": "q_def816d0ba7b",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Reading about how vaccines or rockets actually work",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 14
+    },
+    {
+      "id": "q_03f4104f1d5f",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Composing music, dancing or acting in a play",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 15
+    },
+    {
+      "id": "q_0daffb15bed2",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Listening to a friend's problem and helping them think it through",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 16
+    },
+    {
+      "id": "q_ed6a7cdeb3ea",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Leading a team for a competition or school event",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 17
+    },
+    {
+      "id": "q_4f3ba40b43da",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Checking a report carefully for errors",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 18
+    },
+    {
+      "id": "q_9a2bc9191bd7",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Using tools or machines such as a drill, a soldering iron or a 3D printer",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 19
+    },
+    {
+      "id": "q_8fc4b00fa548",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Running an experiment and analysing the results in a table or graph",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 20
+    },
+    {
+      "id": "q_583df859116a",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Photographing or filming something in an original way",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 21
+    },
+    {
+      "id": "q_8eec34f77d44",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Organising activities for children or elderly people",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 22
+    },
+    {
+      "id": "q_570e360edc89",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Negotiating a better price or deal",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 23
+    },
+    {
+      "id": "q_6a210295fad7",
+      "instrument_code": "riasec_v1",
+      "section": "Interest Explorer",
+      "type": "likert5",
+      "prompt": "Following a clear step-by-step procedure to finish a task accurately",
+      "options": [
+        {
+          "key": "1",
+          "label": "Not at all"
+        },
+        {
+          "key": "2",
+          "label": "A little"
+        },
+        {
+          "key": "3",
+          "label": "Somewhat"
+        },
+        {
+          "key": "4",
+          "label": "Quite a lot"
+        },
+        {
+          "key": "5",
+          "label": "Very much"
+        }
+      ],
+      "order": 24
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "success": true,
+  "data": {
+    "visibility": "summary",
+    "index": 31.93,
+    "band": "mild",
+    "dimensions": [],
+    "top_drivers": [
+      {
+        "dimension": "domain_preference",
+        "explanation": "You lean towards Computational Biologist, Biomedical Engineer; your parents lean towards Doctor (MBBS), Biomedical Engineer.",
+        "conversation_prompt": "What draws each of you to these fields, and could Biomedical Engineer give you both what you want?"
+      },
+      {
+        "dimension": "prestige_stability",
+        "explanation": "One side values a secure job more; the other values ambition and reward more.",
+        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet it?"
+      },
+      {
+        "dimension": "geography",
+        "explanation": "You see the question of moving away for study differently.",
+        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move work?"
+      }
+    ],
+    "bridge_careers": [
+      {
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "student_fit": 0.8032,
+        "parent_acceptance": 0.952,
+        "bridge_score": 0.8713,
+        "why": "Fits the student at 80% and the parents' hopes at 95%"
+      },
+      {
+        "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "student_fit": 0.705,
+        "parent_acceptance": 1.0,
+        "bridge_score": 0.827,
+        "why": "Fits the student at 70% and the parents' hopes at 100%"
+      },
+      {
+        "career": {
+          "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "slug": "robotics-engineer",
+          "name": "Robotics & Automation Engineer",
+          "sector": "engineering",
+          "steam_tags": [
+            "S",
+            "T",
+            "E",
+            "M"
+          ]
+        },
+        "student_fit": 0.7301,
+        "parent_acceptance": 0.726,
+        "bridge_score": 0.728,
+        "why": "Fits the student at 73% and the parents' hopes at 73%"
+      }
+    ],
+    "summary": "You and your family agree on a lot. A few conversations, mainly about field choice and stability versus ambition, will help you plan together."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "success": true,
+  "data": [
+    {
+      "key": "creative_risk_averse",
+      "student_name": "Ananya R.",
+      "parent_name": "R. Raman",
+      "location": "Coimbatore, TN (641004)",
+      "scenario": "Analytical-creative student; parents want medicine and stability.",
+      "highlights": [
+        "Moderate conflict index with bridge careers",
+        "Design and private MBBS are financially infeasible",
+        "Hyper-local agri-drone hidden gem"
+      ],
+      "student_email": "creative_risk_averse.student@prism.example",
+      "parent_email": "creative_risk_averse.parent@prism.example",
+      "demo_password": "Prism@Demo2026",
+      "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+      "baseline_run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+      "fixture_available": true
+    },
+    {
+      "key": "high_aptitude_low_budget",
+      "student_name": "Karthik S.",
+      "parent_name": "S. Selvi",
+      "location": "Madurai, TN (625001)",
+      "scenario": "Top-percentile aptitude, family income about Rs 2.4 L a year.",
+      "highlights": [
+        "Scholarship knapsack turns a stretch path into a comfortable one",
+        "Government-quota pathways ranked first"
+      ],
+      "student_email": "high_aptitude_low_budget.student@prism.example",
+      "parent_email": "high_aptitude_low_budget.parent@prism.example",
+      "demo_password": "Prism@Demo2026",
+      "student_id": "0b139020-b8d7-5026-a433-f4df5f09418a",
+      "baseline_run_id": null,
+      "fixture_available": false
+    },
+    {
+      "key": "rural_steam_innovator",
+      "student_name": "Meena K.",
+      "parent_name": "K. Murugan",
+      "location": "Dharmapuri district, TN (636701)",
+      "scenario": "Hands-on tinkerer in a farming village with little career information around her.",
+      "highlights": [
+        "Local opportunities by pincode",
+        "Agri and energy careers surface from local problems"
+      ],
+      "student_email": "rural_steam_innovator.student@prism.example",
+      "parent_email": "rural_steam_innovator.parent@prism.example",
+      "demo_password": "Prism@Demo2026",
+      "student_id": "f96bfd20-f4ff-5e18-be8e-c7be70f840bb",
+      "baseline_run_id": null,
+      "fixture_available": false
+    },
+    {
+      "key": "loan_dependent_family",
+      "student_name": "Rahul P.",
+      "parent_name": "P. Patil",
+      "location": "Pune, MH (411001)",
+      "scenario": "Wants robotics at a private college; the family can only fund it with an education loan.",
+      "highlights": [
+        "EMI, burden ratio and payback years",
+        "What-if: raising loan tolerance changes the funding class"
+      ],
+      "student_email": "loan_dependent_family.student@prism.example",
+      "parent_email": "loan_dependent_family.parent@prism.example",
+      "demo_password": "Prism@Demo2026",
+      "student_id": "23065cee-cbf8-5dd4-92be-fbc2a6a5ccd0",
+      "baseline_run_id": null,
+      "fixture_available": false
+    },
+    {
+      "key": "aligned_family",
+      "student_name": "Sara M.",
+      "parent_name": "M. Joseph",
+      "location": "Bengaluru, KA (560001)",
+      "scenario": "Design-minded student whose parents back the same direction.",
+      "highlights": [
+        "Low conflict index",
+        "High robustness score: rankings barely move under weight changes"
+      ],
+      "student_email": "aligned_family.student@prism.example",
+      "parent_email": "aligned_family.parent@prism.example",
+      "demo_password": "Prism@Demo2026",
+      "student_id": "3fd890b2-b815-5f2e-b867-2b931572d7d2",
+      "baseline_run_id": null,
+      "fixture_available": false
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

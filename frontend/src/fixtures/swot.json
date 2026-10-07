@@ -1,0 +1,137 @@
+{
+  "success": true,
+  "data": {
+    "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "career": null,
+    "strengths": [
+      {
+        "title": "Investigative (analysing, researching)",
+        "detail": "Scored 88%, one of your strongest traits.",
+        "evidence": {
+          "score": 0.875
+        },
+        "weight": 0.88
+      },
+      {
+        "title": "Analytical thinking style",
+        "detail": "Scored 81%, one of your strongest traits.",
+        "evidence": {
+          "score": 0.8125
+        },
+        "weight": 0.81
+      },
+      {
+        "title": "Logical reasoning",
+        "detail": "Scored 78%, one of your strongest traits.",
+        "evidence": {
+          "score": 0.7778
+        },
+        "weight": 0.78
+      },
+      {
+        "title": "Numerical aptitude",
+        "detail": "Scored 78%, one of your strongest traits.",
+        "evidence": {
+          "score": 0.7778
+        },
+        "weight": 0.78
+      }
+    ],
+    "weaknesses": [
+      {
+        "title": "Social (helping, teaching, caring)",
+        "detail": "41% below what Doctor (MBBS) usually needs; closable with practice.",
+        "evidence": {
+          "student": 0.4375,
+          "required": 0.85
+        },
+        "weight": 0.825
+      },
+      {
+        "title": "Values social impact",
+        "detail": "18% below what Doctor (MBBS) usually needs; closable with practice.",
+        "evidence": {
+          "student": 0.6667,
+          "required": 0.85
+        },
+        "weight": 0.3666
+      },
+      {
+        "title": "Values job security",
+        "detail": "20% below what Doctor (MBBS) usually needs; closable with practice.",
+        "evidence": {
+          "student": 0.5,
+          "required": 0.7
+        },
+        "weight": 0.4
+      },
+      {
+        "title": "Values financial reward",
+        "detail": "Not enough answers to measure this yet; finish the questionnaire.",
+        "evidence": {},
+        "weight": 0.3
+      }
+    ],
+    "opportunities": [
+      {
+        "title": "Growing demand for Data Scientist (IN-TN-CBE)",
+        "detail": "Demand index 0.71, job ads +16% a year (estimate).",
+        "evidence": {
+          "demand_index": 0.714,
+          "job_velocity": 0.163
+        },
+        "weight": 0.714
+      },
+      {
+        "title": "Growing demand for Doctor (MBBS) (IN-TN-CBE)",
+        "detail": "Demand index 0.68, job ads +14% a year (estimate).",
+        "evidence": {
+          "demand_index": 0.68,
+          "job_velocity": 0.136
+        },
+        "weight": 0.68
+      },
+      {
+        "title": "Early detection of coconut pest attack with low-cost drones",
+        "detail": "A real problem near you. Starter project: Collect 300 labelled leaf photos from 3 farms and train a phone-based classifier.",
+        "evidence": {
+          "district": "Coimbatore"
+        },
+        "weight": 0.6
+      },
+      {
+        "title": "Energy-efficient pump sets for MSME foundries and farms",
+        "detail": "A real problem near you. Starter project: Build an Arduino power logger and benchmark 5 pump sets with a local workshop.",
+        "evidence": {
+          "district": "Coimbatore"
+        },
+        "weight": 0.6
+      }
+    ],
+    "threats": [
+      {
+        "title": "Automation pressure on Data Scientist",
+        "detail": "Disruption risk 25%; routine parts of the job are shrinking.",
+        "evidence": {
+          "disruption_risk": 0.25
+        },
+        "weight": 0.25
+      },
+      {
+        "title": "Budget pressure",
+        "detail": "Biomedical Engineer need a loan or are out of budget.",
+        "evidence": {
+          "careers": 1.0
+        },
+        "weight": 0.6
+      }
+    ],
+    "headline": "IAR profile, strongest in investigative and analytical thinking style; best matched to Doctor (MBBS) via MBBS (government quota) (comfortable)."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

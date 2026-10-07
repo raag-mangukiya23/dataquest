@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "data": {
+    "id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+    "email": "student.demo@prism.example",
+    "full_name": "Ananya R.",
+    "role": "student",
+    "is_minor": true,
+    "consent_status": "granted",
+    "family_id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "created_at": "2026-10-07T09:30:00"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

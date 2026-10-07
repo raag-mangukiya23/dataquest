@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "data": {
+    "status": "ok",
+    "version": "0.1.0",
+    "engine_version": "prism-engine/1.0.0",
+    "mock_mode": true,
+    "time": "2026-10-07T09:30:00Z",
+    "components": {
+      "database": {
+        "status": "disabled",
+        "detail": "MOCK_MODE: fixtures only"
+      },
+      "ml_model": {
+        "status": "degraded",
+        "detail": "No model configured; cosine fallback active"
+      },
+      "market_feed": {
+        "status": "disabled",
+        "detail": "No live postings feed; market data is the dated snapshot"
+      }
+    }
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": false
+  }
+}

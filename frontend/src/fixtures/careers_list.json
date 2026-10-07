@@ -1,0 +1,119 @@
+{
+  "success": true,
+  "data": {
+    "items": [
+      {
+        "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+        "slug": "data-scientist",
+        "name": "Data Scientist",
+        "sector": "computing_ai",
+        "steam_tags": [
+          "S",
+          "T",
+          "M"
+        ],
+        "short_description": "Turns messy data into decisions using statistics, machine learning and storytelling.",
+        "typical_entry_education": "B.Tech / B.Sc in CS, Data Science or Statistics",
+        "automation_risk": 0.25,
+        "national_demand_index": 0.84
+      },
+      {
+        "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+        "slug": "biomedical-engineer",
+        "name": "Biomedical Engineer",
+        "sector": "health_life_sciences",
+        "steam_tags": [
+          "S",
+          "T",
+          "E"
+        ],
+        "short_description": "Designs medical devices, diagnostics and hospital technology at the meeting point of medicine and engineering.",
+        "typical_entry_education": "B.Tech Biomedical / Medical Electronics",
+        "automation_risk": 0.18,
+        "national_demand_index": 0.7
+      },
+      {
+        "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+        "slug": "computational-biologist",
+        "name": "Computational Biologist",
+        "sector": "health_life_sciences",
+        "steam_tags": [
+          "S",
+          "T",
+          "M"
+        ],
+        "short_description": "Uses code and models to decode genomes, proteins and disease.",
+        "typical_entry_education": "BS-MS (IISER) / B.Tech Biotechnology + coding",
+        "automation_risk": 0.15,
+        "national_demand_index": 0.66
+      },
+      {
+        "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+        "slug": "robotics-engineer",
+        "name": "Robotics & Automation Engineer",
+        "sector": "engineering",
+        "steam_tags": [
+          "S",
+          "T",
+          "E",
+          "M"
+        ],
+        "short_description": "Builds machines that sense, decide and act, from factory arms to farm robots.",
+        "typical_entry_education": "B.Tech Mechatronics / Robotics / ECE",
+        "automation_risk": 0.14,
+        "national_demand_index": 0.72
+      },
+      {
+        "id": "eff52b78-0c57-5b19-a685-9abe928a162f",
+        "slug": "agri-drone-engineer",
+        "name": "Agri-Drone & Precision Farming Engineer",
+        "sector": "agri_environment",
+        "steam_tags": [
+          "S",
+          "T",
+          "E"
+        ],
+        "short_description": "Applies drones, sensors and analytics to raise farm yields and cut input waste.",
+        "typical_entry_education": "B.Tech Agricultural Engineering / B.Sc Agri + drone certification",
+        "automation_risk": 0.12,
+        "national_demand_index": 0.68
+      },
+      {
+        "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+        "slug": "ux-designer",
+        "name": "UX / Product Designer",
+        "sector": "design_arts",
+        "steam_tags": [
+          "T",
+          "A"
+        ],
+        "short_description": "Researches users and designs digital products that are useful, usable and delightful.",
+        "typical_entry_education": "B.Des Interaction / Communication Design",
+        "automation_risk": 0.3,
+        "national_demand_index": 0.74
+      },
+      {
+        "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+        "slug": "doctor-mbbs",
+        "name": "Doctor (MBBS)",
+        "sector": "health_life_sciences",
+        "steam_tags": [
+          "S"
+        ],
+        "short_description": "Diagnoses and treats patients; long training path with high social trust.",
+        "typical_entry_education": "MBBS (5.5 years incl. internship) via NEET-UG",
+        "automation_risk": 0.08,
+        "national_demand_index": 0.8
+      }
+    ],
+    "page": 1,
+    "page_size": 20,
+    "total": 7
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

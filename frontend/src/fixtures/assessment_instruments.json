@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "data": [
+    {
+      "code": "aptitude_v1",
+      "name": "Reasoning Sprint",
+      "description": "Sixteen short puzzles. Pick the best answer. Each section gets harder as you go.",
+      "framework": "Original items covering numerical, verbal, logical and spatial reasoning.",
+      "version": "1.0",
+      "question_count": 16,
+      "est_minutes": 15,
+      "time_limit_sec": 1200
+    },
+    {
+      "code": "cognitive_v1",
+      "name": "Thinking Style",
+      "description": "How much do you agree with each statement about how you approach problems?",
+      "framework": "Analytical, creative and practical thinking styles (after Sternberg's triarchic view). All items are original.",
+      "version": "1.0",
+      "question_count": 12,
+      "est_minutes": 2,
+      "time_limit_sec": null
+    },
+    {
+      "code": "disposition_v1",
+      "name": "Grit & Risk",
+      "description": "How much do you agree with each statement?",
+      "framework": "Perseverance and risk-tolerance constructs from public research literature. Items are original and do not reproduce any copyrighted scale.",
+      "version": "1.0",
+      "question_count": 10,
+      "est_minutes": 2,
+      "time_limit_sec": null
+    },
+    {
+      "code": "riasec_v1",
+      "name": "Interest Explorer",
+      "description": "How much would you enjoy each activity? There are no right or wrong answers.",
+      "framework": "Holland RIASEC interest theory (public). All items are original to PRISM.",
+      "version": "1.0",
+      "question_count": 24,
+      "est_minutes": 4,
+      "time_limit_sec": null
+    },
+    {
+      "code": "values_v1",
+      "name": "What Matters To You",
+      "description": "How much do you agree with each statement about your future work?",
+      "framework": "Work-values dimensions common to public career-guidance frameworks. All items are original.",
+      "version": "1.0",
+      "question_count": 12,
+      "est_minutes": 2,
+      "time_limit_sec": null
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

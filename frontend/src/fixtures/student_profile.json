@@ -1,0 +1,45 @@
+{
+  "success": true,
+  "data": {
+    "grade": 12,
+    "board": "CBSE",
+    "stream": "PCM",
+    "pincode": "641004",
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "languages": [
+      "Tamil",
+      "English",
+      "Hindi"
+    ],
+    "interests": [
+      "robotics",
+      "sketching",
+      "biology documentaries",
+      "data puzzles"
+    ],
+    "extracurriculars": [
+      "school science fair (state finalist)",
+      "digital art club"
+    ],
+    "recent_score_pct": 88.4,
+    "preferred_regions": [
+      "IN-TN-CBE",
+      "IN-KA-BLR",
+      "IN-TG-HYD"
+    ],
+    "willing_to_relocate": 0.7,
+    "willing_abroad": 0.3,
+    "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+    "user_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+    "region_code": "IN-TN-CBE",
+    "completeness": 0.95,
+    "updated_at": "2026-10-07T09:30:00"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}
