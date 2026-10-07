@@ -44,6 +44,8 @@ class Reproducibility(Contract):
     vector_spec_version: str
     input_hash: str = Field(description="sha256 of the canonical input snapshot")
     data_as_of: str = Field(description="Most recent as_of across market/salary/scholarship data used")
+    dataset_version: str = Field(description="Catalog snapshot the run read; replays use the same snapshot")
+    family_finance_version: int | None = Field(description="Exact family_finance version used")
     ml_model_version: str | None
 
 
@@ -125,6 +127,7 @@ class FinancialAssessment(Contract):
     pathway_name: str
     institution_name: str
     institution_tier: int
+    quota: str = Field(examples=["government", "management", "open"])
     duration_years: int
     total_cost: INR = Field(description="Inflation-adjusted sum over study years")
     family_funds: INR

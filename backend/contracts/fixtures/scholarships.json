@@ -7,7 +7,9 @@
         "name": "INSPIRE Scholarship for Higher Education (natural & basic sciences)",
         "provider": "Department of Science & Technology",
         "provider_type": "central_govt",
+        "amount_type": "fixed",
         "amount_per_year": 80000,
+        "percent_of_tuition": null,
         "max_years": 5,
         "covers": [
           "tuition",
@@ -32,6 +34,7 @@
         "eligibility_summary": "Top 1 % in Class 12 board (or equivalent rank) and enrolled in natural/basic sciences",
         "probability": 0.3,
         "stackable": false,
+        "exclusive_group": "central_merit",
         "deadline": "2026-11-30",
         "provenance": {
           "source_name": "Department of Science & Technology",
@@ -60,7 +63,9 @@
         "name": "Tamil Nadu First Graduate Tuition Fee Concession",
         "provider": "Government of Tamil Nadu",
         "provider_type": "state_govt",
+        "amount_type": "fixed",
         "amount_per_year": 25000,
+        "percent_of_tuition": null,
         "max_years": 4,
         "covers": [
           "tuition"
@@ -82,6 +87,7 @@
         "eligibility_summary": "First graduate in the family, admitted via state single-window counselling",
         "probability": 0.8,
         "stackable": true,
+        "exclusive_group": null,
         "deadline": null,
         "provenance": {
           "source_name": "Government of Tamil Nadu",
@@ -110,7 +116,9 @@
         "name": "Institutional merit fee waiver (illustrative)",
         "provider": "Partner institutions",
         "provider_type": "institution",
+        "amount_type": "percent_tuition",
         "amount_per_year": 50000,
+        "percent_of_tuition": 0.25,
         "max_years": 4,
         "covers": [
           "tuition"
@@ -127,6 +135,7 @@
         "eligibility_summary": "Top 10 % entrance performers at participating private colleges",
         "probability": 0.4,
         "stackable": true,
+        "exclusive_group": null,
         "deadline": "2027-07-31",
         "provenance": {
           "source_name": "Partner institutions",
@@ -151,7 +160,9 @@
         "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
         "provider": "Private foundation",
         "provider_type": "private",
+        "amount_type": "fixed",
         "amount_per_year": 100000,
+        "percent_of_tuition": null,
         "max_years": 2,
         "covers": [
           "tuition",
@@ -174,6 +185,7 @@
         "eligibility_summary": "Merit-cum-means; aptitude test and interview",
         "probability": 0.15,
         "stackable": true,
+        "exclusive_group": null,
         "deadline": "2026-12-15",
         "provenance": {
           "source_name": "Private foundation",
@@ -202,7 +214,9 @@
         "name": "Central Sector Scheme of Scholarship (College & University Students)",
         "provider": "Ministry of Education",
         "provider_type": "central_govt",
+        "amount_type": "fixed",
         "amount_per_year": 12000,
+        "percent_of_tuition": null,
         "max_years": 3,
         "covers": [
           "tuition",
@@ -225,6 +239,7 @@
         "eligibility_summary": "Top 20th percentile in Class 12 board; family income cap applies",
         "probability": 0.35,
         "stackable": true,
+        "exclusive_group": "central_merit",
         "deadline": "2026-10-31",
         "provenance": {
           "source_name": "Ministry of Education",

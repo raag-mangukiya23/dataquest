@@ -78,7 +78,8 @@ dataquest/
 ├── docs/
 │   ├── ARCHITECTURE.md            ✅ this file
 │   ├── ER_DIAGRAM.md              ✅ Mermaid ER + indexes
-│   └── API_CONTRACT.md            ✅ endpoint list + examples
+│   ├── API_CONTRACT.md            ✅ endpoint list + examples
+│   └── DEMO_PLAN.md               ✅ 7-minute script, fail-safes, judge Q&A
 └── backend/
     ├── pyproject.toml             ✅
     ├── .env.example               ✅

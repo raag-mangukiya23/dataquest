@@ -1,0 +1,194 @@
+{
+  "success": true,
+  "data": {
+    "persona_key": "creative_risk_averse",
+    "total_seconds": 370,
+    "steps": [
+      {
+        "step": 1,
+        "title": "Credibility first",
+        "say": "Every weight, formula, data source and limitation is public and versioned.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/system/methodology",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.formulas",
+          "data.fairness_safeguards",
+          "data.limitations"
+        ],
+        "seconds": 30
+      },
+      {
+        "step": 2,
+        "title": "The student's profile",
+        "say": "Five short instruments become one 19-dimension vector. No gender, caste or religion.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/students/132394f2-e097-5d31-8e5b-bfa2fade9b38/traits",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.top_riasec_code",
+          "data.vector"
+        ],
+        "seconds": 40
+      },
+      {
+        "step": 3,
+        "title": "The parent's side, privately",
+        "say": "Parents enter money and hopes. The student never sees the raw figures.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/families/0890b4b1-628f-5cf0-bf34-a444fe1e60a4/finance",
+          "headers": {
+            "X-Mock-Role": "parent"
+          },
+          "body": null
+        },
+        "show": [
+          "data.allocatable_savings",
+          "data.max_affordable_emi"
+        ],
+        "seconds": 30
+      },
+      {
+        "step": 4,
+        "title": "One run, fully explained",
+        "say": "Each career's score splits into six weighted parts, with the pathway costed against the family's budget.",
+        "call": {
+          "method": "POST",
+          "path": "/api/v1/analysis/runs",
+          "headers": {
+            "X-Mock-Role": "parent"
+          },
+          "body": {
+            "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38"
+          }
+        },
+        "show": [
+          "data.recommendations[0].contributions",
+          "data.recommendations[0].financial",
+          "data.buckets"
+        ],
+        "seconds": 60
+      },
+      {
+        "step": 5,
+        "title": "Where the family disagrees",
+        "say": "Conflict index 46 out of 100, its top three drivers, and bridge careers both sides accept.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict",
+          "headers": {
+            "X-Mock-Role": "parent"
+          },
+          "body": null
+        },
+        "show": [
+          "data.index",
+          "data.top_drivers",
+          "data.bridge_careers"
+        ],
+        "seconds": 45
+      },
+      {
+        "step": 6,
+        "title": "Same report, student view",
+        "say": "The student gets a gentle summary instead of the raw gaps.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.visibility",
+          "data.summary"
+        ],
+        "seconds": 20
+      },
+      {
+        "step": 7,
+        "title": "What if?",
+        "say": "Add Rs 8 lakh of savings and a higher loan tolerance, then watch funding classes and ranks move.",
+        "call": {
+          "method": "POST",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/what-if",
+          "headers": {
+            "X-Mock-Role": "parent"
+          },
+          "body": {
+            "label": "Add savings + accept loan",
+            "overrides": {
+              "allocatable_savings": 1400000,
+              "loan_tolerance": 0.7
+            }
+          }
+        },
+        "show": [
+          "data.comparison.summary",
+          "data.comparison.rank_correlation"
+        ],
+        "seconds": 45
+      },
+      {
+        "step": 8,
+        "title": "A 5-year plan",
+        "say": "Exams with dates, scholarship deadlines, skill gaps to close and a local project to start.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/roadmap",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.phases",
+          "data.scholarship_deadlines"
+        ],
+        "seconds": 40
+      },
+      {
+        "step": 9,
+        "title": "Hyper-local innovation",
+        "say": "Real problems in the student's own district, linked to careers and skills.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/local-opportunities?pincode=642001",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data[0].title",
+          "data[0].starter_project"
+        ],
+        "seconds": 30
+      },
+      {
+        "step": 10,
+        "title": "Trust the ranking",
+        "say": "Weights perturbed by 20 % in 64 scenarios: the top career holds in 89 % of them. The input hash makes the run reproducible.",
+        "call": {
+          "method": "GET",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed",
+          "headers": {},
+          "body": null
+        },
+        "show": [
+          "data.sensitivity.robustness_score",
+          "data.reproducibility"
+        ],
+        "seconds": 30
+      }
+    ]
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": false
+  }
+}

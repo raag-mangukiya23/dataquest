@@ -21,6 +21,8 @@ def sid(kind: str, key: str) -> str:
 TODAY = date(2026, 10, 7)
 NOW = datetime(2026, 10, 7, 9, 30, 0)
 DATA_AS_OF = date(2026, 9, 30)
+DATASET_VERSION = "seed-2026-09-30"
+FAMILY_FINANCE_VERSION = 3
 
 STUDENT_USER_ID = sid("user", "student-demo")
 PARENT_USER_ID = sid("user", "parent-demo")

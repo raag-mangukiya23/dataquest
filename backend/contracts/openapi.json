@@ -2791,6 +2791,70 @@
         }
       }
     },
+    "/api/v1/demo/personas": {
+      "get": {
+        "tags": [
+          "demo"
+        ],
+        "summary": "Personas",
+        "operationId": "personas_api_v1_demo_personas_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_DemoPersona__"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/demo/walkthrough": {
+      "get": {
+        "tags": [
+          "demo"
+        ],
+        "summary": "Walkthrough",
+        "operationId": "walkthrough_api_v1_demo_walkthrough_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DemoWalkthrough_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/demo/reset": {
+      "post": {
+        "tags": [
+          "demo"
+        ],
+        "summary": "Reset",
+        "description": "Restore every demo persona to its seeded state. In MOCK_MODE there is no state, so this is a no-op.",
+        "operationId": "reset_api_v1_demo_reset_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DemoResetResult_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/login": {
       "post": {
         "tags": [
@@ -3096,6 +3160,15 @@
           "infeasible"
         ],
         "title": "AffordabilityClass"
+      },
+      "AmountType": {
+        "type": "string",
+        "enum": [
+          "fixed",
+          "percent_tuition",
+          "full_tuition"
+        ],
+        "title": "AmountType"
       },
       "AnalysisRun": {
         "properties": {
@@ -4612,6 +4685,245 @@
         ],
         "title": "DataSourceInfo"
       },
+      "DemoCall": {
+        "properties": {
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "path": {
+            "type": "string",
+            "title": "Path"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Headers"
+          },
+          "body": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Body"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "method",
+          "path"
+        ],
+        "title": "DemoCall"
+      },
+      "DemoPersona": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key",
+            "examples": [
+              "creative_risk_averse"
+            ]
+          },
+          "student_name": {
+            "type": "string",
+            "title": "Student Name"
+          },
+          "parent_name": {
+            "type": "string",
+            "title": "Parent Name"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          },
+          "scenario": {
+            "type": "string",
+            "title": "Scenario",
+            "description": "One line the presenter can read out"
+          },
+          "highlights": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Highlights",
+            "description": "What this persona proves about the engine"
+          },
+          "student_email": {
+            "type": "string",
+            "title": "Student Email"
+          },
+          "parent_email": {
+            "type": "string",
+            "title": "Parent Email"
+          },
+          "demo_password": {
+            "type": "string",
+            "title": "Demo Password",
+            "description": "Shared demo password; only served when DEMO_MODE=true"
+          },
+          "student_id": {
+            "type": "string",
+            "title": "Student Id"
+          },
+          "baseline_run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline Run Id"
+          },
+          "fixture_available": {
+            "type": "boolean",
+            "title": "Fixture Available",
+            "description": "false = data arrives with the seeded database (Phase 1+)"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "student_name",
+          "parent_name",
+          "location",
+          "scenario",
+          "highlights",
+          "student_email",
+          "parent_email",
+          "demo_password",
+          "student_id",
+          "baseline_run_id",
+          "fixture_available"
+        ],
+        "title": "DemoPersona"
+      },
+      "DemoResetResult": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "examples": [
+              "reset",
+              "noop_mock_mode"
+            ]
+          },
+          "personas": {
+            "type": "integer",
+            "title": "Personas"
+          },
+          "runs_precomputed": {
+            "type": "integer",
+            "title": "Runs Precomputed"
+          },
+          "demo_today": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demo Today"
+          },
+          "took_ms": {
+            "type": "number",
+            "title": "Took Ms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "personas",
+          "runs_precomputed",
+          "demo_today",
+          "took_ms"
+        ],
+        "title": "DemoResetResult"
+      },
+      "DemoStep": {
+        "properties": {
+          "step": {
+            "type": "integer",
+            "title": "Step"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "say": {
+            "type": "string",
+            "title": "Say",
+            "description": "Presenter line, about 15 seconds"
+          },
+          "call": {
+            "$ref": "#/components/schemas/DemoCall"
+          },
+          "show": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Show",
+            "description": "JSON paths in the response worth pointing at"
+          },
+          "seconds": {
+            "type": "integer",
+            "title": "Seconds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "step",
+          "title",
+          "say",
+          "call",
+          "show",
+          "seconds"
+        ],
+        "title": "DemoStep"
+      },
+      "DemoWalkthrough": {
+        "properties": {
+          "persona_key": {
+            "type": "string",
+            "title": "Persona Key"
+          },
+          "total_seconds": {
+            "type": "integer",
+            "title": "Total Seconds"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/DemoStep"
+            },
+            "type": "array",
+            "title": "Steps"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "persona_key",
+          "total_seconds",
+          "steps"
+        ],
+        "title": "DemoWalkthrough"
+      },
       "EligibilityCheck": {
         "properties": {
           "rule": {
@@ -4863,6 +5175,80 @@
           "meta"
         ],
         "title": "Envelope[ConsentOut]"
+      },
+      "Envelope_DemoResetResult_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DemoResetResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[DemoResetResult]"
+      },
+      "Envelope_DemoWalkthrough_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DemoWalkthrough"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[DemoWalkthrough]"
       },
       "Envelope_FamilyFinanceOut_": {
         "properties": {
@@ -5727,6 +6113,47 @@
         ],
         "title": "Envelope[list[ConsentOut]]"
       },
+      "Envelope_list_DemoPersona__": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DemoPersona"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[list[DemoPersona]]"
+      },
       "Envelope_list_Exam__": {
         "properties": {
           "success": {
@@ -6074,6 +6501,14 @@
             "title": "Dates Are Estimates",
             "default": true
           },
+          "sessions": {
+            "items": {
+              "$ref": "#/components/schemas/ExamSession"
+            },
+            "type": "array",
+            "title": "Sessions",
+            "description": "All known sessions, earliest first"
+          },
           "eligibility_summary": {
             "type": "string",
             "title": "Eligibility Summary"
@@ -6119,6 +6554,71 @@
           "eligibility_summary"
         ],
         "title": "Exam"
+      },
+      "ExamSession": {
+        "properties": {
+          "cycle_year": {
+            "type": "integer",
+            "title": "Cycle Year"
+          },
+          "session_no": {
+            "type": "integer",
+            "maximum": 4.0,
+            "minimum": 1.0,
+            "title": "Session No"
+          },
+          "registration_close": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Registration Close"
+          },
+          "exam_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exam Start"
+          },
+          "exam_end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exam End"
+          },
+          "is_estimate": {
+            "type": "boolean",
+            "title": "Is Estimate",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "cycle_year",
+          "session_no",
+          "registration_close",
+          "exam_start",
+          "exam_end"
+        ],
+        "title": "ExamSession"
       },
       "FamilyFinanceIn": {
         "properties": {
@@ -6531,6 +7031,15 @@
             "type": "integer",
             "title": "Institution Tier"
           },
+          "quota": {
+            "type": "string",
+            "title": "Quota",
+            "examples": [
+              "government",
+              "management",
+              "open"
+            ]
+          },
           "duration_years": {
             "type": "integer",
             "title": "Duration Years"
@@ -6610,6 +7119,7 @@
           "pathway_name",
           "institution_name",
           "institution_tier",
+          "quota",
           "duration_years",
           "total_cost",
           "family_funds",
@@ -7664,6 +8174,17 @@
             "minimum": 1.0,
             "title": "Duration Years"
           },
+          "quota": {
+            "$ref": "#/components/schemas/Quota",
+            "default": "open"
+          },
+          "fee_academic_year": {
+            "type": "integer",
+            "maximum": 2035.0,
+            "minimum": 2020.0,
+            "title": "Fee Academic Year",
+            "description": "Academic year the fees refer to; inflation starts here"
+          },
           "tuition_per_year": {
             "type": "integer",
             "minimum": 0.0,
@@ -7725,6 +8246,7 @@
           "degree_level",
           "institution",
           "duration_years",
+          "fee_academic_year",
           "tuition_per_year",
           "hostel_per_year",
           "living_per_year",
@@ -7872,6 +8394,17 @@
           "mcq"
         ],
         "title": "QuestionType"
+      },
+      "Quota": {
+        "type": "string",
+        "enum": [
+          "government",
+          "management",
+          "nri",
+          "open"
+        ],
+        "title": "Quota",
+        "description": "Admission quota. Drives fees only; never caste or category."
       },
       "RankChange": {
         "properties": {
@@ -8317,6 +8850,23 @@
             "title": "Data As Of",
             "description": "Most recent as_of across market/salary/scholarship data used"
           },
+          "dataset_version": {
+            "type": "string",
+            "title": "Dataset Version",
+            "description": "Catalog snapshot the run read; replays use the same snapshot"
+          },
+          "family_finance_version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Family Finance Version",
+            "description": "Exact family_finance version used"
+          },
           "ml_model_version": {
             "anyOf": [
               {
@@ -8337,6 +8887,8 @@
           "vector_spec_version",
           "input_hash",
           "data_as_of",
+          "dataset_version",
+          "family_finance_version",
           "ml_model_version"
         ],
         "title": "Reproducibility"
@@ -8730,11 +9282,28 @@
               "international"
             ]
           },
+          "amount_type": {
+            "$ref": "#/components/schemas/AmountType",
+            "default": "fixed"
+          },
           "amount_per_year": {
             "type": "integer",
             "minimum": 0.0,
             "title": "Amount Per Year",
-            "description": "Amount in Indian Rupees (whole rupees)"
+            "description": "Fixed rupees, or the annual cap for percentage waivers"
+          },
+          "percent_of_tuition": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percent Of Tuition"
           },
           "max_years": {
             "type": "integer",
@@ -8778,6 +9347,18 @@
           "stackable": {
             "type": "boolean",
             "title": "Stackable"
+          },
+          "exclusive_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exclusive Group",
+            "description": "At most one scholarship per group in a plan"
           },
           "deadline": {
             "anyOf": [

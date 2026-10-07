@@ -6,7 +6,7 @@ The production formulas live in app/engine (Phase 4-5); these are deliberately s
 import hashlib
 import json
 import math
-from datetime import timedelta
+from datetime import date, timedelta
 
 from app.core.config import ENGINE_VERSION
 from app.core.dimensions import DIMENSION_LABELS, DIMENSIONS, RIASEC, VECTOR_SPEC_VERSION
@@ -36,12 +36,14 @@ from app.schemas.analysis import (
     TraitGap,
 )
 from app.schemas.catalog import (
+    AmountType,
     CareerAlternative,
     CareerDetail,
     CareerSkill,
     CareerSummary,
     EligibilityCheck,
     Exam,
+    ExamSession,
     Institution,
     LocalOpportunity,
     MarketSignal,
@@ -241,6 +243,9 @@ def institution(key: str) -> Institution:
     return Institution(id=w.sid("institution", key), **w.INSTITUTIONS[key])
 
 
+_QUOTA = {"govt-mbbs": "government", "pvt-mbbs": "management"}
+
+
 def pathway(key: str) -> Pathway:
     k, course, level, inst, yrs, tu, ho, li, mi, exams, careers = next(p for p in w.PATHWAYS if p[0] == key)
     return Pathway(
@@ -249,6 +254,8 @@ def pathway(key: str) -> Pathway:
         degree_level=level,
         institution=institution(inst),
         duration_years=yrs,
+        quota=_QUOTA.get(k, "open"),
+        fee_academic_year=2026,
         tuition_per_year=tu,
         hostel_per_year=ho,
         living_per_year=li,
@@ -258,6 +265,21 @@ def pathway(key: str) -> Pathway:
         seats=None,
         provenance=EST,
     )
+
+
+def _sessions(code: str, start, end, reg) -> list[ExamSession]:
+    first = ExamSession(cycle_year=2027, session_no=1, registration_close=reg, exam_start=start, exam_end=end)
+    if code != "JEE_MAIN":
+        return [first]
+    # JEE Main runs two sessions; the second is an illustrative estimate.
+    second = ExamSession(
+        cycle_year=2027,
+        session_no=2,
+        registration_close=date(2027, 2, 25),
+        exam_start=date(2027, 4, 1),
+        exam_end=date(2027, 4, 9),
+    )
+    return [first, second]
 
 
 def exam(code: str) -> Exam:
@@ -272,11 +294,16 @@ def exam(code: str) -> Exam:
         next_window_end=end,
         registration_deadline=reg,
         dates_are_estimates=True,
+        sessions=_sessions(c, start, end, reg),
         eligibility_summary=elig,
         syllabus_url=None,
         official_url=url,
         career_ids=[w.sid("career", x) for x in careers],
     )
+
+
+_PERCENT = {"inst-merit": 0.25}  # 25 % tuition waiver, capped at amount_per_year
+_EXCLUSIVE = {"css-nsp": "central_merit", "inspire-she": "central_merit"}
 
 
 def scholarship(key: str) -> Scholarship:
@@ -288,13 +315,16 @@ def scholarship(key: str) -> Scholarship:
         name=name,
         provider=prov,
         provider_type=ptype,
+        amount_type=AmountType.PERCENT_TUITION if k in _PERCENT else AmountType.FIXED,
         amount_per_year=amt,
+        percent_of_tuition=_PERCENT.get(k),
         max_years=yrs,
         covers=covers,
         eligibility_rules=rules,
         eligibility_summary=summ,
         probability=prob,
         stackable=stack,
+        exclusive_group=_EXCLUSIVE.get(k),
         deadline=deadline,
         provenance=Provenance(
             source_name=prov, source_url=url, as_of=w.DATA_AS_OF, confidence=0.6, is_estimate=True
@@ -389,7 +419,12 @@ def assess(
     for k in scholarship_keys:
         s = scholarship(k)
         yrs = min(s.max_years, p.duration_years)
-        total = s.amount_per_year * yrs
+        per_year = s.amount_per_year
+        if s.amount_type is AmountType.PERCENT_TUITION and s.percent_of_tuition:
+            per_year = min(per_year, int(p.tuition_per_year * s.percent_of_tuition))
+        elif s.amount_type is AmountType.FULL_TUITION:
+            per_year = min(per_year, p.tuition_per_year)
+        total = per_year * yrs
         picks.append(
             ScholarshipPick(
                 scholarship_id=s.id,
@@ -429,6 +464,7 @@ def assess(
         pathway_name=p.course,
         institution_name=p.institution.name,
         institution_tier=p.institution.tier,
+        quota=p.quota.value,
         duration_years=p.duration_years,
         total_cost=cost,
         family_funds=funds,
@@ -790,6 +826,8 @@ def analysis_run(
             vector_spec_version=VECTOR_SPEC_VERSION,
             input_hash=input_hash(snapshot),
             data_as_of=w.DATA_AS_OF.isoformat(),
+            dataset_version=w.DATASET_VERSION,
+            family_finance_version=w.FAMILY_FINANCE_VERSION,
             ml_model_version=None,
         ),
         data_quality=DataQuality(

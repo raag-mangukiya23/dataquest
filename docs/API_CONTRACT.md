@@ -53,6 +53,9 @@
 | POST | `/api/v1/admin/data/refresh` | DataRefreshRequest | RefreshResult | admin | `admin_refresh` |
 | GET | `/api/v1/system/health` | — | Health | public | `system_health` |
 | GET | `/api/v1/system/methodology` | — | Methodology | public | `system_methodology` |
+| GET | `/api/v1/demo/personas` | — | DemoPersona[] | public, DEMO_MODE only | `demo_personas` |
+| GET | `/api/v1/demo/walkthrough` | — | DemoWalkthrough (scripted steps + presenter lines) | public, DEMO_MODE only | `demo_walkthrough` |
+| POST | `/api/v1/demo/reset` | — | DemoResetResult | public, DEMO_MODE only | `demo_reset` |
 
 ### Team alias routes (bare JSON on success)
 

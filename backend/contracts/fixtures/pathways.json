@@ -18,6 +18,8 @@
           "ownership": "public"
         },
         "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 55000,
         "hostel_per_year": 40000,
         "living_per_year": 30000,
@@ -53,6 +55,8 @@
           "ownership": "private"
         },
         "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 150000,
         "hostel_per_year": 70000,
         "living_per_year": 30000,
@@ -88,6 +92,8 @@
           "ownership": "public"
         },
         "duration_years": 5,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 60000,
         "hostel_per_year": 30000,
         "living_per_year": 36000,
@@ -123,6 +129,8 @@
           "ownership": "private"
         },
         "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 250000,
         "hostel_per_year": 90000,
         "living_per_year": 36000,
@@ -158,6 +166,8 @@
           "ownership": "public"
         },
         "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 50000,
         "hostel_per_year": 35000,
         "living_per_year": 30000,
@@ -193,6 +203,8 @@
           "ownership": "private"
         },
         "duration_years": 4,
+        "quota": "open",
+        "fee_academic_year": 2026,
         "tuition_per_year": 450000,
         "hostel_per_year": 150000,
         "living_per_year": 72000,
@@ -229,6 +241,8 @@
           "ownership": "private"
         },
         "duration_years": 6,
+        "quota": "management",
+        "fee_academic_year": 2026,
         "tuition_per_year": 1800000,
         "hostel_per_year": 150000,
         "living_per_year": 60000,
@@ -264,6 +278,8 @@
           "ownership": "public"
         },
         "duration_years": 6,
+        "quota": "government",
+        "fee_academic_year": 2026,
         "tuition_per_year": 20000,
         "hostel_per_year": 30000,
         "living_per_year": 40000,

@@ -1,6 +1,7 @@
 """Careers, market signals, regions, education pathways, exams, scholarships, local opportunities."""
 
 from datetime import date
+from enum import StrEnum
 
 from pydantic import Field
 
@@ -94,12 +95,25 @@ class Institution(Contract):
     ownership: str = Field(examples=["public", "private", "deemed"])
 
 
+class Quota(StrEnum):
+    """Admission quota. Drives fees only; never caste or category."""
+
+    GOVERNMENT = "government"
+    MANAGEMENT = "management"
+    NRI = "nri"
+    OPEN = "open"
+
+
 class Pathway(Contract):
     id: str
     course: str = Field(examples=["B.Tech Computer Science"])
     degree_level: str = Field(examples=["UG", "PG", "Diploma", "Integrated"])
     institution: Institution
     duration_years: int = Field(ge=1, le=7)
+    quota: Quota = Quota.OPEN
+    fee_academic_year: int = Field(
+        ge=2020, le=2035, description="Academic year the fees refer to; inflation starts here"
+    )
     tuition_per_year: INR
     hostel_per_year: INR
     living_per_year: INR
@@ -108,6 +122,15 @@ class Pathway(Contract):
     career_ids: list[str]
     seats: int | None = None
     provenance: Provenance
+
+
+class ExamSession(Contract):
+    cycle_year: int
+    session_no: int = Field(ge=1, le=4)
+    registration_close: date | None
+    exam_start: date | None
+    exam_end: date | None
+    is_estimate: bool = True
 
 
 class Exam(Contract):
@@ -120,6 +143,9 @@ class Exam(Contract):
     next_window_end: date | None = None
     registration_deadline: date | None = None
     dates_are_estimates: bool = True
+    sessions: list[ExamSession] = Field(
+        default_factory=list, description="All known sessions, earliest first"
+    )
     eligibility_summary: str
     syllabus_url: str | None = None
     official_url: str | None = None
@@ -131,6 +157,12 @@ class EligibilityCheck(Contract):
     passed: bool | None = Field(description="null = could not evaluate (missing input)")
 
 
+class AmountType(StrEnum):
+    FIXED = "fixed"
+    PERCENT_TUITION = "percent_tuition"
+    FULL_TUITION = "full_tuition"
+
+
 class Scholarship(Contract):
     id: str
     name: str
@@ -138,13 +170,18 @@ class Scholarship(Contract):
     provider_type: str = Field(
         examples=["central_govt", "state_govt", "private", "institution", "international"]
     )
-    amount_per_year: INR
+    amount_type: AmountType = AmountType.FIXED
+    amount_per_year: INR = Field(description="Fixed rupees, or the annual cap for percentage waivers")
+    percent_of_tuition: float | None = Field(default=None, gt=0, le=1)
     max_years: int = Field(ge=1, le=7)
     covers: list[str] = Field(examples=[["tuition"], ["tuition", "living"]])
     eligibility_rules: dict = Field(description="Machine-evaluable JSON rules")
     eligibility_summary: str
     probability: Unit = Field(description="Heuristic award probability if eligible")
     stackable: bool
+    exclusive_group: str | None = Field(
+        default=None, description="At most one scholarship per group in a plan"
+    )
     deadline: date | None = None
     provenance: Provenance
 

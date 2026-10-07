@@ -226,3 +226,21 @@ def test_scholarship_plans_respect_eligibility_and_stacking():
             assert all(matches[i].eligible is not False for i in ids), rec.career.slug
             if any(not matches[i].scholarship.stackable for i in ids):
                 assert len(ids) == 1, rec.career.slug
+
+
+def test_scholarship_plans_respect_exclusive_groups():
+    from app.mocks import builders as b
+
+    by_id = {b.scholarship(s[0]).id: b.scholarship(s[0]) for s in w.SCHOLARSHIPS}
+    for rec in b.analysis_run().recommendations:
+        groups = [by_id[p.scholarship_id].exclusive_group for p in rec.financial.scholarship_plan]
+        groups = [g for g in groups if g]
+        assert len(groups) == len(set(groups)), rec.career.slug
+
+
+def test_exam_sessions_are_ordered():
+    from app.mocks import builders as b
+
+    for e in w.EXAMS:
+        sessions = b.exam(e[0]).sessions
+        assert sessions and [s.session_no for s in sessions] == sorted(s.session_no for s in sessions)

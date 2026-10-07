@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "status": "noop_mock_mode",
+    "personas": 5,
+    "runs_precomputed": 1,
+    "demo_today": "2026-10-07",
+    "took_ms": 0.2
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

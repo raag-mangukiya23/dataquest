@@ -321,6 +321,30 @@
     "request": null
   },
   {
+    "name": "demo_personas",
+    "method": "GET",
+    "path": "/api/v1/demo/personas",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "demo_walkthrough",
+    "method": "GET",
+    "path": "/api/v1/demo/walkthrough",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "demo_reset",
+    "method": "POST",
+    "path": "/api/v1/demo/reset",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
     "name": "error_not_found",
     "method": "GET",
     "path": "/api/v1/analysis/runs/unknown",

@@ -1,5 +1,6 @@
 """Application settings, loaded from environment variables / .env."""
 
+from datetime import date
 from functools import lru_cache
 
 from pydantic import Field, field_validator
@@ -26,6 +27,9 @@ class Settings(BaseSettings):
     ml_model_path: str | None = None
     ml_alpha: float = Field(default=0.5, ge=0.0, le=1.0)
     log_level: str = "INFO"
+    # Demo support: /api/v1/demo/* endpoints and a frozen "today" so deadlines never slip into the past on stage.
+    demo_mode: bool = True
+    demo_today: date | None = date(2026, 10, 7)
 
     @field_validator("cors_origins", mode="before")
     @classmethod
