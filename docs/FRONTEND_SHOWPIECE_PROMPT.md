@@ -33,6 +33,30 @@ A beam of white light (the student) enters a prism (PRISM's analysis) and splits
 - Indian money format everywhere: ₹6.6 L and ₹1.2 Cr in summaries, ₹6,56,991 in ledgers (one formatINR helper).
 
 ## 3. Signature motion moments (the "crazy" part, each tied to meaning)
+0. Loading screen ("the mind becomes a spectrum"), shown while the app loads, like Gmail's:
+   - Full-screen, background #05060B. Three stacked elements, centred, with generous spacing:
+     a) A human brain in blue–cyan neon (#00E5FF to #2F6BFF, soft glow via SVG feGaussianBlur). Draw it yourself as
+        an original inline SVG: two hemispheres, a clear side-profile silhouette with a cerebellum and brainstem, and
+        8–12 curved gyri lines inside. The outline draws itself first (stroke-dashoffset, about 700 ms).
+     b) Neural signals: 12–20 small bright pulses (cyan core, white tip, short fading trail) travelling along the
+        gyri paths at different speeds (SVG animateMotion or CSS offset-path), with tiny "synapse" flashes where
+        paths meet. They loop continuously and gently while loading.
+     c) Below the brain, the prism builds up: its three edges draw in (cyan neon), the faces fill with a faint
+        glass gradient, then a thin white beam from the brain enters the prism and leaves as the six spectrum
+        colours of the score parts.
+     d) Below the prism, "PRISM" is written in: each letter's outline draws (stroke), then fills white with a
+        cyan glow, letters staggered by 90 ms, with letter-spacing tightening from 0.6em to 0.18em. A tiny caption
+        fades in under it: "See every path. Choose yours together."
+   - It must appear instantly, before any JavaScript loads: put the SVG and its CSS animations inline in
+     frontend/index.html (no fonts, images or scripts needed; draw "PRISM" as SVG paths or use a system-font
+     fallback while the display font loads). React removes it once the app is ready.
+   - Timing: play at least the full build-up sequence (about 1.6 s) on first visit, then fade out (300 ms, the
+     brain's glow brightening into the page) as soon as the app is ready. Never longer than 3.5 s; if the app is
+     still loading, keep the signals looping with a calm "Loading…" line. On later visits in the same session,
+     show only a 600 ms short version. Any click or key press skips it.
+   - Reduced motion: show the finished still image (brain, prism, PRISM) for at most 600 ms, no movement.
+   - Keep it light: inline SVG under 25 KB, animate only transform, opacity and stroke-dashoffset, 60 fps on a
+     mid-range phone, accessible label "PRISM is loading", aria-busy on the app root.
 1. Landing hero, scroll story (GSAP ScrollTrigger + R3F):
    - A thin white beam travels across a dark scene into a slowly rotating glass prism (drei MeshTransmissionMaterial, chromatic aberration).
    - As the user scrolls, the beam splits into six coloured rays, each labelled with a score part (Fit, Market, Affordability, ROI, Family, Disruption).
@@ -73,7 +97,7 @@ Build these after the P0 screens from docs/FRONTEND_CLAUDE_CODE_PROMPT.md work.
 1. 0:00–0:45 Scaffold, tokens, fonts, API layer from the original prompt (envelope, auth modes, fixture mode), generated types, formatINR, base components. Commit.
 2. 0:45–2:30 P0 screens plain and working (landing without 3D, sign in, results, career detail, family, what-if, how we know) in live and fixtures modes. Screenshot each. Commit each.
 3. 2:30–3:00 Checkpoint: full core path at 1440px and 390px, light and dark; fix everything; deploy a fixtures-mode build to Vercel or Netlify as a safety copy.
-4. 3:00–5:00 Signature motion 2, 3 and 4 (results reveal, what-if instrument, family gravity), then 1 (landing prism). Screenshot before/after each; keep only what improves the screen. Commit each.
+4. 3:00–5:00 Loading screen (motion 0, about 40 minutes, screenshot it mid-animation and finished), then signature motion 2, 3 and 4 (results reveal, what-if instrument, family gravity), then 1 (landing prism). Screenshot before/after each; keep only what improves the screen. Commit each.
 5. 5:00–6:30 Features 1, 2, 3, 6 from section 5. Then P1 screens from the original prompt (plan/roadmap with motion 6, questionnaire with motion 7, parent inputs, loan explainer, counsellor dashboard).
 6. 6:30+ Galaxy (motion 5), features 4, 5, 7, 8, 9, 10, then P2 screens.
 7. Final hour: performance pass, accessibility pass, reduced-motion pass, redeploy, write frontend/README.md.
@@ -82,6 +106,7 @@ Build these after the P0 screens from docs/FRONTEND_CLAUDE_CODE_PROMPT.md work.
 - Every screen was screenshotted after its last change and looks intentional at 1440px and 390px, in both themes.
 - With reduced motion on, every screen still works and looks complete.
 - No console errors; no layout shift when animations run; the landing hero falls back cleanly without WebGL.
+- The loading screen appears before the JavaScript bundle loads (check with network throttling set to Slow 4G), never lasts more than 3.5 s, and can be skipped.
 - A build without VITE_DEV_TOOLS contains no demo, mock or developer UI.
 - Finish with a short report: what works, what is stubbed, the deployed URLs, and the screenshots folder path.
 ````
