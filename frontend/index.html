@@ -29,8 +29,8 @@
       #boot .stack{display:flex;flex-direction:column;align-items:center;gap:14px;width:min(340px,78vw)}
       #boot svg{display:block;overflow:visible}
       #boot .brain{width:100%;height:auto}
-      #boot .brain .outline,#boot .brain .gyri path{fill:none;stroke-linecap:round;stroke-linejoin:round}
-      #boot .brain .outline{stroke:url(#neon);stroke-width:2.6;stroke-dasharray:1200;stroke-dashoffset:1200;
+      #boot .brain .bline,#boot .brain .gyri path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+      #boot .brain .bline{stroke:url(#neon);stroke-width:2.6;stroke-dasharray:1200;stroke-dashoffset:1200;
         animation:bdraw calc(var(--t)*.7s) cubic-bezier(.6,.05,.3,1) forwards}
       #boot .brain .gyri path{stroke:#00E5FF;stroke-opacity:.55;stroke-width:1.4;stroke-dasharray:400;stroke-dashoffset:400;
         animation:bdraw calc(var(--t)*.7s) ease-out forwards;animation-delay:calc(var(--t)*.3s)}
@@ -84,9 +84,9 @@
             <radialGradient id="pulse"><stop offset="0" stop-color="#fff" /><stop offset=".45" stop-color="#7FF2FF" /><stop offset="1" stop-color="#00E5FF" stop-opacity="0" /></radialGradient>
           </defs>
           <g filter="url(#glow)">
-            <path class="outline" d="M48 128C30 118 26 92 38 74C44 52 62 36 86 32C100 20 124 16 142 22C160 14 186 18 200 32C222 36 238 54 236 76C246 92 240 112 226 120C222 132 208 138 194 136C186 146 170 150 156 146C146 148 136 146 128 140C116 146 98 146 88 140C74 144 58 140 48 128Z" />
-            <path class="outline" d="M184 140C196 146 212 147 222 135C226 151 213 163 197 163C185 163 177 153 184 140Z" />
-            <path class="outline" d="M158 147C163 160 165 172 161 187M173 147C176 160 178 172 176 187" />
+            <path class="bline" d="M48 128C30 118 26 92 38 74C44 52 62 36 86 32C100 20 124 16 142 22C160 14 186 18 200 32C222 36 238 54 236 76C246 92 240 112 226 120C222 132 208 138 194 136C186 146 170 150 156 146C146 148 136 146 128 140C116 146 98 146 88 140C74 144 58 140 48 128Z" />
+            <path class="bline" d="M184 140C196 146 212 147 222 135C226 151 213 163 197 163C185 163 177 153 184 140Z" />
+            <path class="bline" d="M158 147C163 160 165 172 161 187M173 147C176 160 178 172 176 187" />
             <g class="gyri">
               <path id="g1" d="M60 70C78 60 90 72 106 62C118 54 132 60 140 52" />
               <path id="g2" d="M50 96C66 86 80 98 96 88C112 78 126 90 142 82C156 74 170 84 184 76" />
