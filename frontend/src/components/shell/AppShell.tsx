@@ -1,6 +1,6 @@
 // Signed-in layout: sidebar on desktop, bottom bar + "More" sheet on phones, top bar with search, deadlines,
 // language and account. Page changes get a thin spectrum wipe and a short fade.
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { LogOut, Menu, Moon, Search, Sun, Triangle } from 'lucide-react'
 import { Suspense, useState, type ReactNode } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
@@ -11,6 +11,7 @@ import { Dialog, PageSkeleton, cx } from '@/components/ui'
 import { navFor, type NavItem } from './nav'
 import { CommandPalette, useCommandPalette } from './CommandPalette'
 import { DeadlineBell } from './DeadlineBell'
+import { PageErrorBoundary } from './PageErrorBoundary'
 import { Tour } from '@/components/system/Tour'
 
 const LANGS: { value: Lang; label: string }[] = [
@@ -189,19 +190,19 @@ export function AppShell() {
         )}
 
         <main id="main" className="relative z-[2] mx-auto max-w-page px-4 pb-28 pt-6 md:px-8 md:pb-16 md:pt-8">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={location.pathname}
-              initial={reducedMotion ? false : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reducedMotion ? undefined : { opacity: 0, y: -4 }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-            >
+          {/* No exit animation: waiting on the old page while the new one is still loading could leave the screen blank. */}
+          <motion.div
+            key={location.pathname}
+            initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+          >
+            <PageErrorBoundary key={location.pathname}>
               <Suspense fallback={<PageSkeleton />}>
                 <Outlet />
               </Suspense>
-            </motion.div>
-          </AnimatePresence>
+            </PageErrorBoundary>
+          </motion.div>
         </main>
       </div>
 
@@ -275,6 +276,7 @@ function MobileQuickSettings({ onDone }: { onDone: () => void }) {
 /** Layout for signed-out pages (landing, sign in, how it works, trust). */
 export function PublicShell({ children }: { children?: ReactNode }) {
   const { user } = useSession()
+  const location = useLocation()
   return (
     <div className="grain min-h-dvh">
       <header className="no-print glass fixed inset-x-0 top-0 z-30 border-b border-[rgb(var(--line)/var(--line-alpha))]">
@@ -295,7 +297,9 @@ export function PublicShell({ children }: { children?: ReactNode }) {
         </div>
       </header>
       <div className="relative z-[2] pt-16">
-        <Suspense fallback={<div className="mx-auto max-w-page px-4 py-10"><PageSkeleton /></div>}>{children ?? <Outlet />}</Suspense>
+        <PageErrorBoundary key={location.pathname}>
+          <Suspense fallback={<div className="mx-auto max-w-page px-4 py-10"><PageSkeleton /></div>}>{children ?? <Outlet />}</Suspense>
+        </PageErrorBoundary>
       </div>
     </div>
   )

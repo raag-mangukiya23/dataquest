@@ -10,6 +10,13 @@ import { isRetryable } from '@/api/client'
 import { SessionProvider } from '@/state/session'
 import { SettingsProvider, useSettings } from '@/state/settings'
 import { ToastProvider } from '@/components/ui'
+import { clearChunkReloadFlag, reloadOnceForChunk } from '@/components/shell/PageErrorBoundary'
+
+// After a new deploy, old page files are gone; reload once to fetch the new version instead of showing a blank page.
+window.addEventListener('vite:preloadError', (e) => {
+  if (reloadOnceForChunk()) e.preventDefault()
+})
+window.addEventListener('load', () => setTimeout(clearChunkReloadFlag, 10_000))
 
 const queryClient = new QueryClient({
   defaultOptions: {
