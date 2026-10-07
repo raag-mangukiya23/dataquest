@@ -3,14 +3,12 @@ import { Pause, Sparkles, Volume2 } from 'lucide-react'
 import { useNarrative } from '@/api/queries'
 import type { Lang } from '@/api/endpoints'
 import { Badge, Button, ErrorState, Skeleton, cx } from '@/components/ui'
-import { useSettings } from '@/state/settings'
 import { useSpeech } from './useSpeech'
 
 const LANG_NAME: Record<Lang, string> = { en: 'English', ta: 'Tamil', hi: 'Hindi' }
 
 export function NarrativeCard({ runId, large = false, className }: { runId: string; large?: boolean; className?: string }) {
-  const { settings } = useSettings()
-  const lang = settings.language
+  const lang: Lang = 'en'
   const q = useNarrative(runId, lang)
   const speech = useSpeech(lang)
 

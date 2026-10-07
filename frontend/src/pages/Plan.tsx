@@ -14,7 +14,6 @@ import { FundingPill, Money } from '@/components/score'
 import { Badge, Button, Card, EmptyState, ErrorState, Field, PageHeader, PageSkeleton, Section, Select, Skeleton, Term, useToast } from '@/components/ui'
 import { AFFORD, formatDate, sectorLabel } from '@/lib/format'
 import { useSession } from '@/state/session'
-import { useSettings } from '@/state/settings'
 
 export default function Plan() {
   const { user } = useSession()
@@ -162,9 +161,8 @@ export default function Plan() {
 
 // ------------------------------------------------------------------ report
 function ReportButton({ runId }: { runId: string }) {
-  const { settings } = useSettings()
   const toast = useToast()
-  const [lang, setLang] = useState<Lang>(settings.language)
+  const lang: Lang = 'en'
   const [busy, setBusy] = useState(false)
   const go = async () => {
     setBusy(true)
@@ -179,14 +177,6 @@ function ReportButton({ runId }: { runId: string }) {
   }
   return (
     <div className="flex items-stretch gap-1">
-      <label htmlFor="report-lang" className="sr-only">
-        Report language
-      </label>
-      <Select id="report-lang" value={lang} onChange={(e) => setLang(e.target.value as Lang)} className="w-[92px]">
-        <option value="en">English</option>
-        <option value="ta">தமிழ்</option>
-        <option value="hi">हिन्दी</option>
-      </Select>
       <Button magnetic icon={<Download className="h-4 w-4" />} loading={busy} onClick={() => void go()}>
         Family report
       </Button>

@@ -4,7 +4,6 @@ import { BellOff, BellRing, Check, LogOut, MessageCircle, RotateCcw, ShieldCheck
 import { useNavigate } from 'react-router-dom'
 import { consents, deadlines } from '@/api/endpoints'
 import type { ConsentType, ReminderOut } from '@/api/types'
-import type { Lang } from '@/api/endpoints'
 import { Badge, Button, Card, EmptyState, ErrorState, PageHeader, Segmented, Skeleton, Switch, useToast } from '@/components/ui'
 import { formatDate } from '@/lib/format'
 import { useSession } from '@/state/session'
@@ -78,9 +77,6 @@ function Comfort() {
           onChange={(v) => update({ textSize: Number(v) as S['textSize'] })}
           options={[{ value: '100', label: 'A' }, { value: '115', label: <span className="text-[17px]">A</span> }, { value: '130', label: <span className="text-[20px]">A</span> }]}
         />
-      </Row>
-      <Row label="Language" hint="Used for summaries and the family report.">
-        <Segmented<Lang> label="Language" value={settings.language} onChange={(language) => update({ language })} options={[{ value: 'en', label: 'English' }, { value: 'ta', label: 'தமிழ்' }, { value: 'hi', label: 'हिन्दी' }]} />
       </Row>
       <Switch checked={settings.reduceMotion} onChange={(reduceMotion) => update({ reduceMotion })} label="Reduce motion" description="Turns off moving effects and celebrations." />
       {user?.role !== 'educator' && user?.role !== 'admin' && (

@@ -93,7 +93,7 @@ const EXPLAINERS: { icon: LucideIcon; title: string; body: string; points: strin
     icon: Map,
     title: 'See your future',
     body: 'Get a step-by-step roadmap with entrance exams, scholarship deadlines and starter projects you can begin in your own district.',
-    points: ['Reminders before every deadline', 'A family report in English, Tamil or Hindi'],
+    points: ['Reminders before every deadline', 'A family report to share at home'],
   },
 ]
 

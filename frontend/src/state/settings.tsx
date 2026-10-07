@@ -17,7 +17,8 @@ const KEY = 'prism-settings'
 
 function load(): Settings {
   try {
-    return { ...DEFAULTS, ...(JSON.parse(localStorage.getItem(KEY) || '{}') as Partial<Settings>) }
+    // The app is English only; ignore a language saved by an older version.
+    return { ...DEFAULTS, ...(JSON.parse(localStorage.getItem(KEY) || '{}') as Partial<Settings>), language: 'en' }
   } catch {
     return DEFAULTS
   }

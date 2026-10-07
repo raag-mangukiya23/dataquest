@@ -6,7 +6,6 @@ import { Suspense, useState, type ReactNode } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useSession } from '@/state/session'
 import { useSettings } from '@/state/settings'
-import type { Lang } from '@/api/endpoints'
 import { Dialog, PageSkeleton, cx } from '@/components/ui'
 import { navFor, type NavItem } from './nav'
 import { CommandPalette, useCommandPalette } from './CommandPalette'
@@ -14,11 +13,6 @@ import { DeadlineBell } from './DeadlineBell'
 import { PageErrorBoundary } from './PageErrorBoundary'
 import { Tour } from '@/components/system/Tour'
 
-const LANGS: { value: Lang; label: string }[] = [
-  { value: 'en', label: 'English' },
-  { value: 'ta', label: 'தமிழ்' },
-  { value: 'hi', label: 'हिन्दी' },
-]
 
 export function Logo({ to = '/' }: { to?: string }) {
   return (
@@ -68,26 +62,6 @@ function ThemeToggle() {
     >
       {dark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
     </button>
-  )
-}
-
-function LanguageSelect() {
-  const { settings, update } = useSettings()
-  return (
-    <label className="relative hidden sm:block">
-      <span className="sr-only">Language for summaries and reports</span>
-      <select
-        value={settings.language}
-        onChange={(e) => update({ language: e.target.value as Lang })}
-        className="h-10 appearance-none rounded-xl bg-transparent px-2.5 text-sm font-medium text-muted hover:bg-surface-2 hover:text-ink focus:outline-none"
-      >
-        {LANGS.map((l) => (
-          <option key={l.value} value={l.value}>
-            {l.label}
-          </option>
-        ))}
-      </select>
-    </label>
   )
 }
 
@@ -170,7 +144,6 @@ export function AppShell() {
               <Search className="h-[18px] w-[18px]" />
             </button>
             <DeadlineBell />
-            <LanguageSelect />
             <ThemeToggle />
             <UserMenu />
           </div>
@@ -237,24 +210,12 @@ export function AppShell() {
 }
 
 function MobileQuickSettings({ onDone }: { onDone: () => void }) {
-  const { settings, update } = useSettings()
+  const { update } = useSettings()
   const { logout } = useSession()
   const navigate = useNavigate()
   const dark = document.documentElement.dataset.theme !== 'light'
   return (
     <div className="mb-4 flex flex-wrap items-center gap-2">
-      <select
-        aria-label="Language for summaries and reports"
-        value={settings.language}
-        onChange={(e) => update({ language: e.target.value as Lang })}
-        className="h-10 flex-1 rounded-xl bg-surface-2 px-3 text-sm hairline"
-      >
-        {LANGS.map((l) => (
-          <option key={l.value} value={l.value}>
-            {l.label}
-          </option>
-        ))}
-      </select>
       <button type="button" onClick={() => update({ theme: dark ? 'light' : 'dark' })} className="inline-flex h-10 items-center gap-2 rounded-xl bg-surface-2 px-3 text-sm hairline">
         {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />} {dark ? 'Light' : 'Dark'}
       </button>

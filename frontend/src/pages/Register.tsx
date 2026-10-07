@@ -1,5 +1,5 @@
-// Create account: name, email, password, role (student / parent / teacher → educator), date of birth for students,
-// preferred language. API validation errors appear next to their field.
+// Create account: name, email, password, role (student / parent / teacher → educator), date of birth for students.
+// API validation errors appear next to their field.
 import { AlertCircle, ArrowRight, Backpack, Check, HeartHandshake, Info, School, WifiOff } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
@@ -7,7 +7,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { ApiError } from '@/api/client'
 import type { Lang } from '@/api/endpoints'
 import type { Role } from '@/api/types'
-import { Button, Field, Input, Select, cx } from '@/components/ui'
+import { Button, Field, Input, cx } from '@/components/ui'
 import { AsidePoint, AuthLayout, FormAlert, PasswordInput } from '@/components/landing/AuthLayout'
 import { useAfterAuth } from '@/components/landing/afterAuth'
 import { ageOn, fieldErrorsFrom, isoToday, safeNext, type FieldErrors } from '@/components/landing/util'
@@ -24,11 +24,6 @@ const ROLES: { value: Kind; label: string; hint: string; icon: typeof Backpack }
   { value: 'student', label: 'Student', hint: 'Classes 9 to 12', icon: Backpack },
   { value: 'parent', label: 'Parent', hint: 'or guardian', icon: HeartHandshake },
   { value: 'educator', label: 'Teacher', hint: 'or counsellor', icon: School },
-]
-const LANGS: { value: Lang; label: string }[] = [
-  { value: 'en', label: 'English' },
-  { value: 'ta', label: 'தமிழ் (Tamil)' },
-  { value: 'hi', label: 'हिन्दी (Hindi)' },
 ]
 const NEXT_STEPS: Record<Kind, { title: string; body: string }[]> = {
   student: [
@@ -50,11 +45,11 @@ const NEXT_STEPS: Record<Kind, { title: string; body: string }[]> = {
 
 export default function Register() {
   const { register } = useSession()
-  const { settings, update, reducedMotion } = useSettings()
+  const { reducedMotion } = useSettings()
   const go = useAfterAuth()
   const [params] = useSearchParams()
   const next = safeNext(params.get('next'))
-  const [form, setForm] = useState({ full_name: '', email: '', password: '', date_of_birth: '', preferred_language: settings.language as Lang })
+  const [form, setForm] = useState({ full_name: '', email: '', password: '', date_of_birth: '', preferred_language: 'en' as Lang })
   const [kind, setKind] = useState<Kind>('student')
   const [errors, setErrors] = useState<FieldErrors<FieldKey>>({})
   const [general, setGeneral] = useState<{ text: string; offline: boolean } | null>(null)
@@ -108,7 +103,6 @@ export default function Register() {
         date_of_birth: kind === 'student' ? form.date_of_birth : null,
         preferred_language: form.preferred_language,
       })
-      update({ language: form.preferred_language })
       const dest = next ?? (user.role === 'parent' ? '/family' : user.role === 'educator' ? '/counsellor' : '/home')
       go(dest, user.role)
     } catch (err) {
@@ -127,7 +121,7 @@ export default function Register() {
   return (
     <AuthLayout
       title="Create your account"
-      subtitle="Private, in your language, and it takes about a minute."
+      subtitle="Private, and it takes about a minute."
       aside={
         <>
           <h2 className="text-2xl font-bold leading-tight">What happens next</h2>
@@ -202,16 +196,6 @@ export default function Register() {
         {minor && (
           <Note icon={<Info className="h-4 w-4 text-neon" aria-hidden />}>A parent or guardian will be asked to approve before we use your answers.</Note>
         )}
-
-        <Field label="Preferred language" htmlFor="reg-lang" error={errors.preferred_language} hint="For your summaries and family report. You can change it any time.">
-          <Select id="reg-lang" value={form.preferred_language} onChange={(e) => set('preferred_language')(e.target.value)}>
-            {LANGS.map((l) => (
-              <option key={l.value} value={l.value}>
-                {l.label}
-              </option>
-            ))}
-          </Select>
-        </Field>
 
         <div aria-live="polite">
           {general && (

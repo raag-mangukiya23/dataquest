@@ -7,20 +7,13 @@ import { openBlob } from '@/api/client'
 import type { AnalysisRun, Role } from '@/api/types'
 import { BandPill, Meter } from '@/components/score'
 import { Roll } from './Roll'
-import { Button, InfoTip, Select, useToast } from '@/components/ui'
+import { Button, InfoTip, useToast } from '@/components/ui'
 import { componentMeta, pct } from '@/lib/format'
-import { useSettings } from '@/state/settings'
 import type { ScoreComponent } from '@/api/types'
 
-const LANGS: { value: Lang; label: string }[] = [
-  { value: 'en', label: 'English' },
-  { value: 'ta', label: 'தமிழ் (Tamil)' },
-  { value: 'hi', label: 'हिन्दी (Hindi)' },
-]
 
 export function ReportDownload({ runId, compact = false }: { runId: string; compact?: boolean }) {
-  const { settings } = useSettings()
-  const [lang, setLang] = useState<Lang>(settings.language)
+  const lang: Lang = 'en'
   const [busy, setBusy] = useState(false)
   const toast = useToast()
   async function go() {
@@ -36,16 +29,6 @@ export function ReportDownload({ runId, compact = false }: { runId: string; comp
   }
   return (
     <div className={compact ? 'flex flex-wrap items-center gap-2' : 'flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row'}>
-      <label className="sr-only" htmlFor={`report-lang-${compact ? 'c' : 'r'}`}>
-        Report language
-      </label>
-      <Select id={`report-lang-${compact ? 'c' : 'r'}`} value={lang} onChange={(e) => setLang(e.target.value as Lang)} className={compact ? 'w-auto min-w-[8.5rem]' : 'xl:w-36'}>
-        {LANGS.map((l) => (
-          <option key={l.value} value={l.value}>
-            {l.label}
-          </option>
-        ))}
-      </Select>
       <Button variant="secondary" icon={<Download className="h-4 w-4" aria-hidden />} loading={busy} onClick={() => void go()} className="flex-1 whitespace-nowrap">
         Family report
       </Button>
