@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "data": [
+    {
+      "code": "riasec_v1",
+      "name": "Interest Explorer",
+      "description": "What kinds of activities energise you?",
+      "version": "1.0",
+      "question_count": 24,
+      "est_minutes": 8
+    },
+    {
+      "code": "aptitude_v1",
+      "name": "Reasoning Sprint",
+      "description": "Short numerical, verbal, logical and spatial puzzles.",
+      "version": "1.0",
+      "question_count": 12,
+      "est_minutes": 4
+    },
+    {
+      "code": "cognitive_v1",
+      "name": "Thinking Style",
+      "description": "How you prefer to approach problems.",
+      "version": "1.0",
+      "question_count": 9,
+      "est_minutes": 3
+    },
+    {
+      "code": "values_v1",
+      "name": "What Matters To You",
+      "description": "Work values and priorities.",
+      "version": "1.0",
+      "question_count": 12,
+      "est_minutes": 4
+    },
+    {
+      "code": "disposition_v1",
+      "name": "Grit & Risk",
+      "description": "Perseverance and comfort with uncertainty.",
+      "version": "1.0",
+      "question_count": 8,
+      "est_minutes": 2
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

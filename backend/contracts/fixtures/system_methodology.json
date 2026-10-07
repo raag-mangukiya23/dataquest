@@ -1,0 +1,212 @@
+{
+  "success": true,
+  "data": {
+    "engine_version": "prism-engine/1.0.0",
+    "vector_spec_version": "vec-1",
+    "dimensions": [
+      {
+        "key": "riasec_r",
+        "label": "Realistic (hands-on, building, tools)",
+        "group": "riasec"
+      },
+      {
+        "key": "riasec_i",
+        "label": "Investigative (analysing, researching)",
+        "group": "riasec"
+      },
+      {
+        "key": "riasec_a",
+        "label": "Artistic (creating, designing, expressing)",
+        "group": "riasec"
+      },
+      {
+        "key": "riasec_s",
+        "label": "Social (helping, teaching, caring)",
+        "group": "riasec"
+      },
+      {
+        "key": "riasec_e",
+        "label": "Enterprising (leading, persuading, starting)",
+        "group": "riasec"
+      },
+      {
+        "key": "riasec_c",
+        "label": "Conventional (organising, data, procedures)",
+        "group": "riasec"
+      },
+      {
+        "key": "apt_numerical",
+        "label": "Numerical aptitude",
+        "group": "aptitude"
+      },
+      {
+        "key": "apt_verbal",
+        "label": "Verbal aptitude",
+        "group": "aptitude"
+      },
+      {
+        "key": "apt_logical",
+        "label": "Logical reasoning",
+        "group": "aptitude"
+      },
+      {
+        "key": "apt_spatial",
+        "label": "Spatial reasoning",
+        "group": "aptitude"
+      },
+      {
+        "key": "cog_analytical",
+        "label": "Analytical thinking style",
+        "group": "cognitive"
+      },
+      {
+        "key": "cog_creative",
+        "label": "Creative thinking style",
+        "group": "cognitive"
+      },
+      {
+        "key": "cog_practical",
+        "label": "Practical thinking style",
+        "group": "cognitive"
+      },
+      {
+        "key": "val_security",
+        "label": "Values job security",
+        "group": "work_values"
+      },
+      {
+        "key": "val_autonomy",
+        "label": "Values autonomy",
+        "group": "work_values"
+      },
+      {
+        "key": "val_impact",
+        "label": "Values social impact",
+        "group": "work_values"
+      },
+      {
+        "key": "val_financial",
+        "label": "Values financial reward",
+        "group": "work_values"
+      },
+      {
+        "key": "grit",
+        "label": "Grit / perseverance",
+        "group": "disposition"
+      },
+      {
+        "key": "risk_tolerance",
+        "label": "Personal risk tolerance",
+        "group": "disposition"
+      }
+    ],
+    "scoring_config_version": "weights-2026.10-v1",
+    "weights": {
+      "fit": 0.3,
+      "market": 0.15,
+      "affordability": 0.2,
+      "roi": 0.15,
+      "family_alignment": 0.15,
+      "disruption": 0.05
+    },
+    "parameters": {
+      "education_inflation": 0.08,
+      "loan_rate": 0.1,
+      "loan_tenor_months": 120,
+      "loan_moratorium_months": 12,
+      "discount_rate": 0.08,
+      "roi_horizon_years": 10,
+      "ml_alpha": 0.5,
+      "signal_half_life_months": 12,
+      "sensitivity_perturbation": 0.2,
+      "conflict_bands": "aligned<20<=mild<40<=moderate<60<=high"
+    },
+    "formulas": [
+      {
+        "name": "fit",
+        "expression": "fit = a*ml + (1-a)*(0.5*cos_c(S,C) + 0.5*(1 - ||W(S-C)||/||W||))",
+        "explanation": "Centred cosine plus weighted distance in the 19-dim space; ML blended with alpha."
+      },
+      {
+        "name": "total_cost",
+        "expression": "sum_{t=1..n} (tuition+hostel+living+misc) * (1+i_edu)^(t-1)",
+        "explanation": "Inflation-adjusted cost of the full course."
+      },
+      {
+        "name": "family_funds",
+        "expression": "F = savings + sum_t income*(1+g)^(t-1)*share(dependents, debt)",
+        "explanation": "Money the family can direct to education over the course."
+      },
+      {
+        "name": "loan_capacity",
+        "expression": "L = EMI_max * (1-(1+r)^-n)/r",
+        "explanation": "Present value of the maximum affordable EMI (annuity formula)."
+      },
+      {
+        "name": "affordability",
+        "expression": "min(1, (F + S + loan_tolerance*L) / total_cost)",
+        "explanation": "S = expected value of the best stack-compatible scholarship set."
+      },
+      {
+        "name": "roi",
+        "expression": "NPV_10y(salary - baseline) / total_cost",
+        "explanation": "Earnings premium over a baseline path, discounted, per rupee spent."
+      },
+      {
+        "name": "conflict_index",
+        "expression": "100 * sum_k w_k * gap_k",
+        "explanation": "Weighted parent-student gaps on 6 dimensions; bands aligned/mild/moderate/high."
+      },
+      {
+        "name": "final_score",
+        "expression": "w_fit*fit + w_mkt*market + w_aff*afford + w_roi*roi + w_align*align - w_risk*disruption",
+        "explanation": "Weights from the versioned scoring config; per-component contributions returned."
+      },
+      {
+        "name": "robustness",
+        "expression": "mean Kendall tau(top-k base, top-k perturbed) over +/-20% weights",
+        "explanation": "How stable the ranking is to reasonable changes in priorities."
+      }
+    ],
+    "data_sources": [
+      {
+        "dataset": "careers",
+        "source_name": "PRISM curated estimate",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "rows": 7,
+        "share_estimated": 1.0
+      },
+      {
+        "dataset": "scholarships",
+        "source_name": "PRISM curated estimate",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "rows": 5,
+        "share_estimated": 1.0
+      }
+    ],
+    "fairness_safeguards": [
+      "Gender, caste, religion and community are never used as scoring or model features.",
+      "Recommendations are explained per component so families can challenge any single factor.",
+      "Admin analytics are k-anonymised (groups smaller than k=5 are suppressed)."
+    ],
+    "privacy_rules": [
+      "Parents see financial/aspiration inputs and aggregate results, not the student's raw answers.",
+      "Students see their own traits and a gentle conflict summary, not raw family finances.",
+      "Raw answers or raw finances are shared only with explicit, revocable consent.",
+      "Minors need recorded parental consent before data processing."
+    ],
+    "limitations": [
+      "Market, salary, cost and scholarship figures are illustrative estimates until verified.",
+      "Signals are periodic snapshots, not real-time feeds.",
+      "Psychometric items are original and not yet norm-referenced on a large Indian sample."
+    ]
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": false
+  }
+}

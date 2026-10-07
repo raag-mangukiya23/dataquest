@@ -1,0 +1,133 @@
+{
+  "success": true,
+  "data": {
+    "visibility": "full",
+    "index": 45.55,
+    "band": "moderate",
+    "dimensions": [
+      {
+        "dimension": "domain_preference",
+        "gap": 0.7,
+        "weight": 0.3,
+        "contribution": 21.0,
+        "student_position": "Top choices: Data Science, Computational Biology, Design",
+        "parent_position": "Top choices: Medicine, Biomedical Engineering"
+      },
+      {
+        "dimension": "risk_appetite",
+        "gap": 0.27,
+        "weight": 0.15,
+        "contribution": 4.05,
+        "student_position": "Comfortable with some uncertainty (0.57)",
+        "parent_position": "Prefers low risk (0.30)"
+      },
+      {
+        "dimension": "geography",
+        "gap": 0.3,
+        "weight": 0.15,
+        "contribution": 4.5,
+        "student_position": "Open to Bengaluru/Hyderabad",
+        "parent_position": "Prefers Coimbatore/Chennai"
+      },
+      {
+        "dimension": "budget",
+        "gap": 0.25,
+        "weight": 0.15,
+        "contribution": 3.75,
+        "student_position": "Top-career costs up to Rs 31 lakh",
+        "parent_position": "Comfortable up to about Rs 12 lakh"
+      },
+      {
+        "dimension": "time_to_earn",
+        "gap": 0.4,
+        "weight": 0.1,
+        "contribution": 4.0,
+        "student_position": "Fine with 5-6 years of study",
+        "parent_position": "Expects earning within 4 years"
+      },
+      {
+        "dimension": "prestige_stability",
+        "gap": 0.55,
+        "weight": 0.15,
+        "contribution": 8.25,
+        "student_position": "Values autonomy and creativity",
+        "parent_position": "Values stability"
+      }
+    ],
+    "top_drivers": [
+      {
+        "dimension": "domain_preference",
+        "explanation": "You and your parents rank different fields first, though both lists share a love of biology and health.",
+        "conversation_prompt": "Which part of medicine excites you most, and could a health-technology career deliver the same impact?"
+      },
+      {
+        "dimension": "prestige_stability",
+        "explanation": "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
+        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?"
+      },
+      {
+        "dimension": "geography",
+        "explanation": "You are open to moving to another metro; your parents would prefer you study nearby.",
+        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?"
+      }
+    ],
+    "bridge_careers": [
+      {
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "student_fit": 0.78,
+        "parent_acceptance": 0.85,
+        "bridge_score": 0.8135,
+        "why": "Strong on both your interests and your family's priorities"
+      },
+      {
+        "career": {
+          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+          "slug": "computational-biologist",
+          "name": "Computational Biologist",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "student_fit": 0.82,
+        "parent_acceptance": 0.72,
+        "bridge_score": 0.7668,
+        "why": "Strong on both your interests and your family's priorities"
+      },
+      {
+        "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "student_fit": 0.58,
+        "parent_acceptance": 0.95,
+        "bridge_score": 0.7203,
+        "why": "Strong on both your interests and your family's priorities"
+      }
+    ],
+    "summary": "Conflict index 46/100 (moderate). The biggest differences are domain preference, prestige stability, geography. Bridge careers such as Biomedical Engineer score well for both student and family."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

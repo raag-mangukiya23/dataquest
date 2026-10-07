@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "data": {
+    "preferences": [
+      {
+        "rank": 1,
+        "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+        "domain": null,
+        "note": "Respected and stable"
+      },
+      {
+        "rank": 2,
+        "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+        "domain": null,
+        "note": null
+      },
+      {
+        "rank": 3,
+        "career_id": null,
+        "domain": "engineering",
+        "note": null
+      }
+    ],
+    "family_id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "parent_user_id": "e0e33cdf-08ec-5def-abe1-199e39df7ae9",
+    "updated_at": "2026-10-07T09:30:00"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

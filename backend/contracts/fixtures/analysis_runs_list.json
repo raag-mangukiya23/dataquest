@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "data": {
+    "items": [
+      {
+        "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+        "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+        "kind": "baseline",
+        "created_at": "2026-10-07T09:30:00",
+        "top_career": "Data Scientist",
+        "top_score": 0.771,
+        "conflict_index": 45.55,
+        "scoring_config_version": "weights-2026.10-v1"
+      },
+      {
+        "run_id": "cd1edbf4-d59f-5cc9-897f-86f58eb32f75",
+        "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
+        "kind": "what_if",
+        "created_at": "2026-10-07T09:35:00",
+        "top_career": "Data Scientist",
+        "top_score": 0.771,
+        "conflict_index": 45.55,
+        "scoring_config_version": "weights-2026.10-v1"
+      }
+    ],
+    "page": 1,
+    "page_size": 20,
+    "total": 2
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

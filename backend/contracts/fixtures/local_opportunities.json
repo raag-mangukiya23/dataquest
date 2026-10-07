@@ -1,0 +1,175 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "3530b786-e01a-581d-bc09-0a5d37802e3a",
+      "title": "Early detection of coconut pest attack with low-cost drones",
+      "problem_statement": "Coconut groves in Pollachi and Kinathukadavu lose yield to rugose whitefly and red palm weevil; detection is manual and late.",
+      "region_code": "IN-TN-CBE",
+      "district": "Coimbatore",
+      "pincodes": [
+        "642001",
+        "642109"
+      ],
+      "steam_tags": [
+        "S",
+        "T",
+        "E"
+      ],
+      "linked_careers": [
+        {
+          "id": "eff52b78-0c57-5b19-a685-9abe928a162f",
+          "slug": "agri-drone-engineer",
+          "name": "Agri-Drone & Precision Farming Engineer",
+          "sector": "agri_environment",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        {
+          "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "slug": "data-scientist",
+          "name": "Data Scientist",
+          "sector": "computing_ai",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        }
+      ],
+      "skills": [
+        "drone imaging",
+        "computer vision",
+        "field surveys"
+      ],
+      "partner_type": "district agriculture department & FPOs",
+      "starter_project": "Collect 300 labelled leaf photos from 3 farms and train a phone-based classifier.",
+      "provenance": {
+        "source_name": "PRISM curated (district problem scan)",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.6,
+        "is_estimate": true
+      }
+    },
+    {
+      "id": "bcdd462c-8ec8-5b5d-9fde-31a2cbfe22ff",
+      "title": "Energy-efficient pump sets for MSME foundries and farms",
+      "problem_statement": "Coimbatore's pump and motor cluster supplies the nation; small units lack affordable efficiency testing.",
+      "region_code": "IN-TN-CBE",
+      "district": "Coimbatore",
+      "pincodes": [
+        "641004",
+        "641021"
+      ],
+      "steam_tags": [
+        "S",
+        "T",
+        "E",
+        "M"
+      ],
+      "linked_careers": [
+        {
+          "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "slug": "robotics-engineer",
+          "name": "Robotics & Automation Engineer",
+          "sector": "engineering",
+          "steam_tags": [
+            "S",
+            "T",
+            "E",
+            "M"
+          ]
+        },
+        {
+          "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "slug": "data-scientist",
+          "name": "Data Scientist",
+          "sector": "computing_ai",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        }
+      ],
+      "skills": [
+        "IoT sensors",
+        "embedded C",
+        "data logging"
+      ],
+      "partner_type": "MSME cluster",
+      "starter_project": "Build an Arduino power logger and benchmark 5 pump sets with a local workshop.",
+      "provenance": {
+        "source_name": "PRISM curated (district problem scan)",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.6,
+        "is_estimate": true
+      }
+    },
+    {
+      "id": "59e72299-7225-5ddf-b898-942fddf032bb",
+      "title": "Low-cost textile effluent monitoring",
+      "problem_statement": "Textile dyeing units around Tiruppur need cheap, continuous water-quality monitoring for compliance.",
+      "region_code": "IN-TN-CBE",
+      "district": "Tiruppur",
+      "pincodes": [
+        "641601",
+        "641604"
+      ],
+      "steam_tags": [
+        "S",
+        "T",
+        "E"
+      ],
+      "linked_careers": [
+        {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        {
+          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+          "slug": "computational-biologist",
+          "name": "Computational Biologist",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        }
+      ],
+      "skills": [
+        "sensor design",
+        "chemistry",
+        "dashboards"
+      ],
+      "partner_type": "NGO",
+      "starter_project": "Prototype a pH/TDS sensor buoy and publish a weekly open data dashboard.",
+      "provenance": {
+        "source_name": "PRISM curated (district problem scan)",
+        "source_url": null,
+        "as_of": "2026-09-30",
+        "confidence": 0.6,
+        "is_estimate": true
+      }
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

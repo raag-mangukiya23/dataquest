@@ -1,0 +1,7 @@
+{
+  "access_token": "mock.access.token",
+  "refresh_token": "mock.refresh.token",
+  "token_type": "bearer",
+  "user_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799",
+  "role": "student"
+}

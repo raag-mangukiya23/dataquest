@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "family_id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "budget_comfort": "moderate",
+    "open_to_loans": true,
+    "open_to_relocation": false,
+    "open_to_abroad": false
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

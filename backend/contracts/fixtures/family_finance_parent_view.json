@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "data": {
+    "income_band": "6l_10l",
+    "annual_income": 900000,
+    "income_growth_rate": 0.06,
+    "allocatable_savings": 600000,
+    "existing_debt_emi": 5000,
+    "dependents": 2,
+    "max_affordable_emi": 12000,
+    "loan_tolerance": 0.4,
+    "risk_appetite": 0.3,
+    "relocation_willingness": 0.4,
+    "abroad_willingness": 0.1,
+    "time_to_earn_years": 4,
+    "prestige_vs_stability": "stability",
+    "preferred_regions": [
+      "IN-TN-CBE",
+      "IN-TN-CHN"
+    ],
+    "family_id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "updated_by": "e0e33cdf-08ec-5def-abe1-199e39df7ae9",
+    "updated_at": "2026-10-07T09:30:00"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

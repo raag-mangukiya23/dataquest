@@ -1,0 +1,257 @@
+{
+  "success": true,
+  "data": [
+    {
+      "scholarship": {
+        "id": "091d3030-9912-5848-8c1f-73940b4c3a35",
+        "name": "INSPIRE Scholarship for Higher Education (natural & basic sciences)",
+        "provider": "Department of Science & Technology",
+        "provider_type": "central_govt",
+        "amount_per_year": 80000,
+        "max_years": 5,
+        "covers": [
+          "tuition",
+          "living"
+        ],
+        "eligibility_rules": {
+          "all": [
+            {
+              "field": "course_area",
+              "op": "in",
+              "value": [
+                "basic_sciences"
+              ]
+            },
+            {
+              "field": "board_percentile",
+              "op": ">=",
+              "value": 99
+            }
+          ]
+        },
+        "eligibility_summary": "Top 1 % in Class 12 board (or equivalent rank) and enrolled in natural/basic sciences",
+        "probability": 0.3,
+        "stackable": false,
+        "deadline": "2026-11-30",
+        "provenance": {
+          "source_name": "Department of Science & Technology",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.6,
+          "is_estimate": true
+        }
+      },
+      "eligible": null,
+      "checks": [
+        {
+          "rule": "course_area in ['basic_sciences']",
+          "passed": null
+        },
+        {
+          "rule": "board_percentile >= 99",
+          "passed": null
+        }
+      ],
+      "expected_value": 120000
+    },
+    {
+      "scholarship": {
+        "id": "df1bebe5-2c62-5228-8e12-8fbca48c0734",
+        "name": "Tamil Nadu First Graduate Tuition Fee Concession",
+        "provider": "Government of Tamil Nadu",
+        "provider_type": "state_govt",
+        "amount_per_year": 25000,
+        "max_years": 4,
+        "covers": [
+          "tuition"
+        ],
+        "eligibility_rules": {
+          "all": [
+            {
+              "field": "first_graduate",
+              "op": "==",
+              "value": true
+            },
+            {
+              "field": "admission_route",
+              "op": "==",
+              "value": "single_window_counselling"
+            }
+          ]
+        },
+        "eligibility_summary": "First graduate in the family, admitted via state single-window counselling",
+        "probability": 0.8,
+        "stackable": true,
+        "deadline": null,
+        "provenance": {
+          "source_name": "Government of Tamil Nadu",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.6,
+          "is_estimate": true
+        }
+      },
+      "eligible": null,
+      "checks": [
+        {
+          "rule": "first_graduate == True",
+          "passed": null
+        },
+        {
+          "rule": "admission_route == single_window_counselling",
+          "passed": null
+        }
+      ],
+      "expected_value": 80000
+    },
+    {
+      "scholarship": {
+        "id": "a0ed699d-994d-5724-aefc-935d6e90d9c5",
+        "name": "Institutional merit fee waiver (illustrative)",
+        "provider": "Partner institutions",
+        "provider_type": "institution",
+        "amount_per_year": 50000,
+        "max_years": 4,
+        "covers": [
+          "tuition"
+        ],
+        "eligibility_rules": {
+          "all": [
+            {
+              "field": "entrance_percentile",
+              "op": ">=",
+              "value": 90
+            }
+          ]
+        },
+        "eligibility_summary": "Top 10 % entrance performers at participating private colleges",
+        "probability": 0.4,
+        "stackable": true,
+        "deadline": "2027-07-31",
+        "provenance": {
+          "source_name": "Partner institutions",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.6,
+          "is_estimate": true
+        }
+      },
+      "eligible": true,
+      "checks": [
+        {
+          "rule": "entrance_percentile >= 90",
+          "passed": true
+        }
+      ],
+      "expected_value": 80000
+    },
+    {
+      "scholarship": {
+        "id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+        "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+        "provider": "Private foundation",
+        "provider_type": "private",
+        "amount_per_year": 100000,
+        "max_years": 2,
+        "covers": [
+          "tuition",
+          "living"
+        ],
+        "eligibility_rules": {
+          "all": [
+            {
+              "field": "annual_income",
+              "op": "<=",
+              "value": 1500000
+            },
+            {
+              "field": "recent_score_pct",
+              "op": ">=",
+              "value": 60
+            }
+          ]
+        },
+        "eligibility_summary": "Merit-cum-means; aptitude test and interview",
+        "probability": 0.15,
+        "stackable": true,
+        "deadline": "2026-12-15",
+        "provenance": {
+          "source_name": "Private foundation",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.6,
+          "is_estimate": true
+        }
+      },
+      "eligible": true,
+      "checks": [
+        {
+          "rule": "annual_income <= 1500000",
+          "passed": true
+        },
+        {
+          "rule": "recent_score_pct >= 60",
+          "passed": true
+        }
+      ],
+      "expected_value": 30000
+    },
+    {
+      "scholarship": {
+        "id": "d98201a6-094a-5d3b-a389-9733c12bf2d1",
+        "name": "Central Sector Scheme of Scholarship (College & University Students)",
+        "provider": "Ministry of Education",
+        "provider_type": "central_govt",
+        "amount_per_year": 12000,
+        "max_years": 3,
+        "covers": [
+          "tuition",
+          "living"
+        ],
+        "eligibility_rules": {
+          "all": [
+            {
+              "field": "board_percentile",
+              "op": ">=",
+              "value": 80
+            },
+            {
+              "field": "annual_income",
+              "op": "<=",
+              "value": 450000
+            }
+          ]
+        },
+        "eligibility_summary": "Top 20th percentile in Class 12 board; family income cap applies",
+        "probability": 0.35,
+        "stackable": true,
+        "deadline": "2026-10-31",
+        "provenance": {
+          "source_name": "Ministry of Education",
+          "source_url": "https://scholarships.gov.in",
+          "as_of": "2026-09-30",
+          "confidence": 0.6,
+          "is_estimate": true
+        }
+      },
+      "eligible": false,
+      "checks": [
+        {
+          "rule": "board_percentile >= 80",
+          "passed": false
+        },
+        {
+          "rule": "annual_income <= 450000",
+          "passed": true
+        }
+      ],
+      "expected_value": 0
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

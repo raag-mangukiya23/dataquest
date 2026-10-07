@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": {
+    "invite_code": "PRSM7K2Q",
+    "family_id": "0890b4b1-628f-5cf0-bf34-a444fe1e60a4",
+    "expires_at": "2026-10-14T09:30:00",
+    "max_uses": 3
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "data": {
+    "instrument_code": "riasec_v1",
+    "submission_id": "298bfda2-cb73-54ba-a799-187156e08c15",
+    "scored": [
+      {
+        "dimension": "riasec_r",
+        "raw": 3.48,
+        "normalized": 0.62,
+        "percentile": 62.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_i",
+        "raw": 4.44,
+        "normalized": 0.86,
+        "percentile": 86.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_a",
+        "raw": 3.96,
+        "normalized": 0.74,
+        "percentile": 74.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_s",
+        "raw": 2.64,
+        "normalized": 0.41,
+        "percentile": 41.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_e",
+        "raw": 2.52,
+        "normalized": 0.38,
+        "percentile": 38.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      },
+      {
+        "dimension": "riasec_c",
+        "raw": 2.88,
+        "normalized": 0.47,
+        "percentile": 47.0,
+        "reliability": 0.78,
+        "answered": 4,
+        "imputed": false
+      }
+    ],
+    "flags": [],
+    "submitted_at": "2026-10-07T09:30:00"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

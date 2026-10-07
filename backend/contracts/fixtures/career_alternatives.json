@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "data": [
+    {
+      "career": {
+        "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+        "slug": "computational-biologist",
+        "name": "Computational Biologist",
+        "sector": "health_life_sciences",
+        "steam_tags": [
+          "S",
+          "T",
+          "M"
+        ]
+      },
+      "skill_overlap": 0.62,
+      "transition_difficulty": 0.45,
+      "interdisciplinary": true,
+      "why": "Same statistics + Python core, applied to biology",
+      "student_fit": 0.82
+    },
+    {
+      "career": {
+        "id": "eff52b78-0c57-5b19-a685-9abe928a162f",
+        "slug": "agri-drone-engineer",
+        "name": "Agri-Drone & Precision Farming Engineer",
+        "sector": "agri_environment",
+        "steam_tags": [
+          "S",
+          "T",
+          "E"
+        ]
+      },
+      "skill_overlap": 0.38,
+      "transition_difficulty": 0.55,
+      "interdisciplinary": true,
+      "why": "Imagery analytics powers precision farming",
+      "student_fit": 0.74
+    },
+    {
+      "career": {
+        "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+        "slug": "ux-designer",
+        "name": "UX / Product Designer",
+        "sector": "design_arts",
+        "steam_tags": [
+          "T",
+          "A"
+        ]
+      },
+      "skill_overlap": 0.22,
+      "transition_difficulty": 0.7,
+      "interdisciplinary": true,
+      "why": "Product analytics bridges data and design",
+      "student_fit": 0.8
+    }
+  ],
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

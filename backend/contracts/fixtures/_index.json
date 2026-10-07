@@ -1,0 +1,378 @@
+[
+  {
+    "name": "auth_login",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200,
+    "headers": {},
+    "request": {
+      "email": "student.demo@prism.example",
+      "password": "demo-pass"
+    }
+  },
+  {
+    "name": "auth_me",
+    "method": "GET",
+    "path": "/api/v1/auth/me",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "student_profile",
+    "method": "GET",
+    "path": "/api/v1/students/me/profile",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "student_traits",
+    "method": "GET",
+    "path": "/api/v1/students/132394f2-e097-5d31-8e5b-bfa2fade9b38/traits",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "family_me",
+    "method": "GET",
+    "path": "/api/v1/families/me",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "family_invite",
+    "method": "POST",
+    "path": "/api/v1/families/invites",
+    "status": 201,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "family_finance_parent_view",
+    "method": "GET",
+    "path": "/api/v1/families/0890b4b1-628f-5cf0-bf34-a444fe1e60a4/finance",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "family_finance_student_view",
+    "method": "GET",
+    "path": "/api/v1/families/0890b4b1-628f-5cf0-bf34-a444fe1e60a4/finance",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "parent_preferences",
+    "method": "GET",
+    "path": "/api/v1/families/0890b4b1-628f-5cf0-bf34-a444fe1e60a4/preferences",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "consents",
+    "method": "GET",
+    "path": "/api/v1/consents",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "assessment_instruments",
+    "method": "GET",
+    "path": "/api/v1/assessments/instruments",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "assessment_questions_riasec",
+    "method": "GET",
+    "path": "/api/v1/assessments/riasec_v1/questions",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "assessment_submit",
+    "method": "POST",
+    "path": "/api/v1/assessments/riasec_v1/submit",
+    "status": 200,
+    "headers": {},
+    "request": {
+      "answers": [
+        {
+          "question_id": "q1",
+          "value": "4"
+        }
+      ]
+    }
+  },
+  {
+    "name": "analysis_run_parent_view",
+    "method": "POST",
+    "path": "/api/v1/analysis/runs",
+    "status": 201,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": {
+      "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38"
+    }
+  },
+  {
+    "name": "analysis_run_student_view",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "analysis_runs_list",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "analysis_compare",
+    "method": "GET",
+    "path": "/api/v1/analysis/compare?run_a=6e33720c-5922-516b-9d81-1e216882b8ed&run_b=cd1edbf4-d59f-5cc9-897f-86f58eb32f75",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "analysis_what_if",
+    "method": "POST",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/what-if",
+    "status": 201,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": {
+      "overrides": {
+        "allocatable_savings": 1400000,
+        "loan_tolerance": 0.7
+      },
+      "label": "Add savings + accept loan"
+    }
+  },
+  {
+    "name": "conflict_parent_view",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "conflict_student_view",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "swot",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/swot",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "roadmap",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/roadmap",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "careers_list",
+    "method": "GET",
+    "path": "/api/v1/careers",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "career_detail",
+    "method": "GET",
+    "path": "/api/v1/careers/data-scientist",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "career_alternatives",
+    "method": "GET",
+    "path": "/api/v1/careers/data-scientist/alternatives",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "regions",
+    "method": "GET",
+    "path": "/api/v1/regions",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "market_trends",
+    "method": "GET",
+    "path": "/api/v1/market/trends?region_code=IN-TN-CBE",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "pathways",
+    "method": "GET",
+    "path": "/api/v1/pathways",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "exams",
+    "method": "GET",
+    "path": "/api/v1/exams",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "scholarships",
+    "method": "GET",
+    "path": "/api/v1/scholarships",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "local_opportunities",
+    "method": "GET",
+    "path": "/api/v1/local-opportunities?pincode=642001",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "admin_analytics",
+    "method": "GET",
+    "path": "/api/v1/admin/analytics",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "admin"
+    },
+    "request": null
+  },
+  {
+    "name": "admin_refresh",
+    "method": "POST",
+    "path": "/api/v1/admin/data/refresh",
+    "status": 202,
+    "headers": {
+      "X-Mock-Role": "admin"
+    },
+    "request": {
+      "datasets": [
+        "market_signals"
+      ],
+      "dry_run": true
+    }
+  },
+  {
+    "name": "system_health",
+    "method": "GET",
+    "path": "/api/v1/system/health",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "system_methodology",
+    "method": "GET",
+    "path": "/api/v1/system/methodology",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "error_not_found",
+    "method": "GET",
+    "path": "/api/v1/analysis/runs/unknown",
+    "status": 404,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "error_validation",
+    "method": "POST",
+    "path": "/api/v1/auth/register",
+    "status": 422,
+    "headers": {},
+    "request": {
+      "email": "not-an-email"
+    }
+  },
+  {
+    "name": "compat_login",
+    "method": "POST",
+    "path": "/api/login",
+    "status": 200,
+    "headers": {},
+    "request": {
+      "email": "student.demo@prism.example",
+      "password": "x"
+    }
+  },
+  {
+    "name": "compat_get_user",
+    "method": "GET",
+    "path": "/api/users/7f9cc745-8bb1-571f-9cc4-0524ba982799",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "compat_predict",
+    "method": "POST",
+    "path": "/api/predict",
+    "status": 200,
+    "headers": {},
+    "request": {
+      "user_id": "7f9cc745-8bb1-571f-9cc4-0524ba982799"
+    }
+  },
+  {
+    "name": "compat_result",
+    "method": "GET",
+    "path": "/api/results/6e33720c-5922-516b-9d81-1e216882b8ed",
+    "status": 200,
+    "headers": {},
+    "request": null
+  }
+]

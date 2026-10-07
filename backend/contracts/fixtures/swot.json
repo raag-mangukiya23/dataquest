@@ -1,0 +1,118 @@
+{
+  "success": true,
+  "data": {
+    "run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "career": null,
+    "strengths": [
+      {
+        "title": "Investigative (analysing, researching)",
+        "detail": "Scored 86%, above most careers' requirement.",
+        "evidence": {
+          "score": 0.86,
+          "group": "riasec"
+        },
+        "weight": 0.86
+      },
+      {
+        "title": "Logical reasoning",
+        "detail": "Scored 84%, above most careers' requirement.",
+        "evidence": {
+          "score": 0.84,
+          "group": "aptitude"
+        },
+        "weight": 0.84
+      },
+      {
+        "title": "Numerical aptitude",
+        "detail": "Scored 81%, above most careers' requirement.",
+        "evidence": {
+          "score": 0.81,
+          "group": "aptitude"
+        },
+        "weight": 0.81
+      },
+      {
+        "title": "Analytical thinking style",
+        "detail": "Scored 80%, above most careers' requirement.",
+        "evidence": {
+          "score": 0.8,
+          "group": "cognitive"
+        },
+        "weight": 0.8
+      }
+    ],
+    "weaknesses": [
+      {
+        "title": "Conventional (organising, data, procedures)",
+        "detail": "Below the requirement by 18%; closable with practice.",
+        "evidence": {
+          "student": 0.47,
+          "required": 0.65
+        },
+        "weight": 0.36
+      },
+      {
+        "title": "Enterprising (leading, persuading, starting)",
+        "detail": "Below the requirement by 12%; closable with practice.",
+        "evidence": {
+          "student": 0.38,
+          "required": 0.5
+        },
+        "weight": 0.24
+      },
+      {
+        "title": "Values financial reward",
+        "detail": "Below the requirement by 12%; closable with practice.",
+        "evidence": {
+          "student": 0.58,
+          "required": 0.7
+        },
+        "weight": 0.24
+      }
+    ],
+    "opportunities": [
+      {
+        "title": "Rising demand for data roles in Coimbatore-Bengaluru corridor",
+        "detail": "Demand index 0.84, job velocity +19 % YoY (illustrative estimate).",
+        "evidence": {
+          "demand_index": 0.84,
+          "job_velocity": 0.19
+        },
+        "weight": 0.8
+      },
+      {
+        "title": "Local agri-drone problems need solvers",
+        "detail": "Coconut pest detection project in Pollachi is a ready starter project.",
+        "evidence": {
+          "local_opportunities": 3.0
+        },
+        "weight": 0.6
+      }
+    ],
+    "threats": [
+      {
+        "title": "Automation of entry-level analytics",
+        "detail": "Routine reporting roles are shrinking.",
+        "evidence": {
+          "disruption_risk": 0.25
+        },
+        "weight": 0.5
+      },
+      {
+        "title": "Budget pressure on private courses",
+        "detail": "Design and private MBBS routes exceed the family's comfortable budget.",
+        "evidence": {
+          "infeasible_pathways": 2.0
+        },
+        "weight": 0.6
+      }
+    ],
+    "headline": "Analytical, creative problem-solver with strong numerical and spatial reasoning; best served by affordable public-college routes into data and health-tech."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

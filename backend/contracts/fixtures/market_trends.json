@@ -1,0 +1,366 @@
+{
+  "success": true,
+  "data": {
+    "region": {
+      "code": "IN-TN-CBE",
+      "name": "Coimbatore",
+      "state": "Tamil Nadu",
+      "country": "India",
+      "type": "tier2",
+      "cost_of_living_index": 0.72
+    },
+    "period": "2026-Q3",
+    "sector_summary": {
+      "computing_ai": 0.714,
+      "health_life_sciences": 0.612,
+      "engineering": 0.612,
+      "agri_environment": 0.578,
+      "design_arts": 0.629
+    },
+    "top_rising": [
+      {
+        "career": {
+          "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "slug": "data-scientist",
+          "name": "Data Scientist",
+          "sector": "computing_ai",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.714,
+        "job_velocity": 0.163,
+        "disruption_risk": 0.25,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.68,
+        "job_velocity": 0.136,
+        "disruption_risk": 0.08,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+          "slug": "ux-designer",
+          "name": "UX / Product Designer",
+          "sector": "design_arts",
+          "steam_tags": [
+            "T",
+            "A"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.629,
+        "job_velocity": 0.095,
+        "disruption_risk": 0.3,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      }
+    ],
+    "most_disrupted": [
+      {
+        "career": {
+          "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+          "slug": "ux-designer",
+          "name": "UX / Product Designer",
+          "sector": "design_arts",
+          "steam_tags": [
+            "T",
+            "A"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.629,
+        "job_velocity": 0.095,
+        "disruption_risk": 0.3,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "slug": "data-scientist",
+          "name": "Data Scientist",
+          "sector": "computing_ai",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.714,
+        "job_velocity": 0.163,
+        "disruption_risk": 0.25,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.595,
+        "job_velocity": 0.068,
+        "disruption_risk": 0.18,
+        "trend": "stable",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      }
+    ],
+    "signals": [
+      {
+        "career": {
+          "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "slug": "data-scientist",
+          "name": "Data Scientist",
+          "sector": "computing_ai",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.714,
+        "job_velocity": 0.163,
+        "disruption_risk": 0.25,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.595,
+        "job_velocity": 0.068,
+        "disruption_risk": 0.18,
+        "trend": "stable",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+          "slug": "computational-biologist",
+          "name": "Computational Biologist",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.561,
+        "job_velocity": 0.041,
+        "disruption_risk": 0.15,
+        "trend": "stable",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "slug": "robotics-engineer",
+          "name": "Robotics & Automation Engineer",
+          "sector": "engineering",
+          "steam_tags": [
+            "S",
+            "T",
+            "E",
+            "M"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.612,
+        "job_velocity": 0.082,
+        "disruption_risk": 0.14,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "eff52b78-0c57-5b19-a685-9abe928a162f",
+          "slug": "agri-drone-engineer",
+          "name": "Agri-Drone & Precision Farming Engineer",
+          "sector": "agri_environment",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.578,
+        "job_velocity": 0.054,
+        "disruption_risk": 0.12,
+        "trend": "stable",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+          "slug": "ux-designer",
+          "name": "UX / Product Designer",
+          "sector": "design_arts",
+          "steam_tags": [
+            "T",
+            "A"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.629,
+        "job_velocity": 0.095,
+        "disruption_risk": 0.3,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      },
+      {
+        "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "region_code": "IN-TN-CBE",
+        "period": "2026-Q3",
+        "demand_index": 0.68,
+        "job_velocity": 0.136,
+        "disruption_risk": 0.08,
+        "trend": "rising",
+        "provenance": {
+          "source_name": "PRISM curated estimate (mock fixture)",
+          "source_url": null,
+          "as_of": "2026-09-30",
+          "confidence": 0.5,
+          "is_estimate": true
+        }
+      }
+    ],
+    "is_live": false
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

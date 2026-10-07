@@ -1,0 +1,100 @@
+{
+  "success": true,
+  "data": {
+    "base_run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
+    "other_run_id": "cd1edbf4-d59f-5cc9-897f-86f58eb32f75",
+    "rank_correlation": 0.9048,
+    "deltas": [
+      {
+        "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+        "career_name": "UX / Product Designer",
+        "base_rank": 6,
+        "new_rank": 6,
+        "base_score": 0.5769,
+        "new_score": 0.6447,
+        "score_delta": 0.0678,
+        "base_class": "infeasible",
+        "new_class": "infeasible"
+      },
+      {
+        "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+        "career_name": "Robotics & Automation Engineer",
+        "base_rank": 5,
+        "new_rank": 4,
+        "base_score": 0.6854,
+        "new_score": 0.727,
+        "score_delta": 0.0416,
+        "base_class": "loan_dependent",
+        "new_class": "stretch"
+      },
+      {
+        "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+        "career_name": "Doctor (MBBS)",
+        "base_rank": 7,
+        "new_rank": 7,
+        "base_score": 0.5552,
+        "new_score": 0.5695,
+        "score_delta": 0.0143,
+        "base_class": "infeasible",
+        "new_class": "infeasible"
+      },
+      {
+        "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+        "career_name": "Data Scientist",
+        "base_rank": 1,
+        "new_rank": 1,
+        "base_score": 0.771,
+        "new_score": 0.771,
+        "score_delta": 0.0,
+        "base_class": "comfortable",
+        "new_class": "comfortable"
+      },
+      {
+        "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+        "career_name": "Biomedical Engineer",
+        "base_rank": 2,
+        "new_rank": 2,
+        "base_score": 0.7505,
+        "new_score": 0.7505,
+        "score_delta": 0.0,
+        "base_class": "loan_dependent",
+        "new_class": "comfortable"
+      },
+      {
+        "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+        "career_name": "Computational Biologist",
+        "base_rank": 3,
+        "new_rank": 3,
+        "base_score": 0.728,
+        "new_score": 0.728,
+        "score_delta": 0.0,
+        "base_class": "comfortable",
+        "new_class": "comfortable"
+      },
+      {
+        "career_id": "eff52b78-0c57-5b19-a685-9abe928a162f",
+        "career_name": "Agri-Drone & Precision Farming Engineer",
+        "base_rank": 4,
+        "new_rank": 5,
+        "base_score": 0.695,
+        "new_score": 0.695,
+        "score_delta": 0.0,
+        "base_class": "comfortable",
+        "new_class": "comfortable"
+      }
+    ],
+    "entered_top_k": [],
+    "left_top_k": [],
+    "conflict_index_delta": 0.0,
+    "summary": [
+      "Robotics & Automation Engineer: loan_dependent -> stretch (+0.042)",
+      "Biomedical Engineer: loan_dependent -> comfortable (+0.000)"
+    ]
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

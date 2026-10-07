@@ -1,0 +1,96 @@
+{
+  "success": true,
+  "data": {
+    "generated_at": "2026-10-07T09:30:00",
+    "k_anonymity_threshold": 5,
+    "students_total": 128,
+    "families_linked": 97,
+    "runs_total": 342,
+    "median_run_ms": 138.0,
+    "top_recommended_careers": [
+      {
+        "key": "Data Scientist",
+        "count": 41
+      },
+      {
+        "key": "Biomedical Engineer",
+        "count": 27
+      },
+      {
+        "key": "Robotics & Automation Engineer",
+        "count": 22
+      }
+    ],
+    "affordability_class_distribution": [
+      {
+        "key": "comfortable",
+        "count": 158
+      },
+      {
+        "key": "stretch",
+        "count": 71
+      },
+      {
+        "key": "loan_dependent",
+        "count": 64
+      },
+      {
+        "key": "infeasible",
+        "count": 49
+      }
+    ],
+    "conflict_band_distribution": [
+      {
+        "key": "aligned",
+        "count": 31
+      },
+      {
+        "key": "mild",
+        "count": 44
+      },
+      {
+        "key": "moderate",
+        "count": 36
+      },
+      {
+        "key": "high",
+        "count": 17
+      }
+    ],
+    "riasec_code_distribution": [
+      {
+        "key": "IRA",
+        "count": 19
+      },
+      {
+        "key": "ISR",
+        "count": 14
+      },
+      {
+        "key": "RIC",
+        "count": 11
+      }
+    ],
+    "region_distribution": [
+      {
+        "key": "IN-TN-CBE",
+        "count": 38
+      },
+      {
+        "key": "IN-TN-CHN",
+        "count": 33
+      },
+      {
+        "key": "IN-KA-BLR",
+        "count": 29
+      }
+    ],
+    "suppressed_groups": 6
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

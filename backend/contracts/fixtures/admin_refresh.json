@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "job_id": "a71c26b1-9662-5d2c-8371-1bec0616dcaa",
+    "status": "dry_run",
+    "source": "seed",
+    "counts": {
+      "market_signals": {
+        "inserted": 0,
+        "updated": 12,
+        "skipped": 0
+      }
+    },
+    "warnings": [
+      "MOCK_MODE: no data was written."
+    ],
+    "started_at": "2026-10-07T09:30:00",
+    "finished_at": "2026-10-07T09:30:02"
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}

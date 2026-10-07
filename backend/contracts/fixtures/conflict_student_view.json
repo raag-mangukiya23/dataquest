@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "data": {
+    "visibility": "summary",
+    "index": 45.55,
+    "band": "moderate",
+    "dimensions": [],
+    "top_drivers": [
+      {
+        "dimension": "domain_preference",
+        "explanation": "You and your parents rank different fields first, though both lists share a love of biology and health.",
+        "conversation_prompt": "Which part of medicine excites you most, and could a health-technology career deliver the same impact?"
+      },
+      {
+        "dimension": "prestige_stability",
+        "explanation": "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
+        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?"
+      },
+      {
+        "dimension": "geography",
+        "explanation": "You are open to moving to another metro; your parents would prefer you study nearby.",
+        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?"
+      }
+    ],
+    "bridge_careers": [
+      {
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "student_fit": 0.78,
+        "parent_acceptance": 0.85,
+        "bridge_score": 0.8135,
+        "why": "Strong on both your interests and your family's priorities"
+      },
+      {
+        "career": {
+          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+          "slug": "computational-biologist",
+          "name": "Computational Biologist",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "student_fit": 0.82,
+        "parent_acceptance": 0.72,
+        "bridge_score": 0.7668,
+        "why": "Strong on both your interests and your family's priorities"
+      },
+      {
+        "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "student_fit": 0.58,
+        "parent_acceptance": 0.95,
+        "bridge_score": 0.7203,
+        "why": "Strong on both your interests and your family's priorities"
+      }
+    ],
+    "summary": "You and your family agree on a lot, especially your interest in health and science. A few conversations, mainly about field choice and stability, will help you plan together."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}
