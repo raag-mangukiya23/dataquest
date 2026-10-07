@@ -160,7 +160,7 @@
         try { seen = sessionStorage.getItem('prism-boot') === '1'; sessionStorage.setItem('prism-boot', '1') } catch (e) {}
         try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || JSON.parse(localStorage.getItem('prism-settings') || '{}').reduceMotion === true } catch (e) {}
         if (reduce) el.classList.add('still'); else if (seen) el.classList.add('short')
-        var min = reduce || seen ? 600 : 1950, t0 = performance.now(), ready = false, skipped = false, done = false
+        var min = reduce ? 600 : seen ? 900 : 2250, t0 = performance.now(), ready = false, skipped = false, done = false
         function hide () {
           if (done) return; done = true; el.classList.add('out')
           var root = document.getElementById('root'); if (root) root.removeAttribute('aria-busy')
