@@ -18,7 +18,7 @@ describe('api envelope', () => {
   })
   it('turns an error envelope into ApiError with the friendly message', async () => {
     respond(404, { success: false, data: null, error: { code: 'NOT_FOUND', message: 'Analysis run not found', details: {} }, meta: {} })
-    const err = await api('GET', '/api/v1/x').catch((e) => e)
+    const err = await api('GET', '/api/v1/x').catch((e: any) => e)
     expect(err).toBeInstanceOf(ApiError)
     expect(err.code).toBe('NOT_FOUND')
     expect(err.message).toBe('Analysis run not found')
@@ -27,7 +27,7 @@ describe('api envelope', () => {
   })
   it('reports network failures as retryable', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => { throw new TypeError('Failed to fetch') }))
-    const err = await api('GET', '/api/v1/x').catch((e) => e)
+    const err = await api('GET', '/api/v1/x').catch((e: any) => e)
     expect(err.code).toBe('NETWORK')
     expect(isRetryable(err)).toBe(true)
   })

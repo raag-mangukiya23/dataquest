@@ -11,6 +11,7 @@ import { Dialog, PageSkeleton, cx } from '@/components/ui'
 import { navFor, type NavItem } from './nav'
 import { CommandPalette, useCommandPalette } from './CommandPalette'
 import { DeadlineBell } from './DeadlineBell'
+import { Tour } from '@/components/system/Tour'
 
 const LANGS: { value: Lang; label: string }[] = [
   { value: 'en', label: 'English' },
@@ -229,6 +230,7 @@ export function AppShell() {
         </div>
       </Dialog>
       <CommandPalette open={palette.open} onOpenChange={palette.setOpen} />
+      <Tour />
     </div>
   )
 }
