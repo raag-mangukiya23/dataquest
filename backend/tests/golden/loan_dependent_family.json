@@ -13,8 +13,8 @@
     "data-scientist": "loan_dependent",
     "robotics-engineer": "infeasible",
     "agri-drone-engineer": "loan_dependent",
-    "computational-biologist": "loan_dependent",
     "biomedical-engineer": "infeasible",
+    "computational-biologist": "loan_dependent",
     "doctor-mbbs": "loan_dependent",
     "ux-designer": "infeasible"
   },

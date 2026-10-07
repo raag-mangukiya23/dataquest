@@ -1,8 +1,8 @@
 {
   "top3": [
     "agri-drone-engineer",
-    "data-scientist",
-    "doctor-mbbs"
+    "doctor-mbbs",
+    "data-scientist"
   ],
   "best_for_student": [
     "Agri-Drone & Precision Farming Engineer",
@@ -11,11 +11,11 @@
   ],
   "classes": {
     "agri-drone-engineer": "infeasible",
-    "data-scientist": "infeasible",
     "doctor-mbbs": "infeasible",
+    "data-scientist": "infeasible",
     "biomedical-engineer": "infeasible",
-    "computational-biologist": "infeasible",
     "robotics-engineer": "infeasible",
+    "computational-biologist": "infeasible",
     "ux-designer": "infeasible"
   },
   "conflict_band": "mild"

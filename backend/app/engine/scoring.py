@@ -1,7 +1,10 @@
 """Final score, confidence, buckets and sensitivity analysis.
 
-  final       = sum(w_c * raw_c for fit, market, affordability, roi, family_alignment) - w_d * disruption,
-                clipped to [0, 1]; every recommendation returns each part's contribution
+  final       = fit_gate * (sum(w_c * raw_c for fit, market, affordability, roi, family_alignment)
+                - w_d * disruption), clipped to [0, 1]; each part's contribution is w_c * raw_c * fit_gate,
+                so the contributions still add up to the final score
+  fit_gate    = 0.5 + 0.5 * min(1, fit / 0.65): a career that does not suit the student cannot be carried
+                to the top by cheap fees, salary or demand alone (no effect once fit >= 0.65)
   confidence  = 0.85 * (0.7 + 0.3 * checked share) * freshness factor * (1 - imputation penalty)
                 * (0.8 + 0.2 * mean trait reliability)
   sensitivity 64 deterministic scenarios: each weight moved +/-20 % alone (12), plus 52 random joint
@@ -37,13 +40,24 @@ POSITIVE = (
 )
 
 
+FIT_GATE_FULL = 0.65  # fit at or above this gets the full score
+FIT_GATE_FLOOR = 0.5  # a career with zero fit keeps half of its blended score
+
+
+def fit_gate(fit_value: float) -> float:
+    return round(FIT_GATE_FLOOR + (1 - FIT_GATE_FLOOR) * min(1.0, fit_value / FIT_GATE_FULL), 4)
+
+
 def contributions(raw: Mapping[ScoreComponent, float], weights: Mapping[str, float]) -> list[Contribution]:
+    gate = fit_gate(raw[ScoreComponent.FIT])
     return [
         Contribution(
             component=c,
             raw_value=round(raw[c], 4),
             weight=weights[c.value],
-            contribution=round((-1 if c is ScoreComponent.DISRUPTION else 1) * weights[c.value] * raw[c], 4),
+            contribution=round(
+                (-1 if c is ScoreComponent.DISRUPTION else 1) * weights[c.value] * raw[c] * gate, 4
+            ),
         )
         for c in (*POSITIVE, ScoreComponent.DISRUPTION)
     ]
@@ -53,7 +67,7 @@ def final_score(raw: Mapping[ScoreComponent, float], weights: Mapping[str, float
     total = (
         sum(weights[c.value] * raw[c] for c in POSITIVE)
         - weights["disruption"] * raw[ScoreComponent.DISRUPTION]
-    )
+    ) * fit_gate(raw[ScoreComponent.FIT])
     return round(min(1.0, max(0.0, total)), 4)
 
 

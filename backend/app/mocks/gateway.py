@@ -696,13 +696,25 @@ def build_methodology(report: quality.AuditReport) -> Methodology:
             ),
             Formula(
                 name="affordability",
-                expression="min(1, (F + S + loan_tolerance*L) / total_cost)",
-                explanation="S = expected value of the best stack-compatible scholarship set.",
+                expression="min(1, (F + S + loan_tolerance*L) / cost) * (1 - 0.25*need/cost) "
+                "* (1 - min(0.5, 1.5*max(0, emi_share - 0.3)))",
+                explanation="S = expected value of the best stack-compatible scholarship set; need = what must be "
+                "borrowed. Borrowing scores lower than paying outright, and an EMI above 30 % of monthly income "
+                "scores lower still. More money never lowers it.",
+            ),
+            Formula(
+                name="reachability",
+                expression="affordability * (0.5 + 0.5*admission_chance) * (0.5 + 0.5*career_entry_chance)",
+                explanation="Admission chance compares course selectivity with the student's readiness. Career "
+                "entry chance is below 1 only for careers gated by a very selective exam after the degree "
+                "(civil services 2 %, chartered accountancy 35 %, actuary 30 %; estimates).",
             ),
             Formula(
                 name="roi",
-                expression="NPV_10y(salary - baseline) / total_cost",
-                explanation="Earnings premium over a baseline path, discounted, per rupee spent.",
+                expression="NPV_10y(expected salary - baseline) / total_cost;  expected salary = p_entry*salary "
+                "+ (1-p_entry)*graduate fallback (Rs 3 L, estimate)",
+                explanation="Earnings premium over starting work after Class 12, discounted, per rupee spent. "
+                "Long-shot careers are not credited with pay most aspirants never reach.",
             ),
             Formula(
                 name="conflict_index",
@@ -711,8 +723,11 @@ def build_methodology(report: quality.AuditReport) -> Methodology:
             ),
             Formula(
                 name="final_score",
-                expression="w_fit*fit + w_mkt*market + w_aff*afford + w_roi*roi + w_align*align - w_risk*disruption",
-                explanation="Weights from the versioned scoring config; per-component contributions returned.",
+                expression="gate(fit) * (w_fit*fit + w_mkt*market + w_aff*afford + w_roi*roi + w_align*align "
+                "- w_risk*disruption);  gate(fit) = 0.5 + 0.5*min(1, fit/0.65)",
+                explanation="Weights from the versioned scoring config. The fit gate stops a career that does not "
+                "suit the student from ranking high on cheap fees or salary alone; it has no effect once fit is "
+                "65 % or more. Per-component contributions are returned and add up to the score.",
             ),
             Formula(
                 name="robustness",
@@ -776,6 +791,8 @@ def build_methodology(report: quality.AuditReport) -> Methodology:
             "Psychometric items are original and have not yet been validated on a large Indian sample; "
             "percentiles stay empty until 200 students in a grade band have taken them.",
             "Career requirement profiles are expert priors until mapped to O*NET occupational data.",
+            "Career-entry chances for exam-gated careers (civil services, CA, actuary) are rough estimates from "
+            "published selection and pass rates, not personal predictions.",
         ],
     )
 

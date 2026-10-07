@@ -14,7 +14,7 @@ from app.core.config import ENGINE_VERSION
 from app.core.dimensions import APTITUDE, RIASEC, VECTOR_SPEC_VERSION
 from app.engine import conflict as conflict_engine
 from app.engine import eligibility, finance, fit, market, reports, scoring
-from app.engine.config import DEFAULT_CONFIG, ScoringConfig
+from app.engine.config import CAREER_ENTRY_GATES, DEFAULT_CONFIG, ScoringConfig
 from app.engine.freshness import FRESHNESS_CONFIDENCE, freshness_status, worst
 from app.engine.types import CatalogInput, FamilyInput, StudentInput
 from app.etl.sources import DATASETS
@@ -150,8 +150,9 @@ def run_analysis(
     rweights = market.region_weights(student, family, cat.regions)
     prediction = predict_domain_fit(student.vector)
     ml_scores = prediction["scores"] if prediction["source"] == "ml" else None
-    dq_penalty = round(0.5 * (1 - student.completeness), 4)
     mean_rel = sum(student.reliability.get(d, 0.0) for d in student.vector) / max(1, len(student.vector))
+    # Missing answers and careless answers (identical, very fast or contradictory) both make results less certain
+    dq_penalty = round(min(0.6, 0.5 * (1 - student.completeness) + 0.5 * max(0.0, 0.7 - mean_rel)), 4)
     local = _local_for(student, cat)
     local_career_ids = {c.id for o in local for c in o.linked_careers}
 
@@ -166,10 +167,11 @@ def run_analysis(
             student.vector, c.requirement_vector, ml_scores.get(c.sector) if ml_scores else None, cfg.ml_alpha
         )
         bands = cat.salaries.get(c.id, [])
+        gate_p, gate_why = CAREER_ENTRY_GATES.get(c.slug, (1.0, ""))
         assessed: list[tuple[FinancialAssessment, Pathway, list[Scholarship]]] = []
         for p in options:
             elig = eligible_scholarships(p, cat, student, family)
-            assessed.append((finance.assess(p, family, student, elig, bands, cfg, today), p, elig))
+            assessed.append((finance.assess(p, family, student, elig, bands, cfg, today, gate_p), p, elig))
         assessed.sort(key=lambda t: (-t[0].reachability, -t[0].roi.roi_norm, t[0].total_cost))
         primary, p_primary, _ = assessed[0]
         mkt = market.blend(c.id, cat.signals, rweights, c.automation_risk, today)
@@ -232,6 +234,18 @@ def run_analysis(
             reasons.append(
                 f"Seats on this route are very competitive: estimated admission chance about "
                 f"{primary.admission_chance:.0%} with your current scores (estimate)."
+            )
+        gate = scoring.fit_gate(f.fit)
+        if gate < 1:
+            reasons.insert(
+                1,
+                f"Overall score scaled to {gate:.0%} because the match with your profile is only {f.fit:.0%} "
+                "(full weight from 65 %): cheap fees or high pay alone should not push a poor fit up the list.",
+            )
+        if gate_p < 1:
+            reasons.append(
+                f"Getting in is the hard part: {gate_why} (estimate). Expected earnings assume about a "
+                f"{gate_p:.0%} chance, otherwise a typical graduate salary."
             )
         if f.gaps:
             reasons.append(
@@ -333,7 +347,7 @@ def run_analysis(
                 f"{fit_label(d).capitalize()}: too few items answered, so it was set to the neutral 0.5."
                 for d in student.imputed
             ]
-            + [f"Questionnaire flag: {x}" for x in student.quality_flags],
+            + [quality_warning(x) for x in student.quality_flags],
         ),
         student_vector=student.vector,
         composite_scores=composite(student, recs, report.index),
@@ -424,6 +438,24 @@ def hide_family_money(run: AnalysisRun) -> AnalysisRun:
         for k, v in run.buckets.items()
     }
     return run.model_copy(update={"recommendations": recs, "buckets": buckets})
+
+
+QUALITY_WARNINGS = {
+    "straight_lining": "Many answers in a section were identical, so these results are less reliable. Retaking "
+    "that section carefully will make them more accurate.",
+    "speeding": "Several answers came very quickly, so these results are less reliable. Taking a little more "
+    "time will make them more accurate.",
+    "incomplete": "Some sections were left unfinished; the missing traits were set to neutral.",
+}
+
+
+def quality_warning(flag: str) -> str:
+    if flag.startswith("contradictory_answers:"):
+        return (
+            f"Some answers about {fit_label(flag.split(':', 1)[1])} contradicted each other, so that trait is "
+            "less reliable."
+        )
+    return QUALITY_WARNINGS.get(flag, f"Questionnaire check: {flag.replace('_', ' ')}.")
 
 
 def fit_label(dim: str) -> str:

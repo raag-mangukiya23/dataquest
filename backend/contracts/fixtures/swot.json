@@ -110,6 +110,14 @@
     ],
     "threats": [
       {
+        "title": "Automation pressure on Data Scientist",
+        "detail": "Disruption risk 25%; routine parts of the job are shrinking.",
+        "evidence": {
+          "disruption_risk": 0.25
+        },
+        "weight": 0.25
+      },
+      {
         "title": "Budget pressure",
         "detail": "Biomedical Engineer need a loan or are out of budget.",
         "evidence": {

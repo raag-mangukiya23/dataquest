@@ -1,8 +1,8 @@
 {
   "top3": [
     "doctor-mbbs",
-    "biomedical-engineer",
-    "computational-biologist"
+    "computational-biologist",
+    "data-scientist"
   ],
   "best_for_student": [
     "Computational Biologist",
@@ -11,9 +11,9 @@
   ],
   "classes": {
     "doctor-mbbs": "comfortable",
-    "biomedical-engineer": "loan_dependent",
     "computational-biologist": "comfortable",
     "data-scientist": "comfortable",
+    "biomedical-engineer": "loan_dependent",
     "agri-drone-engineer": "comfortable",
     "robotics-engineer": "infeasible",
     "ux-designer": "infeasible"

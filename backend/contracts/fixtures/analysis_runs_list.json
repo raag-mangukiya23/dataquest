@@ -10,7 +10,7 @@
         "top_career": "Doctor (MBBS)",
         "top_score": 0.7116,
         "conflict_index": 31.93,
-        "scoring_config_version": "weights-2026.10-v2"
+        "scoring_config_version": "weights-2026.10-v3"
       },
       {
         "run_id": "cd1edbf4-d59f-5cc9-897f-86f58eb32f75",
@@ -20,7 +20,7 @@
         "top_career": "Biomedical Engineer",
         "top_score": 0.7228,
         "conflict_index": 30.7,
-        "scoring_config_version": "weights-2026.10-v2"
+        "scoring_config_version": "weights-2026.10-v3"
       }
     ],
     "page": 1,

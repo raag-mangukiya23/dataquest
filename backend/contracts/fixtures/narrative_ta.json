@@ -9,9 +9,9 @@
       "Doctor (MBBS) மாணவரின் சுயவிவரத்துடன் 70% பொருந்துகிறது.",
       "படிப்பு வழி: MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative)), மொத்தம் சுமார் ₹792,280. இந்தக் குடும்பத்திற்கு இது எளிதில் சமாளிக்கக்கூடியது.",
       "சேர்க்கை போட்டி அதிகம்: தற்போதைய மதிப்பெண்களுடன் வாய்ப்பு சுமார் 39% (மதிப்பீடு).",
-      "மற்ற நல்ல வாய்ப்புகள்: Biomedical Engineer, Computational Biologist.",
+      "மற்ற நல்ல வாய்ப்புகள்: Computational Biologist, Data Scientist.",
       "தொழில் தேர்வில் மாணவர்-பெற்றோர் நிலை: சிறிய வேறுபாடு. இருவரும் ஏற்கும் தொழில்கள்: Biomedical Engineer, Doctor (MBBS).",
-      "எடைகளை மாற்றிய 64 சோதனைகளில் 48% முறை முதல் இடம் மாறவில்லை.",
+      "எடைகளை மாற்றிய 64 சோதனைகளில் 59% முறை முதல் இடம் மாறவில்லை.",
       "பார்க்க வேண்டிய உதவித்தொகைகள்: Private foundation UG merit-cum-means scholarship (illustrative)."
     ],
     "source": "template",
@@ -28,8 +28,8 @@
         "chance": 39
       },
       "others": [
-        "Biomedical Engineer",
-        "Computational Biologist"
+        "Computational Biologist",
+        "Data Scientist"
       ],
       "family_band": "mild",
       "bridges": [
@@ -41,7 +41,7 @@
       ],
       "version": "seed-2026-09-30",
       "stability": {
-        "stab": 48,
+        "stab": 59,
         "n": 64
       }
     },

@@ -73,7 +73,10 @@ class Contribution(Contract):
     component: ScoreComponent
     raw_value: Unit
     weight: float
-    contribution: float = Field(description="weight * raw_value (negative for disruption)")
+    contribution: float = Field(
+        description="weight * raw_value * fit gate (negative for disruption); the contributions add up to "
+        "final_score. The fit gate is 0.5 + 0.5 * min(1, fit / 0.65)."
+    )
 
 
 class TraitGap(Contract):
@@ -159,7 +162,11 @@ class FinancialAssessment(Contract):
     admission_chance: Unit = Field(
         default=1.0, description="Estimated chance of getting a seat on this pathway with current scores"
     )
-    reachability: Unit = Field(default=1.0, description="affordability * (0.5 + 0.5 * admission_chance)")
+    reachability: Unit = Field(
+        default=1.0,
+        description="affordability * (0.5 + 0.5 * admission_chance) * (0.5 + 0.5 * career entry chance); "
+        "entry chance is below 1 only for careers gated by a very selective exam after the degree",
+    )
     loan_scheme: str | None = Field(
         default=None, description="Government interest relief applied to the loan, if any"
     )

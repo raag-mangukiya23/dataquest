@@ -11,13 +11,18 @@
   scholarships   S = best expected value over subsets of eligible awards, respecting non-stackable awards and
                  exclusive groups, capped at the course cost (exact search)
   affordability  min(1, (F + S + loan_tolerance * L) / total_cost)
+                 * (1 - 0.25 * need / cost)            need = what must be borrowed; borrowing costs more
+                 * (1 - min(0.5, 1.5 * max(0, b - 0.3)))   b = (EMI on need + existing EMI) / monthly income
   class          comfortable if F + S >= 1.1 * cost; stretch if >= cost; loan-dependent if F + S + L >= cost;
                  otherwise infeasible
   admission      readiness = 0.5 * mean aptitude + 0.5 * latest exam % (aptitude alone if unknown);
                  chance = clip(1 - 4 * max(0, selectivity - readiness), 0.05, 1)  (estimate)
-  reachability   affordability * (0.5 + 0.5 * chance); this is what the final score uses
+  reachability   affordability * (0.5 + 0.5 * chance) * (0.5 + 0.5 * p_entry); this is what the final score
+                 uses (p_entry = chance of getting into a career gated by an exam after the degree, else 1)
   ROI            NPV of (career salary path - baseline path) over course + 10 years, divided by cost;
-                 roi_norm = r / (r + 1.5) for r > 0
+                 roi_norm = r / (r + 1.5) for r > 0. For careers entered through a very selective exam after
+                 the degree (civil services, CA, actuary), the salary path is p * career + (1 - p) * graduate
+                 fallback, p = estimated chance of getting in (config.CAREER_ENTRY_GATES)
   payback        years after graduation until savings from salary cover cost plus loan interest
 Property (tested): more money never lowers affordability or worsens the class.
 """
@@ -206,7 +211,11 @@ def roi(
     growth: float,
     loan_interest: int,
     cfg: ScoringConfig,
+    entry_probability: float = 1.0,
 ) -> RoiDetail:
+    """starting_salary stays the career's own pay; NPV and payback use the expected pay."""
+    career_entry = entry
+    entry = int(entry_probability * entry + (1 - entry_probability) * cfg.graduate_fallback_salary)
     horizon = wait_years + course_years + cfg.roi_horizon_years
     npv = 0.0
     for t in range(1, horizon + 1):
@@ -229,8 +238,8 @@ def roi(
         roi_ratio=round(ratio, 3),
         roi_norm=round(ratio / (ratio + 1.5), 4) if ratio > 0 else 0.0,
         payback_years=payback,
-        starting_salary=entry,
-        salary_year10=int(entry * (1 + growth) ** 9),
+        starting_salary=career_entry,
+        salary_year10=int(career_entry * (1 + growth) ** 9),
     )
 
 
@@ -242,6 +251,7 @@ def assess(
     bands: Sequence[SalaryBand],
     cfg: ScoringConfig,
     today: date,
+    entry_probability: float = 1.0,
 ) -> FinancialAssessment:
     start = course_start_year(student.grade, today)
     wait = years_until_course(student.grade, today)
@@ -256,8 +266,12 @@ def assess(
     gap = max(0, need - capacity)
     monthly = emi(loan, p.duration_years, cfg, _moratorium_rate(family, p.institution.tier, cfg))
     interest = max(0, monthly * cfg.loan_tenor_months - loan)
-    affordability = round(min(1.0, (own + family.loan_tolerance * capacity) / cost), 4) if cost else 1.0
     monthly_income = family.annual_income / 12 if family.annual_income else 0
+    affordability = (
+        affordability_score(own, capacity, cost, need, family, p.duration_years, p.institution.tier, cfg)
+        if cost
+        else 1.0
+    )
     regions = [r for r in (student.region_code, *student.preferred_regions, *family.preferred_regions) if r]
     growth = bands[0].growth_rate if bands else 0.07
     chance = admission_chance(p.selectivity, student)
@@ -290,7 +304,7 @@ def assess(
         affordability=affordability,
         affordability_class=_classify(own, capacity, cost),
         admission_chance=chance,
-        reachability=round(affordability * (0.5 + 0.5 * chance), 4),
+        reachability=round(affordability * (0.5 + 0.5 * chance) * (0.5 + 0.5 * entry_probability), 4),
         loan_scheme=interest_scheme(family, p.institution.tier)[1],
         roi=roi(
             cost,
@@ -300,5 +314,33 @@ def assess(
             growth,
             interest,
             cfg,
+            entry_probability,
         ),
     )
+
+
+def affordability_score(
+    own: int,
+    capacity: int,
+    cost: int,
+    need: int,
+    family: FamilyInput,
+    years: int,
+    tier: int,
+    cfg: ScoringConfig,
+) -> float:
+    """Coverage, lowered for the share that must be borrowed and for an EMI that strains monthly income.
+    Monotone: more savings, income or EMI room never lowers it (need and its EMI do not grow with capacity)."""
+    coverage = min(1.0, (own + family.loan_tolerance * capacity) / cost)
+    borrow = 1 - cfg.loan_share_penalty * min(1.0, need / cost)
+    monthly_income = family.annual_income / 12
+    if need <= 0:
+        strain = 1.0
+    elif monthly_income <= 0:
+        strain = 0.5
+    else:
+        burden = (
+            emi(need, years, cfg, _moratorium_rate(family, tier, cfg)) + family.existing_emi
+        ) / monthly_income
+        strain = 1 - min(0.5, 1.5 * max(0.0, burden - cfg.comfortable_emi_share))
+    return round(coverage * borrow * strain, 4)

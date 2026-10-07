@@ -9,9 +9,9 @@
       "Doctor (MBBS) fits the student's profile at 70%.",
       "Study route: MBBS (government quota) (Government Medical College, Tamil Nadu (illustrative)), about Rs 792,280 in total. For this family it is comfortable.",
       "Admission is competitive: about 39% chance with current scores (estimate).",
-      "Other strong options: Biomedical Engineer, Computational Biologist.",
+      "Other strong options: Computational Biologist, Data Scientist.",
       "Student and parents mostly agree on career direction. Careers both sides accept: Biomedical Engineer, Doctor (MBBS).",
-      "The first place held in 48% of 64 tests where the weights were changed.",
+      "The first place held in 59% of 64 tests where the weights were changed.",
       "Scholarships to check: Private foundation UG merit-cum-means scholarship (illustrative)."
     ],
     "source": "template",
@@ -28,8 +28,8 @@
         "chance": 39
       },
       "others": [
-        "Biomedical Engineer",
-        "Computational Biologist"
+        "Computational Biologist",
+        "Data Scientist"
       ],
       "family_band": "mild",
       "bridges": [
@@ -41,7 +41,7 @@
       ],
       "version": "seed-2026-09-30",
       "stability": {
-        "stab": 48,
+        "stab": 59,
         "n": 64
       }
     },

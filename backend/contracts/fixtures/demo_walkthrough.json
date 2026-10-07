@@ -170,7 +170,7 @@
       {
         "step": 10,
         "title": "Trust the ranking",
-        "say": "Weights perturbed by 20 % in 64 scenarios: Doctor (MBBS) stays first in 48% of them; the family alignment weight matters most. The input hash makes the run reproducible.",
+        "say": "Weights perturbed by 20 % in 64 scenarios: Doctor (MBBS) stays first in 59% of them; the family alignment weight matters most. The input hash makes the run reproducible.",
         "call": {
           "method": "GET",
           "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed",

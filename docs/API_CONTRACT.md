@@ -102,6 +102,14 @@
   `funding_gap` are now nullable: `null` for students (unless the family granted
   `share_raw_finance_with_student`) and for educators. Costs, scholarships and affordability classes stay.
 - Stretch goals also hold careers with fit >= 0.75 that cost pushed out of the top 10.
+- Scoring `weights-2026.10-v3` (same response shapes):
+  - **Fit gate:** the final score is multiplied by `0.5 + 0.5 * min(1, fit / 0.65)`, and each `contribution` is
+    scaled the same way, so the contributions still add up to `final_score`.
+  - **Affordability:** lowered for the share that must be borrowed and for EMIs above 30 % of income.
+  - **Entry exams:** `reachability` and ROI include the chance of passing a very selective entry exam after the
+    degree (civil services, CA, actuary). `roi.starting_salary` is still the job's own pay.
+  - **Plain language:** questionnaire-quality warnings in `data_quality.warnings` are now plain sentences, and
+    careless answers raise `confidence_penalty`.
 - Responses over 1 KB are gzip-compressed when the client sends `Accept-Encoding: gzip`.
 
 ## Key examples

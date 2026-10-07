@@ -2,7 +2,7 @@
   "success": true,
   "data": {
     "baseline_run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
-    "what_if_run_id": "0cd08232-4bd9-5b81-8b8c-a6036526dd14",
+    "what_if_run_id": "41343960-2eb5-589a-a4c3-3727f8358be6",
     "label": "Add savings + accept loan",
     "overrides": {
       "allocatable_savings": 1400000,
@@ -17,17 +17,17 @@
     },
     "comparison": {
       "base_run_id": "6e33720c-5922-516b-9d81-1e216882b8ed",
-      "other_run_id": "0cd08232-4bd9-5b81-8b8c-a6036526dd14",
-      "rank_correlation": 0.8095,
+      "other_run_id": "41343960-2eb5-589a-a4c3-3727f8358be6",
+      "rank_correlation": 0.619,
       "deltas": [
         {
           "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "career_name": "Robotics & Automation Engineer",
           "base_rank": 6,
           "new_rank": 5,
-          "base_score": 0.6002,
-          "new_score": 0.6743,
-          "score_delta": 0.0741,
+          "base_score": 0.5814,
+          "new_score": 0.6703,
+          "score_delta": 0.0889,
           "base_class": "infeasible",
           "new_class": "loan_dependent"
         },
@@ -36,27 +36,27 @@
           "career_name": "UX / Product Designer",
           "base_rank": 7,
           "new_rank": 7,
-          "base_score": 0.4681,
-          "new_score": 0.5256,
-          "score_delta": 0.0575,
+          "base_score": 0.4262,
+          "new_score": 0.4759,
+          "score_delta": 0.0497,
           "base_class": "infeasible",
           "new_class": "infeasible"
         },
         {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
-          "base_rank": 2,
+          "base_rank": 4,
           "new_rank": 1,
-          "base_score": 0.7109,
+          "base_score": 0.6993,
           "new_score": 0.7228,
-          "score_delta": 0.0119,
+          "score_delta": 0.0235,
           "base_class": "loan_dependent",
           "new_class": "comfortable"
         },
         {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
-          "base_rank": 3,
+          "base_rank": 2,
           "new_rank": 3,
           "base_score": 0.7072,
           "new_score": 0.7072,
@@ -67,7 +67,7 @@
         {
           "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
           "career_name": "Data Scientist",
-          "base_rank": 4,
+          "base_rank": 3,
           "new_rank": 4,
           "base_score": 0.7064,
           "new_score": 0.7064,
@@ -106,10 +106,12 @@
       ],
       "conflict_index_delta": -1.23,
       "summary": [
-        "Robotics & Automation Engineer: infeasible -> loan_dependent (+0.074)",
-        "Biomedical Engineer: loan_dependent -> comfortable (+0.012)",
+        "Robotics & Automation Engineer: infeasible -> loan_dependent (+0.089)",
+        "Biomedical Engineer: loan_dependent -> comfortable (+0.024)",
         "Robotics & Automation Engineer: rank 6 -> 5",
-        "Biomedical Engineer: rank 2 -> 1",
+        "Biomedical Engineer: rank 4 -> 1",
+        "Computational Biologist: rank 2 -> 3",
+        "Data Scientist: rank 3 -> 4",
         "Doctor (MBBS): rank 1 -> 2",
         "Agri-Drone & Precision Farming Engineer: rank 5 -> 6"
       ]

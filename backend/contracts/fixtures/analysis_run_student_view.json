@@ -10,9 +10,9 @@
     "duration_ms": 0.0,
     "reproducibility": {
       "engine_version": "prism-engine/1.0.0",
-      "scoring_config_version": "weights-2026.10-v2",
+      "scoring_config_version": "weights-2026.10-v3",
       "vector_spec_version": "vec-1",
-      "input_hash": "sha256:5a85eef47d39e1b10efcfa02b1f7e645a6cf660c586c6ff55f43318ef2db292e",
+      "input_hash": "sha256:dbdc31303b75829717dc6fb77dd167f7a5c883575dab37d2ad44b6134f48db14",
       "data_as_of": "2026-09-30",
       "dataset_version": "seed-2026-09-30",
       "latest_dataset_version": "seed-2026-09-30",
@@ -52,10 +52,10 @@
       "risk_tolerance": 0.55
     },
     "composite_scores": {
-      "overall_readiness": 73.5,
+      "overall_readiness": 72.2,
       "aptitude_index": 75.0,
       "interest_clarity": 62.5,
-      "financial_capacity": 84.7,
+      "financial_capacity": 79.5,
       "family_alignment": 68.1,
       "market_outlook": 67.3
     },
@@ -245,10 +245,10 @@
             "monthly_emi": null,
             "burden_ratio": null,
             "funding_gap": null,
-            "affordability": 0.0854,
+            "affordability": 0.0328,
             "affordability_class": "infeasible",
             "admission_chance": 1.0,
-            "reachability": 0.0854,
+            "reachability": 0.0328,
             "loan_scheme": null,
             "roi": {
               "npv_earnings_premium": 2846643,
@@ -323,221 +323,6 @@
       },
       {
         "rank": 2,
-        "career": {
-          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
-          "slug": "biomedical-engineer",
-          "name": "Biomedical Engineer",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S",
-            "T",
-            "E"
-          ]
-        },
-        "final_score": 0.7109,
-        "confidence": 0.5663,
-        "ci_low": 0.5864,
-        "ci_high": 0.8354,
-        "contributions": [
-          {
-            "component": "fit",
-            "raw_value": 0.8032,
-            "weight": 0.3,
-            "contribution": 0.241
-          },
-          {
-            "component": "market",
-            "raw_value": 0.6403,
-            "weight": 0.15,
-            "contribution": 0.096
-          },
-          {
-            "component": "affordability",
-            "raw_value": 0.9409,
-            "weight": 0.2,
-            "contribution": 0.1882
-          },
-          {
-            "component": "roi",
-            "raw_value": 0.3464,
-            "weight": 0.15,
-            "contribution": 0.052
-          },
-          {
-            "component": "family_alignment",
-            "raw_value": 0.952,
-            "weight": 0.15,
-            "contribution": 0.1428
-          },
-          {
-            "component": "disruption",
-            "raw_value": 0.18,
-            "weight": 0.05,
-            "contribution": -0.009
-          }
-        ],
-        "fit": {
-          "fit": 0.8032,
-          "cosine": 0.8981,
-          "distance_score": 0.7083,
-          "ml_score": null,
-          "ml_used": false,
-          "alpha": 0.0,
-          "top_matching_dimensions": [
-            "riasec_i",
-            "grit",
-            "cog_analytical"
-          ],
-          "gaps": [
-            {
-              "dimension": "val_security",
-              "label": "Values job security",
-              "student": 0.5,
-              "required": 0.7,
-              "gap": 0.2
-            },
-            {
-              "dimension": "val_impact",
-              "label": "Values social impact",
-              "student": 0.6667,
-              "required": 0.8,
-              "gap": 0.1333
-            },
-            {
-              "dimension": "cog_practical",
-              "label": "Practical thinking style",
-              "student": 0.5625,
-              "required": 0.7,
-              "gap": 0.1375
-            },
-            {
-              "dimension": "riasec_r",
-              "label": "Realistic (hands-on, building, tools)",
-              "student": 0.625,
-              "required": 0.75,
-              "gap": 0.125
-            }
-          ]
-        },
-        "market": {
-          "market_score": 0.6403,
-          "demand_index": 0.6678,
-          "job_velocity": 0.0763,
-          "disruption_risk": 0.18,
-          "regions_considered": [
-            "IN-TN-CBE",
-            "IN-KA-BLR",
-            "IN-TG-HYD",
-            "IN-TN-CHN",
-            "DE"
-          ],
-          "ci_low": 0.5163,
-          "ci_high": 0.7644,
-          "signals_as_of": "2026-09-30"
-        },
-        "financial": {
-          "pathway_id": "330b2531-1e14-56aa-bc4c-03d527306633",
-          "pathway_name": "B.E. Biomedical Engineering",
-          "institution_name": "PSG College of Technology",
-          "institution_tier": 2,
-          "quota": "open",
-          "duration_years": 4,
-          "total_cost": 1289649,
-          "family_funds": null,
-          "scholarship_plan": [
-            {
-              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
-              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
-              "amount_total": 200000,
-              "probability": 0.15,
-              "expected_value": 30000,
-              "deadline": "2026-12-15"
-            }
-          ],
-          "scholarship_expected": 30000,
-          "loan_capacity": null,
-          "loan_required": null,
-          "monthly_emi": null,
-          "burden_ratio": null,
-          "funding_gap": null,
-          "affordability": 0.9409,
-          "affordability_class": "loan_dependent",
-          "admission_chance": 1.0,
-          "reachability": 0.9409,
-          "loan_scheme": null,
-          "roi": {
-            "npv_earnings_premium": 1025149,
-            "roi_ratio": 0.795,
-            "roi_norm": 0.3464,
-            "payback_years": 9.0,
-            "starting_salary": 450000,
-            "salary_year10": 899552
-          }
-        },
-        "alternative_pathways": [],
-        "family": {
-          "student_fit": 0.8032,
-          "parent_acceptance": 0.952,
-          "bridge_score": 0.8713
-        },
-        "data_trust": {
-          "verified_share": 0.0,
-          "freshness": "fresh",
-          "oldest_as_of": "2026-09-30",
-          "inputs": [
-            {
-              "name": "market demand",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "salary band",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "fees: B.E. Biomedical Engineering",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Private foundation"
-            },
-            {
-              "name": "exam dates: TNEA Counselling (marks-based)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM estimate from previous exam cycles"
-            }
-          ],
-          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Biomedical Engineering; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
-        },
-        "buckets": [
-          "best_overall",
-          "best_for_student",
-          "best_for_family",
-          "bridge"
-        ],
-        "explanation": [
-          "Strong match on investigative, grit / perseverance, analytical thinking style.",
-          "B.E. Biomedical Engineering at PSG College of Technology is loan-dependent for your family (about Rs 1,289,649 in total).",
-          "Demand outlook 64%; automation risk 18%.",
-          "Biggest gap: values job security (20% below the usual level)."
-        ]
-      },
-      {
-        "rank": 3,
         "career": {
           "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "slug": "computational-biologist",
@@ -737,7 +522,7 @@
         ]
       },
       {
-        "rank": 4,
+        "rank": 3,
         "career": {
           "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
           "slug": "data-scientist",
@@ -939,6 +724,7 @@
           "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Tech Computer Science (Data Science); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
         },
         "buckets": [
+          "best_overall",
           "best_for_student"
         ],
         "explanation": [
@@ -946,6 +732,220 @@
           "B.Tech Computer Science (Data Science) at Government College of Technology, Coimbatore is comfortable for your family (about Rs 656,991 in total).",
           "Demand outlook 77%; automation risk 25%.",
           "Biggest gap: conventional (organising, data, procedures) (15% below the usual level)."
+        ]
+      },
+      {
+        "rank": 4,
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "final_score": 0.6993,
+        "confidence": 0.5663,
+        "ci_low": 0.5748,
+        "ci_high": 0.8238,
+        "contributions": [
+          {
+            "component": "fit",
+            "raw_value": 0.8032,
+            "weight": 0.3,
+            "contribution": 0.241
+          },
+          {
+            "component": "market",
+            "raw_value": 0.6403,
+            "weight": 0.15,
+            "contribution": 0.096
+          },
+          {
+            "component": "affordability",
+            "raw_value": 0.8828,
+            "weight": 0.2,
+            "contribution": 0.1766
+          },
+          {
+            "component": "roi",
+            "raw_value": 0.3464,
+            "weight": 0.15,
+            "contribution": 0.052
+          },
+          {
+            "component": "family_alignment",
+            "raw_value": 0.952,
+            "weight": 0.15,
+            "contribution": 0.1428
+          },
+          {
+            "component": "disruption",
+            "raw_value": 0.18,
+            "weight": 0.05,
+            "contribution": -0.009
+          }
+        ],
+        "fit": {
+          "fit": 0.8032,
+          "cosine": 0.8981,
+          "distance_score": 0.7083,
+          "ml_score": null,
+          "ml_used": false,
+          "alpha": 0.0,
+          "top_matching_dimensions": [
+            "riasec_i",
+            "grit",
+            "cog_analytical"
+          ],
+          "gaps": [
+            {
+              "dimension": "val_security",
+              "label": "Values job security",
+              "student": 0.5,
+              "required": 0.7,
+              "gap": 0.2
+            },
+            {
+              "dimension": "val_impact",
+              "label": "Values social impact",
+              "student": 0.6667,
+              "required": 0.8,
+              "gap": 0.1333
+            },
+            {
+              "dimension": "cog_practical",
+              "label": "Practical thinking style",
+              "student": 0.5625,
+              "required": 0.7,
+              "gap": 0.1375
+            },
+            {
+              "dimension": "riasec_r",
+              "label": "Realistic (hands-on, building, tools)",
+              "student": 0.625,
+              "required": 0.75,
+              "gap": 0.125
+            }
+          ]
+        },
+        "market": {
+          "market_score": 0.6403,
+          "demand_index": 0.6678,
+          "job_velocity": 0.0763,
+          "disruption_risk": 0.18,
+          "regions_considered": [
+            "IN-TN-CBE",
+            "IN-KA-BLR",
+            "IN-TG-HYD",
+            "IN-TN-CHN",
+            "DE"
+          ],
+          "ci_low": 0.5163,
+          "ci_high": 0.7644,
+          "signals_as_of": "2026-09-30"
+        },
+        "financial": {
+          "pathway_id": "330b2531-1e14-56aa-bc4c-03d527306633",
+          "pathway_name": "B.E. Biomedical Engineering",
+          "institution_name": "PSG College of Technology",
+          "institution_tier": 2,
+          "quota": "open",
+          "duration_years": 4,
+          "total_cost": 1289649,
+          "family_funds": null,
+          "scholarship_plan": [
+            {
+              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+              "amount_total": 200000,
+              "probability": 0.15,
+              "expected_value": 30000,
+              "deadline": "2026-12-15"
+            }
+          ],
+          "scholarship_expected": 30000,
+          "loan_capacity": null,
+          "loan_required": null,
+          "monthly_emi": null,
+          "burden_ratio": null,
+          "funding_gap": null,
+          "affordability": 0.8828,
+          "affordability_class": "loan_dependent",
+          "admission_chance": 1.0,
+          "reachability": 0.8828,
+          "loan_scheme": null,
+          "roi": {
+            "npv_earnings_premium": 1025149,
+            "roi_ratio": 0.795,
+            "roi_norm": 0.3464,
+            "payback_years": 9.0,
+            "starting_salary": 450000,
+            "salary_year10": 899552
+          }
+        },
+        "alternative_pathways": [],
+        "family": {
+          "student_fit": 0.8032,
+          "parent_acceptance": 0.952,
+          "bridge_score": 0.8713
+        },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.E. Biomedical Engineering",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNEA Counselling (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Biomedical Engineering; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+        },
+        "buckets": [
+          "best_for_student",
+          "best_for_family",
+          "bridge"
+        ],
+        "explanation": [
+          "Strong match on investigative, grit / perseverance, analytical thinking style.",
+          "B.E. Biomedical Engineering at PSG College of Technology is loan-dependent for your family (about Rs 1,289,649 in total).",
+          "Demand outlook 64%; automation risk 18%.",
+          "Biggest gap: values job security (20% below the usual level)."
         ]
       },
       {
@@ -1174,10 +1174,10 @@
             "M"
           ]
         },
-        "final_score": 0.6002,
+        "final_score": 0.5814,
         "confidence": 0.5663,
-        "ci_low": 0.4757,
-        "ci_high": 0.7247,
+        "ci_low": 0.4569,
+        "ci_high": 0.7059,
         "contributions": [
           {
             "component": "fit",
@@ -1193,9 +1193,9 @@
           },
           {
             "component": "affordability",
-            "raw_value": 0.6296,
+            "raw_value": 0.5355,
             "weight": 0.2,
-            "contribution": 0.1259
+            "contribution": 0.1071
           },
           {
             "component": "roi",
@@ -1300,10 +1300,10 @@
           "monthly_emi": null,
           "burden_ratio": null,
           "funding_gap": null,
-          "affordability": 0.6296,
+          "affordability": 0.5355,
           "affordability_class": "infeasible",
           "admission_chance": 1.0,
-          "reachability": 0.6296,
+          "reachability": 0.5355,
           "loan_scheme": null,
           "roi": {
             "npv_earnings_premium": 1655319,
@@ -1386,10 +1386,10 @@
             "A"
           ]
         },
-        "final_score": 0.4681,
+        "final_score": 0.4262,
         "confidence": 0.5663,
-        "ci_low": 0.3436,
-        "ci_high": 0.5926,
+        "ci_low": 0.3017,
+        "ci_high": 0.5507,
         "contributions": [
           {
             "component": "fit",
@@ -1405,9 +1405,9 @@
           },
           {
             "component": "affordability",
-            "raw_value": 0.3552,
+            "raw_value": 0.1458,
             "weight": 0.2,
-            "contribution": 0.071
+            "contribution": 0.0292
           },
           {
             "component": "roi",
@@ -1512,10 +1512,10 @@
           "monthly_emi": null,
           "burden_ratio": null,
           "funding_gap": null,
-          "affordability": 0.3552,
+          "affordability": 0.1458,
           "affordability_class": "infeasible",
           "admission_chance": 1.0,
-          "reachability": 0.3552,
+          "reachability": 0.1458,
           "loan_scheme": null,
           "roi": {
             "npv_earnings_premium": 2600573,
@@ -1602,15 +1602,15 @@
           "reason": "Highest blended score"
         },
         {
-          "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
-          "career_name": "Biomedical Engineer",
-          "score": 0.7109,
-          "reason": "Highest blended score"
-        },
-        {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
           "score": 0.7072,
+          "reason": "Highest blended score"
+        },
+        {
+          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "career_name": "Data Scientist",
+          "score": 0.7064,
           "reason": "Highest blended score"
         }
       ],
@@ -1644,7 +1644,7 @@
         {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
-          "score": 0.9465,
+          "score": 0.9174,
           "reason": "Affordable and close to your family's hopes"
         },
         {
@@ -1678,7 +1678,7 @@
         {
           "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "career_name": "Robotics & Automation Engineer",
-          "score": 0.6002,
+          "score": 0.5814,
           "reason": "Less obvious path that fits you, linked to local work or a neighbouring field"
         }
       ],
@@ -1776,8 +1776,8 @@
     "sensitivity": {
       "perturbation": 0.2,
       "scenarios": 64,
-      "robustness_score": 0.5813,
-      "top1_stability": 0.4844,
+      "robustness_score": 0.6813,
+      "top1_stability": 0.5938,
       "rank_ranges": [
         {
           "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
@@ -1787,24 +1787,24 @@
           "max_rank": 4
         },
         {
-          "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
-          "career_name": "Biomedical Engineer",
-          "base_rank": 2,
-          "min_rank": 1,
-          "max_rank": 4
-        },
-        {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
-          "base_rank": 3,
-          "min_rank": 2,
-          "max_rank": 4
+          "base_rank": 2,
+          "min_rank": 1,
+          "max_rank": 3
         },
         {
           "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
           "career_name": "Data Scientist",
-          "base_rank": 4,
+          "base_rank": 3,
           "min_rank": 1,
+          "max_rank": 4
+        },
+        {
+          "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "career_name": "Biomedical Engineer",
+          "base_rank": 4,
+          "min_rank": 2,
           "max_rank": 4
         },
         {
@@ -1812,13 +1812,13 @@
           "career_name": "Agri-Drone & Precision Farming Engineer",
           "base_rank": 5,
           "min_rank": 5,
-          "max_rank": 6
+          "max_rank": 5
         },
         {
           "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "career_name": "Robotics & Automation Engineer",
           "base_rank": 6,
-          "min_rank": 5,
+          "min_rank": 6,
           "max_rank": 6
         },
         {

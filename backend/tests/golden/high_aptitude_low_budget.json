@@ -14,8 +14,8 @@
     "doctor-mbbs": "infeasible",
     "computational-biologist": "infeasible",
     "robotics-engineer": "infeasible",
-    "biomedical-engineer": "infeasible",
     "agri-drone-engineer": "infeasible",
+    "biomedical-engineer": "infeasible",
     "ux-designer": "infeasible"
   },
   "conflict_band": "mild"

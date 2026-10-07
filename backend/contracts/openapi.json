@@ -5767,7 +5767,7 @@
           "contribution": {
             "type": "number",
             "title": "Contribution",
-            "description": "weight * raw_value (negative for disruption)"
+            "description": "weight * raw_value * fit gate (negative for disruption); the contributions add up to final_score. The fit gate is 0.5 + 0.5 * min(1, fit / 0.65)."
           }
         },
         "additionalProperties": false,
@@ -9579,7 +9579,7 @@
             "maximum": 1.0,
             "minimum": 0.0,
             "title": "Reachability",
-            "description": "affordability * (0.5 + 0.5 * admission_chance)",
+            "description": "affordability * (0.5 + 0.5 * admission_chance) * (0.5 + 0.5 * career entry chance); entry chance is below 1 only for careers gated by a very selective exam after the degree",
             "default": 1.0
           },
           "loan_scheme": {
