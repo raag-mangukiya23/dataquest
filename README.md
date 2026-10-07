@@ -2,6 +2,15 @@
 
 Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform.
 
+## Run it
+
+- **Windows:** double-click `run_site.bat`.
+- **macOS / Linux:** run `bash run_site.sh`.
+
+Either one sets up Python packages and the database on first run, then opens http://localhost:8000. It needs
+Python 3.11 or newer.
+
+- `site/`: the public site (served by the backend at `/`)
 - `backend/`: FastAPI service (see `backend/README.md` for quick start)
 - `docs/ARCHITECTURE.md`: assumptions, layering, MOCK_MODE, folder tree
 - `docs/ER_DIAGRAM.md`: database design (Mermaid)
