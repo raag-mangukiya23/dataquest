@@ -9,7 +9,7 @@ can afford and what the job market pays, and shows **why** each career is sugges
 
 Built for **DataQuest 3.0** · Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation
 
-**[Live demo](https://YOUR-VERCEL-LINK.vercel.app)** · [API docs](https://dataquest-wxr4.onrender.com/docs) · [How to judge it in 5 minutes](#judging-in-five-minutes)
+**[Live demo](https://dataquest-frontend-theta.vercel.app)** · [API docs](https://dataquest-wxr4.onrender.com/docs) · [How to judge it in 5 minutes](#judging-in-five-minutes)
 
 </div>
 
@@ -43,7 +43,7 @@ plans, built for the student **and** the parent.
 
 ## Judging in five minutes
 
-Open the **[live demo](https://YOUR-VERCEL-LINK.vercel.app)** and sign in. All demo accounts use the password
+Open the **[live demo](https://dataquest-frontend-theta.vercel.app)** and sign in. All demo accounts use the password
 **`Prism@Demo2026`**.
 
 | Role | Email | Look at |
