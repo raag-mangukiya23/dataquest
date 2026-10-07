@@ -16,6 +16,12 @@ export function RequireAuth({ roles }: { roles?: Role[] }) {
 /** Signed-in users who open /signin or /register go to their home instead. */
 export function RedirectIfSignedIn() {
   const { user, status } = useSession()
-  if (status === 'signed-in' && user) return <Navigate to={homeFor(user.role)} replace />
+  const location = useLocation()
+  if (status === 'signed-in' && user) {
+    const next = new URLSearchParams(location.search).get('next')
+    const safe = next && next.startsWith('/') && !next.startsWith('//') ? next : null
+    const after = location.pathname === '/register' && user.role === 'parent' ? '/family' : homeFor(user.role)
+    return <Navigate to={safe ?? after} replace />
+  }
   return <Outlet />
 }

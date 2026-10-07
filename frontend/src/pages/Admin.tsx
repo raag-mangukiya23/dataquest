@@ -85,7 +85,7 @@ function Charts({ d }: { d: AdminAnalytics }) {
         <ChartCard key={c.title} {...c} />
       ))}
       {hidden.length > 0 && (
-        <Card>
+        <Card className="h-fit">
           <h3 className="mb-2 flex items-center gap-2 font-semibold">
             <EyeOff className="h-4 w-4 text-muted" aria-hidden /> Hidden to protect privacy
           </h3>

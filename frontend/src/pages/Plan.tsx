@@ -63,7 +63,7 @@ export default function Plan() {
   const selected = top.find((r) => r.career.id === careerId) ?? top[0]
 
   return (
-    <div className="space-y-10">
+    <div className="min-w-0 space-y-10 overflow-x-clip">
       <PageHeader
         eyebrow="Your plan"
         title={selected ? `The road to ${selected.career.name}` : 'Your road ahead'}
