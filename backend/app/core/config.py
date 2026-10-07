@@ -1,5 +1,6 @@
 """Application settings, loaded from environment variables / .env."""
 
+import json
 from datetime import date
 from functools import lru_cache
 
@@ -20,9 +21,8 @@ class Settings(BaseSettings):
     jwt_secret: str = "dev-only-secret-change-me-0123456789abcdef"
     access_token_ttl_min: int = 30
     refresh_token_ttl_days: int = 14
-    cors_origins: list[str] = Field(
-        default_factory=lambda: ["http://localhost:3000", "http://localhost:5173"]
-    )
+    # Comma-separated or JSON list; stored as text so any format works in hosting dashboards.
+    cors_origins_raw: str = Field(default="http://localhost:3000,http://localhost:5173", alias="CORS_ORIGINS")
     rate_limit_per_minute: int = 120
     ml_model_path: str | None = None
     ml_alpha: float = Field(default=0.5, ge=0.0, le=1.0)
@@ -54,12 +54,15 @@ class Settings(BaseSettings):
             raise ValueError("APP_ENV=production requires DEMO_MODE=false and MOCK_MODE=false")
         return self
 
-    @field_validator("cors_origins", mode="before")
-    @classmethod
-    def _split_origins(cls, v: object) -> object:
-        if isinstance(v, str):
-            return [o.strip() for o in v.split(",") if o.strip()]
-        return v
+    @property
+    def cors_origins(self) -> list[str]:
+        raw = self.cors_origins_raw.strip()
+        if raw.startswith("["):
+            try:
+                return [str(o).strip().rstrip("/") for o in json.loads(raw) if str(o).strip()]
+            except ValueError:
+                raw = raw.strip("[]")
+        return [o.strip().strip("'\"").rstrip("/") for o in raw.split(",") if o.strip().strip("'\"")]
 
     @field_validator("ml_model_path", "adzuna_app_id", "adzuna_app_key", "grok_api_key", mode="before")
     @classmethod
