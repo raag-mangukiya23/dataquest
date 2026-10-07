@@ -100,7 +100,7 @@
         "group": "disposition"
       }
     ],
-    "scoring_config_version": "weights-2026.10-v1",
+    "scoring_config_version": "weights-2026.10-v2",
     "weights": {
       "fit": 0.3,
       "market": 0.15,

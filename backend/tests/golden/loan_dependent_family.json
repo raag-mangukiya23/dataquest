@@ -1,0 +1,22 @@
+{
+  "top3": [
+    "data-scientist",
+    "robotics-engineer",
+    "agri-drone-engineer"
+  ],
+  "best_for_student": [
+    "Robotics & Automation Engineer",
+    "Agri-Drone & Precision Farming Engineer",
+    "Biomedical Engineer"
+  ],
+  "classes": {
+    "data-scientist": "loan_dependent",
+    "robotics-engineer": "infeasible",
+    "agri-drone-engineer": "loan_dependent",
+    "computational-biologist": "loan_dependent",
+    "biomedical-engineer": "infeasible",
+    "doctor-mbbs": "loan_dependent",
+    "ux-designer": "infeasible"
+  },
+  "conflict_band": "mild"
+}

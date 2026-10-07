@@ -94,9 +94,6 @@ FINANCE = {
     "prestige_vs_stability": "stability",
     "preferred_regions": ["IN-TN-CBE", "IN-TN-CHN"],
 }
-# Engine-derived for this persona (Phase 4 computes these; fixed here for the UI).
-FAMILY_FUNDS = 940_000
-LOAN_CAPACITY = 908_000  # PV of Rs 12,000/month for 120 months at 10 % p.a.
 
 WEIGHTS = {
     "fit": 0.30,
@@ -218,15 +215,89 @@ CAREERS = [
 ]
 
 # slug -> (fit, market, roi_norm, family_alignment(parent acceptance), disruption)
-SCORES = {
-    "data-scientist": (0.86, 0.84, 0.78, 0.55, 0.25),
-    "biomedical-engineer": (0.78, 0.70, 0.62, 0.85, 0.18),
-    "computational-biologist": (0.82, 0.66, 0.55, 0.72, 0.15),
-    "robotics-engineer": (0.79, 0.72, 0.64, 0.62, 0.14),
-    "agri-drone-engineer": (0.74, 0.68, 0.58, 0.60, 0.12),
-    "ux-designer": (0.80, 0.74, 0.66, 0.35, 0.30),
-    "doctor-mbbs": (0.58, 0.80, 0.70, 0.95, 0.08),
+# Market seeds per career: (demand index, automation/disruption risk). Illustrative estimates; real values
+# come from the market-signal sources in app/etl/sources.py.
+MARKET_SEED = {
+    "data-scientist": (0.84, 0.25),
+    "biomedical-engineer": (0.70, 0.18),
+    "computational-biologist": (0.66, 0.15),
+    "robotics-engineer": (0.72, 0.14),
+    "agri-drone-engineer": (0.68, 0.12),
+    "ux-designer": (0.74, 0.30),
+    "doctor-mbbs": (0.80, 0.08),
 }
+
+# Career trait requirements = the sector's prototype plus these career-specific adjustments.
+# Expert estimates until mapped to O*NET occupation data (see docs/DATA_TRUTH.md).
+CAREER_TRAIT_OVERRIDES: dict[str, dict[str, float]] = {
+    "data-scientist": {
+        "riasec_i": 0.85,
+        "riasec_c": 0.65,
+        "apt_numerical": 0.85,
+        "apt_logical": 0.85,
+        "cog_analytical": 0.85,
+        "val_financial": 0.65,
+    },
+    "biomedical-engineer": {
+        "riasec_r": 0.75,
+        "riasec_i": 0.8,
+        "riasec_s": 0.55,
+        "apt_spatial": 0.7,
+        "apt_numerical": 0.7,
+        "cog_practical": 0.7,
+        "val_impact": 0.8,
+        "risk_tolerance": 0.45,
+    },
+    "computational-biologist": {
+        "riasec_i": 0.9,
+        "riasec_s": 0.4,
+        "riasec_r": 0.4,
+        "apt_numerical": 0.8,
+        "apt_logical": 0.8,
+        "cog_analytical": 0.85,
+        "val_impact": 0.7,
+    },
+    "robotics-engineer": {
+        "riasec_r": 0.85,
+        "riasec_i": 0.75,
+        "apt_spatial": 0.8,
+        "apt_logical": 0.8,
+        "cog_creative": 0.6,
+        "cog_practical": 0.8,
+    },
+    "agri-drone-engineer": {
+        "riasec_r": 0.8,
+        "riasec_i": 0.7,
+        "apt_spatial": 0.7,
+        "cog_practical": 0.85,
+        "risk_tolerance": 0.6,
+        "val_impact": 0.8,
+    },
+    "ux-designer": {
+        "riasec_a": 0.9,
+        "riasec_s": 0.6,
+        "riasec_i": 0.55,
+        "apt_verbal": 0.65,
+        "cog_creative": 0.9,
+        "cog_analytical": 0.55,
+    },
+    "doctor-mbbs": {
+        "riasec_s": 0.85,
+        "riasec_i": 0.8,
+        "apt_verbal": 0.7,
+        "grit": 0.9,
+        "val_impact": 0.85,
+        "val_security": 0.7,
+        "risk_tolerance": 0.4,
+    },
+}
+
+# What the parents ranked (career slug or sector), most wanted first.
+PARENT_PREFERENCES = [
+    {"rank": 1, "career": "doctor-mbbs", "note": "Respected and stable"},
+    {"rank": 2, "career": "biomedical-engineer"},
+    {"rank": 3, "domain": "engineering"},
+]
 
 INSTITUTIONS = {
     "gct-cbe": {
@@ -709,4 +780,23 @@ CITY_NAMES: dict[str, str] = {
     "IN-TN-CHN": "Chennai",
     "IN-KA-BLR": "Bangalore",
     "IN-TG-HYD": "Hyderabad",
+}
+
+# Course area and admission route per pathway (used by scholarship eligibility rules).
+# (course area, admission route, selectivity estimate: 0 = open, 1 = extremely competitive)
+PATHWAY_META: dict[str, tuple[str, str, float]] = {
+    "gct-cse-ds": ("engineering", "single_window_counselling", 0.75),
+    "psg-bme": ("engineering", "single_window_counselling", 0.65),
+    "iiser-bsms": ("basic_sciences", "national_exam", 0.85),
+    "psg-robotics": ("engineering", "single_window_counselling", 0.65),
+    "tnau-agri": ("agriculture", "single_window_counselling", 0.55),
+    "pvt-bdes": ("design", "institutional", 0.4),
+    "pvt-mbbs": ("medicine", "management_quota", 0.35),
+    "govt-mbbs": ("medicine", "single_window_counselling", 0.97),
+}
+# Institution-specific scholarships offered with a pathway.
+PATHWAY_SCHOLARSHIPS: dict[str, list[str]] = {
+    "psg-bme": ["inst-merit"],
+    "psg-robotics": ["inst-merit"],
+    "pvt-bdes": ["inst-merit"],
 }

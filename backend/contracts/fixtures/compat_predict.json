@@ -1,8 +1,8 @@
 {
   "id": "6e33720c-5922-516b-9d81-1e216882b8ed",
-  "score": 77.1,
-  "result": "Data Scientist",
-  "confidence": 0.5794,
+  "score": 71.2,
+  "result": "Doctor (MBBS)",
+  "confidence": 0.5663,
   "domain_scores": {
     "engineering": 0.8314,
     "computing_ai": 0.8435,

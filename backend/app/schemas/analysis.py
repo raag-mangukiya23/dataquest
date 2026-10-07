@@ -144,6 +144,13 @@ class FinancialAssessment(Contract):
     funding_gap: INR = Field(description="Shortfall after funds + scholarships + full loan capacity")
     affordability: Unit
     affordability_class: AffordabilityClass
+    admission_chance: Unit = Field(
+        default=1.0, description="Estimated chance of getting a seat on this pathway with current scores"
+    )
+    reachability: Unit = Field(default=1.0, description="affordability * (0.5 + 0.5 * admission_chance)")
+    loan_scheme: str | None = Field(
+        default=None, description="Government interest relief applied to the loan, if any"
+    )
     roi: RoiDetail
 
 

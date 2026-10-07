@@ -105,9 +105,12 @@ def test_every_recommendation_reports_its_data_trust(client):
         checked = sum(i["verification"] in ("verified", "secondary") for i in t["inputs"])
         assert t["verified_share"] == pytest.approx(checked / len(t["inputs"]), abs=1e-4)
         assert t["note"].startswith(f"{checked} of {len(t['inputs'])} inputs")
-    by_slug = {r["career"]["slug"]: r for r in run["recommendations"]}
-    # The only path with a checked scholarship should be the most confident one.
-    assert by_slug["computational-biologist"]["confidence"] > by_slug["data-scientist"]["confidence"]
+    recs = run["recommendations"]
+    for a in recs:  # more checked data never means lower confidence (same freshness, same student)
+        for b_ in recs:
+            same_freshness = a["data_trust"]["freshness"] == b_["data_trust"]["freshness"]
+            if same_freshness and a["data_trust"]["verified_share"] > b_["data_trust"]["verified_share"]:
+                assert a["confidence"] > b_["confidence"]
 
 
 def test_data_status_is_honest(client):

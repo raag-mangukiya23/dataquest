@@ -38,6 +38,7 @@
         "exclusive_group": "central_merit",
         "deadline": "2026-11-30",
         "deadline_status": "estimated",
+        "self_declared_criteria": null,
         "provenance": {
           "source_name": "Department of Science & Technology",
           "source_url": null,
@@ -96,6 +97,7 @@
         "exclusive_group": null,
         "deadline": null,
         "deadline_status": "estimated",
+        "self_declared_criteria": null,
         "provenance": {
           "source_name": "Government of Tamil Nadu",
           "source_url": null,
@@ -149,6 +151,7 @@
         "exclusive_group": null,
         "deadline": "2027-07-31",
         "deadline_status": "estimated",
+        "self_declared_criteria": null,
         "provenance": {
           "source_name": "Partner institutions",
           "source_url": null,
@@ -160,11 +163,11 @@
           "evidence": null
         }
       },
-      "eligible": true,
+      "eligible": null,
       "checks": [
         {
           "rule": "entrance_percentile >= 90",
-          "passed": true
+          "passed": null
         }
       ],
       "expected_value": 80000
@@ -204,6 +207,7 @@
         "exclusive_group": null,
         "deadline": "2026-12-15",
         "deadline_status": "estimated",
+        "self_declared_criteria": null,
         "provenance": {
           "source_name": "Private foundation",
           "source_url": null,
@@ -269,6 +273,7 @@
         "exclusive_group": "central_merit",
         "deadline": "2026-10-31",
         "deadline_status": "estimated",
+        "self_declared_criteria": null,
         "provenance": {
           "source_name": "Ministry of Education",
           "source_url": "https://scholarships.gov.in",
@@ -284,11 +289,11 @@
       "checks": [
         {
           "rule": "board_percentile > 80",
-          "passed": false
+          "passed": null
         },
         {
           "rule": "annual_income < 450000",
-          "passed": true
+          "passed": false
         }
       ],
       "expected_value": 0

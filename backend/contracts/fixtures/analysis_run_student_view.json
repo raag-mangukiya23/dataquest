@@ -7,12 +7,12 @@
     "kind": "baseline",
     "parent_run_id": null,
     "created_at": "2026-10-07T09:30:00",
-    "duration_ms": 142.7,
+    "duration_ms": 4.3,
     "reproducibility": {
       "engine_version": "prism-engine/1.0.0",
-      "scoring_config_version": "weights-2026.10-v1",
+      "scoring_config_version": "weights-2026.10-v2",
       "vector_spec_version": "vec-1",
-      "input_hash": "sha256:ac2964b7732c8f50b987b42005ecd68dee81100071df4f9cc44312b20ffe8b66",
+      "input_hash": "sha256:5a85eef47d39e1b10efcfa02b1f7e645a6cf660c586c6ff55f43318ef2db292e",
       "data_as_of": "2026-09-30",
       "dataset_version": "seed-2026-09-30",
       "latest_dataset_version": "seed-2026-09-30",
@@ -52,12 +52,12 @@
       "risk_tolerance": 0.55
     },
     "composite_scores": {
-      "overall_readiness": 68.7,
+      "overall_readiness": 73.5,
       "aptitude_index": 75.0,
       "interest_clarity": 62.5,
-      "financial_capacity": 76.1,
-      "family_alignment": 54.5,
-      "market_outlook": 72.0
+      "financial_capacity": 84.7,
+      "family_alignment": 68.1,
+      "market_outlook": 67.3
     },
     "weights": {
       "fit": 0.3,
@@ -71,6 +71,674 @@
       {
         "rank": 1,
         "career": {
+          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "slug": "doctor-mbbs",
+          "name": "Doctor (MBBS)",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S"
+          ]
+        },
+        "final_score": 0.7116,
+        "confidence": 0.5663,
+        "ci_low": 0.5871,
+        "ci_high": 0.8361,
+        "contributions": [
+          {
+            "component": "fit",
+            "raw_value": 0.705,
+            "weight": 0.3,
+            "contribution": 0.2115
+          },
+          {
+            "component": "market",
+            "raw_value": 0.73,
+            "weight": 0.15,
+            "contribution": 0.1095
+          },
+          {
+            "component": "affordability",
+            "raw_value": 0.6941,
+            "weight": 0.2,
+            "contribution": 0.1388
+          },
+          {
+            "component": "roi",
+            "raw_value": 0.7055,
+            "weight": 0.15,
+            "contribution": 0.1058
+          },
+          {
+            "component": "family_alignment",
+            "raw_value": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15
+          },
+          {
+            "component": "disruption",
+            "raw_value": 0.08,
+            "weight": 0.05,
+            "contribution": -0.004
+          }
+        ],
+        "fit": {
+          "fit": 0.705,
+          "cosine": 0.8154,
+          "distance_score": 0.5946,
+          "ml_score": null,
+          "ml_used": false,
+          "alpha": 0.0,
+          "top_matching_dimensions": [
+            "riasec_i",
+            "grit",
+            "val_impact"
+          ],
+          "gaps": [
+            {
+              "dimension": "riasec_s",
+              "label": "Social (helping, teaching, caring)",
+              "student": 0.4375,
+              "required": 0.85,
+              "gap": 0.4125
+            },
+            {
+              "dimension": "val_impact",
+              "label": "Values social impact",
+              "student": 0.6667,
+              "required": 0.85,
+              "gap": 0.1833
+            },
+            {
+              "dimension": "val_security",
+              "label": "Values job security",
+              "student": 0.5,
+              "required": 0.7,
+              "gap": 0.2
+            },
+            {
+              "dimension": "grit",
+              "label": "Grit / perseverance",
+              "student": 0.75,
+              "required": 0.9,
+              "gap": 0.15
+            }
+          ]
+        },
+        "market": {
+          "market_score": 0.73,
+          "demand_index": 0.7632,
+          "job_velocity": 0.1526,
+          "disruption_risk": 0.08,
+          "regions_considered": [
+            "IN-TN-CBE",
+            "IN-KA-BLR",
+            "IN-TN-CHN",
+            "IN-TG-HYD",
+            "DE"
+          ],
+          "ci_low": 0.606,
+          "ci_high": 0.8541,
+          "signals_as_of": "2026-09-30"
+        },
+        "financial": {
+          "pathway_id": "055476f4-a684-5319-b1bb-806bb573d917",
+          "pathway_name": "MBBS (government quota)",
+          "institution_name": "Government Medical College, Tamil Nadu (illustrative)",
+          "institution_tier": 2,
+          "quota": "government",
+          "duration_years": 6,
+          "total_cost": 792280,
+          "family_funds": 1144074,
+          "scholarship_plan": [
+            {
+              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+              "amount_total": 200000,
+              "probability": 0.15,
+              "expected_value": 30000,
+              "deadline": "2026-12-15"
+            }
+          ],
+          "scholarship_expected": 30000,
+          "loan_capacity": 534149,
+          "loan_required": 0,
+          "monthly_emi": 0,
+          "burden_ratio": 0.067,
+          "funding_gap": 0,
+          "affordability": 1.0,
+          "affordability_class": "comfortable",
+          "admission_chance": 0.3881,
+          "reachability": 0.6941,
+          "loan_scheme": null,
+          "roi": {
+            "npv_earnings_premium": 2846643,
+            "roi_ratio": 3.593,
+            "roi_norm": 0.7055,
+            "payback_years": 3.0,
+            "starting_salary": 900000,
+            "salary_year10": 1799104
+          }
+        },
+        "alternative_pathways": [
+          {
+            "pathway_id": "731a9d5a-a23c-5583-9bc3-4cf8fa634cb5",
+            "pathway_name": "MBBS",
+            "institution_name": "Private Medical College, Tamil Nadu (illustrative)",
+            "institution_tier": 2,
+            "quota": "management",
+            "duration_years": 6,
+            "total_cost": 16241746,
+            "family_funds": 1144074,
+            "scholarship_plan": [
+              {
+                "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+                "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+                "amount_total": 200000,
+                "probability": 0.15,
+                "expected_value": 30000,
+                "deadline": "2026-12-15"
+              }
+            ],
+            "scholarship_expected": 30000,
+            "loan_capacity": 534149,
+            "loan_required": 534149,
+            "monthly_emi": 12000,
+            "burden_ratio": 0.227,
+            "funding_gap": 14533523,
+            "affordability": 0.0854,
+            "affordability_class": "infeasible",
+            "admission_chance": 1.0,
+            "reachability": 0.0854,
+            "loan_scheme": null,
+            "roi": {
+              "npv_earnings_premium": 2846643,
+              "roi_ratio": 0.175,
+              "roi_norm": 0.1046,
+              "payback_years": null,
+              "starting_salary": 900000,
+              "salary_year10": 1799104
+            }
+          }
+        ],
+        "family": {
+          "student_fit": 0.705,
+          "parent_acceptance": 1.0,
+          "bridge_score": 0.827
+        },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: MBBS (government quota)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: NEET-UG",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: MBBS (government quota); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: NEET-UG."
+        },
+        "buckets": [
+          "best_overall",
+          "best_for_family",
+          "bridge"
+        ],
+        "explanation": [
+          "Strong match on investigative, grit / perseverance, values social impact.",
+          "MBBS (government quota) at Government Medical College, Tamil Nadu (illustrative) is comfortable for your family (about Rs 792,280 in total).",
+          "Demand outlook 73%; automation risk 8%.",
+          "Seats on this route are very competitive: estimated admission chance about 39% with your current scores (estimate).",
+          "Biggest gap: social (helping, teaching, caring) (41% below the usual level)."
+        ]
+      },
+      {
+        "rank": 2,
+        "career": {
+          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "slug": "biomedical-engineer",
+          "name": "Biomedical Engineer",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "E"
+          ]
+        },
+        "final_score": 0.7109,
+        "confidence": 0.5663,
+        "ci_low": 0.5864,
+        "ci_high": 0.8354,
+        "contributions": [
+          {
+            "component": "fit",
+            "raw_value": 0.8032,
+            "weight": 0.3,
+            "contribution": 0.241
+          },
+          {
+            "component": "market",
+            "raw_value": 0.6403,
+            "weight": 0.15,
+            "contribution": 0.096
+          },
+          {
+            "component": "affordability",
+            "raw_value": 0.9409,
+            "weight": 0.2,
+            "contribution": 0.1882
+          },
+          {
+            "component": "roi",
+            "raw_value": 0.3464,
+            "weight": 0.15,
+            "contribution": 0.052
+          },
+          {
+            "component": "family_alignment",
+            "raw_value": 0.952,
+            "weight": 0.15,
+            "contribution": 0.1428
+          },
+          {
+            "component": "disruption",
+            "raw_value": 0.18,
+            "weight": 0.05,
+            "contribution": -0.009
+          }
+        ],
+        "fit": {
+          "fit": 0.8032,
+          "cosine": 0.8981,
+          "distance_score": 0.7083,
+          "ml_score": null,
+          "ml_used": false,
+          "alpha": 0.0,
+          "top_matching_dimensions": [
+            "riasec_i",
+            "grit",
+            "cog_analytical"
+          ],
+          "gaps": [
+            {
+              "dimension": "val_security",
+              "label": "Values job security",
+              "student": 0.5,
+              "required": 0.7,
+              "gap": 0.2
+            },
+            {
+              "dimension": "val_impact",
+              "label": "Values social impact",
+              "student": 0.6667,
+              "required": 0.8,
+              "gap": 0.1333
+            },
+            {
+              "dimension": "cog_practical",
+              "label": "Practical thinking style",
+              "student": 0.5625,
+              "required": 0.7,
+              "gap": 0.1375
+            },
+            {
+              "dimension": "riasec_r",
+              "label": "Realistic (hands-on, building, tools)",
+              "student": 0.625,
+              "required": 0.75,
+              "gap": 0.125
+            }
+          ]
+        },
+        "market": {
+          "market_score": 0.6403,
+          "demand_index": 0.6678,
+          "job_velocity": 0.0763,
+          "disruption_risk": 0.18,
+          "regions_considered": [
+            "IN-TN-CBE",
+            "IN-KA-BLR",
+            "IN-TN-CHN",
+            "IN-TG-HYD",
+            "DE"
+          ],
+          "ci_low": 0.5163,
+          "ci_high": 0.7644,
+          "signals_as_of": "2026-09-30"
+        },
+        "financial": {
+          "pathway_id": "330b2531-1e14-56aa-bc4c-03d527306633",
+          "pathway_name": "B.E. Biomedical Engineering",
+          "institution_name": "PSG College of Technology",
+          "institution_tier": 2,
+          "quota": "open",
+          "duration_years": 4,
+          "total_cost": 1289649,
+          "family_funds": 941220,
+          "scholarship_plan": [
+            {
+              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+              "amount_total": 200000,
+              "probability": 0.15,
+              "expected_value": 30000,
+              "deadline": "2026-12-15"
+            }
+          ],
+          "scholarship_expected": 30000,
+          "loan_capacity": 605369,
+          "loan_required": 318429,
+          "monthly_emi": 6312,
+          "burden_ratio": 0.151,
+          "funding_gap": 0,
+          "affordability": 0.9409,
+          "affordability_class": "loan_dependent",
+          "admission_chance": 1.0,
+          "reachability": 0.9409,
+          "loan_scheme": null,
+          "roi": {
+            "npv_earnings_premium": 1025149,
+            "roi_ratio": 0.795,
+            "roi_norm": 0.3464,
+            "payback_years": 9.0,
+            "starting_salary": 450000,
+            "salary_year10": 899552
+          }
+        },
+        "alternative_pathways": [],
+        "family": {
+          "student_fit": 0.8032,
+          "parent_acceptance": 0.952,
+          "bridge_score": 0.8713
+        },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: B.E. Biomedical Engineering",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: TNEA Counselling (marks-based)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Biomedical Engineering; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+        },
+        "buckets": [
+          "best_overall",
+          "best_for_student",
+          "best_for_family",
+          "bridge"
+        ],
+        "explanation": [
+          "Strong match on investigative, grit / perseverance, analytical thinking style.",
+          "B.E. Biomedical Engineering at PSG College of Technology is loan-dependent for your family (about Rs 1,289,649 in total).",
+          "Demand outlook 64%; automation risk 18%.",
+          "Biggest gap: values job security (20% below the usual level)."
+        ]
+      },
+      {
+        "rank": 3,
+        "career": {
+          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
+          "slug": "computational-biologist",
+          "name": "Computational Biologist",
+          "sector": "health_life_sciences",
+          "steam_tags": [
+            "S",
+            "T",
+            "M"
+          ]
+        },
+        "final_score": 0.7072,
+        "confidence": 0.5663,
+        "ci_low": 0.5827,
+        "ci_high": 0.8317,
+        "contributions": [
+          {
+            "component": "fit",
+            "raw_value": 0.812,
+            "weight": 0.3,
+            "contribution": 0.2436
+          },
+          {
+            "component": "market",
+            "raw_value": 0.6045,
+            "weight": 0.15,
+            "contribution": 0.0907
+          },
+          {
+            "component": "affordability",
+            "raw_value": 0.9341,
+            "weight": 0.2,
+            "contribution": 0.1868
+          },
+          {
+            "component": "roi",
+            "raw_value": 0.6557,
+            "weight": 0.15,
+            "contribution": 0.0984
+          },
+          {
+            "component": "family_alignment",
+            "raw_value": 0.635,
+            "weight": 0.15,
+            "contribution": 0.0953
+          },
+          {
+            "component": "disruption",
+            "raw_value": 0.15,
+            "weight": 0.05,
+            "contribution": -0.0075
+          }
+        ],
+        "fit": {
+          "fit": 0.812,
+          "cosine": 0.8931,
+          "distance_score": 0.7308,
+          "ml_score": null,
+          "ml_used": false,
+          "alpha": 0.0,
+          "top_matching_dimensions": [
+            "riasec_i",
+            "cog_analytical",
+            "grit"
+          ],
+          "gaps": [
+            {
+              "dimension": "val_security",
+              "label": "Values job security",
+              "student": 0.5,
+              "required": 0.7,
+              "gap": 0.2
+            },
+            {
+              "dimension": "grit",
+              "label": "Grit / perseverance",
+              "student": 0.75,
+              "required": 0.85,
+              "gap": 0.1
+            }
+          ]
+        },
+        "market": {
+          "market_score": 0.6045,
+          "demand_index": 0.6296,
+          "job_velocity": 0.0458,
+          "disruption_risk": 0.15,
+          "regions_considered": [
+            "IN-TN-CBE",
+            "IN-KA-BLR",
+            "IN-TN-CHN",
+            "IN-TG-HYD",
+            "DE"
+          ],
+          "ci_low": 0.4804,
+          "ci_high": 0.7286,
+          "signals_as_of": "2026-09-30"
+        },
+        "financial": {
+          "pathway_id": "e8de9e45-aa02-5352-a209-2f8ac72a93c1",
+          "pathway_name": "BS-MS Biological Sciences",
+          "institution_name": "IISER Thiruvananthapuram",
+          "institution_tier": 1,
+          "quota": "open",
+          "duration_years": 5,
+          "total_cost": 861686,
+          "family_funds": 1039693,
+          "scholarship_plan": [
+            {
+              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
+              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
+              "amount_total": 200000,
+              "probability": 0.15,
+              "expected_value": 30000,
+              "deadline": "2026-12-15"
+            }
+          ],
+          "scholarship_expected": 30000,
+          "loan_capacity": 567533,
+          "loan_required": 0,
+          "monthly_emi": 0,
+          "burden_ratio": 0.067,
+          "funding_gap": 0,
+          "affordability": 1.0,
+          "affordability_class": "comfortable",
+          "admission_chance": 0.8681,
+          "reachability": 0.9341,
+          "loan_scheme": null,
+          "roi": {
+            "npv_earnings_premium": 2461538,
+            "roi_ratio": 2.857,
+            "roi_norm": 0.6557,
+            "payback_years": 4.0,
+            "starting_salary": 750000,
+            "salary_year10": 1499253
+          }
+        },
+        "alternative_pathways": [],
+        "family": {
+          "student_fit": 0.812,
+          "parent_acceptance": 0.635,
+          "bridge_score": 0.7127
+        },
+        "data_trust": {
+          "verified_share": 0.0,
+          "freshness": "fresh",
+          "oldest_as_of": "2026-09-30",
+          "inputs": [
+            {
+              "name": "market demand",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "salary band",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "fees: BS-MS Biological Sciences",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM curated estimate (mock fixture)"
+            },
+            {
+              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "Private foundation"
+            },
+            {
+              "name": "exam dates: IISER Aptitude Test",
+              "verification": "unverified",
+              "is_estimate": true,
+              "as_of": "2026-09-30",
+              "source_name": "PRISM estimate from previous exam cycles"
+            }
+          ],
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: BS-MS Biological Sciences; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: IISER Aptitude Test."
+        },
+        "buckets": [
+          "best_overall",
+          "best_for_student",
+          "best_for_family"
+        ],
+        "explanation": [
+          "Strong match on investigative, analytical thinking style, grit / perseverance.",
+          "BS-MS Biological Sciences at IISER Thiruvananthapuram is comfortable for your family (about Rs 861,686 in total).",
+          "Demand outlook 60%; automation risk 15%.",
+          "Biggest gap: values job security (20% below the usual level)."
+        ]
+      },
+      {
+        "rank": 4,
+        "career": {
           "id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
           "slug": "data-scientist",
           "name": "Data Scientist",
@@ -81,22 +749,22 @@
             "M"
           ]
         },
-        "final_score": 0.771,
-        "confidence": 0.5794,
-        "ci_low": 0.651,
-        "ci_high": 0.891,
+        "final_score": 0.7064,
+        "confidence": 0.5663,
+        "ci_low": 0.5819,
+        "ci_high": 0.8309,
         "contributions": [
           {
             "component": "fit",
-            "raw_value": 0.86,
+            "raw_value": 0.7761,
             "weight": 0.3,
-            "contribution": 0.258
+            "contribution": 0.2328
           },
           {
             "component": "market",
-            "raw_value": 0.84,
+            "raw_value": 0.7659,
             "weight": 0.15,
-            "contribution": 0.126
+            "contribution": 0.1149
           },
           {
             "component": "affordability",
@@ -106,15 +774,15 @@
           },
           {
             "component": "roi",
-            "raw_value": 0.78,
+            "raw_value": 0.7663,
             "weight": 0.15,
-            "contribution": 0.117
+            "contribution": 0.1149
           },
           {
             "component": "family_alignment",
-            "raw_value": 0.55,
+            "raw_value": 0.375,
             "weight": 0.15,
-            "contribution": 0.0825
+            "contribution": 0.0562
           },
           {
             "component": "disruption",
@@ -124,28 +792,28 @@
           }
         ],
         "fit": {
-          "fit": 0.86,
-          "cosine": 0.89,
-          "distance_score": 0.83,
+          "fit": 0.7761,
+          "cosine": 0.8424,
+          "distance_score": 0.7098,
           "ml_score": null,
           "ml_used": false,
-          "alpha": 0.5,
+          "alpha": 0.0,
           "top_matching_dimensions": [
             "riasec_i",
             "cog_analytical",
-            "apt_logical"
+            "apt_numerical"
           ],
           "gaps": [
             {
-              "dimension": "val_financial",
-              "label": "Values financial reward",
-              "student": 0.5,
-              "required": 0.7,
-              "gap": 0.2
-            },
-            {
               "dimension": "riasec_c",
               "label": "Conventional (organising, data, procedures)",
+              "student": 0.5,
+              "required": 0.65,
+              "gap": 0.15
+            },
+            {
+              "dimension": "val_financial",
+              "label": "Values financial reward",
               "student": 0.5,
               "required": 0.65,
               "gap": 0.15
@@ -158,26 +826,28 @@
               "gap": 0.125
             },
             {
-              "dimension": "apt_logical",
-              "label": "Logical reasoning",
+              "dimension": "apt_numerical",
+              "label": "Numerical aptitude",
               "student": 0.7778,
-              "required": 0.9,
-              "gap": 0.122
+              "required": 0.85,
+              "gap": 0.0722
             }
           ]
         },
         "market": {
-          "market_score": 0.84,
-          "demand_index": 0.84,
-          "job_velocity": 0.192,
+          "market_score": 0.7659,
+          "demand_index": 0.8013,
+          "job_velocity": 0.1831,
           "disruption_risk": 0.25,
           "regions_considered": [
             "IN-TN-CBE",
+            "IN-KA-BLR",
             "IN-TN-CHN",
-            "IN-KA-BLR"
+            "IN-TG-HYD",
+            "DE"
           ],
-          "ci_low": 0.77,
-          "ci_high": 0.91,
+          "ci_low": 0.6418,
+          "ci_high": 0.8899,
           "signals_as_of": "2026-09-30"
         },
         "financial": {
@@ -187,8 +857,8 @@
           "institution_tier": 2,
           "quota": "open",
           "duration_years": 4,
-          "total_cost": 608325,
-          "family_funds": 940000,
+          "total_cost": 656991,
+          "family_funds": 941220,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -200,27 +870,30 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 908000,
+          "loan_capacity": 605369,
           "loan_required": 0,
           "monthly_emi": 0,
           "burden_ratio": 0.067,
           "funding_gap": 0,
           "affordability": 1.0,
           "affordability_class": "comfortable",
+          "admission_chance": 1.0,
+          "reachability": 1.0,
+          "loan_scheme": null,
           "roi": {
-            "npv_earnings_premium": 4952341,
-            "roi_ratio": 8.141,
-            "roi_norm": 0.78,
-            "payback_years": 2.2,
+            "npv_earnings_premium": 3230743,
+            "roi_ratio": 4.917,
+            "roi_norm": 0.7663,
+            "payback_years": 3.0,
             "starting_salary": 800000,
             "salary_year10": 1599203
           }
         },
         "alternative_pathways": [],
         "family": {
-          "student_fit": 0.86,
-          "parent_acceptance": 0.55,
-          "bridge_score": 0.6709
+          "student_fit": 0.7761,
+          "parent_acceptance": 0.375,
+          "bridge_score": 0.5057
         },
         "data_trust": {
           "verified_share": 0.0,
@@ -266,450 +939,17 @@
           "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Tech Computer Science (Data Science); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
         },
         "buckets": [
-          "best_overall",
           "best_for_student"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), analytical thinking style, logical reasoning.",
-          "B.Tech Computer Science (Data Science) at Government College of Technology, Coimbatore is comfortable for your family (total about Rs 608,325).",
-          "Demand outlook 84% with automation risk 25%."
+          "Strong match on investigative, analytical thinking style, numerical aptitude.",
+          "B.Tech Computer Science (Data Science) at Government College of Technology, Coimbatore is comfortable for your family (about Rs 656,991 in total).",
+          "Demand outlook 77%; automation risk 25%.",
+          "Biggest gap: conventional (organising, data, procedures) (15% below the usual level)."
         ]
       },
       {
-        "rank": 2,
-        "career": {
-          "id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
-          "slug": "biomedical-engineer",
-          "name": "Biomedical Engineer",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S",
-            "T",
-            "E"
-          ]
-        },
-        "final_score": 0.7505,
-        "confidence": 0.5794,
-        "ci_low": 0.6305,
-        "ci_high": 0.8705,
-        "contributions": [
-          {
-            "component": "fit",
-            "raw_value": 0.78,
-            "weight": 0.3,
-            "contribution": 0.234
-          },
-          {
-            "component": "market",
-            "raw_value": 0.7,
-            "weight": 0.15,
-            "contribution": 0.105
-          },
-          {
-            "component": "affordability",
-            "raw_value": 1.0,
-            "weight": 0.2,
-            "contribution": 0.2
-          },
-          {
-            "component": "roi",
-            "raw_value": 0.62,
-            "weight": 0.15,
-            "contribution": 0.093
-          },
-          {
-            "component": "family_alignment",
-            "raw_value": 0.85,
-            "weight": 0.15,
-            "contribution": 0.1275
-          },
-          {
-            "component": "disruption",
-            "raw_value": 0.18,
-            "weight": 0.05,
-            "contribution": -0.009
-          }
-        ],
-        "fit": {
-          "fit": 0.78,
-          "cosine": 0.81,
-          "distance_score": 0.75,
-          "ml_score": null,
-          "ml_used": false,
-          "alpha": 0.5,
-          "top_matching_dimensions": [
-            "riasec_i",
-            "grit",
-            "cog_analytical"
-          ],
-          "gaps": [
-            {
-              "dimension": "riasec_s",
-              "label": "Social (helping, teaching, caring)",
-              "student": 0.4375,
-              "required": 0.8,
-              "gap": 0.363
-            },
-            {
-              "dimension": "val_security",
-              "label": "Values job security",
-              "student": 0.5,
-              "required": 0.7,
-              "gap": 0.2
-            },
-            {
-              "dimension": "val_impact",
-              "label": "Values social impact",
-              "student": 0.6667,
-              "required": 0.85,
-              "gap": 0.183
-            },
-            {
-              "dimension": "grit",
-              "label": "Grit / perseverance",
-              "student": 0.75,
-              "required": 0.85,
-              "gap": 0.1
-            }
-          ]
-        },
-        "market": {
-          "market_score": 0.7,
-          "demand_index": 0.7,
-          "job_velocity": 0.08,
-          "disruption_risk": 0.18,
-          "regions_considered": [
-            "IN-TN-CBE",
-            "IN-TN-CHN",
-            "IN-KA-BLR"
-          ],
-          "ci_low": 0.63,
-          "ci_high": 0.77,
-          "signals_as_of": "2026-09-30"
-        },
-        "financial": {
-          "pathway_id": "330b2531-1e14-56aa-bc4c-03d527306633",
-          "pathway_name": "B.E. Biomedical Engineering",
-          "institution_name": "PSG College of Technology",
-          "institution_tier": 2,
-          "quota": "open",
-          "duration_years": 4,
-          "total_cost": 1194119,
-          "family_funds": 940000,
-          "scholarship_plan": [
-            {
-              "scholarship_id": "a0ed699d-994d-5724-aefc-935d6e90d9c5",
-              "name": "Institutional merit fee waiver (illustrative)",
-              "amount_total": 150000,
-              "probability": 0.4,
-              "expected_value": 60000,
-              "deadline": "2027-07-31"
-            },
-            {
-              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
-              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
-              "amount_total": 200000,
-              "probability": 0.15,
-              "expected_value": 30000,
-              "deadline": "2026-12-15"
-            }
-          ],
-          "scholarship_expected": 90000,
-          "loan_capacity": 908000,
-          "loan_required": 164119,
-          "monthly_emi": 2168,
-          "burden_ratio": 0.096,
-          "funding_gap": 0,
-          "affordability": 1.0,
-          "affordability_class": "loan_dependent",
-          "roi": {
-            "npv_earnings_premium": 1711600,
-            "roi_ratio": 1.433,
-            "roi_norm": 0.62,
-            "payback_years": 8.2,
-            "starting_salary": 450000,
-            "salary_year10": 899552
-          }
-        },
-        "alternative_pathways": [],
-        "family": {
-          "student_fit": 0.78,
-          "parent_acceptance": 0.85,
-          "bridge_score": 0.8135
-        },
-        "data_trust": {
-          "verified_share": 0.0,
-          "freshness": "fresh",
-          "oldest_as_of": "2026-09-30",
-          "inputs": [
-            {
-              "name": "market demand",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "salary band",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "fees: B.E. Biomedical Engineering",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "scholarship: Institutional merit fee waiver (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Partner institutions"
-            },
-            {
-              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Private foundation"
-            },
-            {
-              "name": "exam dates: TNEA Counselling (marks-based)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM estimate from previous exam cycles"
-            }
-          ],
-          "note": "0 of 6 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Biomedical Engineering; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
-        },
-        "buckets": [
-          "best_overall",
-          "best_for_family",
-          "bridge"
-        ],
-        "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
-          "B.E. Biomedical Engineering at PSG College of Technology is loan-dependent for your family (total about Rs 1,194,119).",
-          "Demand outlook 70% with automation risk 18%."
-        ]
-      },
-      {
-        "rank": 3,
-        "career": {
-          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-          "slug": "computational-biologist",
-          "name": "Computational Biologist",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S",
-            "T",
-            "M"
-          ]
-        },
-        "final_score": 0.728,
-        "confidence": 0.629,
-        "ci_low": 0.624,
-        "ci_high": 0.832,
-        "contributions": [
-          {
-            "component": "fit",
-            "raw_value": 0.82,
-            "weight": 0.3,
-            "contribution": 0.246
-          },
-          {
-            "component": "market",
-            "raw_value": 0.66,
-            "weight": 0.15,
-            "contribution": 0.099
-          },
-          {
-            "component": "affordability",
-            "raw_value": 1.0,
-            "weight": 0.2,
-            "contribution": 0.2
-          },
-          {
-            "component": "roi",
-            "raw_value": 0.55,
-            "weight": 0.15,
-            "contribution": 0.0825
-          },
-          {
-            "component": "family_alignment",
-            "raw_value": 0.72,
-            "weight": 0.15,
-            "contribution": 0.108
-          },
-          {
-            "component": "disruption",
-            "raw_value": 0.15,
-            "weight": 0.05,
-            "contribution": -0.0075
-          }
-        ],
-        "fit": {
-          "fit": 0.82,
-          "cosine": 0.85,
-          "distance_score": 0.79,
-          "ml_score": null,
-          "ml_used": false,
-          "alpha": 0.5,
-          "top_matching_dimensions": [
-            "riasec_i",
-            "grit",
-            "cog_analytical"
-          ],
-          "gaps": [
-            {
-              "dimension": "riasec_s",
-              "label": "Social (helping, teaching, caring)",
-              "student": 0.4375,
-              "required": 0.8,
-              "gap": 0.363
-            },
-            {
-              "dimension": "val_security",
-              "label": "Values job security",
-              "student": 0.5,
-              "required": 0.7,
-              "gap": 0.2
-            },
-            {
-              "dimension": "val_impact",
-              "label": "Values social impact",
-              "student": 0.6667,
-              "required": 0.85,
-              "gap": 0.183
-            },
-            {
-              "dimension": "grit",
-              "label": "Grit / perseverance",
-              "student": 0.75,
-              "required": 0.85,
-              "gap": 0.1
-            }
-          ]
-        },
-        "market": {
-          "market_score": 0.66,
-          "demand_index": 0.66,
-          "job_velocity": 0.048,
-          "disruption_risk": 0.15,
-          "regions_considered": [
-            "IN-TN-CBE",
-            "IN-TN-CHN",
-            "IN-KA-BLR"
-          ],
-          "ci_low": 0.59,
-          "ci_high": 0.73,
-          "signals_as_of": "2026-09-30"
-        },
-        "financial": {
-          "pathway_id": "e8de9e45-aa02-5352-a209-2f8ac72a93c1",
-          "pathway_name": "BS-MS Biological Sciences",
-          "institution_name": "IISER Thiruvananthapuram",
-          "institution_tier": 1,
-          "quota": "open",
-          "duration_years": 5,
-          "total_cost": 797857,
-          "family_funds": 940000,
-          "scholarship_plan": [
-            {
-              "scholarship_id": "091d3030-9912-5848-8c1f-73940b4c3a35",
-              "name": "INSPIRE Scholarship for Higher Education (natural & basic sciences)",
-              "amount_total": 400000,
-              "probability": 0.3,
-              "expected_value": 120000,
-              "deadline": "2026-11-30"
-            }
-          ],
-          "scholarship_expected": 120000,
-          "loan_capacity": 908000,
-          "loan_required": 0,
-          "monthly_emi": 0,
-          "burden_ratio": 0.067,
-          "funding_gap": 0,
-          "affordability": 1.0,
-          "affordability_class": "comfortable",
-          "roi": {
-            "npv_earnings_premium": 3100489,
-            "roi_ratio": 3.886,
-            "roi_norm": 0.55,
-            "payback_years": 3.8,
-            "starting_salary": 600000,
-            "salary_year10": 1199402
-          }
-        },
-        "alternative_pathways": [],
-        "family": {
-          "student_fit": 0.82,
-          "parent_acceptance": 0.72,
-          "bridge_score": 0.7668
-        },
-        "data_trust": {
-          "verified_share": 0.2,
-          "freshness": "fresh",
-          "oldest_as_of": "2026-09-30",
-          "inputs": [
-            {
-              "name": "market demand",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "salary band",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "fees: BS-MS Biological Sciences",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "scholarship: INSPIRE Scholarship for Higher Education (natural & basic sciences)",
-              "verification": "secondary",
-              "is_estimate": false,
-              "as_of": "2026-10-07",
-              "source_name": "Department of Science & Technology"
-            },
-            {
-              "name": "exam dates: IISER Aptitude Test",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM estimate from previous exam cycles"
-            }
-          ],
-          "note": "1 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: BS-MS Biological Sciences; exam dates: IISER Aptitude Test."
-        },
-        "buckets": [
-          "best_overall",
-          "best_for_student",
-          "best_for_family",
-          "bridge",
-          "hidden_gems"
-        ],
-        "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
-          "BS-MS Biological Sciences at IISER Thiruvananthapuram is comfortable for your family (total about Rs 797,857).",
-          "Demand outlook 66% with automation risk 15%."
-        ]
-      },
-      {
-        "rank": 4,
+        "rank": 5,
         "career": {
           "id": "eff52b78-0c57-5b19-a685-9abe928a162f",
           "slug": "agri-drone-engineer",
@@ -721,22 +961,22 @@
             "E"
           ]
         },
-        "final_score": 0.695,
-        "confidence": 0.5794,
-        "ci_low": 0.575,
-        "ci_high": 0.815,
+        "final_score": 0.6196,
+        "confidence": 0.5663,
+        "ci_low": 0.4951,
+        "ci_high": 0.7441,
         "contributions": [
           {
             "component": "fit",
-            "raw_value": 0.74,
+            "raw_value": 0.6947,
             "weight": 0.3,
-            "contribution": 0.222
+            "contribution": 0.2084
           },
           {
             "component": "market",
-            "raw_value": 0.68,
+            "raw_value": 0.6224,
             "weight": 0.15,
-            "contribution": 0.102
+            "contribution": 0.0934
           },
           {
             "component": "affordability",
@@ -746,15 +986,15 @@
           },
           {
             "component": "roi",
-            "raw_value": 0.58,
+            "raw_value": 0.4376,
             "weight": 0.15,
-            "contribution": 0.087
+            "contribution": 0.0656
           },
           {
             "component": "family_alignment",
-            "raw_value": 0.6,
+            "raw_value": 0.388,
             "weight": 0.15,
-            "contribution": 0.09
+            "contribution": 0.0582
           },
           {
             "component": "disruption",
@@ -764,15 +1004,16 @@
           }
         ],
         "fit": {
-          "fit": 0.74,
-          "cosine": 0.77,
-          "distance_score": 0.71,
+          "fit": 0.6947,
+          "cosine": 0.7638,
+          "distance_score": 0.6256,
           "ml_score": null,
           "ml_used": false,
-          "alpha": 0.5,
+          "alpha": 0.0,
           "top_matching_dimensions": [
             "riasec_i",
-            "grit"
+            "grit",
+            "apt_spatial"
           ],
           "gaps": [
             {
@@ -780,14 +1021,7 @@
               "label": "Practical thinking style",
               "student": 0.5625,
               "required": 0.85,
-              "gap": 0.287
-            },
-            {
-              "dimension": "val_impact",
-              "label": "Values social impact",
-              "student": 0.6667,
-              "required": 0.85,
-              "gap": 0.183
+              "gap": 0.2875
             },
             {
               "dimension": "riasec_r",
@@ -797,26 +1031,35 @@
               "gap": 0.175
             },
             {
+              "dimension": "val_impact",
+              "label": "Values social impact",
+              "student": 0.6667,
+              "required": 0.8,
+              "gap": 0.1333
+            },
+            {
               "dimension": "riasec_s",
               "label": "Social (helping, teaching, caring)",
               "student": 0.4375,
               "required": 0.55,
-              "gap": 0.113
+              "gap": 0.1125
             }
           ]
         },
         "market": {
-          "market_score": 0.68,
-          "demand_index": 0.68,
-          "job_velocity": 0.064,
+          "market_score": 0.6224,
+          "demand_index": 0.6487,
+          "job_velocity": 0.061,
           "disruption_risk": 0.12,
           "regions_considered": [
             "IN-TN-CBE",
+            "IN-KA-BLR",
             "IN-TN-CHN",
-            "IN-KA-BLR"
+            "IN-TG-HYD",
+            "DE"
           ],
-          "ci_low": 0.61,
-          "ci_high": 0.75,
+          "ci_low": 0.4983,
+          "ci_high": 0.7464,
           "signals_as_of": "2026-09-30"
         },
         "financial": {
@@ -826,8 +1069,8 @@
           "institution_tier": 2,
           "quota": "open",
           "duration_years": 4,
-          "total_cost": 563264,
-          "family_funds": 940000,
+          "total_cost": 608325,
+          "family_funds": 941220,
           "scholarship_plan": [
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
@@ -839,17 +1082,20 @@
             }
           ],
           "scholarship_expected": 30000,
-          "loan_capacity": 908000,
+          "loan_capacity": 605369,
           "loan_required": 0,
           "monthly_emi": 0,
           "burden_ratio": 0.067,
           "funding_gap": 0,
           "affordability": 1.0,
           "affordability_class": "comfortable",
+          "admission_chance": 1.0,
+          "reachability": 1.0,
+          "loan_scheme": null,
           "roi": {
-            "npv_earnings_premium": 1248637,
-            "roi_ratio": 2.217,
-            "roi_norm": 0.58,
+            "npv_earnings_premium": 710065,
+            "roi_ratio": 1.167,
+            "roi_norm": 0.4376,
             "payback_years": 4.0,
             "starting_salary": 400000,
             "salary_year10": 799601
@@ -857,9 +1103,9 @@
         },
         "alternative_pathways": [],
         "family": {
-          "student_fit": 0.74,
-          "parent_acceptance": 0.6,
-          "bridge_score": 0.6627
+          "student_fit": 0.6947,
+          "parent_acceptance": 0.388,
+          "bridge_score": 0.4979
         },
         "data_trust": {
           "verified_share": 0.0,
@@ -905,17 +1151,17 @@
           "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Tech Agricultural Engineering; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNAU UG Admission (marks-based)."
         },
         "buckets": [
-          "best_for_family",
           "hidden_gems"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance.",
-          "B.Tech Agricultural Engineering at Tamil Nadu Agricultural University is comfortable for your family (total about Rs 563,264).",
-          "Demand outlook 68% with automation risk 12%."
+          "Strong match on investigative, grit / perseverance, spatial reasoning.",
+          "B.Tech Agricultural Engineering at Tamil Nadu Agricultural University is comfortable for your family (about Rs 608,325 in total).",
+          "Demand outlook 62%; automation risk 12%.",
+          "Biggest gap: practical thinking style (29% below the usual level)."
         ]
       },
       {
-        "rank": 5,
+        "rank": 6,
         "career": {
           "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "slug": "robotics-engineer",
@@ -928,40 +1174,40 @@
             "M"
           ]
         },
-        "final_score": 0.6854,
-        "confidence": 0.5794,
-        "ci_low": 0.5654,
-        "ci_high": 0.8054,
+        "final_score": 0.6002,
+        "confidence": 0.5663,
+        "ci_low": 0.4757,
+        "ci_high": 0.7247,
         "contributions": [
           {
             "component": "fit",
-            "raw_value": 0.79,
+            "raw_value": 0.7301,
             "weight": 0.3,
-            "contribution": 0.237
+            "contribution": 0.219
           },
           {
             "component": "market",
-            "raw_value": 0.72,
+            "raw_value": 0.6583,
             "weight": 0.15,
-            "contribution": 0.108
+            "contribution": 0.0987
           },
           {
             "component": "affordability",
-            "raw_value": 0.792,
+            "raw_value": 0.6296,
             "weight": 0.2,
-            "contribution": 0.1584
+            "contribution": 0.1259
           },
           {
             "component": "roi",
-            "raw_value": 0.64,
+            "raw_value": 0.3641,
             "weight": 0.15,
-            "contribution": 0.096
+            "contribution": 0.0546
           },
           {
             "component": "family_alignment",
-            "raw_value": 0.62,
+            "raw_value": 0.726,
             "weight": 0.15,
-            "contribution": 0.093
+            "contribution": 0.1089
           },
           {
             "component": "disruption",
@@ -971,15 +1217,15 @@
           }
         ],
         "fit": {
-          "fit": 0.79,
-          "cosine": 0.82,
-          "distance_score": 0.76,
+          "fit": 0.7301,
+          "cosine": 0.8313,
+          "distance_score": 0.6289,
           "ml_score": null,
           "ml_used": false,
-          "alpha": 0.5,
+          "alpha": 0.0,
           "top_matching_dimensions": [
-            "riasec_i",
             "apt_numerical",
+            "riasec_i",
             "cog_analytical"
           ],
           "gaps": [
@@ -994,8 +1240,8 @@
               "dimension": "cog_practical",
               "label": "Practical thinking style",
               "student": 0.5625,
-              "required": 0.75,
-              "gap": 0.188
+              "required": 0.8,
+              "gap": 0.2375
             },
             {
               "dimension": "riasec_e",
@@ -1005,26 +1251,28 @@
               "gap": 0.125
             },
             {
-              "dimension": "val_security",
-              "label": "Values job security",
-              "student": 0.5,
-              "required": 0.6,
-              "gap": 0.1
+              "dimension": "apt_numerical",
+              "label": "Numerical aptitude",
+              "student": 0.7778,
+              "required": 0.85,
+              "gap": 0.0722
             }
           ]
         },
         "market": {
-          "market_score": 0.72,
-          "demand_index": 0.72,
-          "job_velocity": 0.096,
+          "market_score": 0.6583,
+          "demand_index": 0.6869,
+          "job_velocity": 0.0917,
           "disruption_risk": 0.14,
           "regions_considered": [
             "IN-TN-CBE",
+            "IN-KA-BLR",
             "IN-TN-CHN",
-            "IN-KA-BLR"
+            "IN-TG-HYD",
+            "DE"
           ],
-          "ci_low": 0.65,
-          "ci_high": 0.79,
+          "ci_low": 0.5342,
+          "ci_high": 0.7824,
           "signals_as_of": "2026-09-30"
         },
         "financial": {
@@ -1034,17 +1282,9 @@
           "institution_tier": 2,
           "quota": "open",
           "duration_years": 4,
-          "total_cost": 1784420,
-          "family_funds": 940000,
+          "total_cost": 1927173,
+          "family_funds": 941220,
           "scholarship_plan": [
-            {
-              "scholarship_id": "a0ed699d-994d-5724-aefc-935d6e90d9c5",
-              "name": "Institutional merit fee waiver (illustrative)",
-              "amount_total": 200000,
-              "probability": 0.4,
-              "expected_value": 80000,
-              "deadline": "2027-07-31"
-            },
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
               "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
@@ -1054,28 +1294,31 @@
               "deadline": "2026-12-15"
             }
           ],
-          "scholarship_expected": 110000,
-          "loan_capacity": 908000,
-          "loan_required": 734420,
-          "monthly_emi": 9705,
-          "burden_ratio": 0.196,
-          "funding_gap": 0,
-          "affordability": 0.792,
-          "affordability_class": "loan_dependent",
+          "scholarship_expected": 30000,
+          "loan_capacity": 605369,
+          "loan_required": 605369,
+          "monthly_emi": 12000,
+          "burden_ratio": 0.227,
+          "funding_gap": 350584,
+          "affordability": 0.6296,
+          "affordability_class": "infeasible",
+          "admission_chance": 1.0,
+          "reachability": 0.6296,
+          "loan_scheme": null,
           "roi": {
-            "npv_earnings_premium": 2637526,
-            "roi_ratio": 1.478,
-            "roi_norm": 0.64,
-            "payback_years": 11.5,
+            "npv_earnings_premium": 1655319,
+            "roi_ratio": 0.859,
+            "roi_norm": 0.3641,
+            "payback_years": 10.0,
             "starting_salary": 550000,
             "salary_year10": 1099452
           }
         },
         "alternative_pathways": [],
         "family": {
-          "student_fit": 0.79,
-          "parent_acceptance": 0.62,
-          "bridge_score": 0.6948
+          "student_fit": 0.7301,
+          "parent_acceptance": 0.726,
+          "bridge_score": 0.728
         },
         "data_trust": {
           "verified_share": 0.0,
@@ -1104,13 +1347,6 @@
               "source_name": "PRISM curated estimate (mock fixture)"
             },
             {
-              "name": "scholarship: Institutional merit fee waiver (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Partner institutions"
-            },
-            {
               "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
               "verification": "unverified",
               "is_estimate": true,
@@ -1125,17 +1361,21 @@
               "source_name": "PRISM estimate from previous exam cycles"
             }
           ],
-          "note": "0 of 6 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Robotics & Automation; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
+          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.E. Robotics & Automation; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: TNEA Counselling (marks-based)."
         },
-        "buckets": [],
+        "buckets": [
+          "hidden_gems",
+          "stretch_goals"
+        ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), numerical aptitude, analytical thinking style.",
-          "B.E. Robotics & Automation at PSG College of Technology is loan-dependent for your family (total about Rs 1,784,420).",
-          "Demand outlook 72% with automation risk 14%."
+          "Strong match on numerical aptitude, investigative, analytical thinking style.",
+          "B.E. Robotics & Automation at PSG College of Technology is infeasible for your family (about Rs 1,927,173 in total).",
+          "Demand outlook 66%; automation risk 14%.",
+          "Biggest gap: realistic (hands-on, building, tools) (22% below the usual level)."
         ]
       },
       {
-        "rank": 6,
+        "rank": 7,
         "career": {
           "id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
           "slug": "ux-designer",
@@ -1146,40 +1386,40 @@
             "A"
           ]
         },
-        "final_score": 0.5769,
-        "confidence": 0.5794,
-        "ci_low": 0.4569,
-        "ci_high": 0.6969,
+        "final_score": 0.4681,
+        "confidence": 0.5663,
+        "ci_low": 0.3436,
+        "ci_high": 0.5926,
         "contributions": [
           {
             "component": "fit",
-            "raw_value": 0.8,
+            "raw_value": 0.6822,
             "weight": 0.3,
-            "contribution": 0.24
+            "contribution": 0.2047
           },
           {
             "component": "market",
-            "raw_value": 0.74,
+            "raw_value": 0.6762,
             "weight": 0.15,
-            "contribution": 0.111
+            "contribution": 0.1014
           },
           {
             "component": "affordability",
-            "raw_value": 0.4468,
+            "raw_value": 0.3552,
             "weight": 0.2,
-            "contribution": 0.0894
+            "contribution": 0.071
           },
           {
             "component": "roi",
-            "raw_value": 0.66,
+            "raw_value": 0.3366,
             "weight": 0.15,
-            "contribution": 0.099
+            "contribution": 0.0505
           },
           {
             "component": "family_alignment",
-            "raw_value": 0.35,
+            "raw_value": 0.37,
             "weight": 0.15,
-            "contribution": 0.0525
+            "contribution": 0.0555
           },
           {
             "component": "disruption",
@@ -1189,14 +1429,15 @@
           }
         ],
         "fit": {
-          "fit": 0.8,
-          "cosine": 0.83,
-          "distance_score": 0.77,
+          "fit": 0.6822,
+          "cosine": 0.7594,
+          "distance_score": 0.605,
           "ml_score": null,
           "ml_used": false,
-          "alpha": 0.5,
+          "alpha": 0.0,
           "top_matching_dimensions": [
             "riasec_a",
+            "cog_creative",
             "apt_spatial"
           ],
           "gaps": [
@@ -1204,44 +1445,46 @@
               "dimension": "cog_creative",
               "label": "Creative thinking style",
               "student": 0.6875,
-              "required": 0.95,
-              "gap": 0.262
+              "required": 0.9,
+              "gap": 0.2125
             },
             {
               "dimension": "riasec_a",
               "label": "Artistic (creating, designing, expressing)",
               "student": 0.75,
-              "required": 0.95,
-              "gap": 0.2
-            },
-            {
-              "dimension": "riasec_e",
-              "label": "Enterprising (leading, persuading, starting)",
-              "student": 0.375,
-              "required": 0.55,
-              "gap": 0.175
+              "required": 0.9,
+              "gap": 0.15
             },
             {
               "dimension": "val_autonomy",
               "label": "Values autonomy",
               "student": 0.6667,
               "required": 0.8,
-              "gap": 0.133
+              "gap": 0.1333
+            },
+            {
+              "dimension": "riasec_s",
+              "label": "Social (helping, teaching, caring)",
+              "student": 0.4375,
+              "required": 0.6,
+              "gap": 0.1625
             }
           ]
         },
         "market": {
-          "market_score": 0.74,
-          "demand_index": 0.74,
-          "job_velocity": 0.112,
+          "market_score": 0.6762,
+          "demand_index": 0.7059,
+          "job_velocity": 0.1068,
           "disruption_risk": 0.3,
           "regions_considered": [
             "IN-TN-CBE",
+            "IN-KA-BLR",
             "IN-TN-CHN",
-            "IN-KA-BLR"
+            "IN-TG-HYD",
+            "DE"
           ],
-          "ci_low": 0.67,
-          "ci_high": 0.81,
+          "ci_low": 0.5521,
+          "ci_high": 0.8003,
           "signals_as_of": "2026-09-30"
         },
         "financial": {
@@ -1251,17 +1494,9 @@
           "institution_tier": 2,
           "quota": "open",
           "duration_years": 4,
-          "total_cost": 3163290,
-          "family_funds": 940000,
+          "total_cost": 3416353,
+          "family_funds": 941220,
           "scholarship_plan": [
-            {
-              "scholarship_id": "a0ed699d-994d-5724-aefc-935d6e90d9c5",
-              "name": "Institutional merit fee waiver (illustrative)",
-              "amount_total": 200000,
-              "probability": 0.4,
-              "expected_value": 80000,
-              "deadline": "2027-07-31"
-            },
             {
               "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
               "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
@@ -1271,28 +1506,31 @@
               "deadline": "2026-12-15"
             }
           ],
-          "scholarship_expected": 110000,
-          "loan_capacity": 908000,
-          "loan_required": 908000,
-          "monthly_emi": 11999,
+          "scholarship_expected": 30000,
+          "loan_capacity": 605369,
+          "loan_required": 605369,
+          "monthly_emi": 12000,
           "burden_ratio": 0.227,
-          "funding_gap": 1205290,
-          "affordability": 0.4468,
+          "funding_gap": 1839764,
+          "affordability": 0.3552,
           "affordability_class": "infeasible",
+          "admission_chance": 1.0,
+          "reachability": 0.3552,
+          "loan_scheme": null,
           "roi": {
-            "npv_earnings_premium": 4026415,
-            "roi_ratio": 1.273,
-            "roi_norm": 0.66,
-            "payback_years": null,
+            "npv_earnings_premium": 2600573,
+            "roi_ratio": 0.761,
+            "roi_norm": 0.3366,
+            "payback_years": 12.0,
             "starting_salary": 700000,
             "salary_year10": 1399303
           }
         },
         "alternative_pathways": [],
         "family": {
-          "student_fit": 0.8,
-          "parent_acceptance": 0.35,
-          "bridge_score": 0.487
+          "student_fit": 0.6822,
+          "parent_acceptance": 0.37,
+          "bridge_score": 0.4798
         },
         "data_trust": {
           "verified_share": 0.0,
@@ -1321,13 +1559,6 @@
               "source_name": "PRISM curated estimate (mock fixture)"
             },
             {
-              "name": "scholarship: Institutional merit fee waiver (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Partner institutions"
-            },
-            {
               "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
               "verification": "unverified",
               "is_estimate": true,
@@ -1349,384 +1580,143 @@
               "source_name": "PRISM estimate from previous exam cycles"
             }
           ],
-          "note": "0 of 7 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Des Interaction Design; scholarship: Institutional merit fee waiver (illustrative); scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: UCEED; exam dates: NID Design Aptitude Test."
-        },
-        "buckets": [
-          "best_for_student",
-          "stretch_goals"
-        ],
-        "explanation": [
-          "Strong match on artistic (creating, designing, expressing), spatial reasoning.",
-          "B.Des Interaction Design at Private Design School, Bengaluru (illustrative) is infeasible for your family (total about Rs 3,163,290).",
-          "Demand outlook 74% with automation risk 30%."
-        ]
-      },
-      {
-        "rank": 7,
-        "career": {
-          "id": "25e5be98-408e-5217-9336-fa983dc96be0",
-          "slug": "doctor-mbbs",
-          "name": "Doctor (MBBS)",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S"
-          ]
-        },
-        "final_score": 0.5552,
-        "confidence": 0.5794,
-        "ci_low": 0.4352,
-        "ci_high": 0.6752,
-        "contributions": [
-          {
-            "component": "fit",
-            "raw_value": 0.58,
-            "weight": 0.3,
-            "contribution": 0.174
-          },
-          {
-            "component": "market",
-            "raw_value": 0.8,
-            "weight": 0.15,
-            "contribution": 0.12
-          },
-          {
-            "component": "affordability",
-            "raw_value": 0.0887,
-            "weight": 0.2,
-            "contribution": 0.0177
-          },
-          {
-            "component": "roi",
-            "raw_value": 0.7,
-            "weight": 0.15,
-            "contribution": 0.105
-          },
-          {
-            "component": "family_alignment",
-            "raw_value": 0.95,
-            "weight": 0.15,
-            "contribution": 0.1425
-          },
-          {
-            "component": "disruption",
-            "raw_value": 0.08,
-            "weight": 0.05,
-            "contribution": -0.004
-          }
-        ],
-        "fit": {
-          "fit": 0.58,
-          "cosine": 0.61,
-          "distance_score": 0.55,
-          "ml_score": null,
-          "ml_used": false,
-          "alpha": 0.5,
-          "top_matching_dimensions": [
-            "riasec_i",
-            "grit",
-            "cog_analytical"
-          ],
-          "gaps": [
-            {
-              "dimension": "riasec_s",
-              "label": "Social (helping, teaching, caring)",
-              "student": 0.4375,
-              "required": 0.8,
-              "gap": 0.363
-            },
-            {
-              "dimension": "val_security",
-              "label": "Values job security",
-              "student": 0.5,
-              "required": 0.7,
-              "gap": 0.2
-            },
-            {
-              "dimension": "val_impact",
-              "label": "Values social impact",
-              "student": 0.6667,
-              "required": 0.85,
-              "gap": 0.183
-            },
-            {
-              "dimension": "grit",
-              "label": "Grit / perseverance",
-              "student": 0.75,
-              "required": 0.85,
-              "gap": 0.1
-            }
-          ]
-        },
-        "market": {
-          "market_score": 0.8,
-          "demand_index": 0.8,
-          "job_velocity": 0.16,
-          "disruption_risk": 0.08,
-          "regions_considered": [
-            "IN-TN-CBE",
-            "IN-TN-CHN",
-            "IN-KA-BLR"
-          ],
-          "ci_low": 0.73,
-          "ci_high": 0.87,
-          "signals_as_of": "2026-09-30"
-        },
-        "financial": {
-          "pathway_id": "731a9d5a-a23c-5583-9bc3-4cf8fa634cb5",
-          "pathway_name": "MBBS",
-          "institution_name": "Private Medical College, Tamil Nadu (illustrative)",
-          "institution_tier": 2,
-          "quota": "management",
-          "duration_years": 6,
-          "total_cost": 15038654,
-          "family_funds": 940000,
-          "scholarship_plan": [
-            {
-              "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
-              "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
-              "amount_total": 200000,
-              "probability": 0.15,
-              "expected_value": 30000,
-              "deadline": "2026-12-15"
-            }
-          ],
-          "scholarship_expected": 30000,
-          "loan_capacity": 908000,
-          "loan_required": 908000,
-          "monthly_emi": 11999,
-          "burden_ratio": 0.227,
-          "funding_gap": 13160654,
-          "affordability": 0.0887,
-          "affordability_class": "infeasible",
-          "roi": {
-            "npv_earnings_premium": 5878267,
-            "roi_ratio": 0.391,
-            "roi_norm": 0.7,
-            "payback_years": null,
-            "starting_salary": 900000,
-            "salary_year10": 1799104
-          }
-        },
-        "alternative_pathways": [
-          {
-            "pathway_id": "055476f4-a684-5319-b1bb-806bb573d917",
-            "pathway_name": "MBBS (government quota)",
-            "institution_name": "Government Medical College, Tamil Nadu (illustrative)",
-            "institution_tier": 2,
-            "quota": "government",
-            "duration_years": 6,
-            "total_cost": 733592,
-            "family_funds": 940000,
-            "scholarship_plan": [
-              {
-                "scholarship_id": "3293fd20-e6ae-56fd-89ae-b2c0708c6885",
-                "name": "Private foundation UG merit-cum-means scholarship (illustrative)",
-                "amount_total": 200000,
-                "probability": 0.15,
-                "expected_value": 30000,
-                "deadline": "2026-12-15"
-              }
-            ],
-            "scholarship_expected": 30000,
-            "loan_capacity": 908000,
-            "loan_required": 0,
-            "monthly_emi": 0,
-            "burden_ratio": 0.067,
-            "funding_gap": 0,
-            "affordability": 1.0,
-            "affordability_class": "comfortable",
-            "roi": {
-              "npv_earnings_premium": 5878267,
-              "roi_ratio": 8.013,
-              "roi_norm": 0.7,
-              "payback_years": 2.3,
-              "starting_salary": 900000,
-              "salary_year10": 1799104
-            }
-          }
-        ],
-        "family": {
-          "student_fit": 0.58,
-          "parent_acceptance": 0.95,
-          "bridge_score": 0.7203
-        },
-        "data_trust": {
-          "verified_share": 0.0,
-          "freshness": "fresh",
-          "oldest_as_of": "2026-09-30",
-          "inputs": [
-            {
-              "name": "market demand",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "salary band",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "fees: MBBS",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM curated estimate (mock fixture)"
-            },
-            {
-              "name": "scholarship: Private foundation UG merit-cum-means scholarship (illustrative)",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "Private foundation"
-            },
-            {
-              "name": "exam dates: NEET-UG",
-              "verification": "unverified",
-              "is_estimate": true,
-              "as_of": "2026-09-30",
-              "source_name": "PRISM estimate from previous exam cycles"
-            }
-          ],
-          "note": "0 of 5 inputs checked against published sources. Still estimates: market demand; salary band; fees: MBBS; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: NEET-UG."
+          "note": "0 of 6 inputs checked against published sources. Still estimates: market demand; salary band; fees: B.Des Interaction Design; scholarship: Private foundation UG merit-cum-means scholarship (illustrative); exam dates: UCEED; exam dates: NID Design Aptitude Test."
         },
         "buckets": [
           "stretch_goals"
         ],
         "explanation": [
-          "Strong match on investigative (analysing, researching), grit / perseverance, analytical thinking style.",
-          "MBBS at Private Medical College, Tamil Nadu (illustrative) is infeasible for your family (total about Rs 15,038,654).",
-          "Demand outlook 80% with automation risk 8%."
+          "Strong match on artistic, creative thinking style, spatial reasoning.",
+          "B.Des Interaction Design at Private Design School, Bengaluru (illustrative) is infeasible for your family (about Rs 3,416,353 in total).",
+          "Demand outlook 68%; automation risk 30%.",
+          "Biggest gap: creative thinking style (21% below the usual level)."
         ]
       }
     ],
     "buckets": {
       "best_overall": [
         {
-          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
-          "career_name": "Data Scientist",
-          "score": 0.771,
+          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "career_name": "Doctor (MBBS)",
+          "score": 0.7116,
           "reason": "Highest blended score"
         },
         {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
-          "score": 0.7505,
+          "score": 0.7109,
           "reason": "Highest blended score"
         },
         {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
-          "score": 0.728,
+          "score": 0.7072,
           "reason": "Highest blended score"
         }
       ],
       "best_for_student": [
         {
-          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
-          "career_name": "Data Scientist",
-          "score": 0.86,
-          "reason": "Closest match to your interests and aptitudes"
-        },
-        {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
-          "score": 0.82,
-          "reason": "Closest match to your interests and aptitudes"
+          "score": 0.812,
+          "reason": "Closest match to your interests and abilities, whatever the cost"
         },
         {
-          "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
-          "career_name": "UX / Product Designer",
-          "score": 0.8,
-          "reason": "Closest match to your interests and aptitudes"
+          "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
+          "career_name": "Biomedical Engineer",
+          "score": 0.8032,
+          "reason": "Closest match to your interests and abilities, whatever the cost"
+        },
+        {
+          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "career_name": "Data Scientist",
+          "score": 0.7761,
+          "reason": "Closest match to your interests and abilities, whatever the cost"
         }
       ],
       "best_for_family": [
         {
+          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "career_name": "Doctor (MBBS)",
+          "score": 1.0,
+          "reason": "Affordable and close to your family's hopes"
+        },
+        {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
-          "score": 0.925,
-          "reason": "Affordable and close to your family's preferences"
+          "score": 0.9465,
+          "reason": "Affordable and close to your family's hopes"
         },
         {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
           "career_name": "Computational Biologist",
-          "score": 0.86,
-          "reason": "Affordable and close to your family's preferences"
-        },
-        {
-          "career_id": "eff52b78-0c57-5b19-a685-9abe928a162f",
-          "career_name": "Agri-Drone & Precision Farming Engineer",
-          "score": 0.8,
-          "reason": "Affordable and close to your family's preferences"
+          "score": 0.8175,
+          "reason": "Affordable and close to your family's hopes"
         }
       ],
       "bridge": [
         {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
-          "score": 0.8135,
+          "score": 0.8713,
           "reason": "Balances what you love with what your family values"
         },
         {
-          "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-          "career_name": "Computational Biologist",
-          "score": 0.7668,
+          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "career_name": "Doctor (MBBS)",
+          "score": 0.827,
           "reason": "Balances what you love with what your family values"
         }
       ],
       "hidden_gems": [
         {
-          "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-          "career_name": "Computational Biologist",
-          "score": 0.728,
-          "reason": "Interdisciplinary path with strong local opportunities"
-        },
-        {
           "career_id": "eff52b78-0c57-5b19-a685-9abe928a162f",
           "career_name": "Agri-Drone & Precision Farming Engineer",
-          "score": 0.695,
-          "reason": "Interdisciplinary path with strong local opportunities"
+          "score": 0.6196,
+          "reason": "Less obvious path that fits you, linked to local work or a neighbouring field"
+        },
+        {
+          "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "career_name": "Robotics & Automation Engineer",
+          "score": 0.6002,
+          "reason": "Less obvious path that fits you, linked to local work or a neighbouring field"
         }
       ],
       "stretch_goals": [
         {
-          "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
-          "career_name": "UX / Product Designer",
-          "score": 0.8,
-          "reason": "Not affordable today; reachable with scholarships or a government seat"
+          "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "career_name": "Robotics & Automation Engineer",
+          "score": 0.7301,
+          "reason": "About Rs 190,584 short even with a loan; check Tamil Nadu First Graduate Tuition Fee Concession, Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
         },
         {
-          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
-          "career_name": "Doctor (MBBS)",
-          "score": 0.58,
-          "reason": "Not affordable today; reachable with scholarships or a government seat"
+          "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
+          "career_name": "UX / Product Designer",
+          "score": 0.6822,
+          "reason": "About Rs 1,759,764 short even with a loan; check Institutional merit fee waiver (illustrative), merit scholarships, government-quota seats and a larger education loan"
         }
       ]
     },
     "conflict": {
       "visibility": "summary",
-      "index": 45.55,
-      "band": "moderate",
+      "index": 31.93,
+      "band": "mild",
       "dimensions": [],
       "top_drivers": [
         {
           "dimension": "domain_preference",
-          "explanation": "You and your parents rank different fields first, though both lists share a love of biology and health.",
-          "conversation_prompt": "Which part of medicine excites you most, and could a health-technology career deliver the same impact?"
+          "explanation": "You lean towards Computational Biologist, Biomedical Engineer; your parents lean towards Doctor (MBBS), Biomedical Engineer.",
+          "conversation_prompt": "What draws each of you to these fields, and could Biomedical Engineer give you both what you want?"
         },
         {
           "dimension": "prestige_stability",
-          "explanation": "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
-          "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?"
+          "explanation": "One side values a secure job more; the other values ambition and reward more.",
+          "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet it?"
         },
         {
           "dimension": "geography",
-          "explanation": "You are open to moving to another metro; your parents would prefer you study nearby.",
-          "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?"
+          "explanation": "You see the question of moving away for study differently.",
+          "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move work?"
         }
       ],
       "bridge_careers": [
@@ -1742,27 +1732,10 @@
               "E"
             ]
           },
-          "student_fit": 0.78,
-          "parent_acceptance": 0.85,
-          "bridge_score": 0.8135,
-          "why": "Strong on both your interests and your family's priorities"
-        },
-        {
-          "career": {
-            "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-            "slug": "computational-biologist",
-            "name": "Computational Biologist",
-            "sector": "health_life_sciences",
-            "steam_tags": [
-              "S",
-              "T",
-              "M"
-            ]
-          },
-          "student_fit": 0.82,
-          "parent_acceptance": 0.72,
-          "bridge_score": 0.7668,
-          "why": "Strong on both your interests and your family's priorities"
+          "student_fit": 0.8032,
+          "parent_acceptance": 0.952,
+          "bridge_score": 0.8713,
+          "why": "Fits the student at 80% and the parents' hopes at 95%"
         },
         {
           "career": {
@@ -1774,33 +1747,51 @@
               "S"
             ]
           },
-          "student_fit": 0.58,
-          "parent_acceptance": 0.95,
-          "bridge_score": 0.7203,
-          "why": "Strong on both your interests and your family's priorities"
+          "student_fit": 0.705,
+          "parent_acceptance": 1.0,
+          "bridge_score": 0.827,
+          "why": "Fits the student at 70% and the parents' hopes at 100%"
+        },
+        {
+          "career": {
+            "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+            "slug": "robotics-engineer",
+            "name": "Robotics & Automation Engineer",
+            "sector": "engineering",
+            "steam_tags": [
+              "S",
+              "T",
+              "E",
+              "M"
+            ]
+          },
+          "student_fit": 0.7301,
+          "parent_acceptance": 0.726,
+          "bridge_score": 0.728,
+          "why": "Fits the student at 73% and the parents' hopes at 73%"
         }
       ],
-      "summary": "You and your family agree on a lot, especially your interest in health and science. A few conversations, mainly about field choice and stability, will help you plan together."
+      "summary": "You and your family agree on a lot. A few conversations, mainly about field choice and stability versus ambition, will help you plan together."
     },
     "sensitivity": {
       "perturbation": 0.2,
       "scenarios": 64,
-      "robustness_score": 0.82,
-      "top1_stability": 0.89,
+      "robustness_score": 0.5813,
+      "top1_stability": 0.4844,
       "rank_ranges": [
         {
-          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
-          "career_name": "Data Scientist",
+          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
+          "career_name": "Doctor (MBBS)",
           "base_rank": 1,
           "min_rank": 1,
-          "max_rank": 2
+          "max_rank": 4
         },
         {
           "career_id": "732c38b8-2b7e-5846-9aef-6b68ef9a8c00",
           "career_name": "Biomedical Engineer",
           "base_rank": 2,
           "min_rank": 1,
-          "max_rank": 3
+          "max_rank": 4
         },
         {
           "career_id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
@@ -1810,40 +1801,40 @@
           "max_rank": 4
         },
         {
+          "career_id": "2357988a-cdbf-55ae-95df-098ff464f2c3",
+          "career_name": "Data Scientist",
+          "base_rank": 4,
+          "min_rank": 1,
+          "max_rank": 4
+        },
+        {
           "career_id": "eff52b78-0c57-5b19-a685-9abe928a162f",
           "career_name": "Agri-Drone & Precision Farming Engineer",
-          "base_rank": 4,
-          "min_rank": 3,
-          "max_rank": 5
+          "base_rank": 5,
+          "min_rank": 5,
+          "max_rank": 6
         },
         {
           "career_id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
           "career_name": "Robotics & Automation Engineer",
-          "base_rank": 5,
-          "min_rank": 4,
+          "base_rank": 6,
+          "min_rank": 5,
           "max_rank": 6
         },
         {
           "career_id": "5ac22b5e-75c3-5b44-945d-c8e91c95807c",
           "career_name": "UX / Product Designer",
-          "base_rank": 6,
-          "min_rank": 5,
-          "max_rank": 7
-        },
-        {
-          "career_id": "25e5be98-408e-5217-9336-fa983dc96be0",
-          "career_name": "Doctor (MBBS)",
           "base_rank": 7,
-          "min_rank": 6,
+          "min_rank": 7,
           "max_rank": 7
         }
       ],
-      "most_sensitive_weight": "affordability"
+      "most_sensitive_weight": "family_alignment"
     },
     "links": {
       "self": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed",
       "swot": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/swot",
-      "roadmap": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/roadmap?career_id=2357988a-cdbf-55ae-95df-098ff464f2c3",
+      "roadmap": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/roadmap?career_id=25e5be98-408e-5217-9336-fa983dc96be0",
       "what_if": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/what-if",
       "conflict": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict"
     }

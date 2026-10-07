@@ -17,7 +17,7 @@
       "transition_difficulty": 0.45,
       "interdisciplinary": true,
       "why": "Same statistics + Python core, applied to biology",
-      "student_fit": 0.82
+      "student_fit": 0.812
     },
     {
       "career": {
@@ -35,7 +35,7 @@
       "transition_difficulty": 0.55,
       "interdisciplinary": true,
       "why": "Imagery analytics powers precision farming",
-      "student_fit": 0.74
+      "student_fit": 0.6947
     },
     {
       "career": {
@@ -52,7 +52,7 @@
       "transition_difficulty": 0.7,
       "interdisciplinary": true,
       "why": "Product analytics bridges data and design",
-      "student_fit": 0.8
+      "student_fit": 0.6822
     }
   ],
   "error": null,

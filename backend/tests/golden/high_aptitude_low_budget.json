@@ -1,0 +1,22 @@
+{
+  "top3": [
+    "data-scientist",
+    "doctor-mbbs",
+    "computational-biologist"
+  ],
+  "best_for_student": [
+    "Computational Biologist",
+    "Data Scientist",
+    "Robotics & Automation Engineer"
+  ],
+  "classes": {
+    "data-scientist": "infeasible",
+    "doctor-mbbs": "infeasible",
+    "computational-biologist": "infeasible",
+    "robotics-engineer": "infeasible",
+    "biomedical-engineer": "infeasible",
+    "agri-drone-engineer": "infeasible",
+    "ux-designer": "infeasible"
+  },
+  "conflict_band": "mild"
+}

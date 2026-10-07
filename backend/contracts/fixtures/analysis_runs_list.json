@@ -7,20 +7,20 @@
         "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
         "kind": "baseline",
         "created_at": "2026-10-07T09:30:00",
-        "top_career": "Data Scientist",
-        "top_score": 0.771,
-        "conflict_index": 45.55,
-        "scoring_config_version": "weights-2026.10-v1"
+        "top_career": "Doctor (MBBS)",
+        "top_score": 0.7116,
+        "conflict_index": 31.93,
+        "scoring_config_version": "weights-2026.10-v2"
       },
       {
         "run_id": "cd1edbf4-d59f-5cc9-897f-86f58eb32f75",
         "student_id": "132394f2-e097-5d31-8e5b-bfa2fade9b38",
         "kind": "what_if",
         "created_at": "2026-10-07T09:35:00",
-        "top_career": "Data Scientist",
-        "top_score": 0.771,
-        "conflict_index": 45.55,
-        "scoring_config_version": "weights-2026.10-v1"
+        "top_career": "Biomedical Engineer",
+        "top_score": 0.7228,
+        "conflict_index": 30.7,
+        "scoring_config_version": "weights-2026.10-v2"
       }
     ],
     "page": 1,

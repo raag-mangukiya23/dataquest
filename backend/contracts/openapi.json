@@ -7491,6 +7491,34 @@
           "affordability_class": {
             "$ref": "#/components/schemas/AffordabilityClass"
           },
+          "admission_chance": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Admission Chance",
+            "description": "Estimated chance of getting a seat on this pathway with current scores",
+            "default": 1.0
+          },
+          "reachability": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Reachability",
+            "description": "affordability * (0.5 + 0.5 * admission_chance)",
+            "default": 1.0
+          },
+          "loan_scheme": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loan Scheme",
+            "description": "Government interest relief applied to the loan, if any"
+          },
           "roi": {
             "$ref": "#/components/schemas/RoiDetail"
           }
@@ -8632,6 +8660,35 @@
             },
             "type": "array",
             "title": "Career Ids"
+          },
+          "course_area": {
+            "type": "string",
+            "title": "Course Area",
+            "default": "general",
+            "examples": [
+              "engineering",
+              "basic_sciences",
+              "medicine",
+              "design"
+            ]
+          },
+          "admission_route": {
+            "type": "string",
+            "title": "Admission Route",
+            "default": "institutional",
+            "examples": [
+              "single_window_counselling",
+              "national_exam",
+              "management_quota"
+            ]
+          },
+          "selectivity": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Selectivity",
+            "description": "How competitive admission is (0 = open, 1 = extremely selective). Estimate.",
+            "default": 0.5
           },
           "seats": {
             "anyOf": [
@@ -9844,6 +9901,18 @@
             "$ref": "#/components/schemas/DateStatus",
             "default": "estimated"
           },
+          "self_declared_criteria": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Self Declared Criteria",
+            "description": "Eligibility depends on criteria PRISM does not collect (e.g. social category, gender, disability). Shown so students can check themselves; never used in scoring or automatic plans."
+          },
           "provenance": {
             "$ref": "#/components/schemas/Provenance"
           }
@@ -10047,6 +10116,34 @@
           "weeks": {
             "type": "integer",
             "title": "Weeks"
+          },
+          "resource_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resource Name",
+            "examples": [
+              "NPTEL",
+              "SWAYAM",
+              "DIKSHA"
+            ]
+          },
+          "resource_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resource Url",
+            "description": "Free government learning platform"
           }
         },
         "additionalProperties": false,

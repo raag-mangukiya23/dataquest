@@ -3,44 +3,19 @@ scores, conflict index, ranks) are computed here so the fixtures are internally 
 The production formulas live in app/engine (Phase 4-5); these are deliberately simple mirrors.
 """
 
-import hashlib
-import json
-import math
 from datetime import date, timedelta
 
-from app.core.clock import today as clock_today
-from app.core.config import ENGINE_VERSION
-from app.core.dimensions import DIMENSION_LABELS, DIMENSIONS, RIASEC, VECTOR_SPEC_VERSION
-from app.engine.freshness import FRESHNESS_CONFIDENCE, freshness_status, worst
+from app.core.dimensions import DIMENSIONS, RIASEC
+from app.engine.config import DEFAULT_CONFIG, ScoringConfig
+from app.engine.eligibility import evaluate
+from app.engine.fit import classic_fit
+from app.engine.types import CatalogInput, Edge, FamilyInput, Preference, StudentInput
 from app.etl.quality import Catalog
-from app.etl.sources import DATASETS
 from app.ml.prototypes import DOMAIN_PROTOTYPES
 from app.mocks import persona
 from app.mocks import world as w
 from app.schemas.analysis import (
     AnalysisRun,
-    BridgeCareer,
-    BucketItem,
-    CompositeScores,
-    ConflictDimension,
-    ConflictDriver,
-    ConflictReport,
-    Contribution,
-    DataQuality,
-    DataTrust,
-    FamilyFitDetail,
-    FinancialAssessment,
-    FitDetail,
-    MarketDetail,
-    RankChange,
-    Recommendation,
-    Reproducibility,
-    RoiDetail,
-    ScholarshipPick,
-    ScoreComponent,
-    SensitivityReport,
-    TraitGap,
-    TrustInput,
 )
 from app.schemas.catalog import (
     AmountType,
@@ -49,7 +24,6 @@ from app.schemas.catalog import (
     CareerSkill,
     CareerSummary,
     DateStatus,
-    EligibilityCheck,
     Exam,
     ExamSession,
     Institution,
@@ -62,13 +36,11 @@ from app.schemas.catalog import (
     ScholarshipMatch,
 )
 from app.schemas.common import (
-    AffordabilityClass,
-    Bucket,
     CareerRef,
-    ConflictBand,
     Provenance,
     VerificationStatus,
 )
+from app.services.analysis import run_analysis
 
 EDU_INFLATION = 0.08
 LOAN_RATE = 0.10
@@ -100,13 +72,14 @@ def career_summary(slug: str) -> CareerSummary:
         short_description=desc,
         typical_entry_education=edu,
         automation_risk=risk,
-        national_demand_index=w.SCORES[s][1],
+        national_demand_index=w.MARKET_SEED[s][0],
     )
 
 
 def requirement_vector(slug: str) -> dict[str, float]:
     sector = career_ref(slug).sector
-    return dict(zip(DIMENSIONS, DOMAIN_PROTOTYPES[sector], strict=True))
+    base = dict(zip(DIMENSIONS, DOMAIN_PROTOTYPES[sector], strict=True))
+    return base | w.CAREER_TRAIT_OVERRIDES.get(slug, {})
 
 
 _SALARY = {  # slug -> (entry, mid, senior) annual CTC in INR, metro India, illustrative
@@ -228,7 +201,7 @@ def alternatives(slug: str) -> list[CareerAlternative]:
             transition_difficulty=diff,
             interdisciplinary=career_ref(o).sector != career_ref(slug).sector,
             why=why,
-            student_fit=w.SCORES[o][0],
+            student_fit=classic_fit(persona.VECTOR, requirement_vector(o))[2],
         )
         for o, ov, diff, why in rows
     ]
@@ -239,7 +212,7 @@ def regions() -> list[Region]:
 
 
 def market_signal(slug: str, region_code: str, k: float = 1.0) -> MarketSignal:
-    _, market, _, _, disruption = w.SCORES[slug]
+    market, disruption = w.MARKET_SEED[slug]
     demand = round(min(1.0, market * k), 3)
     velocity = round((market - 0.6) * 0.8 * k, 3)
     return MarketSignal(
@@ -277,6 +250,9 @@ def pathway(key: str) -> Pathway:
         misc_per_year=mi,
         entrance_exam_codes=exams,
         career_ids=[w.sid("career", c) for c in careers],
+        course_area=w.PATHWAY_META[k][0],
+        admission_route=w.PATHWAY_META[k][1],
+        selectivity=w.PATHWAY_META[k][2],
         seats=None,
         provenance=EST,
     )
@@ -403,27 +379,19 @@ def scholarship(key: str) -> Scholarship:
     )
 
 
-_ELIG = {
-    "css-nsp": False,
-    "inspire-she": None,
-    "tn-first-grad": None,
-    "inst-merit": True,
-    "pvt-ug-merit": True,
-}
-
-
 def scholarship_match(key: str) -> ScholarshipMatch:
     s = scholarship(key)
-    rules = s.eligibility_rules["all"]
-    verdict = _ELIG[key]
-    checks = [
-        EligibilityCheck(
-            rule=f"{r['field']} {r['op']} {r['value']}",
-            passed=None if verdict is None else (verdict or i > 0),
-        )
-        for i, r in enumerate(rules)
-    ]
-    ev = int(s.amount_per_year * s.max_years * s.probability) if verdict is not False else 0
+    st = student_input()
+    fam = family_input()
+    facts = {
+        "annual_income": fam.annual_income,
+        "recent_score_pct": st.recent_score_pct,
+        "state": st.state,
+        "grade": st.grade,
+    }
+    verdict, checks = evaluate(s.eligibility_rules, facts)
+    total = sum(s.year_amounts) if s.year_amounts else s.amount_per_year * s.max_years
+    ev = int(total * s.probability) if verdict is not False else 0
     return ScholarshipMatch(scholarship=s, eligible=verdict, checks=checks, expected_value=ev)
 
 
@@ -451,560 +419,112 @@ def local_opportunity(row: tuple) -> LocalOpportunity:
     )
 
 
-# ---------------------------------------------------------------- financial solver (mirror)
-def _total_cost(per_year: int, years: int) -> int:
-    return int(sum(per_year * (1 + EDU_INFLATION) ** t for t in range(years)))
-
-
-def _emi(principal: int) -> int:
-    if principal <= 0:
-        return 0
-    r = LOAN_RATE / 12
-    return int(principal * r * (1 + r) ** LOAN_MONTHS / ((1 + r) ** LOAN_MONTHS - 1))
-
-
-PRIMARY_PATHWAY = {
-    "data-scientist": ("gct-cse-ds", ["pvt-ug-merit"]),
-    "biomedical-engineer": ("psg-bme", ["inst-merit", "pvt-ug-merit"]),
-    "computational-biologist": ("iiser-bsms", ["inspire-she"]),
-    "robotics-engineer": ("psg-robotics", ["inst-merit", "pvt-ug-merit"]),
-    "agri-drone-engineer": ("tnau-agri", ["pvt-ug-merit"]),
-    "ux-designer": ("pvt-bdes", ["inst-merit", "pvt-ug-merit"]),
-    "doctor-mbbs": ("pvt-mbbs", ["pvt-ug-merit"]),
-}
-ALT_PATHWAY = {"doctor-mbbs": [("govt-mbbs", ["pvt-ug-merit"])]}
-
-
-def assess(
-    pathway_key: str,
-    scholarship_keys: list[str],
-    *,
-    funds: int = w.FAMILY_FUNDS,
-    loan_tolerance: float = w.FINANCE["loan_tolerance"],
-    slug: str,
-) -> FinancialAssessment:
-    p = pathway(pathway_key)
-    per_year = p.tuition_per_year + p.hostel_per_year + p.living_per_year + p.misc_per_year
-    cost = _total_cost(per_year, p.duration_years)
-    picks = []
-    for k in scholarship_keys:
-        s = scholarship(k)
-        yrs = min(s.max_years, p.duration_years)
-        if s.year_amounts:
-            total = sum(s.year_amounts[:yrs])
-        else:
-            award = s.amount_per_year
-            if s.amount_type is AmountType.PERCENT_TUITION and s.percent_of_tuition:
-                award = min(award, int(p.tuition_per_year * s.percent_of_tuition))
-            elif s.amount_type is AmountType.FULL_TUITION:
-                award = min(award, p.tuition_per_year)
-            total = award * yrs
-        picks.append(
-            ScholarshipPick(
-                scholarship_id=s.id,
-                name=s.name,
-                amount_total=total,
-                probability=s.probability,
-                expected_value=int(total * s.probability),
-                deadline=s.deadline.isoformat() if s.deadline else None,
-            )
+# ---------------------------------------------------------------- engine inputs from the fixture world
+def catalog_input() -> CatalogInput:
+    careers = [career_detail(c[0]) for c in w.CAREERS]
+    edges = [
+        Edge(
+            from_id=w.sid("career", a),
+            to_id=w.sid("career", o),
+            skill_overlap=ov,
+            transition_difficulty=diff,
+            why=why,
         )
-    sch = sum(x.expected_value for x in picks)
-    own = funds + sch
-    cap = w.LOAN_CAPACITY
-    loan_required = min(max(0, cost - own), cap)
-    gap = max(0, cost - own - cap)
-    affordability = round(min(1.0, (own + loan_tolerance * cap) / cost), 4)
-    emi = _emi(loan_required)
-    monthly_income = w.FINANCE["annual_income"] / 12
-    if own >= 1.1 * cost:
-        klass = AffordabilityClass.COMFORTABLE
-    elif own >= cost:
-        klass = AffordabilityClass.STRETCH
-    elif own + cap >= cost:
-        klass = AffordabilityClass.LOAN_DEPENDENT
-    else:
-        klass = AffordabilityClass.INFEASIBLE
-    entry = _SALARY[slug][0]
-    y10 = int(entry * 1.08**9)
-    npv = int(sum((entry * 1.08**t - 300_000 * 1.05**t) / 1.08 ** (t + 1) for t in range(10)))
-    roi_ratio = round(npv / cost, 3)
-    yearly_surplus = entry * 0.35
-    payback = (
-        round((cost + emi * LOAN_MONTHS - loan_required) / yearly_surplus, 1) if yearly_surplus else None
+        for a, rows in _ADJ.items()
+        for o, ov, diff, why in rows
+    ]
+    return CatalogInput(
+        careers=careers,
+        pathways=[pathway(p[0]) for p in w.PATHWAYS],
+        scholarships=[scholarship(s[0]) for s in w.SCHOLARSHIPS],
+        pathway_scholarships={
+            w.sid("pathway", k): [w.sid("scholarship", x) for x in v]
+            for k, v in w.PATHWAY_SCHOLARSHIPS.items()
+        },
+        signals=catalog().market_signals,
+        salaries={c.id: c.salary_bands for c in careers},
+        exams={e[0]: exam(e[0]) for e in w.EXAMS},
+        edges=edges,
+        local_opportunities=[local_opportunity(r) for r in w.LOCAL_OPPORTUNITIES],
+        regions={r.code: r for r in regions()},
+        dataset_version=w.DATASET_VERSION,
+        latest_dataset_version=w.DATASET_VERSION,
+        data_as_of=w.DATA_AS_OF,
     )
-    return FinancialAssessment(
-        pathway_id=p.id,
-        pathway_name=p.course,
-        institution_name=p.institution.name,
-        institution_tier=p.institution.tier,
-        quota=p.quota.value,
-        duration_years=p.duration_years,
-        total_cost=cost,
-        family_funds=funds,
-        scholarship_plan=picks,
-        scholarship_expected=sch,
-        loan_capacity=cap,
-        loan_required=loan_required,
-        monthly_emi=emi,
-        burden_ratio=round((emi + w.FINANCE["existing_debt_emi"]) / monthly_income, 3),
-        funding_gap=gap,
-        affordability=affordability,
-        affordability_class=klass,
-        roi=RoiDetail(
-            npv_earnings_premium=npv,
-            roi_ratio=roi_ratio,
-            roi_norm=w.SCORES[slug][2],
-            payback_years=payback if payback is not None and payback <= 15 else None,
-            starting_salary=entry,
-            salary_year10=y10,
+
+
+def student_input(profile: dict | None = None) -> StudentInput:
+    s = w.STUDENT
+    return StudentInput(
+        student_id=w.STUDENT_ID,
+        vector=dict(persona.VECTOR),
+        reliability={d: t.reliability for d, t in persona.TRAITS.items()},
+        imputed=tuple(persona.IMPUTED),
+        completeness=persona.COMPLETENESS,
+        grade=s["grade"],
+        region_code=s["region_code"],
+        state=s["state"],
+        willing_to_relocate=0.7,
+        willing_abroad=0.3,
+        preferred_regions=("IN-TN-CBE", "IN-KA-BLR", "IN-TG-HYD"),
+        recent_score_pct=s["recent_score_pct"],
+        quality_flags=tuple(f for sub in persona.SUBMISSIONS.values() for f in sub.flags),
+    )
+
+
+def family_input() -> FamilyInput:
+    f = w.FINANCE
+    return FamilyInput(
+        family_id=w.FAMILY_ID,
+        annual_income=f["annual_income"],
+        income_growth=f["income_growth_rate"],
+        savings=f["allocatable_savings"],
+        existing_emi=f["existing_debt_emi"],
+        dependents=f["dependents"],
+        max_emi=f["max_affordable_emi"],
+        loan_tolerance=f["loan_tolerance"],
+        risk_appetite=f["risk_appetite"],
+        relocation=f["relocation_willingness"],
+        abroad=f["abroad_willingness"],
+        time_to_earn_years=f["time_to_earn_years"],
+        prestige_vs_stability=f["prestige_vs_stability"],
+        preferences=tuple(
+            Preference(
+                rank=p["rank"],
+                career_id=w.sid("career", p["career"]) if "career" in p else None,
+                domain=p.get("domain"),
+            )
+            for p in w.PARENT_PREFERENCES
         ),
-    )
-
-
-# ---------------------------------------------------------------- recommendations
-def _gaps(slug: str) -> list[TraitGap]:
-    req = requirement_vector(slug)
-    rows = [
-        TraitGap(
-            dimension=d,
-            label=DIMENSION_LABELS[d],
-            student=persona.VECTOR[d],
-            required=req[d],
-            gap=round(req[d] - persona.VECTOR[d], 3),
-        )
-        for d in DIMENSIONS
-    ]
-    return sorted([g for g in rows if g.gap > 0.05], key=lambda g: -g.gap)[:4]
-
-
-def _matching(slug: str) -> list[str]:
-    req = requirement_vector(slug)
-    strong = [d for d in DIMENSIONS if req[d] >= 0.7 and persona.VECTOR[d] >= 0.7]
-    return sorted(strong, key=lambda d: -(req[d] + persona.VECTOR[d]))[:3]
-
-
-def _hm(a: float, b: float) -> float:
-    return 0.0 if a + b == 0 else 2 * a * b / (a + b)
-
-
-BASE_MODEL_CONFIDENCE = 0.85
-# Imputed trait dimensions lower confidence: half of the imputed share.
-DQ_PENALTY = round(0.5 * (1 - persona.COMPLETENESS), 4)
-
-
-def data_trust(slug: str, pathway_key: str, scholarship_keys: list[str]) -> DataTrust:
-    """Which inputs behind this recommendation were checked against a source, and how fresh they are."""
-    today = clock_today()
-    p = pathway(pathway_key)
-    rows: list[tuple[str, str, Provenance]] = [
-        ("market demand", "market_signals", market_signal(slug, "IN-TN-CBE").provenance),
-        ("salary band", "salary_bands", salary_bands(slug)[0].provenance),
-        (f"fees: {p.course}", "pathways", p.provenance),
-    ]
-    rows += [
-        (f"scholarship: {scholarship(k).name}", "scholarships", scholarship(k).provenance)
-        for k in scholarship_keys
-    ]
-    rows += [(f"exam dates: {exam(c).name}", "exams", exam(c).provenance) for c in p.entrance_exam_codes]
-    checked = [
-        r for r in rows if r[2].verification in (VerificationStatus.VERIFIED, VerificationStatus.SECONDARY)
-    ]
-    share = round(len(checked) / len(rows), 4)
-    fresh = worst([freshness_status(prov.as_of, today, DATASETS[ds].cadence_days) for _, ds, prov in rows])
-    unchecked = [
-        name
-        for name, _, prov in rows
-        if prov.verification not in (VerificationStatus.VERIFIED, VerificationStatus.SECONDARY)
-    ]
-    note = f"{len(checked)} of {len(rows)} inputs checked against published sources."
-    if unchecked:
-        note += " Still estimates: " + "; ".join(unchecked) + "."
-    return DataTrust(
-        verified_share=share,
-        freshness=fresh,
-        oldest_as_of=min(prov.as_of for _, _, prov in rows).isoformat(),
-        inputs=[
-            TrustInput(
-                name=name,
-                verification=prov.verification,
-                is_estimate=prov.is_estimate,
-                as_of=prov.as_of.isoformat(),
-                source_name=prov.source_name,
-            )
-            for name, _, prov in rows
-        ],
-        note=note,
-    )
-
-
-def recommendations(
-    weights: dict[str, float] | None = None,
-    *,
-    funds: int = w.FAMILY_FUNDS,
-    loan_tolerance: float = w.FINANCE["loan_tolerance"],
-) -> list[Recommendation]:
-    wt = weights or w.WEIGHTS
-    out = []
-    for slug in w.SCORES:
-        fit, market, roi_norm, accept, disruption = w.SCORES[slug]
-        pkey, schs = PRIMARY_PATHWAY[slug]
-        fa = assess(pkey, schs, funds=funds, loan_tolerance=loan_tolerance, slug=slug)
-        alts = [
-            assess(k, s, funds=funds, loan_tolerance=loan_tolerance, slug=slug)
-            for k, s in ALT_PATHWAY.get(slug, [])
-        ]
-        raw = {
-            ScoreComponent.FIT: fit,
-            ScoreComponent.MARKET: market,
-            ScoreComponent.AFFORDABILITY: fa.affordability,
-            ScoreComponent.ROI: roi_norm,
-            ScoreComponent.FAMILY_ALIGNMENT: accept,
-            ScoreComponent.DISRUPTION: disruption,
-        }
-        contribs = [
-            Contribution(
-                component=c,
-                raw_value=v,
-                weight=wt[c.value],
-                contribution=round((-1 if c is ScoreComponent.DISRUPTION else 1) * wt[c.value] * v, 4),
-            )
-            for c, v in raw.items()
-        ]
-        final = round(min(1.0, max(0.0, sum(x.contribution for x in contribs))), 4)
-        trust = data_trust(slug, pkey, schs)
-        conf = round(
-            BASE_MODEL_CONFIDENCE
-            * (0.7 + 0.3 * trust.verified_share)
-            * FRESHNESS_CONFIDENCE[trust.freshness]
-            * (1 - DQ_PENALTY),
-            4,
-        )
-        half_ci = 0.04 + 0.08 * (1 - trust.verified_share)
-        explanation = [
-            f"Strong match on {', '.join(DIMENSION_LABELS[d].lower() for d in _matching(slug)) or 'your overall profile'}.",
-            f"{fa.pathway_name} at {fa.institution_name} is {fa.affordability_class.value.replace('_', '-')} "
-            f"for your family (total about Rs {fa.total_cost:,}).",
-            f"Demand outlook {market:.0%} with automation risk {disruption:.0%}.",
-        ]
-        out.append(
-            Recommendation(
-                rank=1,
-                career=career_ref(slug),
-                final_score=final,
-                confidence=conf,
-                ci_low=round(max(0, final - half_ci), 4),
-                ci_high=round(min(1, final + half_ci), 4),
-                contributions=contribs,
-                fit=FitDetail(
-                    fit=fit,
-                    cosine=round(min(1, fit + 0.03), 4),
-                    distance_score=round(fit - 0.03, 4),
-                    ml_score=None,
-                    ml_used=False,
-                    alpha=0.5,
-                    top_matching_dimensions=_matching(slug),
-                    gaps=_gaps(slug),
-                ),
-                market=MarketDetail(
-                    market_score=market,
-                    demand_index=market,
-                    job_velocity=round((market - 0.6) * 0.8, 3),
-                    disruption_risk=disruption,
-                    regions_considered=["IN-TN-CBE", "IN-TN-CHN", "IN-KA-BLR"],
-                    ci_low=round(market - 0.07, 3),
-                    ci_high=round(min(1, market + 0.07), 3),
-                    signals_as_of=w.DATA_AS_OF.isoformat(),
-                ),
-                financial=fa,
-                alternative_pathways=alts,
-                family=FamilyFitDetail(
-                    student_fit=fit, parent_acceptance=accept, bridge_score=round(_hm(fit, accept), 4)
-                ),
-                data_trust=trust,
-                buckets=[],
-                explanation=explanation,
-            )
-        )
-    out.sort(key=lambda r: -r.final_score)
-    for i, r in enumerate(out, 1):
-        r.rank = i
-    buckets = build_buckets(out)
-    for r in out:
-        r.buckets = [b for b, items in buckets.items() if any(it.career_id == r.career.id for it in items)]
-    return out
-
-
-def build_buckets(recs: list[Recommendation]) -> dict[Bucket, list[BucketItem]]:
-    def item(r: Recommendation, score: float, reason: str) -> BucketItem:
-        return BucketItem(
-            career_id=r.career.id, career_name=r.career.name, score=round(score, 4), reason=reason
-        )
-
-    by_fit = sorted(recs, key=lambda r: -r.fit.fit)
-    feasible = [r for r in recs if r.financial.affordability_class is not AffordabilityClass.INFEASIBLE]
-    by_family = sorted(
-        feasible, key=lambda r: -(0.5 * r.family.parent_acceptance + 0.5 * r.financial.affordability)
-    )
-    by_bridge = sorted(recs, key=lambda r: -r.family.bridge_score)
-    gems = [r for r in recs if r.career.slug in ("agri-drone-engineer", "computational-biologist")]
-    stretch = [r for r in recs if r.financial.affordability_class is AffordabilityClass.INFEASIBLE]
-    return {
-        Bucket.BEST_OVERALL: [item(r, r.final_score, "Highest blended score") for r in recs[:3]],
-        Bucket.BEST_FOR_STUDENT: [
-            item(r, r.fit.fit, "Closest match to your interests and aptitudes") for r in by_fit[:3]
-        ],
-        Bucket.BEST_FOR_FAMILY: [
-            item(
-                r,
-                0.5 * r.family.parent_acceptance + 0.5 * r.financial.affordability,
-                "Affordable and close to your family's preferences",
-            )
-            for r in by_family[:3]
-        ],
-        Bucket.BRIDGE: [
-            item(r, r.family.bridge_score, "Balances what you love with what your family values")
-            for r in by_bridge[:2]
-        ],
-        Bucket.HIDDEN_GEMS: [
-            item(r, r.final_score, "Interdisciplinary path with strong local opportunities") for r in gems
-        ],
-        Bucket.STRETCH_GOALS: [
-            item(r, r.fit.fit, "Not affordable today; reachable with scholarships or a government seat")
-            for r in stretch
-        ],
-    }
-
-
-# ---------------------------------------------------------------- conflict index (mirror)
-CONFLICT_DIMS = [
-    # dimension, gap, weight, student position, parent position
-    (
-        "domain_preference",
-        0.70,
-        0.30,
-        "Top choices: Data Science, Computational Biology, Design",
-        "Top choices: Medicine, Biomedical Engineering",
-    ),
-    ("risk_appetite", 0.27, 0.15, "Comfortable with some uncertainty (0.57)", "Prefers low risk (0.30)"),
-    ("geography", 0.30, 0.15, "Open to Bengaluru/Hyderabad", "Prefers Coimbatore/Chennai"),
-    ("budget", 0.25, 0.15, "Top-career costs up to Rs 31 lakh", "Comfortable up to about Rs 12 lakh"),
-    ("time_to_earn", 0.40, 0.10, "Fine with 5-6 years of study", "Expects earning within 4 years"),
-    ("prestige_stability", 0.55, 0.15, "Values autonomy and creativity", "Values stability"),
-]
-
-_DRIVER_TEXT = {
-    "domain_preference": (
-        "You and your parents rank different fields first, though both lists share a love of biology and health.",
-        "Which part of medicine excites you most, and could a health-technology career deliver the same impact?",
-    ),
-    "prestige_stability": (
-        "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
-        "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?",
-    ),
-    "time_to_earn": (
-        "Some of your preferred paths take 5-6 years before earning; the family plan assumes about 4.",
-        "Would an internship-heavy or earn-while-you-learn route make a longer path acceptable?",
-    ),
-    "geography": (
-        "You are open to moving to another metro; your parents would prefer you study nearby.",
-        "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?",
-    ),
-    "risk_appetite": (
-        "You are more comfortable with uncertain, fast-moving fields than your parents are.",
-        "Which risks worry you most, and what backup plan would make them acceptable?",
-    ),
-    "budget": (
-        "Some preferred courses cost more than the family's comfortable budget.",
-        "Which scholarships or lower-cost institutions could close the gap?",
-    ),
-}
-
-
-def conflict(full: bool) -> ConflictReport:
-    dims = [
-        ConflictDimension(
-            dimension=d,
-            gap=g,
-            weight=wt,
-            contribution=round(100 * g * wt, 2),
-            student_position=sp,
-            parent_position=pp,
-        )
-        for d, g, wt, sp, pp in CONFLICT_DIMS
-    ]
-    index = round(sum(x.contribution for x in dims), 2)
-    band = (
-        ConflictBand.ALIGNED
-        if index < 20
-        else ConflictBand.MILD
-        if index < 40
-        else ConflictBand.MODERATE
-        if index < 60
-        else ConflictBand.HIGH
-    )
-    top = sorted(dims, key=lambda x: -x.contribution)[:3]
-    drivers = [
-        ConflictDriver(
-            dimension=x.dimension,
-            explanation=_DRIVER_TEXT[x.dimension][0],
-            conversation_prompt=_DRIVER_TEXT[x.dimension][1],
-        )
-        for x in top
-    ]
-    recs = recommendations()
-    bridges = sorted(recs, key=lambda r: -r.family.bridge_score)[:3]
-    bridge_rows = [
-        BridgeCareer(
-            career=r.career,
-            student_fit=r.family.student_fit,
-            parent_acceptance=r.family.parent_acceptance,
-            bridge_score=r.family.bridge_score,
-            why="Strong on both your interests and your family's priorities",
-        )
-        for r in bridges
-    ]
-    if full:
-        summary = (
-            f"Conflict index {index:.0f}/100 ({band.value}). The biggest differences are "
-            f"{', '.join(x.dimension.replace('_', ' ') for x in top)}. Bridge careers such as "
-            f"{bridge_rows[0].career.name} score well for both student and family."
-        )
-    else:
-        summary = (
-            "You and your family agree on a lot, especially your interest in health and science. "
-            "A few conversations, mainly about field choice and stability, will help you plan together."
-        )
-    return ConflictReport(
-        visibility="full" if full else "summary",
-        index=index,
-        band=band,
-        dimensions=dims if full else [],
-        top_drivers=drivers,
-        bridge_careers=bridge_rows,
-        summary=summary,
-    )
-
-
-# ---------------------------------------------------------------- run
-def input_hash(payload: dict) -> str:
-    return "sha256:" + hashlib.sha256(json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest()
-
-
-def composite(recs: list[Recommendation], conflict_index: float) -> CompositeScores:
-    v = persona.VECTOR
-    apt = sum(v[d] for d in DIMENSIONS if d.startswith("apt_")) / 4
-    riasec = sorted((v[d] for d in RIASEC), reverse=True)
-    clarity = (sum(riasec[:3]) / 3 - sum(riasec[3:]) / 3) / 0.5
-    fin = sum(r.financial.affordability for r in recs) / len(recs)
-    mkt = sum(r.market.market_score for r in recs[:5]) / 5
-    readiness = 0.35 * apt + 0.2 * min(1, clarity) + 0.25 * fin + 0.2 * (1 - conflict_index / 100)
-    return CompositeScores(
-        overall_readiness=round(100 * readiness, 1),
-        aptitude_index=round(100 * apt, 1),
-        interest_clarity=round(100 * min(1.0, clarity), 1),
-        financial_capacity=round(100 * fin, 1),
-        family_alignment=round(100 - conflict_index, 1),
-        market_outlook=round(100 * mkt, 1),
-    )
-
-
-def sensitivity(recs: list[Recommendation]) -> SensitivityReport:
-    spread = {1: (1, 2), 2: (1, 3), 3: (2, 4), 4: (3, 5), 5: (4, 6), 6: (5, 7), 7: (6, 7)}
-    return SensitivityReport(
-        perturbation=0.2,
-        scenarios=64,
-        robustness_score=0.82,
-        top1_stability=0.89,
-        rank_ranges=[
-            RankChange(
-                career_id=r.career.id,
-                career_name=r.career.name,
-                base_rank=r.rank,
-                min_rank=spread[r.rank][0],
-                max_rank=spread[r.rank][1],
-            )
-            for r in recs
-        ],
-        most_sensitive_weight="affordability",
+        preferred_regions=tuple(f["preferred_regions"]),
+        finance_version=w.FAMILY_FINANCE_VERSION,
     )
 
 
 def analysis_run(
     *,
-    run_id: str = w.RUN_ID,
+    run_id: str | None = w.RUN_ID,
     kind: str = "baseline",
     parent_run_id: str | None = None,
-    weights: dict[str, float] | None = None,
-    funds: int = w.FAMILY_FUNDS,
-    loan_tolerance: float = w.FINANCE["loan_tolerance"],
     full_conflict: bool = True,
+    student: StudentInput | None = None,
+    family: FamilyInput | None = None,
+    cfg: ScoringConfig = DEFAULT_CONFIG,
     created_offset_min: int = 0,
 ) -> AnalysisRun:
-    wt = weights or w.WEIGHTS
-    recs = recommendations(wt, funds=funds, loan_tolerance=loan_tolerance)
-    c = conflict(full_conflict)
-    snapshot = {"student_vector": persona.VECTOR, "finance": w.FINANCE, "weights": wt, "funds": funds}
-    return AnalysisRun(
-        run_id=run_id,
-        student_id=w.STUDENT_ID,
-        family_id=w.FAMILY_ID,
+    """The demo persona's run, computed by the real engine on fixture data."""
+    return run_analysis(
+        student or student_input(),
+        family or family_input(),
+        catalog_input(),
+        today=w.TODAY,
+        now=w.NOW + timedelta(minutes=created_offset_min),
+        cfg=cfg,
         kind=kind,
         parent_run_id=parent_run_id,
-        created_at=w.NOW + timedelta(minutes=created_offset_min),
-        duration_ms=142.7,
-        reproducibility=Reproducibility(
-            engine_version=ENGINE_VERSION,
-            scoring_config_version="weights-2026.10-v1",
-            vector_spec_version=VECTOR_SPEC_VERSION,
-            input_hash=input_hash(snapshot),
-            data_as_of=w.DATA_AS_OF.isoformat(),
-            dataset_version=w.DATASET_VERSION,
-            latest_dataset_version=w.DATASET_VERSION,
-            is_outdated=False,
-            family_finance_version=w.FAMILY_FINANCE_VERSION,
-            ml_model_version=None,
-        ),
-        data_quality=DataQuality(
-            completeness=persona.COMPLETENESS,
-            imputed_fields=persona.IMPUTED,
-            confidence_penalty=DQ_PENALTY,
-            warnings=[
-                f"{DIMENSION_LABELS[d]}: too few items answered, so it was set to the neutral 0.5."
-                for d in persona.IMPUTED
-            ]
-            + [f"{code}: {flag}" for code, sub in persona.SUBMISSIONS.items() for flag in sub.flags],
-        ),
-        student_vector=persona.VECTOR,
-        composite_scores=composite(recs, c.index),
-        weights=wt,
-        recommendations=recs,
-        buckets=build_buckets(recs),
-        conflict=c,
-        sensitivity=sensitivity(recs),
-        links={
-            "self": f"/api/v1/analysis/runs/{run_id}",
-            "swot": f"/api/v1/analysis/runs/{run_id}/swot",
-            "roadmap": f"/api/v1/analysis/runs/{run_id}/roadmap?career_id={recs[0].career.id}",
-            "what_if": f"/api/v1/analysis/runs/{run_id}/what-if",
-            "conflict": f"/api/v1/analysis/runs/{run_id}/conflict",
-        },
+        run_id=run_id,
+        full_conflict=full_conflict,
     )
-
-
-def kendall_tau(a: list[str], b: list[str]) -> float:
-    common = [x for x in a if x in b]
-    n = len(common)
-    if n < 2:
-        return 1.0
-    pos_b = {x: i for i, x in enumerate(b)}
-    concordant = discordant = 0
-    for i in range(n):
-        for j in range(i + 1, n):
-            s = pos_b[common[i]] - pos_b[common[j]]
-            concordant += s < 0
-            discordant += s > 0
-    return round((concordant - discordant) / math.comb(n, 2), 4)
 
 
 REGION_DEMAND_FACTOR = {"metro": 1.0, "tier2": 0.85, "international": 0.9}

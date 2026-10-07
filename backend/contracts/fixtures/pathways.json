@@ -30,6 +30,9 @@
         "career_ids": [
           "2357988a-cdbf-55ae-95df-098ff464f2c3"
         ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.75,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -70,6 +73,9 @@
         "career_ids": [
           "732c38b8-2b7e-5846-9aef-6b68ef9a8c00"
         ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.65,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -110,6 +116,9 @@
         "career_ids": [
           "1aee4de5-f876-5cee-97a9-20e74fa58bc1"
         ],
+        "course_area": "basic_sciences",
+        "admission_route": "national_exam",
+        "selectivity": 0.85,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -150,6 +159,9 @@
         "career_ids": [
           "4919f992-15b4-5c91-951f-b2f3290cd1a3"
         ],
+        "course_area": "engineering",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.65,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -190,6 +202,9 @@
         "career_ids": [
           "eff52b78-0c57-5b19-a685-9abe928a162f"
         ],
+        "course_area": "agriculture",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.55,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -231,6 +246,9 @@
         "career_ids": [
           "5ac22b5e-75c3-5b44-945d-c8e91c95807c"
         ],
+        "course_area": "design",
+        "admission_route": "institutional",
+        "selectivity": 0.4,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -271,6 +289,9 @@
         "career_ids": [
           "25e5be98-408e-5217-9336-fa983dc96be0"
         ],
+        "course_area": "medicine",
+        "admission_route": "management_quota",
+        "selectivity": 0.35,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",
@@ -311,6 +332,9 @@
         "career_ids": [
           "25e5be98-408e-5217-9336-fa983dc96be0"
         ],
+        "course_area": "medicine",
+        "admission_route": "single_window_counselling",
+        "selectivity": 0.97,
         "seats": null,
         "provenance": {
           "source_name": "PRISM curated estimate (mock fixture)",

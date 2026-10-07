@@ -2,24 +2,24 @@
   "success": true,
   "data": {
     "visibility": "summary",
-    "index": 45.55,
-    "band": "moderate",
+    "index": 31.93,
+    "band": "mild",
     "dimensions": [],
     "top_drivers": [
       {
         "dimension": "domain_preference",
-        "explanation": "You and your parents rank different fields first, though both lists share a love of biology and health.",
-        "conversation_prompt": "Which part of medicine excites you most, and could a health-technology career deliver the same impact?"
+        "explanation": "You lean towards Computational Biologist, Biomedical Engineer; your parents lean towards Doctor (MBBS), Biomedical Engineer.",
+        "conversation_prompt": "What draws each of you to these fields, and could Biomedical Engineer give you both what you want?"
       },
       {
         "dimension": "prestige_stability",
-        "explanation": "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
-        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?"
+        "explanation": "One side values a secure job more; the other values ambition and reward more.",
+        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet it?"
       },
       {
         "dimension": "geography",
-        "explanation": "You are open to moving to another metro; your parents would prefer you study nearby.",
-        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?"
+        "explanation": "You see the question of moving away for study differently.",
+        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move work?"
       }
     ],
     "bridge_careers": [
@@ -35,27 +35,10 @@
             "E"
           ]
         },
-        "student_fit": 0.78,
-        "parent_acceptance": 0.85,
-        "bridge_score": 0.8135,
-        "why": "Strong on both your interests and your family's priorities"
-      },
-      {
-        "career": {
-          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-          "slug": "computational-biologist",
-          "name": "Computational Biologist",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S",
-            "T",
-            "M"
-          ]
-        },
-        "student_fit": 0.82,
-        "parent_acceptance": 0.72,
-        "bridge_score": 0.7668,
-        "why": "Strong on both your interests and your family's priorities"
+        "student_fit": 0.8032,
+        "parent_acceptance": 0.952,
+        "bridge_score": 0.8713,
+        "why": "Fits the student at 80% and the parents' hopes at 95%"
       },
       {
         "career": {
@@ -67,13 +50,31 @@
             "S"
           ]
         },
-        "student_fit": 0.58,
-        "parent_acceptance": 0.95,
-        "bridge_score": 0.7203,
-        "why": "Strong on both your interests and your family's priorities"
+        "student_fit": 0.705,
+        "parent_acceptance": 1.0,
+        "bridge_score": 0.827,
+        "why": "Fits the student at 70% and the parents' hopes at 100%"
+      },
+      {
+        "career": {
+          "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "slug": "robotics-engineer",
+          "name": "Robotics & Automation Engineer",
+          "sector": "engineering",
+          "steam_tags": [
+            "S",
+            "T",
+            "E",
+            "M"
+          ]
+        },
+        "student_fit": 0.7301,
+        "parent_acceptance": 0.726,
+        "bridge_score": 0.728,
+        "why": "Fits the student at 73% and the parents' hopes at 73%"
       }
     ],
-    "summary": "You and your family agree on a lot, especially your interest in health and science. A few conversations, mainly about field choice and stability, will help you plan together."
+    "summary": "You and your family agree on a lot. A few conversations, mainly about field choice and stability versus ambition, will help you plan together."
   },
   "error": null,
   "meta": {

@@ -9,6 +9,9 @@ from app.core.clock import today as clock_today
 from app.core.config import ENGINE_VERSION, get_settings
 from app.core.dimensions import DIMENSION_GROUP, DIMENSION_LABELS, DIMENSIONS, VECTOR_SPEC_VERSION
 from app.core.errors import AppError, ErrorCode
+from app.engine.compare import compare as compare_runs
+from app.engine.config import DEFAULT_CONFIG, ScoringConfig
+from app.engine.types import FamilyInput, StudentInput
 from app.etl import quality
 from app.etl.adapters.adzuna import AdzunaAdapter, plan_queries
 from app.etl.sources import DATASETS, SOURCES
@@ -22,9 +25,9 @@ from app.schemas.analysis import (
     AnalysisRunRequest,
     AnalysisRunSummary,
     BucketItem,
-    CareerDelta,
     ConflictReport,
     RunComparison,
+    WhatIfOverrides,
     WhatIfRequest,
     WhatIfResult,
 )
@@ -74,13 +77,7 @@ from app.schemas.family import (
 )
 from app.schemas.profiles import StudentProfileIn, StudentProfileOut
 from app.schemas.reports import (
-    Milestone,
-    MilestoneType,
-    RankedPathway,
     Roadmap,
-    RoadmapPhase,
-    SkillAction,
-    SwotItem,
     SwotReport,
 )
 from app.schemas.system import (
@@ -92,6 +89,7 @@ from app.schemas.system import (
     Formula,
     Methodology,
 )
+from app.services.analysis import apply_overrides, roadmap_for, swot_for
 from app.services.principal import Principal
 
 MOCK_ACCESS = "mock.access.token"
@@ -310,120 +308,113 @@ class MockGateway:
         )
 
     # ------------------------------------------------------------ analysis
+    # Runs are computed by the real engine (app/services/analysis.py) on fixture data, then kept in memory so
+    # they can be fetched, compared and used as a what-if baseline. Live mode stores them in the database.
+    def __init__(self) -> None:
+        self._runs: dict[str, tuple[AnalysisRun, StudentInput, FamilyInput, ScoringConfig]] = {}
+
+    def _remember(
+        self, run: AnalysisRun, st: StudentInput, fam: FamilyInput, cfg: ScoringConfig
+    ) -> AnalysisRun:
+        self._runs[run.run_id] = (run, st, fam, cfg)
+        return run
+
+    def _baseline(self) -> AnalysisRun:
+        if w.RUN_ID not in self._runs:
+            self._remember(b.analysis_run(), b.student_input(), b.family_input(), DEFAULT_CONFIG)
+        return self._runs[w.RUN_ID][0]
+
+    def _demo_what_if(self) -> None:
+        if w.WHATIF_RUN_ID not in self._runs:
+            self._baseline()
+            overrides = WhatIfOverrides(
+                allocatable_savings=w.FINANCE["allocatable_savings"] + 800_000, loan_tolerance=0.7
+            )
+            st, fam, cfg = apply_overrides(b.student_input(), b.family_input(), DEFAULT_CONFIG, overrides)
+            run = b.analysis_run(
+                run_id=w.WHATIF_RUN_ID,
+                kind="what_if",
+                parent_run_id=w.RUN_ID,
+                student=st,
+                family=fam,
+                cfg=cfg,
+                created_offset_min=5,
+            )
+            self._remember(run, st, fam, cfg)
+
+    def _view(self, run: AnalysisRun, p: Principal) -> AnalysisRun:
+        if p.role is not Role.STUDENT:
+            return run
+        _, st, fam, cfg = self._runs[run.run_id]
+        summary = b.run_analysis(
+            st,
+            fam,
+            b.catalog_input(),
+            today=w.TODAY,
+            now=run.created_at,
+            cfg=cfg,
+            kind=run.kind,
+            parent_run_id=run.parent_run_id,
+            run_id=run.run_id,
+            full_conflict=False,
+        ).conflict
+        return run.model_copy(update={"conflict": summary})
+
     def create_run(self, p: Principal, req: AnalysisRunRequest) -> AnalysisRun:
-        return b.analysis_run(full_conflict=p.role is not Role.STUDENT)
+        return self._view(self._baseline(), p)
 
     def get_run(self, p: Principal, run_id: str) -> AnalysisRun:
+        self._baseline()
         if run_id == w.WHATIF_RUN_ID:
-            return self._what_if_run(p)
-        if run_id != w.RUN_ID:
+            self._demo_what_if()
+        if run_id not in self._runs:
             raise AppError(ErrorCode.NOT_FOUND, "Analysis run not found", {"run_id": run_id})
-        return b.analysis_run(full_conflict=p.role is not Role.STUDENT)
+        return self._view(self._runs[run_id][0], p)
 
     def list_runs(
         self, p: Principal, student_id: str | None, page: int, page_size: int
     ) -> Page[AnalysisRunSummary]:
-        rows = []
-        for run in (b.analysis_run(), self._what_if_run(p)):
-            top = run.recommendations[0]
-            rows.append(
-                AnalysisRunSummary(
-                    run_id=run.run_id,
-                    student_id=run.student_id,
-                    kind=run.kind,
-                    created_at=run.created_at,
-                    top_career=top.career.name,
-                    top_score=top.final_score,
-                    conflict_index=run.conflict.index,
-                    scoring_config_version=run.reproducibility.scoring_config_version,
-                )
+        self._baseline()
+        self._demo_what_if()
+        rows = [
+            AnalysisRunSummary(
+                run_id=run.run_id,
+                student_id=run.student_id,
+                kind=run.kind,
+                created_at=run.created_at,
+                top_career=run.recommendations[0].career.name,
+                top_score=run.recommendations[0].final_score,
+                conflict_index=run.conflict.index,
+                scoring_config_version=run.reproducibility.scoring_config_version,
             )
+            for run, *_ in sorted(self._runs.values(), key=lambda t: t[0].created_at)
+        ]
         return _paginate(rows, page, page_size)
 
-    def _what_if_run(self, p: Principal) -> AnalysisRun:
-        return b.analysis_run(
-            run_id=w.WHATIF_RUN_ID,
-            kind="what_if",
-            parent_run_id=w.RUN_ID,
-            funds=w.FAMILY_FUNDS + 800_000,
-            loan_tolerance=0.7,
-            full_conflict=p.role is not Role.STUDENT,
-            created_offset_min=5,
-        )
-
-    def _compare(self, base: AnalysisRun, other: AnalysisRun) -> RunComparison:
-        bmap = {r.career.id: r for r in base.recommendations}
-        omap = {r.career.id: r for r in other.recommendations}
-        deltas = []
-        for cid in dict.fromkeys(list(bmap) + list(omap)):
-            br, orr = bmap.get(cid), omap.get(cid)
-            name = (br or orr).career.name
-            deltas.append(
-                CareerDelta(
-                    career_id=cid,
-                    career_name=name,
-                    base_rank=br.rank if br else None,
-                    new_rank=orr.rank if orr else None,
-                    base_score=br.final_score if br else None,
-                    new_score=orr.final_score if orr else None,
-                    score_delta=round((orr.final_score if orr else 0) - (br.final_score if br else 0), 4),
-                    base_class=br.financial.affordability_class if br else None,
-                    new_class=orr.financial.affordability_class if orr else None,
-                )
-            )
-        deltas.sort(key=lambda d: -abs(d.score_delta))
-        k = 5
-        btop = [r.career.id for r in base.recommendations[:k]]
-        otop = [r.career.id for r in other.recommendations[:k]]
-        summary = [
-            f"{d.career_name}: {d.base_class.value if d.base_class else '-'} -> "
-            f"{d.new_class.value if d.new_class else '-'} ({d.score_delta:+.3f})"
-            for d in deltas
-            if d.base_class != d.new_class
-        ] or ["Rankings are stable under this scenario."]
-        return RunComparison(
-            base_run_id=base.run_id,
-            other_run_id=other.run_id,
-            rank_correlation=b.kendall_tau(
-                [r.career.id for r in base.recommendations], [r.career.id for r in other.recommendations]
-            ),
-            deltas=deltas,
-            entered_top_k=[c for c in otop if c not in btop],
-            left_top_k=[c for c in btop if c not in otop],
-            conflict_index_delta=round(other.conflict.index - base.conflict.index, 2),
-            summary=summary,
-        )
-
     def compare(self, p: Principal, run_a: str, run_b: str) -> RunComparison:
-        return self._compare(self.get_run(p, run_a), self.get_run(p, run_b))
+        return compare_runs(self.get_run(p, run_a), self.get_run(p, run_b))
 
     def what_if(self, p: Principal, run_id: str, req: WhatIfRequest) -> WhatIfResult:
         base = self.get_run(p, run_id)
-        o = req.overrides
-        extra = (
-            (o.allocatable_savings - w.FINANCE["allocatable_savings"])
-            if o.allocatable_savings is not None
-            else 0
-        )
-        weights = dict(w.WEIGHTS)
-        if o.weights:
-            weights.update({k.value: v for k, v in o.weights.items()})
+        _, st, fam, cfg = self._runs[run_id]
+        st2, fam2, cfg2 = apply_overrides(st, fam, cfg, req.overrides)
         new = b.analysis_run(
-            run_id=w.WHATIF_RUN_ID,
+            run_id=None,
             kind="what_if",
             parent_run_id=run_id,
-            weights=weights,
-            funds=max(0, w.FAMILY_FUNDS + extra),
-            loan_tolerance=o.loan_tolerance if o.loan_tolerance is not None else w.FINANCE["loan_tolerance"],
-            full_conflict=p.role is not Role.STUDENT,
+            student=st2,
+            family=fam2,
+            cfg=cfg2,
             created_offset_min=5,
         )
+        self._remember(new, st2, fam2, cfg2)
+        new = self._view(new, p)
         return WhatIfResult(
             baseline_run_id=run_id,
             what_if_run_id=new.run_id,
             label=req.label,
-            overrides=o,
-            comparison=self._compare(base, new),
+            overrides=req.overrides,
+            comparison=compare_runs(base, new),
             new_top=[
                 BucketItem(
                     career_id=r.career.id,
@@ -440,227 +431,11 @@ class MockGateway:
 
     def get_swot(self, p: Principal, run_id: str, career_id: str | None) -> SwotReport:
         run = self.get_run(p, run_id)
-        rec = next((r for r in run.recommendations if r.career.id == career_id), None) if career_id else None
-        v = persona.VECTOR
-        strengths = [
-            SwotItem(
-                title=DIMENSION_LABELS[d],
-                detail=f"Scored {v[d]:.0%}, above most careers' requirement.",
-                evidence={"score": v[d], "group": DIMENSION_GROUP[d].value},
-                weight=round(v[d], 2),
-            )
-            for d in sorted(DIMENSIONS, key=lambda d: -v[d])[:4]
-        ]
-        gaps = rec.fit.gaps if rec else run.recommendations[0].fit.gaps
-        weaknesses = [
-            SwotItem(
-                title=g.label,
-                detail=f"Below the requirement by {g.gap:.0%}; closable with practice.",
-                evidence={"student": g.student, "required": g.required},
-                weight=min(1.0, g.gap * 2),
-            )
-            for g in gaps[:3]
-        ] or [SwotItem(title="No major gaps", detail="Profile meets requirements.", weight=0.1)]
-        opportunities = [
-            SwotItem(
-                title="Rising demand for data roles in Coimbatore-Bengaluru corridor",
-                detail="Demand index 0.84, job velocity +19 % YoY (illustrative estimate).",
-                evidence={"demand_index": 0.84, "job_velocity": 0.19},
-                weight=0.8,
-            ),
-            SwotItem(
-                title="Local agri-drone problems need solvers",
-                detail="Coconut pest detection project in Pollachi is a ready starter project.",
-                evidence={"local_opportunities": 3},
-                weight=0.6,
-            ),
-        ]
-        threats = [
-            SwotItem(
-                title="Automation of entry-level analytics",
-                detail="Routine reporting roles are shrinking.",
-                evidence={"disruption_risk": 0.25},
-                weight=0.5,
-            ),
-            SwotItem(
-                title="Budget pressure on private courses",
-                detail="Design and private MBBS routes exceed the family's comfortable budget.",
-                evidence={"infeasible_pathways": 2},
-                weight=0.6,
-            ),
-        ]
-        return SwotReport(
-            run_id=run.run_id,
-            career=rec.career if rec else None,
-            strengths=strengths,
-            weaknesses=weaknesses,
-            opportunities=opportunities,
-            threats=threats,
-            headline="Analytical, creative problem-solver with strong numerical and spatial reasoning; "
-            "best served by affordable public-college routes into data and health-tech.",
-        )
+        return swot_for(run, self._runs[run_id][1], b.catalog_input(), career_id)
 
     def get_roadmap(self, p: Principal, run_id: str, career_id: str | None) -> Roadmap:
         run = self.get_run(p, run_id)
-        rec = next((r for r in run.recommendations if r.career.id == career_id), run.recommendations[0])
-        slug = rec.career.slug
-        exams = [b.exam(e[0]) for e in w.EXAMS if slug in e[10]]
-        start = date(2026, 10, 1)
-        y1 = [
-            Milestone(
-                title=f"Register for {e.name}",
-                type=MilestoneType.EXAM,
-                due=e.registration_deadline,
-                ref_id=e.code,
-                detail=e.eligibility_summary,
-            )
-            for e in exams
-        ]
-        y1 += [
-            Milestone(
-                title=f"Sit {e.name}",
-                type=MilestoneType.EXAM,
-                due=e.next_window_start,
-                ref_id=e.code,
-                detail="Dates are estimates; confirm on the official site.",
-            )
-            for e in exams
-        ]
-        y1.append(
-            Milestone(
-                title="Class 12 board exams",
-                type=MilestoneType.ACADEMIC,
-                due=date(2027, 2, 15),
-                detail="Board percentile also drives scholarship eligibility.",
-            )
-        )
-        sch = [
-            Milestone(
-                title=s.name,
-                type=MilestoneType.SCHOLARSHIP,
-                due=date.fromisoformat(s.deadline) if s.deadline else None,
-                ref_id=s.scholarship_id,
-                detail=f"Expected value Rs {s.expected_value:,}",
-            )
-            for s in rec.financial.scholarship_plan
-        ]
-        phases = [
-            RoadmapPhase(
-                year_index=1,
-                label="Year 1 - Class 12, entrance exams, admission",
-                start=start,
-                end=date(2027, 8, 31),
-                milestones=sorted(y1, key=lambda m: m.due or date.max),
-            ),
-            RoadmapPhase(
-                year_index=2,
-                label="Year 2 - Foundations",
-                start=date(2027, 9, 1),
-                end=date(2028, 8, 31),
-                milestones=[
-                    Milestone(
-                        title="Complete a Python + statistics foundation course",
-                        type=MilestoneType.SKILL,
-                        due=date(2028, 1, 31),
-                        detail="~60 hours",
-                    ),
-                    Milestone(
-                        title="Start the local coconut-pest image project",
-                        type=MilestoneType.PROJECT,
-                        due=date(2028, 4, 30),
-                        ref_id=w.sid("local", "cbe-coconut-drone"),
-                        detail="Hyper-local STEAM project; builds a portfolio piece.",
-                    ),
-                ],
-            ),
-            RoadmapPhase(
-                year_index=3,
-                label="Year 3 - Specialise",
-                start=date(2028, 9, 1),
-                end=date(2029, 8, 31),
-                milestones=[
-                    Milestone(
-                        title="Summer research or industry internship",
-                        type=MilestoneType.CAREER,
-                        due=date(2029, 6, 30),
-                        detail="Apply by January.",
-                    )
-                ],
-            ),
-            RoadmapPhase(
-                year_index=4,
-                label="Year 4 - Build proof of work",
-                start=date(2029, 9, 1),
-                end=date(2030, 8, 31),
-                milestones=[
-                    Milestone(
-                        title="Publish two end-to-end projects",
-                        type=MilestoneType.PROJECT,
-                        detail="Public repository + write-up.",
-                    ),
-                    Milestone(
-                        title="Second internship (pre-placement offer target)",
-                        type=MilestoneType.CAREER,
-                        due=date(2030, 6, 30),
-                        detail="",
-                    ),
-                ],
-            ),
-            RoadmapPhase(
-                year_index=5,
-                label="Year 5 - Placement & first role",
-                start=date(2030, 9, 1),
-                end=date(2031, 8, 31),
-                milestones=[
-                    Milestone(
-                        title="Campus placement season",
-                        type=MilestoneType.CAREER,
-                        due=date(2030, 12, 15),
-                        detail="Target entry CTC per salary band.",
-                    ),
-                    Milestone(
-                        title="Education loan EMI planning",
-                        type=MilestoneType.FINANCE,
-                        detail=f"Planned EMI Rs {rec.financial.monthly_emi:,}/month.",
-                    ),
-                ],
-            ),
-        ]
-        pw = [rec.financial, *rec.alternative_pathways]
-        ranked = [
-            RankedPathway(
-                rank=i,
-                pathway_id=f.pathway_id,
-                name=f.pathway_name,
-                institution_name=f.institution_name,
-                affordability_class=f.affordability_class.value,
-                total_cost=f.total_cost,
-                entrance_exam_codes=b.pathway(
-                    next(p[0] for p in w.PATHWAYS if w.sid("pathway", p[0]) == f.pathway_id)
-                ).entrance_exam_codes,
-            )
-            for i, f in enumerate(pw, 1)
-        ]
-        actions = [
-            SkillAction(
-                dimension_or_skill=g.label,
-                gap=g.gap,
-                action=f"Weekly practice targeting {g.label.lower()}",
-                resource_type="practice",
-                weeks=8,
-            )
-            for g in rec.fit.gaps
-        ]
-        plan_b = [a.career for a in b.alternatives(slug)][:3]
-        return Roadmap(
-            run_id=run.run_id,
-            career=rec.career,
-            phases=phases,
-            ranked_pathways=ranked,
-            scholarship_deadlines=sch,
-            skill_actions=actions,
-            plan_b=plan_b,
-        )
+        return roadmap_for(run, self._runs[run_id][1], b.catalog_input(), career_id, w.TODAY)
 
     # ------------------------------------------------------------ catalog
     def list_careers(
@@ -878,12 +653,12 @@ def build_methodology(report: quality.AuditReport) -> Methodology:
         dimensions=[
             {"key": d, "label": DIMENSION_LABELS[d], "group": DIMENSION_GROUP[d].value} for d in DIMENSIONS
         ],
-        scoring_config_version="weights-2026.10-v1",
-        weights=w.WEIGHTS,
+        scoring_config_version=DEFAULT_CONFIG.version,
+        weights=DEFAULT_CONFIG.weights,
         parameters={
-            "education_inflation": b.EDU_INFLATION,
-            "loan_rate": b.LOAN_RATE,
-            "loan_tenor_months": b.LOAN_MONTHS,
+            "education_inflation": DEFAULT_CONFIG.edu_inflation,
+            "loan_rate": DEFAULT_CONFIG.loan_rate,
+            "loan_tenor_months": DEFAULT_CONFIG.loan_tenor_months,
             "loan_moratorium_months": 12,
             "discount_rate": 0.08,
             "roi_horizon_years": 10,
@@ -891,7 +666,7 @@ def build_methodology(report: quality.AuditReport) -> Methodology:
             "signal_half_life": "one update cycle of the source",
             "psychometric_min_coverage": 0.5,
             "norm_group_min_n": 200,
-            "base_model_confidence": b.BASE_MODEL_CONFIDENCE,
+            "base_model_confidence": DEFAULT_CONFIG.base_model_confidence,
             "sensitivity_perturbation": 0.2,
             "conflict_bands": "aligned<20<=mild<40<=moderate<60<=high",
         },

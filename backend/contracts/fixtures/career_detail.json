@@ -17,7 +17,7 @@
     "long_description": "Turns messy data into decisions using statistics, machine learning and storytelling. Typical employers range from startups to public institutions.",
     "riasec_profile": {
       "riasec_r": 0.45,
-      "riasec_i": 0.9,
+      "riasec_i": 0.85,
       "riasec_a": 0.5,
       "riasec_s": 0.25,
       "riasec_e": 0.5,
@@ -25,29 +25,29 @@
     },
     "requirement_vector": {
       "riasec_r": 0.45,
-      "riasec_i": 0.9,
+      "riasec_i": 0.85,
       "riasec_a": 0.5,
       "riasec_s": 0.25,
       "riasec_e": 0.5,
       "riasec_c": 0.65,
       "apt_numerical": 0.85,
       "apt_verbal": 0.5,
-      "apt_logical": 0.9,
+      "apt_logical": 0.85,
       "apt_spatial": 0.5,
-      "cog_analytical": 0.9,
+      "cog_analytical": 0.85,
       "cog_creative": 0.5,
       "cog_practical": 0.5,
       "val_security": 0.5,
       "val_autonomy": 0.65,
       "val_impact": 0.5,
-      "val_financial": 0.7,
+      "val_financial": 0.65,
       "grit": 0.5,
       "risk_tolerance": 0.5
     },
     "aptitude_requirements": {
       "apt_numerical": 0.85,
       "apt_verbal": 0.5,
-      "apt_logical": 0.9,
+      "apt_logical": 0.85,
       "apt_spatial": 0.5
     },
     "skills": [

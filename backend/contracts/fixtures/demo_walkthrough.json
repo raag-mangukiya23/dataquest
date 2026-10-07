@@ -79,7 +79,7 @@
       {
         "step": 5,
         "title": "Where the family disagrees",
-        "say": "Conflict index 46 out of 100, its top three drivers, and bridge careers both sides accept.",
+        "say": "Conflict index 32 out of 100 (mild), its top three drivers, and bridge careers both sides accept.",
         "call": {
           "method": "GET",
           "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/conflict",
@@ -170,7 +170,7 @@
       {
         "step": 10,
         "title": "Trust the ranking",
-        "say": "Weights perturbed by 20 % in 64 scenarios: the top career holds in 89 % of them. The input hash makes the run reproducible.",
+        "say": "Weights perturbed by 20 % in 64 scenarios: Doctor (MBBS) stays first in 48% of them; the family alignment weight matters most. The input hash makes the run reproducible.",
         "call": {
           "method": "GET",
           "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed",

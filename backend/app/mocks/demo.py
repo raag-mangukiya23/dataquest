@@ -85,6 +85,11 @@ def personas() -> list[DemoPersona]:
 
 
 def walkthrough() -> DemoWalkthrough:
+    from app.mocks.builders import analysis_run
+
+    live = analysis_run()
+    conflict, sens = live.conflict, live.sensitivity
+    top = live.recommendations[0]
     run = f"/api/v1/analysis/runs/{w.RUN_ID}"
     parent = {"X-Mock-Role": "parent"}
     steps = [
@@ -121,7 +126,8 @@ def walkthrough() -> DemoWalkthrough:
         ),
         (
             "Where the family disagrees",
-            "Conflict index 46 out of 100, its top three drivers, and bridge careers both sides accept.",
+            f"Conflict index {conflict.index:.0f} out of 100 ({conflict.band.value}), its top three drivers, and "
+            "bridge careers both sides accept.",
             DemoCall(method="GET", path=f"{run}/conflict", headers=parent),
             ["data.index", "data.top_drivers", "data.bridge_careers"],
             45,
@@ -164,7 +170,8 @@ def walkthrough() -> DemoWalkthrough:
         ),
         (
             "Trust the ranking",
-            "Weights perturbed by 20 % in 64 scenarios: the top career holds in 89 % of them. "
+            f"Weights perturbed by 20 % in {sens.scenarios} scenarios: {top.career.name} stays first in "
+            f"{sens.top1_stability:.0%} of them; the {sens.most_sensitive_weight.replace('_', ' ')} weight matters most. "
             "The input hash makes the run reproducible.",
             DemoCall(method="GET", path=run),
             [

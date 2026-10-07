@@ -120,6 +120,15 @@ class Pathway(Contract):
     misc_per_year: INR
     entrance_exam_codes: list[str]
     career_ids: list[str]
+    course_area: str = Field(
+        default="general", examples=["engineering", "basic_sciences", "medicine", "design"]
+    )
+    admission_route: str = Field(
+        default="institutional", examples=["single_window_counselling", "national_exam", "management_quota"]
+    )
+    selectivity: Unit = Field(
+        default=0.5, description="How competitive admission is (0 = open, 1 = extremely selective). Estimate."
+    )
     seats: int | None = None
     provenance: Provenance
 
@@ -195,6 +204,11 @@ class Scholarship(Contract):
     )
     deadline: date | None = None
     deadline_status: DateStatus = DateStatus.ESTIMATED
+    self_declared_criteria: str | None = Field(
+        default=None,
+        description="Eligibility depends on criteria PRISM does not collect (e.g. social category, gender, "
+        "disability). Shown so students can check themselves; never used in scoring or automatic plans.",
+    )
     provenance: Provenance
 
 

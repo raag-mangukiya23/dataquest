@@ -2,73 +2,73 @@
   "success": true,
   "data": {
     "visibility": "full",
-    "index": 45.55,
-    "band": "moderate",
+    "index": 31.93,
+    "band": "mild",
     "dimensions": [
       {
         "dimension": "domain_preference",
-        "gap": 0.7,
+        "gap": 0.5,
         "weight": 0.3,
-        "contribution": 21.0,
-        "student_position": "Top choices: Data Science, Computational Biology, Design",
-        "parent_position": "Top choices: Medicine, Biomedical Engineering"
+        "contribution": 15.0,
+        "student_position": "Top matches: Computational Biologist, Biomedical Engineer, Data Scientist",
+        "parent_position": "Top hopes: Doctor (MBBS), Biomedical Engineer, Robotics & Automation Engineer"
       },
       {
         "dimension": "risk_appetite",
-        "gap": 0.27,
-        "weight": 0.15,
-        "contribution": 4.05,
-        "student_position": "Comfortable with some uncertainty (0.57)",
-        "parent_position": "Prefers low risk (0.30)"
-      },
-      {
-        "dimension": "geography",
-        "gap": 0.3,
-        "weight": 0.15,
-        "contribution": 4.5,
-        "student_position": "Open to Bengaluru/Hyderabad",
-        "parent_position": "Prefers Coimbatore/Chennai"
-      },
-      {
-        "dimension": "budget",
         "gap": 0.25,
         "weight": 0.15,
         "contribution": 3.75,
-        "student_position": "Top-career costs up to Rs 31 lakh",
-        "parent_position": "Comfortable up to about Rs 12 lakh"
+        "student_position": "Risk tolerance 0.55",
+        "parent_position": "Risk appetite 0.30"
+      },
+      {
+        "dimension": "geography",
+        "gap": 0.25,
+        "weight": 0.15,
+        "contribution": 3.75,
+        "student_position": "Relocate 0.7, abroad 0.3",
+        "parent_position": "Relocate 0.4, abroad 0.1"
+      },
+      {
+        "dimension": "budget",
+        "gap": 0.0823,
+        "weight": 0.15,
+        "contribution": 1.23,
+        "student_position": "Top choices cost up to Rs 1,289,649",
+        "parent_position": "Family can fund about Rs 1,069,693"
       },
       {
         "dimension": "time_to_earn",
-        "gap": 0.4,
+        "gap": 0.3333,
         "weight": 0.1,
-        "contribution": 4.0,
-        "student_position": "Fine with 5-6 years of study",
+        "contribution": 3.33,
+        "student_position": "About 5 years until earning",
         "parent_position": "Expects earning within 4 years"
       },
       {
         "dimension": "prestige_stability",
-        "gap": 0.55,
+        "gap": 0.325,
         "weight": 0.15,
-        "contribution": 8.25,
-        "student_position": "Values autonomy and creativity",
-        "parent_position": "Values stability"
+        "contribution": 4.87,
+        "student_position": "Position 0.52 (0 = stability, 1 = ambition)",
+        "parent_position": "Prefers stability"
       }
     ],
     "top_drivers": [
       {
         "dimension": "domain_preference",
-        "explanation": "You and your parents rank different fields first, though both lists share a love of biology and health.",
-        "conversation_prompt": "Which part of medicine excites you most, and could a health-technology career deliver the same impact?"
+        "explanation": "You lean towards Computational Biologist, Biomedical Engineer; your parents lean towards Doctor (MBBS), Biomedical Engineer.",
+        "conversation_prompt": "What draws each of you to these fields, and could Biomedical Engineer give you both what you want?"
       },
       {
         "dimension": "prestige_stability",
-        "explanation": "Your parents prioritise a stable, well-recognised job; you value autonomy and creative work.",
-        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet that bar while staying creative?"
+        "explanation": "One side values a secure job more; the other values ambition and reward more.",
+        "conversation_prompt": "What would 'secure enough' look like in numbers, and which careers meet it?"
       },
       {
         "dimension": "geography",
-        "explanation": "You are open to moving to another metro; your parents would prefer you study nearby.",
-        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move comfortable?"
+        "explanation": "You see the question of moving away for study differently.",
+        "conversation_prompt": "Which cities feel safe and affordable to everyone, and what support would make a move work?"
       }
     ],
     "bridge_careers": [
@@ -84,27 +84,10 @@
             "E"
           ]
         },
-        "student_fit": 0.78,
-        "parent_acceptance": 0.85,
-        "bridge_score": 0.8135,
-        "why": "Strong on both your interests and your family's priorities"
-      },
-      {
-        "career": {
-          "id": "1aee4de5-f876-5cee-97a9-20e74fa58bc1",
-          "slug": "computational-biologist",
-          "name": "Computational Biologist",
-          "sector": "health_life_sciences",
-          "steam_tags": [
-            "S",
-            "T",
-            "M"
-          ]
-        },
-        "student_fit": 0.82,
-        "parent_acceptance": 0.72,
-        "bridge_score": 0.7668,
-        "why": "Strong on both your interests and your family's priorities"
+        "student_fit": 0.8032,
+        "parent_acceptance": 0.952,
+        "bridge_score": 0.8713,
+        "why": "Fits the student at 80% and the parents' hopes at 95%"
       },
       {
         "career": {
@@ -116,13 +99,31 @@
             "S"
           ]
         },
-        "student_fit": 0.58,
-        "parent_acceptance": 0.95,
-        "bridge_score": 0.7203,
-        "why": "Strong on both your interests and your family's priorities"
+        "student_fit": 0.705,
+        "parent_acceptance": 1.0,
+        "bridge_score": 0.827,
+        "why": "Fits the student at 70% and the parents' hopes at 100%"
+      },
+      {
+        "career": {
+          "id": "4919f992-15b4-5c91-951f-b2f3290cd1a3",
+          "slug": "robotics-engineer",
+          "name": "Robotics & Automation Engineer",
+          "sector": "engineering",
+          "steam_tags": [
+            "S",
+            "T",
+            "E",
+            "M"
+          ]
+        },
+        "student_fit": 0.7301,
+        "parent_acceptance": 0.726,
+        "bridge_score": 0.728,
+        "why": "Fits the student at 73% and the parents' hopes at 73%"
       }
     ],
-    "summary": "Conflict index 46/100 (moderate). The biggest differences are domain preference, prestige stability, geography. Bridge careers such as Biomedical Engineer score well for both student and family."
+    "summary": "Conflict index 32/100 (mild). Biggest differences: field choice, stability versus ambition, where to study. Biomedical Engineer scores well for both sides."
   },
   "error": null,
   "meta": {

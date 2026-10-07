@@ -69,6 +69,8 @@ class SkillAction(Contract):
     action: str
     resource_type: str = Field(examples=["course", "project", "competition", "practice"])
     weeks: int
+    resource_name: str | None = Field(default=None, examples=["NPTEL", "SWAYAM", "DIKSHA"])
+    resource_url: str | None = Field(default=None, description="Free government learning platform")
 
 
 class Roadmap(Contract):
