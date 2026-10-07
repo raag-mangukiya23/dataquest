@@ -93,13 +93,44 @@ Build these after the P0 screens from docs/FRONTEND_CLAUDE_CODE_PROMPT.md work.
 9. Offline-ready PWA: cache the app shell, the questionnaire and the latest run; answers queue in IndexedDB and upload with client_submission_id when back online; an install prompt on mobile.
 10. Comfort settings: theme (dark/light/system), text size (100/115/130 %), reduce motion, language.
 
+## 5b. More features (also frontend-only, existing endpoints only)
+11. "Your journey" hub on Home: a 6-step checklist with live status: account → parental consent (user.consent_status) →
+    questionnaire (instrument progress) → family budget (finance exists) → results (a run exists) → family meeting / plan.
+    Each step has one clear button. This is the main way users know what to do next.
+12. Consent made humane: a minor whose consent is pending sees a friendly waiting screen with "Send the request to my
+    parent" (share the family invite); the parent sees a one-screen plain explanation of what is collected and why,
+    with Approve / Decline (POST /api/v1/consents). Show the CONSENT_REQUIRED error as this screen, never as an error.
+13. Family invite by QR code and WhatsApp: show the invite code (POST /families/invites) as a large code, a QR code
+    (qrcode library, generated in the browser) and a "Share on WhatsApp" link (wa.me with prefilled text).
+14. Scholarship finder: GET /scholarships?eligible_only=&career_id= as cards with an eligibility checklist (passed /
+    failed / "we can't tell" from checks[].passed), expected value, deadline countdown and date status. Scholarships
+    with self_declared_criteria go in a separate "Check these yourself" group with the criteria text; never assume.
+15. Exam calendar: GET /exams as a month view and a list, each exam with session dates, registration close and its
+    date status, with "Add to calendar" for the student's own deadlines.
+16. Glossary drawer: tap any underlined term (EMI, ROI, moratorium, NIRF, quota, CSIS, PM-Vidyalaxmi, conflict
+    index, confidence) for a one-sentence plain explanation. Write the definitions in a single glossary file.
+17. Parent mode: a simplified view for parents with large type, rupee-first summaries, the plain-language summary in
+    the chosen language with read-aloud, and only four sections (Top careers, Can we afford it, Talk together,
+    Important dates). Toggle in settings; default on for the parent role on phones.
+18. Local project board: GET /local-opportunities?pincode= as cards with the starter project; "I'm interested"
+    saves the project to the student's plan (localStorage) and adds it to the roadmap view as a station.
+19. "How PRISM works in 60 seconds": an /about page with an animated pipeline diagram (answers → 19-dimension profile →
+    six-part score → financial solver → conflict index → roadmap), each stage clickable to its formula from
+    /system/methodology. Built for judges and curious parents.
+20. Resilience: an offline banner, automatic retry with backoff for GET requests, toasts for success and failure,
+    a friendly 404 page, and a session-expired dialog that refreshes the token silently once before asking to sign in.
+21. Follow-up nudge: if the latest run is more than 180 days old, show a banner "What did you decide?" leading to
+    the outcomes form (POST /students/{id}/outcomes).
+22. Print-ready plan: a print stylesheet so "Print / Save as PDF" on the Plan page gives a clean 2-page plan
+    (roadmap, deadlines, scholarships), alongside the existing family report.
+
 ## 6. Build order (time boxes; never start a later step with an earlier one broken)
 1. 0:00–0:45 Scaffold, tokens, fonts, API layer from the original prompt (envelope, auth modes, fixture mode), generated types, formatINR, base components. Commit.
 2. 0:45–2:30 P0 screens plain and working (landing without 3D, sign in, results, career detail, family, what-if, how we know) in live and fixtures modes. Screenshot each. Commit each.
 3. 2:30–3:00 Checkpoint: full core path at 1440px and 390px, light and dark; fix everything; deploy a fixtures-mode build to Vercel or Netlify as a safety copy.
 4. 3:00–5:00 Loading screen (motion 0, about 40 minutes, screenshot it mid-animation and finished), then signature motion 2, 3 and 4 (results reveal, what-if instrument, family gravity), then 1 (landing prism). Screenshot before/after each; keep only what improves the screen. Commit each.
 5. 5:00–6:30 Features 1, 2, 3, 6 from section 5. Then P1 screens from the original prompt (plan/roadmap with motion 6, questionnaire with motion 7, parent inputs, loan explainer, counsellor dashboard).
-6. 6:30+ Galaxy (motion 5), features 4, 5, 7, 8, 9, 10, then P2 screens.
+6. 6:30+ Features 11, 12, 13, 14 (they make the product usable end to end), then galaxy (motion 5), features 17, 16, 19, 4, 5, 7, 8, 9, 10, 15, 18, 20, 21, 22, then P2 screens.
 7. Final hour: performance pass, accessibility pass, reduced-motion pass, redeploy, write frontend/README.md.
 
 ## 7. Definition of done (in addition to the original prompt's)
