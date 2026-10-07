@@ -82,7 +82,9 @@ function render(r, input){
   renderSWOT(r, input);
   renderCopilot(r, input);
 
-  $('#why').innerHTML = `
+  $('#why').innerHTML = r.audit ? `
+    <h5>Pipeline audit trail</h5>
+    <ol>${r.audit.map(x => `<li>${x}</li>`).join('')}</ol>` : `
     <h5>Pipeline audit trail</h5>
     <ol>
       <li>Ingested 5 psychometric dimensions and 3 family parameters; declared interest = <b>${input.student.interest}</b>.</li>
@@ -255,8 +257,31 @@ function run(opts){
   const input = readInput();
   const result = runEngine(input);
   lastResult = { r: result, input };
-  render(result, input);
+  render(result, input);                              // instant local preview (also the offline fallback)
   if (opts && opts.persist) void persistRun(input);   // explicit save only
+  else scheduleRemoteScore(input);                    // PRISM backend engine replaces the preview
+}
+
+/* The PRISM backend engine (51 careers, financial solver, scholarships, conflict index) scores every
+   view. Slider drags are debounced and never saved; a stale reply is ignored. */
+let remoteTimer = null, remoteSeq = 0;
+function showRemote(result, input){
+  lastResult = { r: result, input };
+  render(result, input);
+}
+function scheduleRemoteScore(input){
+  clearTimeout(remoteTimer);
+  const seq = ++remoteSeq;
+  remoteTimer = setTimeout(async () => {
+    try {
+      const data = await apiPost('/score', input);
+      if (seq !== remoteSeq || !data || !data.result) return;
+      showRemote(data.result, input);
+      setStatus('Scored by the PRISM engine · ' + (data.result.datasetVersion || 'live data') + '.', 'ok');
+    } catch (err){
+      if (seq === remoteSeq) setStatus('Scored locally · PRISM engine unreachable (' + err.message + ').', 'warn');
+    }
+  }, 350);
 }
 
 let booted = false;
@@ -377,6 +402,8 @@ async function persistRun(input){
   setStatus('Syncing this run to the engine index…', 'busy');
   try {
     const saved = await apiPost('/assess', input);
+    remoteSeq++;                                       // a saved run supersedes any pending preview
+    if (saved.result) showRemote(saved.result, input);
     if (!saved.persisted){
       setStatus('Scored locally · engine index not attached to this environment.', 'warn');
       return;

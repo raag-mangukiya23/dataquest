@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     twilio_auth_token: str | None = None
     twilio_from_sms: str | None = None
     twilio_from_whatsapp: str | None = None
+    # Public site served at / (default: <repo>/site when it exists). Empty = API only.
+    site_dir: str | None = None
     log_level: str = "INFO"
     # Developer / judging tools only, off by default: /api/v1/demo/* endpoints and an optional frozen "today"
     # (DEMO_TODAY, used only while DEMO_MODE is on) so deadlines never slip into the past during a demo.

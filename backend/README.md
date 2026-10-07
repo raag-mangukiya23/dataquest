@@ -20,6 +20,13 @@ curl -s -X POST localhost:8000/api/v1/analysis/runs -H 'Content-Type: applicatio
 curl -s -X POST localhost:8000/api/predict -H 'Content-Type: application/json' -d '{}' | jq
 ```
 
+## The public site
+
+`../site` (HTML/JS) is served at `/` by this backend; its `/api/assess`, `/api/score`, `/api/battery`,
+`/api/insights` routes are answered by the PRISM engine (see `app/api/site.py`, `app/services/site_bridge.py`).
+After `python scripts/seed.py`, run `MOCK_MODE=false uvicorn app.main:app --port 8000` and open
+http://localhost:8000.
+
 ## Live mode (database + real engine)
 
 ```bash

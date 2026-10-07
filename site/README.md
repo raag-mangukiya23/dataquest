@@ -1,5 +1,25 @@
 # prism-engine — source
 
+## Running with the PRISM backend (recommended)
+
+The FastAPI backend in `../backend` serves this site at `/` and answers its API (`/api/assess`,
+`/api/assess/{id}`, `/api/score`, `/api/battery`, `/api/insights`, `/api/health`, `/api/market`) with the
+full PRISM engine: 51 careers, 101 course pathways, financial solver with scholarships and loan schemes,
+parent–student conflict index, market blend and sensitivity analysis. One server, no Cloudflare needed:
+
+```bash
+cd ../backend
+pip install -e ".[dev]"
+python scripts/seed.py                       # creates prism.db with the catalogue
+MOCK_MODE=false uvicorn app.main:app --port 8000
+# open http://localhost:8000
+```
+
+`engine.js` still scores instantly in the browser while sliders move (and is the offline fallback); the
+backend's result replaces it about 0.35 s later. Saved runs and battery sittings go to the backend database.
+The Cloudflare Worker below (`api.js`, `../deploy`) is the original standalone setup.
+
+
 Front-end source plus the shared scoring core and the Worker API.
 See the [root README](../README.md) for the architecture and the pipeline.
 

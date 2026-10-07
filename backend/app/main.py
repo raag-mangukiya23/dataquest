@@ -1,15 +1,18 @@
 """PRISM Engine API entrypoint: `uvicorn app.main:app --reload`."""
 
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.api.compat import router as compat_router
+from app.api.site import router as site_router
 from app.api.v1.router import api_router
 from app.core.config import APP_VERSION, get_settings
 from app.core.envelope import fail
@@ -83,6 +86,11 @@ def create_app() -> FastAPI:
 
     app.include_router(api_router)
     app.include_router(compat_router)
+    app.include_router(site_router)
+    site = Path(settings.site_dir) if settings.site_dir else Path(__file__).resolve().parents[2] / "site"
+    if (site / "index.html").exists():
+        # The public site (site/) is served last, so every API route above takes precedence
+        app.mount("/", StaticFiles(directory=site, html=True), name="site")
     return app
 
 
