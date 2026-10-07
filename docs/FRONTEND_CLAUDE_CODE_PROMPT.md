@@ -32,18 +32,19 @@ Every figure carries provenance: whether it is checked or an estimate. The selli
 
 ## Running the backend locally
 cd backend && pip install -e ".[dev]"
-- Mock mode (default, no DB): `uvicorn app.main:app --reload --port 8000`.
-- Live mode: `python scripts/seed.py --reset && MOCK_MODE=false uvicorn app.main:app --port 8000`.
+- Mock mode (default, no DB): `DEMO_MODE=true uvicorn app.main:app --reload --port 8000`.
+- Live mode: `python scripts/seed.py --demo --reset && MOCK_MODE=false DEMO_MODE=true uvicorn app.main:app --port 8000`.
+- DEMO_MODE turns on the developer-only /api/v1/demo/* endpoints; it is off by default and refused in production.
 
 CORS already allows http://localhost:5173. Put the API base URL in VITE_API_URL (default http://localhost:8000).
 
 ## API rules (follow exactly)
-1. Envelope. Every JSON response is `{success, data, error, meta}`. Unwrap `data` in one fetch helper. On `success:false`, throw `error.code` and `error.message` and show `error.message` to the user; it is already friendly. `meta.mock` tells you whether the data is mock.
-2. Auth has two modes behind one switch, VITE_AUTH_MODE = mock | live.
-   - **mock:** no login; send the header `X-Mock-Role: student|parent|educator|admin` from a role switcher in the top bar.
+1. Envelope. Every JSON response is `{success, data, error, meta}`. Unwrap `data` in one fetch helper. On `success:false`, throw `error.code` and `error.message` and show `error.message` to the user; it is already friendly. `meta.mock` tells you whether the data is mock; use it only inside the developer tools.
+2. Auth has two modes behind one switch, VITE_AUTH_MODE = live | mock (default live).
+   - **mock** (developer only): no login; send the header `X-Mock-Role: student|parent|educator|admin` chosen in the developer tools panel (see "Developer tools" below).
    - **live:** `POST /api/v1/auth/login {email,password}` returns `data.user` and `data.tokens.access_token / refresh_token`. Send `Authorization: Bearer <access>`. On 401, call `POST /api/v1/auth/refresh {refresh_token}` once, then retry. Keep tokens in memory plus sessionStorage.
-   - Demo accounts: `<key>.student@prism.example` and `<key>.parent@prism.example`; keys come from GET /api/v1/demo/personas. Also counsellor@prism.example and admin@prism.example. Password for all: Prism@Demo2026.
-3. Fixture mode. VITE_DATA_MODE = api | fixtures. In fixtures mode, the same API layer returns the JSON files copied into src/fixtures (write a small script for the copy). This is our safety net if the backend or wifi fails on stage, so every P0 screen must work in fixtures mode.
+   - Demo accounts (developer and judging use only, never shown to normal users): `<key>.student@prism.example` and `<key>.parent@prism.example`, where the keys come from GET /api/v1/demo/personas, plus counsellor@prism.example and admin@prism.example. The password for all is Prism@Demo2026. They can always be typed into the normal sign-in form.
+3. Fixture mode (developer setting, invisible to users). VITE_DATA_MODE = api | fixtures. In fixtures mode, the same API layer returns the JSON files copied into src/fixtures (write a small script for the copy). This is our safety net if the backend or wifi fails on stage, so every P0 screen must work in fixtures mode. In fixtures mode the normal sign-in form still appears: it accepts any password and picks the student, parent, educator or admin fixtures from the role word in the email (e.g. `...parent@...`).
 4. Privacy is enforced by the backend; the UI must handle it gracefully.
    - In the student and educator views, FinancialAssessment.family_funds, loan_capacity, loan_required, monthly_emi, burden_ratio and funding_gap are null. Show "Shared with parents only", never 0 and never a crash.
    - `conflict.visibility` is "full" (parent) or "summary" (student). Summary has no per-dimension gaps.
@@ -87,17 +88,18 @@ Must work at 360px phone width (students use phones): the sidebar becomes a bott
 
 Shell:
 - Left sidebar: Home, Questionnaire, My profile, Results, Family, Plan, Explore, How we know.
-- Top bar: role switcher (mock mode) or user menu (live mode), language select (English / தமிழ் / हिन्दी), and a "Mock data" or "Live" chip from meta.mock.
+- Top bar: user menu (name, role, sign out) and language select (English / தமிழ் / हिन्दी). Nothing about mock data, demo or developer settings appears here.
 - The language select changes the narrative and the report (`?lang=`); the UI chrome stays English for now.
 
 ## Screens, by priority. Build P0 completely before touching P1.
 
-### P0: the demo path (must be stunning)
-1. **Landing + persona picker.**
+### P0: the core path (must be stunning)
+1. **Landing + sign in / create account.**
    - Headline "See every path. Choose yours together." Sub: "Career guidance that weighs your interests, your family's budget and real job demand — and shows its working."
-   - Below it, the 5 demo families from GET /demo/personas as cards: name, location, scenario, highlights.
-   - "Enter as student" / "Enter as parent" buttons (live mode: logs in with the demo accounts; mock mode: sets the role).
-   - A small "Counsellor" and "Admin" link.
+   - Below it, three short explainers: "Know yourself" (questionnaire), "Plan with your family" (budget, loans, scholarships, honest conversations), "See your future" (roadmap and local projects). Footer line: "Every number shows its source and whether it has been checked."
+   - Primary buttons "Sign in" and "Create account". Register (POST /api/v1/auth/register) asks for full name, email, password, role (student / parent / teacher) and date of birth for students; show the note that a parent must approve for students under 18.
+   - After sign-in, route by role: student → results (or questionnaire if no run yet), parent → results, educator → counsellor dashboard, admin → admin.
+   - No demo families, persona cards or role switches on this page.
 2. **Results dashboard** (hero screen; data from the latest run).
    - Top: 6 composite tiles from `composite_scores`.
    - A plain-language summary card from GET /analysis/runs/{id}/narrative?lang=… (headline + bullets, with a small "Rephrased by AI" tag when source=model).
@@ -137,15 +139,25 @@ Shell:
 13. **Explore:** GET /careers (filters), /market/trends?region_code (always label it a snapshot with its date, never "real-time"), /local-opportunities?pincode with starter-project callouts.
 14. **Outcomes form** (POST /students/{id}/outcomes) and **mentors** directory (GET /mentors?pincode, with an honest empty state).
 15. **Admin:** /admin/analytics (k-anonymised charts) and /admin/outcomes/summary.
-16. **Presenter mode:** steps from GET /demo/walkthrough in a slim rail, with the "say" line, a timer, and Next / Previous that navigate the app.
+16. **Presenter mode** (part of the developer tools below): steps from GET /demo/walkthrough in a slim rail, with the "say" line, a timer, and Next / Previous that navigate the app.
+
+## Developer tools: off by default, never part of the product
+Put everything below in `src/devtools/` and render it only when `import.meta.env.VITE_DEV_TOOLS === "true"`. Load it with a dynamic import inside that check, so a normal build (VITE_DEV_TOOLS unset) does not contain any of it.
+- A small floating "Dev" button (bottom-right) opening a panel with:
+  - the X-Mock-Role switcher (mock auth only);
+  - a data-source chip (mock / live / fixtures, from meta.mock and VITE_DATA_MODE);
+  - "Sign in as demo family" quick-fill. It calls GET /api/v1/demo/personas and lists the 5 families; picking one fills the normal sign-in form. If that endpoint returns 404 (DEMO_MODE off), hide the list.
+  - A link to presenter mode at /presenter.
+- No other screen may import from src/devtools.
+- For judging, the team may deploy one build with VITE_DEV_TOOLS=true. The public build keeps it off.
 
 ## Build order and time boxes (adjust if behind; P0 matters most)
 1. 0:00–0:45 — scaffold, tokens, fonts, shell, API layer (envelope, auth modes, fixture mode), generated types, formatINR, ScoreBar, pills and badges.
-2. 0:45–1:15 — landing and persona picker.
+2. 0:45–1:15 — landing, sign in and register (role-based routing).
 3. 1:15–2:45 — results dashboard and career detail.
 4. 2:45–3:30 — family conversation and what-if.
 5. 3:30–4:00 — how we know.
-6. 4:00–4:30 — **checkpoint.** Run the whole demo path in mock, live and fixtures modes; fix bugs; deploy.
+6. 4:00–4:30 — **checkpoint.** Run the whole core path in live and fixtures modes; fix bugs; deploy. Then add the developer tools panel (about 30 min), because judging is easier with quick sign-in.
 7. 4:30+ — P1 in order 10, 7, 9, 11, 12, 8. Then P2.
 
 Commit after each step with a clear message. If something blocks you for more than 20 minutes, stub it with an honest empty state and move on.
@@ -153,10 +165,11 @@ Commit after each step with a clear message. If something blocks you for more th
 ## Deploy
 - Frontend: `npm run build`, then deploy `frontend/dist` to Vercel or Netlify. Use VITE_DATA_MODE=fixtures if no backend is hosted.
 - If the backend is hosted, set its CORS_ORIGINS to include the frontend URL.
-- Add frontend/README.md with run, env and deploy steps, plus the demo accounts.
+- Add frontend/README.md with run, env and deploy steps. Put the demo accounts in a "Developer and judging" section of the README, not in the UI.
 
 ## Definition of done
-- The demo path (landing → results → career detail → family conversation → what-if → how we know) works in mock, live and fixtures modes, at 1440px and 360px, in light and dark.
+- The core path (landing → sign in → results → career detail → family conversation → what-if → how we know) works in live and fixtures modes, at 1440px and 360px, in light and dark.
+- A build without VITE_DEV_TOOLS shows no demo, mock or developer UI: `grep -ri "persona\|X-Mock-Role\|presenter" dist/` finds nothing.
 - No console errors. Every async view has loading, empty and error states. No invented numbers.
 - The student view never shows family rupee amounts.
 - `npm run build` and `npm run lint` pass. Write a few Vitest tests for formatINR, the envelope unwrap and ScoreBar segment widths.
@@ -165,6 +178,6 @@ Commit after each step with a clear message. If something blocks you for more th
 
 ## Tips while it runs
 
-- Open a second terminal with the backend running in mock mode so the frontend has data immediately.
+- Open a second terminal with the backend running in mock mode (`DEMO_MODE=true`) so the frontend has data immediately.
 - If time runs short, say "stop at P0, deploy, then continue with P1 item 10" so a working build exists first.
-- For the demo, keep a fixtures-mode deployment ready as a backup in case the network fails.
+- For judging, keep a fixtures-mode deployment ready as a backup in case the network fails. Turn on VITE_DEV_TOOLS only in the build you show judges, if you want quick sign-in.

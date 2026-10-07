@@ -60,10 +60,35 @@ def test_demo_disabled_returns_404(monkeypatch):
 def test_roadmap_deadlines_are_not_in_the_past_on_demo_day(client):
     from datetime import date
 
-    from app.core.config import get_settings
+    from app.core.clock import today as clock_today
 
-    today = get_settings().demo_today or date.today()
+    today = clock_today()
     run = client.get("/api/v1/demo/personas").json()["data"][0]["baseline_run_id"]
     phases = client.get(f"/api/v1/analysis/runs/{run}/roadmap").json()["data"]["phases"]
     year1 = [m for m in phases[0]["milestones"] if m["due"]]
     assert all(date.fromisoformat(m["due"]) >= today for m in year1)
+
+
+def test_production_refuses_developer_tools():
+    import pytest
+    from pydantic import ValidationError
+
+    from app.core.config import Settings
+
+    with pytest.raises(ValidationError):
+        Settings(app_env="production", demo_mode=True, mock_mode=False)
+    with pytest.raises(ValidationError):
+        Settings(app_env="production", demo_mode=False, mock_mode=True)
+    assert Settings(app_env="production", demo_mode=False, mock_mode=False).demo_mode is False
+
+
+def test_frozen_date_only_applies_in_demo_mode(monkeypatch):
+    from datetime import date
+
+    from app.core import clock
+    from app.core.config import Settings
+
+    monkeypatch.setattr(clock, "get_settings", lambda: Settings(demo_mode=False, demo_today=date(2020, 1, 1)))
+    assert clock.today() == date.today()
+    monkeypatch.setattr(clock, "get_settings", lambda: Settings(demo_mode=True, demo_today=date(2020, 1, 1)))
+    assert clock.today() == date(2020, 1, 1)

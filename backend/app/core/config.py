@@ -3,7 +3,7 @@
 from datetime import date
 from functools import lru_cache
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 APP_VERSION = "0.1.0"
@@ -43,9 +43,16 @@ class Settings(BaseSettings):
     twilio_from_sms: str | None = None
     twilio_from_whatsapp: str | None = None
     log_level: str = "INFO"
-    # Demo support: /api/v1/demo/* endpoints and a frozen "today" so deadlines never slip into the past on stage.
-    demo_mode: bool = True
-    demo_today: date | None = date(2026, 10, 7)
+    # Developer / judging tools only, off by default: /api/v1/demo/* endpoints and an optional frozen "today"
+    # (DEMO_TODAY, used only while DEMO_MODE is on) so deadlines never slip into the past during a demo.
+    demo_mode: bool = False
+    demo_today: date | None = None
+
+    @model_validator(mode="after")
+    def _no_dev_tools_in_production(self) -> "Settings":
+        if self.app_env.lower() in ("prod", "production") and (self.demo_mode or self.mock_mode):
+            raise ValueError("APP_ENV=production requires DEMO_MODE=false and MOCK_MODE=false")
+        return self
 
     @field_validator("cors_origins", mode="before")
     @classmethod

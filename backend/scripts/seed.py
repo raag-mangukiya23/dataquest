@@ -1,8 +1,10 @@
-"""Create the schema, load the seed catalog and (optionally) the five demo families.
+"""Create the schema, load the seed catalog and, for development or judging only, the five demo families.
 
-  python scripts/seed.py            # migrate + catalog + demo families (idempotent)
-  python scripts/seed.py --reset    # also wipe and recreate the demo families
-  python scripts/seed.py --no-demo  # catalog only
+  python scripts/seed.py                 # migrate + catalog (what a real deployment runs)
+  python scripts/seed.py --demo          # also create the demo families (idempotent)
+  python scripts/seed.py --demo --reset  # wipe and recreate the demo families
+
+Demo accounts share a published password, so they are refused when APP_ENV=production.
 
 Uses DATABASE_URL (SQLite by default). All demo accounts use the password in app/mocks/demo_families.py.
 """
@@ -165,9 +167,16 @@ def seed_demo(db: Session, reset: bool = False) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--reset", action="store_true", help="wipe and recreate the demo families")
-    ap.add_argument("--no-demo", action="store_true", help="load the catalog only")
+    ap.add_argument(
+        "--demo", action="store_true", help="create the demo families (development / judging only)"
+    )
+    ap.add_argument("--reset", action="store_true", help="with --demo: wipe and recreate the demo families")
     args = ap.parse_args()
+    from app.core.config import get_settings
+
+    if args.demo and get_settings().app_env.lower() in ("prod", "production"):
+        print("Refusing to create demo accounts with APP_ENV=production")
+        return 2
 
     from app.db.session import get_sessionmaker
     from app.etl import loader
@@ -182,7 +191,7 @@ def main() -> int:
             print(f"Catalog loaded: {res['counts']} ({len(res['warnings'])} warnings)")
         else:
             print("Catalog already loaded (use POST /api/v1/admin/data/refresh to load a new version)")
-        if not args.no_demo:
+        if args.demo:
             n = seed_demo(db, reset=args.reset)
             print(
                 f"Demo families created: {n}"
@@ -190,9 +199,8 @@ def main() -> int:
                 else "Demo families already present (use --reset to recreate)"
             )
         db.commit()
-    print(
-        f"Demo password for every demo account: {__import__('app.mocks.demo_families', fromlist=['x']).DEMO_PASSWORD}"
-    )
+    if args.demo:
+        print(f"Demo password for every demo account: {df.DEMO_PASSWORD}")
     return 0
 
 

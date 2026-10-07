@@ -1,6 +1,8 @@
 import os
 
 os.environ["MOCK_MODE"] = "true"
+os.environ["DEMO_MODE"] = "true"  # developer tools on for tests and fixtures
+os.environ["DEMO_TODAY"] = "2026-10-07"
 os.environ["RATE_LIMIT_PER_MINUTE"] = "0"
 
 import pytest  # noqa: E402

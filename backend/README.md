@@ -23,7 +23,8 @@ curl -s -X POST localhost:8000/api/predict -H 'Content-Type: application/json' -
 ## Live mode (database + real engine)
 
 ```bash
-python scripts/seed.py --reset   # migrate, load data/seed/*.json, create 5 demo families (~4 s)
+python scripts/seed.py                 # migrate + load data/seed/*.json (what a real deployment runs)
+python scripts/seed.py --demo --reset  # development / judging only: also create 5 demo families (~4 s)
 MOCK_MODE=false uvicorn app.main:app --reload
 curl -s -X POST localhost:8000/api/v1/auth/login -H 'Content-Type: application/json' \
      -d '{"email":"creative_risk_averse.parent@prism.example","password":"Prism@Demo2026"}' | jq .data.access_token
@@ -31,7 +32,11 @@ curl -s -X POST localhost:8000/api/v1/auth/login -H 'Content-Type: application/j
 
 SQLite is the default (`DATABASE_URL=sqlite:///./prism.db`). For PostgreSQL set
 `DATABASE_URL=postgresql+psycopg://...`; Postgres also gets immutability triggers on runs and the
-admin analytics materialized view. Demo logins are listed by `GET /api/v1/demo/personas`.
+admin analytics materialized view.
+
+Demo tools are for developers and judges only and are off by default. Set `DEMO_MODE=true` (optionally
+`DEMO_TODAY=2026-10-07`) to enable `/api/v1/demo/*`, which lists the demo logins. `APP_ENV=production`
+refuses to start with `DEMO_MODE` or `MOCK_MODE` on, and `seed.py --demo` refuses to run there.
 Fees are stored on each pathway row per quota (government / management), not on the institution.
 
 ## For teammates
