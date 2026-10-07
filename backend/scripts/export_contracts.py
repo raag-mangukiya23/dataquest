@@ -143,8 +143,9 @@ def _stable(obj):
         out = {k: _stable(v) for k, v in obj.items()}
         if "request_id" in out:
             out["request_id"] = "00000000000000000000000000000000"
-        if "took_ms" in out:
-            out["took_ms"] = 0.0
+        for key in ("took_ms", "duration_ms"):
+            if key in out:
+                out[key] = 0.0
         for key in ("time", "generated_at", "started_at", "finished_at", "submitted_at"):
             if key in out and isinstance(out[key], str):
                 out[key] = "2026-10-07T09:30:00Z"

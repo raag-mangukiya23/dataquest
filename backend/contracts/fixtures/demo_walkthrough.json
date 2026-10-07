@@ -2,7 +2,7 @@
   "success": true,
   "data": {
     "persona_key": "creative_risk_averse",
-    "total_seconds": 440,
+    "total_seconds": 415,
     "steps": [
       {
         "step": 1,
@@ -74,7 +74,7 @@
           "data.recommendations[0].financial",
           "data.buckets"
         ],
-        "seconds": 60
+        "seconds": 50
       },
       {
         "step": 5,
@@ -93,7 +93,7 @@
           "data.top_drivers",
           "data.bridge_careers"
         ],
-        "seconds": 45
+        "seconds": 40
       },
       {
         "step": 6,
@@ -133,7 +133,7 @@
           "data.comparison.summary",
           "data.comparison.rank_correlation"
         ],
-        "seconds": 45
+        "seconds": 40
       },
       {
         "step": 8,
@@ -149,7 +149,7 @@
           "data.phases",
           "data.scholarship_deadlines"
         ],
-        "seconds": 40
+        "seconds": 35
       },
       {
         "step": 9,
@@ -204,17 +204,19 @@
       {
         "step": 12,
         "title": "Something to take home",
-        "say": "A one-page report in Tamil or Hindi and the exam and scholarship dates as a calendar file.",
+        "say": "The same result explained in Tamil (or Hindi). Open /report?lang=ta for the printable page and /students/{id}/deadlines.ics for the dates as a calendar file.",
         "call": {
           "method": "GET",
-          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/report?lang=ta",
+          "path": "/api/v1/analysis/runs/6e33720c-5922-516b-9d81-1e216882b8ed/narrative?lang=ta",
           "headers": {
             "X-Mock-Role": "parent"
           },
           "body": null
         },
         "show": [
-          "(printable page)"
+          "data.headline",
+          "data.bullets",
+          "data.facts"
         ],
         "seconds": 20
       },

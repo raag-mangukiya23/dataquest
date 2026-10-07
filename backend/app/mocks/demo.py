@@ -131,7 +131,7 @@ def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
                 method="POST", path="/api/v1/analysis/runs", headers=parent, body={"student_id": student_id}
             ),
             ["data.recommendations[0].contributions", "data.recommendations[0].financial", "data.buckets"],
-            60,
+            50,
         ),
         (
             "Where the family disagrees",
@@ -139,7 +139,7 @@ def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
             "bridge careers both sides accept.",
             DemoCall(method="GET", path=f"{run}/conflict", headers=parent),
             ["data.index", "data.top_drivers", "data.bridge_careers"],
-            45,
+            40,
         ),
         (
             "Same report, student view",
@@ -161,14 +161,14 @@ def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
                 },
             ),
             ["data.comparison.summary", "data.comparison.rank_correlation"],
-            45,
+            40,
         ),
         (
             "A 5-year plan",
             "Exams with dates, scholarship deadlines, skill gaps to close and a local project to start.",
             DemoCall(method="GET", path=f"{run}/roadmap"),
             ["data.phases", "data.scholarship_deadlines"],
-            40,
+            35,
         ),
         (
             "Hyper-local innovation",
@@ -200,9 +200,10 @@ def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
         ),
         (
             "Something to take home",
-            "A one-page report in Tamil or Hindi and the exam and scholarship dates as a calendar file.",
-            DemoCall(method="GET", path=f"{run}/report?lang=ta", headers=parent),
-            ["(printable page)"],
+            "The same result explained in Tamil (or Hindi). Open /report?lang=ta for the printable page and "
+            "/students/{id}/deadlines.ics for the dates as a calendar file.",
+            DemoCall(method="GET", path=f"{run}/narrative?lang=ta", headers=parent),
+            ["data.headline", "data.bullets", "data.facts"],
             20,
         ),
         (

@@ -79,7 +79,7 @@ def blend(
         demand_index=round(demand, 4),
         job_velocity=round(velocity, 4),
         disruption_risk=round(max(disruption, 0.0), 4),
-        regions_considered=sorted({s.region_code for s in rows}, key=lambda c: -weights[c]),
+        regions_considered=sorted({s.region_code for s in rows}, key=lambda c: (-weights[c], c)),
         ci_low=round(max(0.0, score - half), 4),
         ci_high=round(min(1.0, score + half), 4),
         signals_as_of=max(s.provenance.as_of for s in rows).isoformat(),
