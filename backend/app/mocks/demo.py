@@ -191,6 +191,21 @@ def walkthrough(live_ctx: dict | None = None) -> DemoWalkthrough:
             30,
         ),
         (
+            "Fair to every family",
+            "Same student at Rs 2.4 lakh and Rs 25 lakh family income: the best fits stay visible, and no input "
+            "uses gender, caste or religion. These checks run live on the current data.",
+            DemoCall(method="GET", path="/api/v1/system/fairness"),
+            ["data.passed", "data.probes", "data.protected_attributes_used"],
+            25,
+        ),
+        (
+            "Something to take home",
+            "A one-page report in Tamil or Hindi and the exam and scholarship dates as a calendar file.",
+            DemoCall(method="GET", path=f"{run}/report?lang=ta", headers=parent),
+            ["(printable page)"],
+            20,
+        ),
+        (
             "How current, how checked",
             "Recommendations are computed live on every request. This page shows how fresh each dataset is, "
             "which live feeds are on, and what share of figures we have checked against official sources.",

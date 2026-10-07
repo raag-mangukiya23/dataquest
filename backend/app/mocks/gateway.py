@@ -19,6 +19,7 @@ from app.ml.predictor import predict_domain_fit
 from app.mocks import builders as b
 from app.mocks import persona
 from app.mocks import world as w
+from app.mocks.engagement import MockEngagementMixin
 from app.schemas.admin import AdminAnalytics, CountRow, DataRefreshRequest, RefreshResult
 from app.schemas.analysis import (
     AnalysisRun,
@@ -105,7 +106,7 @@ def _paginate(items: list, page: int, page_size: int) -> Page:
     return Page(items=items[start : start + page_size], page=page, page_size=page_size, total=len(items))
 
 
-class MockGateway:
+class MockGateway(MockEngagementMixin):
     mock = True
 
     # ------------------------------------------------------------ auth
@@ -343,6 +344,8 @@ class MockGateway:
             self._remember(run, st, fam, cfg)
 
     def _view(self, run: AnalysisRun, p: Principal) -> AnalysisRun:
+        if p.role is Role.EDUCATOR:
+            return hide_family_money(run)
         if p.role is not Role.STUDENT:
             return run
         _, st, fam, cfg = self._runs[run.run_id]

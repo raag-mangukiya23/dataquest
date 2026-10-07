@@ -106,6 +106,7 @@ from app.schemas.reports import Roadmap, SwotReport
 from app.schemas.system import DataStatus, Methodology
 from app.services.analysis import apply_overrides, hide_family_money, roadmap_for, run_analysis, swot_for
 from app.services.catalog_db import invalidate, load_catalog, region_for_pincode
+from app.services.engagement_live import EngagementMixin
 from app.services.principal import Principal
 
 K_ANONYMITY = 5
@@ -151,7 +152,7 @@ def _age(dob: date | None) -> int | None:
     return t.year - dob.year - ((t.month, t.day) < (dob.month, dob.day))
 
 
-class LiveGateway:
+class LiveGateway(EngagementMixin):
     mock = False
 
     def __init__(self, db: Session) -> None:
@@ -1049,6 +1050,8 @@ class LiveGateway:
             run = run.model_copy(update={"conflict": conflict_engine.student_view(run.conflict)})
             if not self._consent(p.user_id, ConsentType.SHARE_RAW_FINANCE_WITH_STUDENT):
                 run = hide_family_money(run)
+        elif p.role is Role.EDUCATOR:
+            run = hide_family_money(run)  # counsellors need the affordability class, not the family's money
         return run
 
     def _load_run(self, p: Principal, run_id: str) -> tuple[om.AnalysisRunRow, AnalysisRun]:

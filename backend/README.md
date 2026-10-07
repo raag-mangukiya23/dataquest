@@ -68,6 +68,17 @@ The model only receives the anonymised `facts` shown in the response; an answer 
 those facts is rejected. Without a key, or when the network blocks the call, fixed templates are used.
 The language model never scores careers: ranking stays deterministic and reproducible.
 
+## Real-world follow-through
+
+Deadline reminders (calendar file, SMS / WhatsApp outbox), printable family report in Tamil and Hindi,
+counsellor dashboard, outcome follow-up, fairness report, loan explainer, mentors and partner-school
+local problems: see `../docs/REAL_WORLD.md`.
+
+```bash
+python scripts/send_reminders.py                       # send reminders due today (REMINDER_PROVIDER)
+python scripts/local_problems.py data/partners/local_problems_template.csv
+```
+
 ## Tests & lint
 
 ```bash
@@ -76,4 +87,4 @@ ruff check . && ruff format --check .
 python scripts/export_contracts.py   # regenerate contracts/openapi.json + fixtures
 ```
 
-Docs: `../docs/ARCHITECTURE.md`, `../docs/ER_DIAGRAM.md`, `../docs/API_CONTRACT.md`.
+Docs: `../docs/ARCHITECTURE.md`, `../docs/ER_DIAGRAM.md`, `../docs/API_CONTRACT.md`, `../docs/REAL_WORLD.md`.

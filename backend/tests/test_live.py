@@ -268,6 +268,117 @@ def test_compat_aliases_live(live):
     assert live.get(f"/api/results/{pred['id']}").json()["top_careers"]
 
 
+def test_reminders_end_to_end(live):
+    from datetime import date
+
+    from app.db import session as dbs
+    from app.services.notify import ConsoleProvider, send_due
+
+    hp, d = login(live, df.parent_email("creative_risk_averse"))
+    sid = next(
+        x for x in live.get("/api/v1/demo/personas").json()["data"] if x["key"] == "creative_risk_averse"
+    )["student_id"]
+    assert live.get(f"/api/v1/students/{sid}/deadlines", headers=hp).json()["data"]["items"]
+    body = {"channel": "sms", "phone": "+919876543210", "lead_days": [14, 3]}
+    plan = live.post(f"/api/v1/students/{sid}/reminders", headers=hp, json=body).json()["data"]
+    assert plan["created"] > 0
+    again = live.post(f"/api/v1/students/{sid}/reminders", headers=hp, json=body).json()["data"]
+    assert again["created"] == 0 and again["already_scheduled"] == plan["created"]
+    ho, _ = login(live, df.parent_email("aligned_family"))
+    assert live.post(f"/api/v1/students/{sid}/reminders", headers=ho, json=body).status_code == 403
+
+    first = date.fromisoformat(min(x["send_on"] for x in plan["reminders"]))
+    provider = ConsoleProvider()
+    with dbs.get_sessionmaker()() as db:
+        counts = send_due(db, first, provider)
+        db.commit()
+    assert counts["sent"] >= 1 and provider.sent[0][1] == "+919876543210"
+    assert "PRISM reminder" in provider.sent[0][2] and "STOP" in provider.sent[0][2]
+    mine = live.get("/api/v1/me/reminders", headers=hp).json()["data"]
+    assert "sent" in {x["status"] for x in mine}
+    assert live.delete("/api/v1/me/reminders", headers=hp).json()["data"]["cancelled"] > 0
+    ics = live.get(f"/api/v1/students/{sid}/deadlines.ics", headers=hp)
+    assert ics.status_code == 200 and "BEGIN:VEVENT" in ics.text
+
+
+def test_outcomes_mentors_dashboard_and_report_live(live):
+    hp, _ = login(live, df.parent_email("creative_risk_averse"))
+    hc, _ = login(live, df.COUNSELLOR_EMAIL)
+    ha, _ = login(live, df.ADMIN_EMAIL)
+    sid = next(
+        x for x in live.get("/api/v1/demo/personas").json()["data"] if x["key"] == "creative_risk_averse"
+    )["student_id"]
+    rid = live.get("/api/v1/analysis/runs", headers=hp).json()["data"]["items"][0]["run_id"]
+    run = live.get(f"/api/v1/analysis/runs/{rid}", headers=hp).json()["data"]
+    second = run["recommendations"][1]["career"]["slug"]
+    o = live.post(
+        f"/api/v1/students/{sid}/outcomes",
+        headers=hp,
+        json={"status": "enrolled", "run_id": rid, "chosen_career_id": second, "satisfaction": 5},
+    )
+    assert o.status_code == 201 and o.json()["data"]["followed_recommendation_rank"] == 2
+    assert len(live.get(f"/api/v1/students/{sid}/outcomes", headers=hp).json()["data"]) == 1
+    summary = live.get("/api/v1/admin/outcomes/summary", headers=ha).json()["data"]
+    assert summary["responses"] == 1 and summary["suppressed"]
+
+    mentor = {
+        "display_name": "Priya S.",
+        "career_id": "agri-drone-engineer",
+        "region_code": "IN-TN-CBE",
+        "district": "Pollachi",
+        "languages": ["ta", "en"],
+        "bio": "Drone pilot with a farmer producer company; happy to talk to students.",
+        "consent_on": "2026-10-01",
+        "verified_by": "Demo school counsellor",
+    }
+    assert live.post("/api/v1/mentors", headers=hp, json=mentor).status_code == 403
+    assert live.post("/api/v1/mentors", headers=hc, json=mentor).status_code == 201
+    found = live.get("/api/v1/mentors?pincode=641004", headers=hp).json()["data"]["items"]
+    assert [m["display_name"] for m in found] == ["Priya S."] and not any(
+        ch.isdigit() for ch in found[0]["contact"]
+    )
+    assert live.get("/api/v1/mentors?pincode=600001", headers=hp).json()["data"]["items"] == []
+
+    dash = live.get("/api/v1/educator/dashboard", headers=hc).json()["data"]
+    assert len(dash["students"]) == 5
+    assert all(len(r["display_name"].split()) <= 2 for r in dash["students"])
+    assert live.get("/api/v1/educator/dashboard", headers=hp).status_code == 403
+    edu_run = live.get(f"/api/v1/analysis/runs/{rid}", headers=hc).json()["data"]
+    assert edu_run["recommendations"][0]["financial"]["family_funds"] is None
+
+    report = live.get(f"/api/v1/analysis/runs/{rid}/report?lang=ta", headers=hp)
+    assert report.status_code == 200 and "PRISM குடும்ப அறிக்கை" in report.text
+    fair = live.get("/api/v1/system/fairness").json()["data"]
+    assert fair["passed"], fair["probes"]
+
+
+def test_partner_local_problems_import(live, tmp_path):
+    from pathlib import Path
+
+    from app.core.clock import today
+    from app.db import session as dbs
+    from app.etl.local_csv import import_local_csv
+    from app.services import catalog_db
+
+    template = Path(__file__).resolve().parents[1] / "data/partners/local_problems_template.csv"
+    lines = template.read_text().splitlines()
+    lines.append(lines[1].replace("example-school-water-sensor", "Bad Key").replace("636701", "6367"))
+    path = tmp_path / "atl.csv"
+    path.write_text("\n".join(lines) + "\n")
+    with dbs.get_sessionmaker()() as db:
+        res = import_local_csv(db, path, today())
+        db.commit()
+    catalog_db.invalidate()
+    assert res["imported"] == 1 and len(res["warnings"]) == 1
+    ops = live.get("/api/v1/local-opportunities?pincode=636701").json()["data"]
+    mine = [o for o in ops if o["title"].startswith("Low-cost tank water-level")]
+    assert (
+        mine
+        and mine[0]["provenance"]["verification"] == "unverified"
+        and mine[0]["provenance"]["is_estimate"]
+    )
+
+
 def test_offline_market_csv_creates_new_dataset_version(live, tmp_path):
     """Runs last: publishes a new dataset version, so earlier runs become 'outdated' but stay reproducible."""
     from datetime import timedelta

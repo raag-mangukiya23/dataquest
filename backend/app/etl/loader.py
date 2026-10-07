@@ -531,7 +531,16 @@ def load(
         for pk in s["linked_pathways"]:
             db.add(cm.PathwayScholarship(pathway_id=pathways[pk].id, scholarship_id=row.id))
 
-    db.execute(delete(cm.LocalOpportunityCareer))
+    seed_keys = [
+        o["key"] for o in bundle.local
+    ]  # leave partner-imported opportunities (scripts/local_problems.py) alone
+    db.execute(
+        delete(cm.LocalOpportunityCareer).where(
+            cm.LocalOpportunityCareer.local_opportunity_id.in_(
+                select(cm.LocalOpportunity.id).where(cm.LocalOpportunity.key.in_(seed_keys))
+            )
+        )
+    )
     for o in bundle.local:
         row = _upsert(
             db,

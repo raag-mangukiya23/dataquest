@@ -36,6 +36,12 @@ class Settings(BaseSettings):
     grok_base_url: str = "https://api.x.ai/v1"
     grok_model: str = "grok-4"
     grok_timeout_sec: float = Field(default=12.0, gt=0, le=60)
+    # Deadline reminders: "console" logs messages (demo); "twilio" sends SMS / WhatsApp through Twilio.
+    reminder_provider: str = Field(default="console", pattern="^(console|twilio)$")
+    twilio_account_sid: str | None = None
+    twilio_auth_token: str | None = None
+    twilio_from_sms: str | None = None
+    twilio_from_whatsapp: str | None = None
     log_level: str = "INFO"
     # Demo support: /api/v1/demo/* endpoints and a frozen "today" so deadlines never slip into the past on stage.
     demo_mode: bool = True

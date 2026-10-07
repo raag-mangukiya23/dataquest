@@ -288,7 +288,7 @@ def run_analysis(
     }
     favoured = top_fit_ids | {p.career_id for p in family.preferences if p.career_id}
     gem_ids = (local_career_ids | edge_targets) - favoured
-    bkts = scoring.buckets(recs, gem_ids, stretch_reasons)
+    bkts = scoring.buckets(recs, gem_ids, stretch_reasons, {r.career.id for r in recs[:top_k]})
     for r in recs:
         r.buckets = [b for b, items in bkts.items() if any(it.career_id == r.career.id for it in items)]
     report = conflict_engine.compute(student, family, views, cfg.conflict_weights, full_conflict)

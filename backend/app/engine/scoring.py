@@ -135,9 +135,18 @@ def _hm(a: float, b: float) -> float:
     return 0.0 if a + b == 0 else 2 * a * b / (a + b)
 
 
+HIDDEN_BY_COST_FIT = 0.75  # a well-fitting career pushed out of view by cost must stay visible
+
+
 def buckets(
-    recs: Sequence[Recommendation], gem_ids: set[str], stretch_reasons: Mapping[str, str]
+    recs: Sequence[Recommendation],
+    gem_ids: set[str],
+    stretch_reasons: Mapping[str, str],
+    shown_ids: set[str] | None = None,
 ) -> dict[Bucket, list[BucketItem]]:
+    """shown_ids = careers in the visible top-k list. A high-fit career that cost pushed out of that list is
+    added to stretch goals, so money never silently hides what fits the student best."""
+
     def item(r: Recommendation, score: float, reason: str) -> BucketItem:
         return BucketItem(
             career_id=r.career.id, career_name=r.career.name, score=round(score, 4), reason=reason
@@ -155,10 +164,31 @@ def buckets(
         key=lambda r: (-r.family.bridge_score, r.career.id),
     )
     gems = [r for r in recs if r.career.id in gem_ids and r.career.id not in top3 and r.fit.fit >= 0.6]
+    costly = (AffordabilityClass.STRETCH, AffordabilityClass.LOAN_DEPENDENT, infeasible)
+    shown = {r.career.id for r in recs} if shown_ids is None else shown_ids
+    in_view = shown | top3 | {r.career.id for r in by_fit[:3]}
     stretch = sorted(
-        (r for r in recs if r.financial.affordability_class is infeasible and r.fit.fit >= 0.6),
+        (
+            r
+            for r in recs
+            if (r.financial.affordability_class is infeasible and r.fit.fit >= 0.6)
+            or (
+                r.career.id not in in_view
+                and r.fit.fit >= HIDDEN_BY_COST_FIT
+                and r.financial.affordability_class in costly
+            )
+        ),
         key=lambda r: (-r.fit.fit, r.career.id),
     )
+
+    def stretch_reason(r: Recommendation) -> str:
+        if r.career.id in stretch_reasons:
+            return stretch_reasons[r.career.id]
+        if r.financial.affordability_class is infeasible:
+            return "Out of budget today"
+        label = r.financial.affordability_class.value.replace("_", "-")
+        return f"Fits you well but ranked lower because of cost ({label}); see scholarships and loan options"
+
     return {
         Bucket.BEST_OVERALL: [item(r, r.final_score, "Highest blended score") for r in recs[:3]],
         Bucket.BEST_FOR_STUDENT: [
@@ -185,7 +215,5 @@ def buckets(
             )
             for r in gems[:2]
         ],
-        Bucket.STRETCH_GOALS: [
-            item(r, r.fit.fit, stretch_reasons.get(r.career.id, "Out of budget today")) for r in stretch[:5]
-        ],
+        Bucket.STRETCH_GOALS: [item(r, r.fit.fit, stretch_reason(r)) for r in stretch[:5]],
     }

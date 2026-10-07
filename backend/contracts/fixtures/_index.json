@@ -356,6 +356,103 @@
     "request": null
   },
   {
+    "name": "deadlines",
+    "method": "GET",
+    "path": "/api/v1/students/132394f2-e097-5d31-8e5b-bfa2fade9b38/deadlines",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "reminders_create",
+    "method": "POST",
+    "path": "/api/v1/students/132394f2-e097-5d31-8e5b-bfa2fade9b38/reminders",
+    "status": 201,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": {
+      "channel": "whatsapp",
+      "phone": "+919876543210",
+      "lead_days": [
+        14,
+        3
+      ]
+    }
+  },
+  {
+    "name": "reminders_mine",
+    "method": "GET",
+    "path": "/api/v1/me/reminders",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "loan_explain",
+    "method": "GET",
+    "path": "/api/v1/loans/explain?amount=800000&course_years=4&annual_income=400000",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
+    "name": "outcome_create",
+    "method": "POST",
+    "path": "/api/v1/students/132394f2-e097-5d31-8e5b-bfa2fade9b38/outcomes",
+    "status": 201,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": {
+      "status": "enrolled",
+      "chosen_career_id": "biomedical-engineer",
+      "satisfaction": 4
+    }
+  },
+  {
+    "name": "outcomes_summary",
+    "method": "GET",
+    "path": "/api/v1/admin/outcomes/summary",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "admin"
+    },
+    "request": null
+  },
+  {
+    "name": "mentors",
+    "method": "GET",
+    "path": "/api/v1/mentors?pincode=641004",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "parent"
+    },
+    "request": null
+  },
+  {
+    "name": "educator_dashboard",
+    "method": "GET",
+    "path": "/api/v1/educator/dashboard",
+    "status": 200,
+    "headers": {
+      "X-Mock-Role": "educator"
+    },
+    "request": null
+  },
+  {
+    "name": "system_fairness",
+    "method": "GET",
+    "path": "/api/v1/system/fairness",
+    "status": 200,
+    "headers": {},
+    "request": null
+  },
+  {
     "name": "careers_list",
     "method": "GET",
     "path": "/api/v1/careers",

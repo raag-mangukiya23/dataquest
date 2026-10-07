@@ -40,6 +40,21 @@
 | GET | `/api/v1/analysis/runs/{run_id}/conflict` | — | ConflictReport (full / summary by role) | member | `conflict_parent_view`, `conflict_student_view` |
 | GET | `/api/v1/analysis/runs/{run_id}/swot?career_id=` | — | SwotReport | member | `swot` |
 | GET | `/api/v1/analysis/runs/{run_id}/roadmap?career_id=` | — | Roadmap | member | `roadmap` |
+| GET | `/api/v1/analysis/runs/{run_id}/narrative?lang=en\|ta\|hi` | — | Narrative (plain-language summary; `facts` = all that a language model saw) | member | `narrative_en`, `narrative_ta`, `narrative_hi` |
+| GET | `/api/v1/analysis/runs/{run_id}/report?lang=en\|ta\|hi` | — | **text/html**, one printable page (no envelope) | member | — |
+| GET | `/api/v1/students/{student_id}/deadlines?horizon_days=` | — | Deadlines (exam registration, exam, scholarship dates for the latest run) | member | `deadlines` |
+| GET | `/api/v1/students/{student_id}/deadlines.ics` | — | **text/calendar** (no envelope), 3-day alarms | member | — |
+| POST | `/api/v1/students/{student_id}/reminders` | ReminderRequest | ReminderPlan (idempotent) | student, parent | `reminders_create` |
+| GET | `/api/v1/me/reminders` | — | ReminderOut[] | any | `reminders_mine` |
+| DELETE | `/api/v1/me/reminders` | — | `{cancelled}` | any | — |
+| GET | `/api/v1/loans/explain?amount=&course_years=&annual_income=&institution_tier=&rate=` | — | LoanExplanation (EMI table, CSIS / PM-Vidyalaxmi checks) | public | `loan_explain` |
+| POST | `/api/v1/students/{student_id}/outcomes` | OutcomeIn | OutcomeOut (with `followed_recommendation_rank`) | member | `outcome_create` |
+| GET | `/api/v1/students/{student_id}/outcomes` | — | OutcomeOut[] | member | — |
+| GET | `/api/v1/admin/outcomes/summary` | — | OutcomeSummary (k = 5) | admin | `outcomes_summary` |
+| GET | `/api/v1/mentors?career_id=&region_code=&pincode=` | — | MentorDirectory (verified, opt-in; contact via counsellor) | any | `mentors` |
+| POST | `/api/v1/mentors` | MentorIn (consent date + verifier required) | MentorOut | educator, admin | — |
+| GET | `/api/v1/educator/dashboard` | — | EducatorDashboard (assigned students, flags, most urgent first) | educator | `educator_dashboard` |
+| GET | `/api/v1/system/fairness` | — | FairnessReport (counterfactual probes on the current catalogue) | public | `system_fairness` |
 | GET | `/api/v1/careers?sector=&steam_tag=&q=` | — | Page[CareerSummary] | public | `careers_list` |
 | GET | `/api/v1/careers/{id_or_slug}` | — | CareerDetail | public | `career_detail` |
 | GET | `/api/v1/careers/{id_or_slug}/alternatives` | — | CareerAlternative[] | public | `career_alternatives` |
@@ -82,6 +97,12 @@
 - `Exam.sessions[]` carry `registration_status` and `exam_date_status` (announced | tentative | estimated),
   and `Exam` has `provenance`. `Scholarship` adds `year_amounts` and `deadline_status`.
 - `Reproducibility` adds `latest_dataset_version` and `is_outdated`.
+
+- `FinancialAssessment.family_funds`, `loan_capacity`, `loan_required`, `monthly_emi`, `burden_ratio` and
+  `funding_gap` are now nullable: `null` for students (unless the family granted
+  `share_raw_finance_with_student`) and for educators. Costs, scholarships and affordability classes stay.
+- Stretch goals also hold careers with fit >= 0.75 that cost pushed out of the top 10.
+- Responses over 1 KB are gzip-compressed when the client sends `Accept-Encoding: gzip`.
 
 ## Key examples
 
@@ -143,5 +164,8 @@ POST /api/v1/analysis/runs/{run_id}/what-if
 | Student raw answers | ✅ | only with `share_raw_answers_with_parent` consent | ❌ | ❌ |
 | Student trait scores | ✅ | aggregate in runs | ✅ (linked) | ❌ |
 | Family raw finances | `FamilyFinanceSummary` only (unless `share_raw_finance_with_student`) | ✅ | ❌ | ❌ |
+| Family money inside runs (funds, loan size, EMI, burden, gap) | `null` (unless `share_raw_finance_with_student`) | ✅ | `null` | ❌ |
+| Phone number (reminders) | own only | own only | ❌ | ❌ |
+| Mentor contact | via counsellor | via counsellor | ✅ (adds mentors) | ✅ |
 | Conflict report | `visibility=summary` (gentle, no per-dimension gaps) | `visibility=full` | full | ❌ |
 | Analytics | ❌ | ❌ | ❌ | k-anonymised aggregates only |

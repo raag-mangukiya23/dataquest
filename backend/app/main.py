@@ -5,6 +5,7 @@ import logging
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
@@ -66,6 +67,9 @@ def create_app() -> FastAPI:
         return JSONResponse(fail(ErrorCode.INTERNAL_ERROR, "Internal server error"), status_code=500)
 
     # Middleware order: last added runs first -> request id is set before rate limiting/logging.
+    app.add_middleware(
+        GZipMiddleware, minimum_size=1024
+    )  # a full run shrinks ~5x (39 KB -> 7 KB) on slow mobile data
     app.add_middleware(RateLimitMiddleware, per_minute=settings.rate_limit_per_minute)
     app.add_middleware(
         CORSMiddleware,

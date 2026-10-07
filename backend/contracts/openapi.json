@@ -2129,6 +2129,1129 @@
         }
       }
     },
+    "/api/v1/students/{student_id}/deadlines": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Deadlines",
+        "description": "Exam registrations, exam dates and scholarship deadlines for the courses in the latest results.",
+        "operationId": "deadlines_api_v1_students__student_id__deadlines_get",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Student Id"
+            }
+          },
+          {
+            "name": "horizon_days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 730,
+              "minimum": 7,
+              "default": 365,
+              "title": "Horizon Days"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_Deadlines_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/students/{student_id}/deadlines.ics": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Deadlines Ics",
+        "description": "The same deadlines as a calendar file (Google Calendar, phone calendar), with a 3-day alarm.",
+        "operationId": "deadlines_ics_api_v1_students__student_id__deadlines_ics_get",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Student Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/calendar": {}
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/students/{student_id}/reminders": {
+      "post": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Create Reminders",
+        "description": "Schedule SMS / WhatsApp / email reminders for the caller (student or parent) before each deadline.\nIdempotent: calling again only adds reminders for new deadlines.",
+        "operationId": "create_reminders_api_v1_students__student_id__reminders_post",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Student Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReminderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ReminderPlan_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/reminders": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "My Reminders",
+        "operationId": "my_reminders_api_v1_me_reminders_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_ReminderOut__"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Cancel Reminders",
+        "description": "Stop all pending reminders for the caller.",
+        "operationId": "cancel_reminders_api_v1_me_reminders_delete",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_dict_str__int__"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/analysis/runs/{run_id}/report": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Family Report",
+        "description": "One-page printable report in English, Tamil or Hindi (browser Print -> Save as PDF). Students get the\nstudent view; the 'talk about together' prompts are shown to parents only.",
+        "operationId": "family_report_api_v1_analysis_runs__run_id__report_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Language",
+              "default": "en"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/loans/explain": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Explain Loan",
+        "description": "Plain-language EMI table, interest while studying, and which government schemes apply (CSIS,\nPM-Vidyalaxmi). No login needed; nothing is stored.",
+        "operationId": "explain_loan_api_v1_loans_explain_get",
+        "parameters": [
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 20000000,
+              "minimum": 10000,
+              "description": "Loan amount in rupees",
+              "title": "Amount"
+            },
+            "description": "Loan amount in rupees"
+          },
+          {
+            "name": "course_years",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 7,
+              "minimum": 1,
+              "default": 4,
+              "title": "Course Years"
+            }
+          },
+          {
+            "name": "annual_income",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 100000000,
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Family income; checks schemes",
+              "title": "Annual Income"
+            },
+            "description": "Family income; checks schemes"
+          },
+          {
+            "name": "institution_tier",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 4,
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "1 = top-ranked (QHEI)",
+              "title": "Institution Tier"
+            },
+            "description": "1 = top-ranked (QHEI)"
+          },
+          {
+            "name": "rate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "exclusiveMaximum": 0.25,
+                  "exclusiveMinimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Annual rate; default is an estimate",
+              "title": "Rate"
+            },
+            "description": "Annual rate; default is an estimate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_LoanExplanation_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/students/{student_id}/outcomes": {
+      "post": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Add Outcome",
+        "description": "Record what actually happened 6-12 months later: the honest test of the recommendations.",
+        "operationId": "add_outcome_api_v1_students__student_id__outcomes_post",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Student Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_OutcomeOut_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "List Outcomes",
+        "operationId": "list_outcomes_api_v1_students__student_id__outcomes_get",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Student Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_OutcomeOut__"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/outcomes/summary": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Outcomes Summary",
+        "description": "Share of students who followed a top-3 / top-10 recommendation, satisfaction; k-anonymised (k = 5).",
+        "operationId": "outcomes_summary_api_v1_admin_outcomes_summary_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_OutcomeSummary_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/mentors": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Mentors",
+        "description": "Verified, opt-in local mentors. Contact goes through the school counsellor; no phone numbers.",
+        "operationId": "mentors_api_v1_mentors_get",
+        "parameters": [
+          {
+            "name": "career_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Career Id"
+            }
+          },
+          {
+            "name": "region_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Region Code"
+            }
+          },
+          {
+            "name": "pincode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^\\d{6}$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pincode"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_MentorDirectory_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Add Mentor",
+        "description": "Counsellors and admins add mentors who agreed in writing (consent date and verifier required).",
+        "operationId": "add_mentor_api_v1_mentors_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MentorIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_MentorOut_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/educator/dashboard": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Educator Dashboard",
+        "description": "Assigned students, most urgent first: pending consent, strong family disagreement, top matches out of\nreach, deadlines within 14 days, follow-ups due. Shows affordability classes, never family money.",
+        "operationId": "educator_dashboard_api_v1_educator_dashboard_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Bearer <access_token>",
+              "title": "Authorization"
+            },
+            "description": "Bearer <access_token>"
+          },
+          {
+            "name": "x-mock-role",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Role"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "MOCK_MODE only: impersonate a role to test role-specific views",
+              "title": "X-Mock-Role"
+            },
+            "description": "MOCK_MODE only: impersonate a role to test role-specific views"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_EducatorDashboard_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/system/fairness": {
+      "get": {
+        "tags": [
+          "follow-through"
+        ],
+        "summary": "Fairness",
+        "description": "Counterfactual fairness checks run on the current engine and catalogue (cached per dataset version).",
+        "operationId": "fairness_api_v1_system_fairness_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_FairnessReport_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/careers": {
       "get": {
         "tags": [
@@ -4676,6 +5799,95 @@
         ],
         "title": "CountRow"
       },
+      "DashboardRow": {
+        "properties": {
+          "student_id": {
+            "type": "string",
+            "title": "Student Id"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "First name and initial only"
+          },
+          "grade": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade"
+          },
+          "latest_run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Run Id"
+          },
+          "latest_run_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Run At"
+          },
+          "top_career": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Top Career"
+          },
+          "conflict_band": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conflict Band"
+          },
+          "flags": {
+            "items": {
+              "$ref": "#/components/schemas/StudentFlag"
+            },
+            "type": "array",
+            "title": "Flags"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "student_id",
+          "display_name",
+          "grade",
+          "latest_run_id",
+          "latest_run_at",
+          "top_career",
+          "conflict_band",
+          "flags"
+        ],
+        "title": "DashboardRow"
+      },
       "DataIssue": {
         "properties": {
           "dataset": {
@@ -5073,6 +6285,124 @@
         ],
         "title": "DateStatus"
       },
+      "DeadlineItem": {
+        "properties": {
+          "ref_id": {
+            "type": "string",
+            "title": "Ref Id",
+            "description": "Stable id, e.g. exam:JEE_MAIN:2027:1:reg"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/DeadlineKind"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "due": {
+            "type": "string",
+            "format": "date",
+            "title": "Due"
+          },
+          "days_left": {
+            "type": "integer",
+            "title": "Days Left"
+          },
+          "date_status": {
+            "$ref": "#/components/schemas/DateStatus"
+          },
+          "for_careers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "For Careers",
+            "description": "Career names in this run that need it"
+          },
+          "official_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Official Url"
+          },
+          "source_name": {
+            "type": "string",
+            "title": "Source Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ref_id",
+          "kind",
+          "title",
+          "due",
+          "days_left",
+          "date_status",
+          "for_careers",
+          "source_name"
+        ],
+        "title": "DeadlineItem"
+      },
+      "DeadlineKind": {
+        "type": "string",
+        "enum": [
+          "exam_registration",
+          "exam",
+          "scholarship"
+        ],
+        "title": "DeadlineKind"
+      },
+      "Deadlines": {
+        "properties": {
+          "student_id": {
+            "type": "string",
+            "title": "Student Id"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date",
+            "title": "As Of"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DeadlineItem"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "notice": {
+            "type": "string",
+            "title": "Notice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "student_id",
+          "run_id",
+          "as_of",
+          "items",
+          "notice"
+        ],
+        "title": "Deadlines"
+      },
       "DemoCall": {
         "properties": {
           "method": {
@@ -5311,6 +6641,43 @@
           "steps"
         ],
         "title": "DemoWalkthrough"
+      },
+      "EducatorDashboard": {
+        "properties": {
+          "educator_id": {
+            "type": "string",
+            "title": "Educator Id"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date",
+            "title": "As Of"
+          },
+          "students": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardRow"
+            },
+            "type": "array",
+            "title": "Students",
+            "description": "Most urgent first"
+          },
+          "flag_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Flag Counts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "educator_id",
+          "as_of",
+          "students",
+          "flag_counts"
+        ],
+        "title": "EducatorDashboard"
       },
       "EligibilityCheck": {
         "properties": {
@@ -5601,6 +6968,43 @@
         ],
         "title": "Envelope[DataStatus]"
       },
+      "Envelope_Deadlines_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Deadlines"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[Deadlines]"
+      },
       "Envelope_DemoResetResult_": {
         "properties": {
           "success": {
@@ -5674,6 +7078,80 @@
           "meta"
         ],
         "title": "Envelope[DemoWalkthrough]"
+      },
+      "Envelope_EducatorDashboard_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EducatorDashboard"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[EducatorDashboard]"
+      },
+      "Envelope_FairnessReport_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FairnessReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[FairnessReport]"
       },
       "Envelope_FamilyFinanceOut_": {
         "properties": {
@@ -5823,6 +7301,43 @@
         ],
         "title": "Envelope[InviteOut]"
       },
+      "Envelope_LoanExplanation_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LoanExplanation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[LoanExplanation]"
+      },
       "Envelope_MarketTrends_": {
         "properties": {
           "success": {
@@ -5859,6 +7374,80 @@
           "meta"
         ],
         "title": "Envelope[MarketTrends]"
+      },
+      "Envelope_MentorDirectory_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MentorDirectory"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[MentorDirectory]"
+      },
+      "Envelope_MentorOut_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MentorOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[MentorOut]"
       },
       "Envelope_Methodology_": {
         "properties": {
@@ -5933,6 +7522,80 @@
           "meta"
         ],
         "title": "Envelope[Narrative]"
+      },
+      "Envelope_OutcomeOut_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OutcomeOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[OutcomeOut]"
+      },
+      "Envelope_OutcomeSummary_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OutcomeSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[OutcomeSummary]"
       },
       "Envelope_Page_AnalysisRunSummary__": {
         "properties": {
@@ -6118,6 +7781,43 @@
           "meta"
         ],
         "title": "Envelope[RefreshResult]"
+      },
+      "Envelope_ReminderPlan_": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReminderPlan"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[ReminderPlan]"
       },
       "Envelope_Roadmap_": {
         "properties": {
@@ -6493,6 +8193,47 @@
         ],
         "title": "Envelope[WhatIfResult]"
       },
+      "Envelope_dict_str__int__": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[dict[str, int]]"
+      },
       "Envelope_list_CareerAlternative__": {
         "properties": {
           "success": {
@@ -6739,6 +8480,47 @@
         ],
         "title": "Envelope[list[LocalOpportunity]]"
       },
+      "Envelope_list_OutcomeOut__": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/OutcomeOut"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[list[OutcomeOut]]"
+      },
       "Envelope_list_Question__": {
         "properties": {
           "success": {
@@ -6820,6 +8602,47 @@
           "meta"
         ],
         "title": "Envelope[list[Region]]"
+      },
+      "Envelope_list_ReminderOut__": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ReminderOut"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ErrorBody"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "success",
+          "meta"
+        ],
+        "title": "Envelope[list[ReminderOut]]"
       },
       "Envelope_list_ScholarshipMatch__": {
         "properties": {
@@ -7088,6 +8911,86 @@
           "exam_end"
         ],
         "title": "ExamSession"
+      },
+      "FairnessProbe": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "passed",
+          "detail"
+        ],
+        "title": "FairnessProbe"
+      },
+      "FairnessReport": {
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "title": "Dataset Version"
+          },
+          "model_inputs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Model Inputs",
+            "description": "Every field the scoring engine reads about a student or family"
+          },
+          "protected_attributes_used": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Protected Attributes Used",
+            "description": "Must be empty"
+          },
+          "probes": {
+            "items": {
+              "$ref": "#/components/schemas/FairnessProbe"
+            },
+            "type": "array",
+            "title": "Probes"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Generated At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "dataset_version",
+          "model_inputs",
+          "protected_attributes_used",
+          "probes",
+          "passed",
+          "generated_at"
+        ],
+        "title": "FairnessReport"
       },
       "FamilyFinanceIn": {
         "properties": {
@@ -7796,6 +9699,15 @@
         ],
         "title": "FitDetail"
       },
+      "FlagSeverity": {
+        "type": "string",
+        "enum": [
+          "info",
+          "warn",
+          "urgent"
+        ],
+        "title": "FlagSeverity"
+      },
       "Formula": {
         "properties": {
           "name": {
@@ -8110,6 +10022,171 @@
         ],
         "title": "Language"
       },
+      "LoanExplanation": {
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Amount",
+            "description": "Amount in Indian Rupees (whole rupees)"
+          },
+          "course_years": {
+            "type": "integer",
+            "title": "Course Years"
+          },
+          "assumed_rate": {
+            "type": "number",
+            "title": "Assumed Rate",
+            "description": "Annual interest rate assumed (estimate; banks differ)"
+          },
+          "moratorium_months": {
+            "type": "integer",
+            "title": "Moratorium Months",
+            "description": "Course length + 12 months, when banks usually do not ask for EMIs"
+          },
+          "interest_while_studying": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Interest While Studying",
+            "description": "Simple interest added during the moratorium, after relief"
+          },
+          "owed_when_repayment_starts": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Owed When Repayment Starts",
+            "description": "Amount in Indian Rupees (whole rupees)"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/LoanOption"
+            },
+            "type": "array",
+            "title": "Options"
+          },
+          "schemes": {
+            "items": {
+              "$ref": "#/components/schemas/LoanSchemeCheck"
+            },
+            "type": "array",
+            "title": "Schemes"
+          },
+          "plain_language": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Plain Language"
+          },
+          "cautions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cautions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "amount",
+          "course_years",
+          "assumed_rate",
+          "moratorium_months",
+          "interest_while_studying",
+          "owed_when_repayment_starts",
+          "options",
+          "schemes",
+          "plain_language",
+          "cautions"
+        ],
+        "title": "LoanExplanation"
+      },
+      "LoanOption": {
+        "properties": {
+          "tenor_years": {
+            "type": "integer",
+            "title": "Tenor Years"
+          },
+          "monthly_emi": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Monthly Emi",
+            "description": "Amount in Indian Rupees (whole rupees)"
+          },
+          "total_repaid": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total Repaid",
+            "description": "Amount in Indian Rupees (whole rupees)"
+          },
+          "total_interest": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total Interest",
+            "description": "Amount in Indian Rupees (whole rupees)"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tenor_years",
+          "monthly_emi",
+          "total_repaid",
+          "total_interest"
+        ],
+        "title": "LoanOption"
+      },
+      "LoanSchemeCheck": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "applies": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Applies",
+            "description": "null = need more information (e.g. family income)"
+          },
+          "why": {
+            "type": "string",
+            "title": "Why"
+          },
+          "benefit": {
+            "type": "string",
+            "title": "Benefit"
+          },
+          "how_to_apply": {
+            "type": "string",
+            "title": "How To Apply"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "name",
+          "applies",
+          "why",
+          "benefit",
+          "how_to_apply",
+          "provenance"
+        ],
+        "title": "LoanSchemeCheck"
+      },
       "LocalOpportunity": {
         "properties": {
           "id": {
@@ -8408,6 +10485,167 @@
         ],
         "title": "MarketTrends"
       },
+      "MentorDirectory": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MentorOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "notice": {
+            "type": "string",
+            "title": "Notice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "notice"
+        ],
+        "title": "MentorDirectory"
+      },
+      "MentorIn": {
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Display Name",
+            "description": "First name + initial is enough"
+          },
+          "career_id": {
+            "type": "string",
+            "title": "Career Id"
+          },
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "district": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "District"
+          },
+          "organisation": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organisation"
+          },
+          "languages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 6,
+            "title": "Languages"
+          },
+          "bio": {
+            "type": "string",
+            "maxLength": 400,
+            "minLength": 10,
+            "title": "Bio"
+          },
+          "consent_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Consent On",
+            "description": "Date the mentor agreed in writing to be listed"
+          },
+          "verified_by": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Verified By",
+            "description": "Counsellor or school that checked them"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "display_name",
+          "career_id",
+          "region_code",
+          "district",
+          "bio",
+          "consent_on",
+          "verified_by"
+        ],
+        "title": "MentorIn"
+      },
+      "MentorOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "career": {
+            "$ref": "#/components/schemas/CareerRef"
+          },
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "district": {
+            "type": "string",
+            "title": "District"
+          },
+          "organisation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organisation"
+          },
+          "languages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Languages"
+          },
+          "bio": {
+            "type": "string",
+            "title": "Bio"
+          },
+          "contact": {
+            "type": "string",
+            "title": "Contact",
+            "description": "How to reach them. Never a phone number or email."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "career",
+          "region_code",
+          "district",
+          "organisation",
+          "languages",
+          "bio",
+          "contact"
+        ],
+        "title": "MentorOut"
+      },
       "Meta": {
         "properties": {
           "request_id": {
@@ -8673,6 +10911,324 @@
           "notice"
         ],
         "title": "Narrative"
+      },
+      "OutcomeIn": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/OutcomeStatus"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "chosen_career_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Career Id"
+          },
+          "chosen_pathway_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Pathway Text"
+          },
+          "admitted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Admitted"
+          },
+          "scholarship_received": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scholarship Received"
+          },
+          "satisfaction": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 5.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Satisfaction"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "OutcomeIn"
+      },
+      "OutcomeOut": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/OutcomeStatus"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "chosen_career_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Career Id"
+          },
+          "chosen_pathway_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Pathway Text"
+          },
+          "admitted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Admitted"
+          },
+          "scholarship_received": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scholarship Received"
+          },
+          "satisfaction": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 5.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Satisfaction"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "student_id": {
+            "type": "string",
+            "title": "Student Id"
+          },
+          "followed_recommendation_rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Followed Recommendation Rank",
+            "description": "Rank of the chosen career in the run (null = not in the run or not chosen)"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "id",
+          "student_id",
+          "followed_recommendation_rank",
+          "created_at"
+        ],
+        "title": "OutcomeOut"
+      },
+      "OutcomeStatus": {
+        "type": "string",
+        "enum": [
+          "enrolled",
+          "waiting",
+          "dropped",
+          "working",
+          "other"
+        ],
+        "title": "OutcomeStatus"
+      },
+      "OutcomeSummary": {
+        "properties": {
+          "responses": {
+            "type": "integer",
+            "title": "Responses"
+          },
+          "by_status": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "By Status"
+          },
+          "followed_top3_share": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "description": "Normalised to [0, 1]"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Followed Top3 Share"
+          },
+          "followed_top10_share": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "description": "Normalised to [0, 1]"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Followed Top10 Share"
+          },
+          "mean_satisfaction": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Satisfaction"
+          },
+          "scholarship_received_share": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "description": "Normalised to [0, 1]"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scholarship Received Share"
+          },
+          "suppressed": {
+            "type": "boolean",
+            "title": "Suppressed",
+            "description": "true = fewer than 5 responses; shares withheld"
+          },
+          "notice": {
+            "type": "string",
+            "title": "Notice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "responses",
+          "by_status",
+          "followed_top3_share",
+          "followed_top10_share",
+          "mean_satisfaction",
+          "scholarship_received_share",
+          "suppressed",
+          "notice"
+        ],
+        "title": "OutcomeSummary"
       },
       "Page_AnalysisRunSummary_": {
         "properties": {
@@ -9578,6 +12134,145 @@
         ],
         "title": "RegisterRequest"
       },
+      "ReminderChannel": {
+        "type": "string",
+        "enum": [
+          "sms",
+          "whatsapp",
+          "email",
+          "calendar"
+        ],
+        "title": "ReminderChannel"
+      },
+      "ReminderOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "ref_id": {
+            "type": "string",
+            "title": "Ref Id"
+          },
+          "due": {
+            "type": "string",
+            "format": "date",
+            "title": "Due"
+          },
+          "send_on": {
+            "type": "string",
+            "format": "date",
+            "title": "Send On"
+          },
+          "channel": {
+            "$ref": "#/components/schemas/ReminderChannel"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "examples": [
+              "pending",
+              "sent",
+              "failed",
+              "cancelled"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "ref_id",
+          "due",
+          "send_on",
+          "channel",
+          "status"
+        ],
+        "title": "ReminderOut"
+      },
+      "ReminderPlan": {
+        "properties": {
+          "created": {
+            "type": "integer",
+            "title": "Created"
+          },
+          "already_scheduled": {
+            "type": "integer",
+            "title": "Already Scheduled"
+          },
+          "reminders": {
+            "items": {
+              "$ref": "#/components/schemas/ReminderOut"
+            },
+            "type": "array",
+            "title": "Reminders"
+          },
+          "notice": {
+            "type": "string",
+            "title": "Notice"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "created",
+          "already_scheduled",
+          "reminders",
+          "notice"
+        ],
+        "title": "ReminderPlan"
+      },
+      "ReminderRequest": {
+        "properties": {
+          "channel": {
+            "$ref": "#/components/schemas/ReminderChannel"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\+[1-9]\\d{7,14}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone",
+            "description": "E.164, e.g. +919876543210. Required for sms/whatsapp; saved on the caller's account."
+          },
+          "lead_days": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 1,
+            "title": "Lead Days",
+            "default": [
+              14,
+              3
+            ]
+          },
+          "horizon_days": {
+            "type": "integer",
+            "maximum": 730.0,
+            "minimum": 7.0,
+            "title": "Horizon Days",
+            "default": 365
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "channel"
+        ],
+        "title": "ReminderRequest"
+      },
       "Reproducibility": {
         "properties": {
           "engine_version": {
@@ -10412,6 +13107,40 @@
           "weeks"
         ],
         "title": "SkillAction"
+      },
+      "StudentFlag": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "examples": [
+              "consent_pending",
+              "no_assessment",
+              "no_run",
+              "high_conflict",
+              "top_matches_out_of_reach",
+              "low_data_quality",
+              "deadline_soon",
+              "follow_up_due",
+              "run_outdated"
+            ]
+          },
+          "severity": {
+            "$ref": "#/components/schemas/FlagSeverity"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "severity",
+          "message"
+        ],
+        "title": "StudentFlag"
       },
       "StudentProfileIn": {
         "properties": {

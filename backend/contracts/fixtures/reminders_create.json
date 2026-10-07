@@ -1,0 +1,250 @@
+{
+  "success": true,
+  "data": {
+    "created": 26,
+    "already_scheduled": 0,
+    "reminders": [
+      {
+        "id": "e0e33cdf-ae93-58c7-bd14-5db6f1f2eee5",
+        "title": "Last day to register: UCEED 2027",
+        "ref_id": "exam:UCEED:2027:1:reg@14d",
+        "due": "2026-11-01",
+        "send_on": "2026-10-18",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-a423-5074-9ae5-b47de5752368",
+        "title": "Last day to register: UCEED 2027",
+        "ref_id": "exam:UCEED:2027:1:reg@3d",
+        "due": "2026-11-01",
+        "send_on": "2026-10-29",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-c0ef-5cf6-b4be-fa4b5e08aa3d",
+        "title": "Last day to register: NID Design Aptitude Test 2027",
+        "ref_id": "exam:NID_DAT:2027:1:reg@14d",
+        "due": "2026-11-15",
+        "send_on": "2026-11-01",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-671f-56e1-b7eb-f5ee4252d057",
+        "title": "Last day to register: NID Design Aptitude Test 2027",
+        "ref_id": "exam:NID_DAT:2027:1:reg@3d",
+        "due": "2026-11-15",
+        "send_on": "2026-11-12",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-7c1e-5b3a-b927-3ce8b865fbfd",
+        "title": "Scholarship deadline: Private foundation UG merit-cum-means scholarship (illustrative)",
+        "ref_id": "scholarship:3293fd20-e6ae-56fd-89ae-b2c0708c6885@14d",
+        "due": "2026-12-15",
+        "send_on": "2026-12-01",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-a8f1-596f-8689-6404c6e0c829",
+        "title": "Scholarship deadline: Private foundation UG merit-cum-means scholarship (illustrative)",
+        "ref_id": "scholarship:3293fd20-e6ae-56fd-89ae-b2c0708c6885@3d",
+        "due": "2026-12-15",
+        "send_on": "2026-12-12",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-e032-580e-a707-0c0bf1f6afbb",
+        "title": "Exam starts: NID Design Aptitude Test 2027",
+        "ref_id": "exam:NID_DAT:2027:1:exam@14d",
+        "due": "2026-12-21",
+        "send_on": "2026-12-07",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-0496-5fef-b6d6-cc05be1a067f",
+        "title": "Exam starts: NID Design Aptitude Test 2027",
+        "ref_id": "exam:NID_DAT:2027:1:exam@3d",
+        "due": "2026-12-21",
+        "send_on": "2026-12-18",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-9cbf-5233-ad5f-33ee6b1daad8",
+        "title": "Exam starts: UCEED 2027",
+        "ref_id": "exam:UCEED:2027:1:exam@14d",
+        "due": "2027-01-17",
+        "send_on": "2027-01-03",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-5201-5b1f-9542-b7bec4742804",
+        "title": "Exam starts: UCEED 2027",
+        "ref_id": "exam:UCEED:2027:1:exam@3d",
+        "due": "2027-01-17",
+        "send_on": "2027-01-14",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-f618-559d-8975-36e731c9b5a9",
+        "title": "Last day to register: NEET-UG 2027",
+        "ref_id": "exam:NEET_UG:2027:1:reg@14d",
+        "due": "2027-03-07",
+        "send_on": "2027-02-21",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-5414-5068-b1c8-cfcf3136a746",
+        "title": "Last day to register: NEET-UG 2027",
+        "ref_id": "exam:NEET_UG:2027:1:reg@3d",
+        "due": "2027-03-07",
+        "send_on": "2027-03-04",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-18d4-538e-aca9-d3f4d6949c19",
+        "title": "Last day to register: IISER Aptitude Test 2027",
+        "ref_id": "exam:IISER_IAT:2027:1:reg@14d",
+        "due": "2027-04-25",
+        "send_on": "2027-04-11",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-ce32-55b4-8f32-82ca09a690ee",
+        "title": "Last day to register: IISER Aptitude Test 2027",
+        "ref_id": "exam:IISER_IAT:2027:1:reg@3d",
+        "due": "2027-04-25",
+        "send_on": "2027-04-22",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-d2b5-54ec-b6ce-f04efd01d5dd",
+        "title": "Exam starts: NEET-UG 2027",
+        "ref_id": "exam:NEET_UG:2027:1:exam@14d",
+        "due": "2027-05-02",
+        "send_on": "2027-04-18",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-c3d4-5ff9-b23f-2e2c7fe4d173",
+        "title": "Exam starts: NEET-UG 2027",
+        "ref_id": "exam:NEET_UG:2027:1:exam@3d",
+        "due": "2027-05-02",
+        "send_on": "2027-04-29",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-5c1a-547a-bdca-b64a6689c6e3",
+        "title": "Exam starts: IISER Aptitude Test 2027",
+        "ref_id": "exam:IISER_IAT:2027:1:exam@14d",
+        "due": "2027-06-06",
+        "send_on": "2027-05-23",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-2088-5359-9a2c-4b3ef43e2f98",
+        "title": "Exam starts: IISER Aptitude Test 2027",
+        "ref_id": "exam:IISER_IAT:2027:1:exam@3d",
+        "due": "2027-06-06",
+        "send_on": "2027-06-03",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-790e-57e1-9925-4b90f365e16f",
+        "title": "Last day to register: TNEA Counselling (marks-based) 2027",
+        "ref_id": "exam:TNEA:2027:1:reg@14d",
+        "due": "2027-06-06",
+        "send_on": "2027-05-23",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-9ef3-58fa-8a98-a6987bab5bd9",
+        "title": "Last day to register: TNEA Counselling (marks-based) 2027",
+        "ref_id": "exam:TNEA:2027:1:reg@3d",
+        "due": "2027-06-06",
+        "send_on": "2027-06-03",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-e65f-507f-8869-fa71b3db3008",
+        "title": "Last day to register: TNAU UG Admission (marks-based) 2027",
+        "ref_id": "exam:TNAU_COUNSELLING:2027:1:reg@14d",
+        "due": "2027-06-15",
+        "send_on": "2027-06-01",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-5554-5544-9bcb-d14126863c7c",
+        "title": "Last day to register: TNAU UG Admission (marks-based) 2027",
+        "ref_id": "exam:TNAU_COUNSELLING:2027:1:reg@3d",
+        "due": "2027-06-15",
+        "send_on": "2027-06-12",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-698d-5eb1-9504-13c00012735e",
+        "title": "Exam starts: TNEA Counselling (marks-based) 2027",
+        "ref_id": "exam:TNEA:2027:1:exam@14d",
+        "due": "2027-07-01",
+        "send_on": "2027-06-17",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-c697-58c8-9d5b-fe3e6d2b0518",
+        "title": "Exam starts: TNEA Counselling (marks-based) 2027",
+        "ref_id": "exam:TNEA:2027:1:exam@3d",
+        "due": "2027-07-01",
+        "send_on": "2027-06-28",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-3f73-58c9-862a-0f9dc82ed0d5",
+        "title": "Exam starts: TNAU UG Admission (marks-based) 2027",
+        "ref_id": "exam:TNAU_COUNSELLING:2027:1:exam@14d",
+        "due": "2027-07-15",
+        "send_on": "2027-07-01",
+        "channel": "whatsapp",
+        "status": "pending"
+      },
+      {
+        "id": "e0e33cdf-381e-53d8-a2a5-1a9eb6f6d01d",
+        "title": "Exam starts: TNAU UG Admission (marks-based) 2027",
+        "ref_id": "exam:TNAU_COUNSELLING:2027:1:exam@3d",
+        "due": "2027-07-15",
+        "send_on": "2027-07-12",
+        "channel": "whatsapp",
+        "status": "pending"
+      }
+    ],
+    "notice": "Reminders are sent on the morning of the send date. Reply STOP or cancel here at any time."
+  },
+  "error": null,
+  "meta": {
+    "request_id": "00000000000000000000000000000000",
+    "version": "v1/0.1.0",
+    "mock": true
+  }
+}
