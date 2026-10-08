@@ -1,0 +1,419 @@
+PRISM: TECHNICAL BRIEFING FOR THE HACKATHON
+Team CodeAlchemists · DataQuest 3.0
+Problem statement: Multi-Dimensional STEAM Career Guidance & Hyper-Local Innovation Platform
+Live demo: https://dataquest-frontend-theta.vercel.app/
+Backend API docs: https://dataquest-wxr4.onrender.com/docs
+Demo password for every demo account: Prism@Demo2026
+
+Everything below is taken from the code. Each formula names the file it lives in, in case a judge wants to see it.
+
+
+======================================================================
+1. ONE-PARAGRAPH SUMMARY
+======================================================================
+
+PRISM is a web platform that turns a 74-question assessment into a ranked, explained shortlist of
+careers, colleges, scholarships and loans for an Indian student and their family. Every career gets one
+score made of six weighted parts: fit, job market, affordability, return on investment, family
+alignment and automation risk. Parents take part through their own account, and a "conflict index"
+measures where parent and child disagree. A "Near you" feature turns real problems in the student's
+district into starter projects. The ranking is deterministic and reproducible. An AI model may only
+rephrase the summary, and its answer is rejected if it contains any number that isn't in the facts.
+
+
+======================================================================
+2. TECHNOLOGY STACK
+======================================================================
+
+Frontend (folder: frontend/)
+  - React 18 + TypeScript, built with Vite
+  - Tailwind CSS for styling, Radix UI for accessible components, Motion for animation
+  - TanStack Query for fetching data, caching it and retrying failed requests
+  - One file per screen in src/pages (27 screens); pages are lazy-loaded so the first load stays small
+  - Hosted on Vercel; VITE_API_URL points it at the backend
+
+Backend (folder: backend/)
+  - Python, FastAPI (REST API), Pydantic v2 (data validation and JSON contracts)
+  - SQLAlchemy 2 (database access), Alembic (database migrations)
+  - Database: SQLite by default; PostgreSQL supported through DATABASE_URL. On PostgreSQL, analysis runs
+    are protected from edits by database triggers, and admin analytics use a materialised view.
+  - Hosted on Render (free tier, so the first request after the service sleeps can take up to a minute)
+
+Security
+  - Passwords hashed with argon2id (the current recommended algorithm)
+  - JWT access tokens (HS256), valid for 30 minutes
+  - Refresh tokens are random, valid for 14 days, and stored only as a SHA-256 hash
+  - Rate limit: 120 requests per minute
+  - CORS restricted to the frontend's address (CORS_ORIGINS)
+  - The app refuses to start in production if demo mode or mock mode is switched on
+
+Size of the codebase
+  - About 60 API endpoints, versioned under /api/v1
+  - 43 database tables
+  - 120 automated backend tests and 9 frontend unit tests
+
+
+======================================================================
+3. ARCHITECTURE (how a request flows)
+======================================================================
+
+  Browser (React app on Vercel)
+     |  REST + JWT
+     v
+  FastAPI routers (app/api/v1)       check input, identify the user and role
+     |
+     v
+  Gateway (app/services/gateway.py)  picks mock mode or live mode; both return identical JSON shapes
+     |
+     v
+  Services  ->  Repositories  ->  SQLAlchemy models  ->  database
+     |
+     v
+  Scoring engine (app/engine)        pure functions, no database or network access, fully unit-tested
+     ^
+     |
+  ML plug-in (app/ml/predictor.py)   optional model, with a fallback that cannot fail
+
+Why it's built this way
+  - The engine is pure functions, so every formula can be tested in isolation and the same inputs always
+    give the same output.
+  - "Mock mode" serves the same JSON from fixtures. The frontend could be built in parallel before the
+    backend was finished, and the demo can run without a database if the backend fails.
+  - Every response uses the same envelope: {success, data, error, meta}. Errors have fixed codes
+    (VALIDATION_ERROR, UNAUTHORIZED, FORBIDDEN, CONSENT_REQUIRED, NOT_FOUND, RATE_LIMITED and others).
+    Every response carries a request ID and its response time.
+  - backend/contracts/ holds a frozen OpenAPI specification and example JSON for every endpoint.
+
+
+======================================================================
+4. THE QUESTIONNAIRE (psychometrics)   app/engine/psychometrics.py
+======================================================================
+
+  - 74 original items, about 25 minutes, can be taken in two sittings
+  - Measures 19 dimensions, each a number from 0 to 1:
+      interests (RIASEC): realistic, investigative, artistic, social, enterprising, conventional
+      aptitudes: numerical, verbal, logical, spatial
+      thinking style: analytical, creative, practical
+      values: security, autonomy, impact, financial
+      grit, risk tolerance
+  - The items are our own, written using public frameworks such as Holland's RIASEC theory. No
+    copyrighted test is used. They're stored as JSON in backend/data/instruments/, so teachers can
+    review them without reading code.
+
+Scoring
+  - Agree/disagree items (1 to 5): reverse-scored items are flipped (6 - answer), then
+    score = (average - 1) / 4, giving a value from 0 to 1
+  - Aptitude items are weighted 1 / 1.5 / 2 for easy / medium / hard, and corrected for guessing:
+    score = (p - 1/k) / (1 - 1/k), where k is the number of options
+  - Consistency = 1 - (standard deviation / 2); reliability = coverage x (0.5 + 0.5 x consistency)
+
+Quality checks (flags that lower reliability)
+  - straight_lining (the same answer every time), speeding (answering too fast), contradictory answers,
+    incomplete
+  - A dimension with less than half its items answered is set to the neutral 0.5, marked as "imputed",
+    and lowers the result's confidence
+  - Percentiles are shown only against a real comparison group of a minimum size. Otherwise none are
+    shown, rather than a fake one.
+
+
+======================================================================
+5. THE SCORE   app/engine/scoring.py, app/engine/config.py
+======================================================================
+
+  final = fit_gate x (0.30 fit + 0.15 market + 0.20 affordability + 0.15 ROI + 0.15 family)
+          - 0.05 automation risk           (clipped to the range 0 to 1, shown out of 100)
+
+  fit_gate = 0.5 + 0.5 x min(1, fit / 0.65)
+    A career that doesn't suit the student can't be pushed to the top by cheap fees, salary or demand.
+    The gate has no effect once fit is 0.65 or higher.
+
+  Each part's contribution adds up exactly to the final score. That's why "Why this score" can show the
+  points per part.
+
+  Weights version: "weights-2026.10-v3". Users can re-weight their priorities on the What-if page.
+
+
+5a. FIT   app/engine/fit.py
+  - Compares the student's 19-dimension profile with the career's ideal profile
+  - Centred cosine similarity (the direction of the profile), plus a distance score (how far off):
+      classic fit = 0.5 x cosine + 0.5 x distance score
+  - Dimensions the career really cares about count up to double: weight = 0.5 + |career value - 0.5|
+  - For aptitude and grit, only a shortfall counts (being better than required is fine). For interests
+    and values, a difference in either direction counts.
+  - The 0.4 scaling constant is the 90th-percentile mismatch across 2,000 random profiles, so a random
+    student scores about 0.33 and a strong match about 0.8.
+  - When a real ML model is plugged in: fit = 0.5 x ML + 0.5 x classic. Without one, a cosine fallback
+    against 12 career-domain prototypes is used. (See section 10.)
+
+5b. JOB MARKET   app/engine/market.py
+  - market = 0.7 x demand + 0.3 x job growth (velocity)
+  - Weighted by where the student could realistically work: home region 1.0, preferred regions 0.8,
+    other Indian regions 0.25 + 0.5 x willingness to relocate, abroad 0.6 x willingness to go abroad
+  - Older data counts less, with a 30-day half-life
+  - Demand = the career's percentile rank by number of job postings in a region
+
+5c. AFFORDABILITY   app/engine/finance.py
+  - Total cost = tuition + hostel + living + other costs for each course year, inflated at 8% a year
+  - Family funds = savings + a share of income each year. The share starts at 15%, drops 3% per extra
+    dependent and by half of any existing EMI burden, and stays between 3% and 30%.
+  - Scholarships: the best combination the student is eligible for, respecting awards that can't be
+    combined, found by exact search
+  - Loan capacity at a 10% interest rate over 10 years, adding the interest that builds up while
+    studying. Government schemes modelled: CSIS (no interest while studying, family income up to
+    Rs 4.5 lakh) and PM-Vidyalaxmi (3% lower rate, income up to Rs 8 lakh, top institutions).
+  - Affordability = min(1, (funds + scholarships + loan) / cost), reduced when borrowing is needed, and
+    reduced further when the EMI goes above 30% of monthly income
+  - Labels: Comfortable (funds + scholarships cover at least 110% of cost), Stretch (at least 100%),
+    Loan-dependent (only with a loan), Infeasible
+  - Admission chance is estimated from aptitude and exam marks against how selective the college is
+
+5d. RETURN ON INVESTMENT (ROI)
+  - Net present value of (career salary path - baseline path) over the course plus 10 years, divided by
+    the cost. The discount rate is 8%. The baseline is working right after Class 12, starting at about
+    Rs 1.8 lakh a year and growing 5% a year.
+  - Normalised: r / (r + 1.5)
+  - Careers that need a very selective exam after the degree (civil services, CA, actuary) use expected
+    earnings = chance of clearing x career salary + (1 - chance) x a typical graduate salary. Otherwise
+    UPSC would look like a sure thing.
+
+5e. FAMILY ALIGNMENT AND THE CONFLICT INDEX   app/engine/conflict.py
+  Parent acceptance of a career, from the parent's ranked preferences:
+    exact career ranked k:      1.00 - 0.08 (k - 1)
+    same field ranked k:        0.85 - 0.08 (k - 1)
+    otherwise:                  0.35 (0.5 if the parents gave no preferences)
+  Conflict index (0 to 100) = 100 x weighted gap across six areas:
+    field preference 30%, risk appetite 15%, geography 15%, budget 15%, time to earn 10%,
+    prestige vs stability 15%
+  Bands: Aligned (under 20), Mild (20 to 39), Moderate (40 to 59), High (60 and above)
+  The guided family meeting builds its question cards from the areas with the biggest gaps (the
+  conflict's "top drivers"). It also suggests 3 "bridge careers": the careers with the highest harmonic
+  mean of the student's fit and the parents' acceptance, so a career only scores high if it scores well
+  for both.
+
+5f. AUTOMATION RISK
+  - Each career has an automation-risk value in the catalogue (for example 0.25). It's the only part
+    that subtracts, with a weight of 5%.
+
+
+======================================================================
+6. CONFIDENCE, RANGE AND STABILITY
+======================================================================
+
+Confidence (app/engine/scoring.py)
+  confidence = 0.85 x (0.7 + 0.3 x share of inputs that are checked) x freshness factor
+               x (1 - penalty for imputed answers) x (0.8 + 0.2 x average answer reliability)
+  This is why the app shows "75 · 63-87": the range widens when inputs are estimates, old, or missing.
+
+Stability, the "64 scenarios"
+  - Each of the six weights is moved +20% and -20% on its own (12 scenarios)
+  - Plus 52 random combinations, with every weight moved within +/-20% together
+  - Seeded from the input, so the same inputs always produce the same 64 scenarios (reproducible)
+  - Robustness = average Kendall tau (a rank-correlation measure) between the normal top-5 order and each
+    scenario's order. High means the ranking doesn't change much if priorities shift a little.
+
+Buckets (how results are grouped)
+  - "Best for student" ignores money completely, so ambitious paths are never hidden from poorer families
+  - Careers that fit strongly but aren't affordable today appear as "stretch goals", with the route that
+    could make them reachable (scholarships, loans)
+
+
+======================================================================
+7. DATA AND TRUTHFULNESS   docs/DATA_TRUTH.md
+======================================================================
+
+Catalogue (backend/data/seed/)
+  51 careers across 12 fields · 101 study pathways · 41 institutions · 42 scholarships ·
+  33 entrance exams · 20 local problems · 21 regions · 33 pincodes · 2 government loan schemes
+
+Rules
+  - Every figure carries its source, an "as of" date, and a verification status: verified (checked against
+    the official source), secondary (checked against a reliable secondary source), or estimate.
+    The app shows "Checked" or "Estimate" on each figure.
+  - Freshness is judged against each dataset's own update cycle, not as "real time":
+      fresh = age within one cycle, aging = up to two cycles, stale = older
+    Job ads update daily, fees once a year, and so on. Stale data lowers confidence.
+  - Refreshing data creates a new dataset version. Old results keep the data they used and are marked
+    "outdated", and "compare" shows what changed. A refresh that fails a quality check is not applied, and
+    the previous version stays.
+  - Live job-postings feed: the Adzuna API (free key, 250 calls a day), with an offline import for
+    networks that block it. Without a key, the feed reports itself as disabled and nothing breaks.
+  - scripts/data_audit.py lists every figure that is still unchecked.
+
+BE HONEST ABOUT THIS IF ASKED: in the current demo data, most figures are labelled "Estimate". The
+"How we know" page says so openly, and the live job feed only runs when an Adzuna key is configured. The
+point is that the platform never presents an estimate as a fact.
+
+
+======================================================================
+8. HYPER-LOCAL INNOVATION
+======================================================================
+
+  - The student enters a pincode, which is mapped to a district
+  - PRISM lists real problems in that district (20 seeded so far), for example:
+      Dharmapuri: tracking falling groundwater and fluoride in village wells
+      Dharmapuri: grading mangoes and millets for better prices
+  - Each problem has STEAM tags, the skills involved, a 4 to 8 week starter project, a local partner (for
+    example a district agency or farmer producer organisation), and the careers it leads to
+  - Students can mark "I'm interested"
+  - Plan for growth: partner with Atal Tinkering Lab schools, using a CSV template to collect new problems
+    (scripts/local_problems.py)
+
+
+======================================================================
+9. PRIVACY, CONSENT AND FAIRNESS
+======================================================================
+
+  - Roles: student, parent, educator (counsellor), admin. Each endpoint checks the role.
+  - Students under 18 need a parent's consent before their answers are used. A parent can withdraw it.
+  - Family money (income, savings, loan) is visible to parents only, unless they choose to share it with
+    the student. Counsellors never see it.
+  - Caste, category, religion, community and gender are never collected. Scholarship rules that depend on
+    them show "check eligibility yourself" instead of guessing.
+  - Admin analytics hide small groups, so individual students can't be identified.
+  - An audit log records sensitive actions.
+  - Fairness test (tests/test_engine.py): the same student is run with a very low and a very high family
+    income. The "Best for student" list must be identical, and every career with fit 0.75 or higher must
+    stay visible to the poorer family. The live fairness report is at GET /api/v1/system/fairness.
+  - "Golden persona" tests freeze the results of the 5 demo families, so any accidental change to the
+    scoring is caught.
+
+
+======================================================================
+10. AI AND ML: WHAT IS AND ISN'T AI
+======================================================================
+
+  - The ranking is NOT made by a language model. It's deterministic formulas, the same every time and
+    fully explainable.
+  - ML plug-in (app/ml/predictor.py): a model can be plugged in to predict how well the student fits each
+    of the 12 career domains, and it's blended 50/50 with the classic fit. If no model is configured, or
+    the model errors, a deterministic cosine-similarity fallback against 12 domain prototypes is used, so
+    the API never fails because of the model.
+    BE ACCURATE: say "the system is ready for an ML model, with a safe fallback". Don't claim a trained
+    model is running in the demo unless one has been configured.
+  - Plain-language summary (app/services/narrator.py): optionally rephrased by an AI model (xAI Grok, or
+    any OpenAI-compatible model). Safety rules:
+      1. Only an anonymised fact sheet is sent: no names, emails, pincodes, answers or family money.
+      2. The model may rephrase but never add facts. If its answer contains any number that isn't in the
+         facts, the whole answer is rejected and a fixed template is used instead.
+      3. No key, a timeout or a bad answer means the template is used, in the same format.
+
+
+======================================================================
+11. OTHER FEATURES (with endpoints)
+======================================================================
+
+  - What-if: change savings, city or priorities and re-run; /analysis/compare shows what moved
+  - Compare: 2 or 3 careers side by side
+  - Plan: a 5-year roadmap with exams, deadlines and free courses (SWAYAM, NPTEL, DIKSHA)
+  - Deadlines: GET /students/{id}/deadlines, plus a calendar file (.ics) with a 3-day alarm for any
+    phone calendar. Each date is labelled Announced, Tentative or Estimated.
+  - Reminders: an outbox for SMS or WhatsApp through Twilio (logged in the demo; real sending needs a
+    Twilio account and Indian DLT registration)
+  - Loan explainer: GET /loans/explain, EMI and total repayment in plain words
+  - Counsellor dashboard: GET /educator/dashboard, with flags for high conflict, loan dependence,
+    missed steps and follow-up due
+  - Outcome follow-up after 6 to 12 months: what the student actually chose, to measure accuracy later
+  - Mentors: local mentors, listed only with written consent (none are seeded)
+  - Low bandwidth: compressed responses, and offline questionnaire answers can be uploaded later without
+    duplicates
+  - Family report: a printable summary to discuss at home
+
+
+======================================================================
+12. DEPLOYMENT AND RUNNING IT
+======================================================================
+
+  - Frontend on Vercel, backend on Render; CORS_ORIGINS on Render set to the Vercel address
+  - Demo data: python scripts/seed.py --demo --reset (creates 5 demo families), with DEMO_MODE=true
+  - Local: backend "uvicorn app.main:app --port 8000"; frontend "npm run dev" (port 5173)
+  - Tests: "pytest" in backend (120 tests); "npm test" in frontend
+  - Main environment variables: DATABASE_URL, JWT_SECRET, CORS_ORIGINS, MOCK_MODE, DEMO_MODE,
+    ADZUNA_APP_ID / ADZUNA_APP_KEY (job feed), GROK_API_KEY (AI summary), ML_MODEL_PATH (ML model)
+
+Demo accounts (password Prism@Demo2026)
+  Student   creative_risk_averse.student@prism.example   (Ananya)
+  Parent    creative_risk_averse.parent@prism.example
+  Counsellor counsellor@prism.example
+  Admin     admin@prism.example
+  Other families: replace "creative_risk_averse" with high_aptitude_low_budget (Karthik),
+  rural_steam_innovator (Meena), loan_dependent_family (Rahul) or aligned_family (Sara)
+
+
+======================================================================
+13. LIKELY JUDGE QUESTIONS, WITH ANSWERS
+======================================================================
+
+Q: Where do the weights (30/15/20/15/15/5) come from?
+A: They're a reasoned starting point, not learned from data yet. Fit is weighted highest because a career
+   the student doesn't suit fails regardless of salary. Affordability is second because it is the most
+   common real blocker for Indian families. The weights are versioned, visible in the app, and users can
+   change them on the What-if page. The 64-scenario test shows the ranking is stable even if the weights
+   are moved by 20%. Once outcome data comes in, the weights can be tuned against what students actually
+   chose and how it worked out.
+
+Q: Is this AI or just formulas?
+A: The ranking is deliberately not a black-box AI. Families and schools need to know why a career was
+   suggested, and the result must be the same every time. AI is used where it's safe: an optional ML
+   model for domain fit, blended with the formula, and a language model that only rephrases the summary
+   and is rejected if it invents a number.
+
+Q: How is your questionnaire valid? Has it been tested?
+A: It's built on published frameworks (RIASEC, aptitude, values, grit) with original items, and has
+   quality checks for careless answering. It has NOT yet been validated on a large student pilot. We say
+   that openly, and the analysis tool for a pilot is ready (scripts/pilot_analysis.py).
+
+Q: How real is your data?
+A: Every figure shows its source, date, and whether it's checked or an estimate. Much of the demo data is
+   still labelled as estimates, and the app says so. We never present an estimate as fact. The job-
+   postings feed is live when an API key is configured.
+
+Q: What if the family can't afford the best career? Do you hide it?
+A: No. "Best for student" ignores money completely, and high-fit careers that are unaffordable today
+   show up as stretch goals with the route to reach them (scholarships, loans). We have an automated
+   fairness test for exactly this.
+
+Q: Why don't you collect caste or category, when many scholarships depend on it?
+A: Protected attributes are sensitive and could bias recommendations. For scholarships that depend on
+   them, we show "check eligibility yourself" instead of asking or guessing.
+
+Q: How do you handle a parent and child who disagree?
+A: The conflict index measures the disagreement across six areas. A guided family meeting then turns the
+   biggest gaps into one question at a time, and we suggest bridge careers that score well for both.
+
+Q: What's "hyper-local" about it?
+A: A pincode is mapped to a district, and the student sees real problems from that district with a 4 to
+   8 week starter project and the careers it builds towards, for example testing village wells for
+   fluoride in Dharmapuri.
+
+Q: How does it scale?
+A: The engine is pure functions with no database calls, so scoring is fast and can run on many servers
+   at once. The API is stateless with JWT tokens. PostgreSQL is supported, and the counsellor dashboard
+   lets one counsellor oversee hundreds of students.
+
+Q: What happens when data is updated? Do old results change?
+A: No. A refresh creates a new dataset version. Old results keep the data they used and are marked
+   outdated, and the family can re-run and compare what changed.
+
+Q: How do you keep student data safe?
+A: argon2id password hashing, short-lived JWT access tokens, refresh tokens stored only as hashes, role
+   checks on every endpoint, parental consent under 18, family money private, and no personal data sent
+   to the AI model.
+
+Q: Why is the score shown as a range?
+A: Because some inputs are estimates. Showing "75, likely 63 to 87" is more honest than a precise-looking
+   75. The range narrows as data gets checked.
+
+Q: How are you different from Mindler, iDreamCareer or Careers360?
+A: They mostly do one part: an aptitude report, or a college and exam database. PRISM combines fit,
+   money, jobs and family agreement in one explainable score, includes the parent as a user with a
+   conflict index, puts affordability and ROI inside the ranking, and links students to problems in their
+   own district.
+
+Q: What did you not finish, or what would you do next?
+A: A school pilot to validate the questionnaire, real SMS and WhatsApp reminders (they need Twilio and
+   DLT registration), more local problems through Atal Tinkering Lab partners, outcome follow-up to tune
+   the weights, and checking more of the data against official sources.
+
+Q: Why did the site take long to load at first?
+A: The backend is on Render's free tier, which sleeps when it isn't being used. The first request wakes
+   it, which can take up to a minute. A paid instance would stay awake.
